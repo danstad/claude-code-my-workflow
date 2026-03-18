@@ -1,12 +1,7 @@
 # CLAUDE.MD -- Academic Project Development with Claude Code
 
-<!-- HOW TO USE: Replace [BRACKETED PLACEHOLDERS] with your project info.
-     Customize Beamer environments and CSS classes for your theme.
-     Keep this file under ~150 lines — Claude loads it every session.
-     See the guide at docs/workflow-guide.html for full documentation. -->
-
-**Project:** [YOUR PROJECT NAME]
-**Institution:** [YOUR INSTITUTION]
+**Project:** Research Portfolio — Paper Summaries
+**Institution:** M Csapek SA (formerly Tecnológico de Monterrey)
 **Branch:** main
 
 ---
@@ -21,24 +16,51 @@
 
 ---
 
+## Project Overview
+
+Summarizing 4–8 economics/econometrics research papers as polished presentations.
+Each paper gets a Beamer slide deck (authoritative) + a Quarto RevealJS version (web-published to GitHub Pages).
+Analysis tools: **R**, **Stata**, **Python**.
+Papers (PDFs) → `master_supporting_docs/supporting_papers/`
+Existing Beamer source → `Slides/`
+
+---
+
+## Quarto Primer (new to Quarto? start here)
+
+Quarto is a publishing system that turns `.qmd` text files into many output formats — for this project, **RevealJS HTML slides** viewable in any browser.
+
+**Mental model:**
+- `.qmd` file = Markdown + code chunks + slide metadata
+- `quarto render file.qmd` → produces `file.html` (the slide deck)
+- This project: Beamer `.tex` is written first → `/translate-to-quarto` converts it → we get both formats
+
+**Why Quarto?** GitHub Pages hosts the HTML output for free, so anyone with a link can view your slides without LaTeX or a PDF viewer. As we work together, I'll explain Quarto features and suggest ways they help *communicate ideas* (animations, interactive charts, callout boxes, etc.).
+
+---
+
 ## Folder Structure
 
 ```
-[YOUR-PROJECT]/
-├── CLAUDE.MD                    # This file
+Summary own papers/
+├── CLAUDE.md                    # This file
 ├── .claude/                     # Rules, skills, agents, hooks
 ├── Bibliography_base.bib        # Centralized bibliography
 ├── Figures/                     # Figures and images
-├── Preambles/header.tex         # LaTeX headers
-├── Slides/                      # Beamer .tex files
+├── Preambles/header.tex         # LaTeX headers/preamble
+├── Slides/                      # Beamer .tex files (source of truth)
 ├── Quarto/                      # RevealJS .qmd files + theme
 ├── docs/                        # GitHub Pages (auto-generated)
-├── scripts/                     # Utility scripts + R code
+├── scripts/                     # Utility scripts, R, Stata, Python
 ├── quality_reports/             # Plans, session logs, merge reports
-├── explorations/                # Research sandbox (see rules)
+├── explorations/                # Research sandbox
 ├── templates/                   # Session log, quality report templates
-└── master_supporting_docs/      # Papers and existing slides
+└── master_supporting_docs/
+    ├── supporting_papers/       # Paper PDFs
+    └── supporting_slides/       # Reference slides (non-Beamer source)
 ```
+
+**Paper naming convention:** `Paper01_ShortTitle`, `Paper02_ShortTitle`, etc.
 
 ---
 
@@ -51,8 +73,11 @@ BIBINPUTS=..:$BIBINPUTS bibtex file
 TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
 TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
 
+# Quarto render (run from Quarto/ directory)
+quarto render file.qmd
+
 # Deploy Quarto to GitHub Pages
-./scripts/sync_to_docs.sh LectureN
+./scripts/sync_to_docs.sh Paper01
 
 # Quality score
 python scripts/quality_score.py Quarto/file.qmd
@@ -75,59 +100,53 @@ python scripts/quality_score.py Quarto/file.qmd
 | Command | What It Does |
 |---------|-------------|
 | `/compile-latex [file]` | 3-pass XeLaTeX + bibtex |
-| `/deploy [LectureN]` | Render Quarto + sync to docs/ |
-| `/extract-tikz [LectureN]` | TikZ → PDF → SVG |
+| `/deploy [Paper01]` | Render Quarto + sync to docs/ |
+| `/extract-tikz [Paper01]` | TikZ → PDF → SVG |
 | `/proofread [file]` | Grammar/typo/overflow review |
 | `/visual-audit [file]` | Slide layout audit |
 | `/pedagogy-review [file]` | Narrative, notation, pacing review |
 | `/review-r [file]` | R code quality review |
-| `/qa-quarto [LectureN]` | Adversarial Quarto vs Beamer QA |
+| `/qa-quarto [Paper01]` | Adversarial Quarto vs Beamer QA |
 | `/slide-excellence [file]` | Combined multi-agent review |
 | `/translate-to-quarto [file]` | Beamer → Quarto translation |
 | `/validate-bib` | Cross-reference citations |
 | `/devils-advocate` | Challenge slide design |
-| `/create-lecture` | Full lecture creation |
 | `/commit [msg]` | Stage, commit, PR, merge |
 | `/lit-review [topic]` | Literature search + synthesis |
-| `/research-ideation [topic]` | Research questions + strategies |
-| `/interview-me [topic]` | Interactive research interview |
 | `/review-paper [file]` | Manuscript review |
 | `/data-analysis [dataset]` | End-to-end R analysis |
 
 ---
 
-<!-- CUSTOMIZE: Replace the example entries below with your own
-     Beamer environments and Quarto CSS classes. These are examples
-     from the original project — delete them and add yours. -->
-
 ## Beamer Custom Environments
 
-| Environment       | Effect        | Use Case       |
-|-------------------|---------------|----------------|
-| `[your-env]`      | [Description] | [When to use]  |
+Defined in `Preambles/header.tex`. Font: TeX Gyre Heros (Helvetica-style, MiKTeX-bundled).
 
-<!-- Example entries (delete and replace with yours):
-| `keybox` | Gold background box | Key points |
-| `highlightbox` | Gold left-accent box | Highlights |
-| `definitionbox[Title]` | Blue-bordered titled box | Formal definitions |
--->
+| Environment     | Effect                          | Use Case                         |
+|-----------------|---------------------------------|----------------------------------|
+| `keybox`        | Gold background, left accent    | Key takeaways, main messages     |
+| `methodbox`     | Navy left bar, blue-tinted bg   | Model assumptions, identification|
+| `resultbox`     | Gold border on all sides        | Main findings, results           |
+| `assumptionbox` | Yellow border + titled header   | Formal assumptions (labeled)     |
+
+**Inline commands:** `\gold{}` (gold bold), `\navy{}` (navy bold), `\bad{}` (red bold), `\pos{}` (green bold), `\hi{}` (navy bold)
 
 ## Quarto CSS Classes
+
+*(Fill in when building first Quarto deck)*
 
 | Class              | Effect        | Use Case       |
 |--------------------|---------------|----------------|
 | `[.your-class]`    | [Description] | [When to use]  |
 
-<!-- Example entries (delete and replace with yours):
-| `.smaller` | 85% font | Dense content slides |
-| `.positive` | Green bold | Good annotations |
--->
-
 ---
 
 ## Current Project State
 
-| Lecture | Beamer | Quarto | Key Content |
-|---------|--------|--------|-------------|
-| 1: [Topic] | `Lecture01_Topic.tex` | `Lecture1_Topic.qmd` | [Brief description] |
-| 2: [Topic] | `Lecture02_Topic.tex` | -- | [Brief description] |
+| Paper | Beamer | Quarto | Key Content |
+|-------|--------|--------|-------------|
+| 01: Child Sponsorship | `Paper01_ChildSponsorship.tex` ✓ | -- | CI impact on higher-ed aspirations, rural Mexico; Roy model, MTE, subjective expectations |
+| 02: [Title TBD] | -- | -- | -- |
+| 03: [Title TBD] | -- | -- | -- |
+| 04: [Title TBD] | -- | -- | -- |
+| 05–08: TBD | -- | -- | -- |

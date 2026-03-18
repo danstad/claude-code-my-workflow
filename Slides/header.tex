@@ -1,0 +1,158 @@
+%% ============================================================
+%% header.tex -- Shared Beamer preamble for Research Portfolio
+%% Compile with: XeLaTeX (3-pass + bibtex)
+%% Colors match Quarto/emory-clean.scss for cross-format consistency
+%% ============================================================
+
+%% ---- Packages -----------------------------------------------
+\usepackage{fontspec}           % XeLaTeX font loading
+\usepackage{unicode-math}       % Unicode math support
+\usepackage{amsmath, mathtools} % Math environments
+\usepackage{booktabs}           % Publication-quality tables
+\usepackage{multirow}           % Multi-row table cells
+\usepackage{graphicx}           % Include figures
+\usepackage{xcolor}             % Color definitions
+\usepackage{tcolorbox}          % Colored boxes
+\tcbuselibrary{skins, breakable}
+\usepackage{natbib}             % Author-year citations
+\usepackage{appendixnumberbeamer} % Appendix slides don't count in total
+\usepackage{hyperref}           % Hyperlinks
+\usepackage{tikz}               % Diagrams (if needed)
+
+%% ---- Fonts --------------------------------------------------
+%% Using TeX Gyre Heros (Helvetica-style, bundled with MiKTeX).
+%% To switch to Source Sans Pro: install it, then swap the two blocks below.
+\setmainfont{TeX Gyre Heros}
+\setsansfont{TeX Gyre Heros}
+% Alternative: uncomment below and comment above if Source Sans Pro is installed
+% \setmainfont{Source Sans Pro}[BoldFont=Source Sans Pro SemiBold]
+% \setsansfont{Source Sans Pro}[BoldFont=Source Sans Pro SemiBold]
+
+%% ---- Colors (matching emory-clean.scss) ---------------------
+\definecolor{navyblue}{HTML}{012169}
+\definecolor{institutgold}{HTML}{2E75B6}   % steel blue (was gold #B9975B)
+\definecolor{highlightyellow}{HTML}{F2A900}
+\definecolor{lightbg}{HTML}{E8EDF5}
+\definecolor{darkgray}{HTML}{1a1a1a}
+\definecolor{medgray}{HTML}{555555}
+\definecolor{lightgray}{HTML}{f8f9fa}
+\definecolor{positivegreen}{HTML}{15803d}
+\definecolor{negativered}{HTML}{b91c1c}
+
+%% ---- Beamer Theme -------------------------------------------
+\usetheme{default}
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}   % No navigation clutter
+
+%% Frame title
+\setbeamercolor{frametitle}{fg=white, bg=navyblue}
+\setbeamertemplate{frametitle}{%
+  \vspace*{0.3em}%
+  \insertframetitle%
+  \vspace*{0.3em}%
+}
+\setbeamerfont{frametitle}{series=\bfseries, size=\large}
+
+%% Title page colors
+\setbeamercolor{title}{fg=navyblue}
+\setbeamercolor{subtitle}{fg=institutgold}
+\setbeamercolor{author}{fg=navyblue}
+\setbeamercolor{institute}{fg=medgray}
+\setbeamercolor{date}{fg=institutgold}
+
+%% Body
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{normal text}{fg=darkgray}
+\setbeamerfont{normal text}{family=\sffamily}
+
+%% Itemize bullets
+\setbeamercolor{item}{fg=navyblue}
+\setbeamercolor{subitem}{fg=institutgold}
+\setbeamertemplate{itemize item}{\small\textbullet}
+\setbeamertemplate{itemize subitem}{\small$\rightarrow$}
+
+%% Block environments
+\setbeamercolor{block title}{fg=white, bg=navyblue}
+\setbeamercolor{block body}{fg=darkgray, bg=lightbg}
+\setbeamercolor{block title alerted}{fg=white, bg=institutgold}
+\setbeamercolor{block body alerted}{fg=darkgray, bg=white}
+
+%% Footer
+\setbeamertemplate{footline}{%
+  \hfill%
+  \usebeamerfont{page number in head/foot}%
+  \usebeamercolor[fg]{page number in head/foot}%
+  \insertframenumber\,/\,\inserttotalframenumber\kern1em%
+  \vskip4pt%
+}
+\setbeamercolor{page number in head/foot}{fg=medgray}
+
+%% Section slides (automatically centered, navy bg)
+\AtBeginSection[]{%
+  \begin{frame}[plain]
+    \begin{tikzpicture}[remember picture, overlay]
+      \fill[navyblue] (current page.south west) rectangle (current page.north east);
+      \node[white, font=\bfseries\Large, align=center] at (current page.center)
+        {\insertsectionhead};
+    \end{tikzpicture}
+  \end{frame}%
+}
+
+%% ---- Custom Box Environments --------------------------------
+
+%% keybox: gold background, for key takeaways
+\newtcolorbox{keybox}{%
+  colback=institutgold!12!white,
+  colframe=institutgold,
+  leftrule=4pt, rightrule=0pt, toprule=0pt, bottomrule=0pt,
+  arc=4pt, outer arc=4pt,
+  boxsep=2pt, left=6pt, right=6pt, top=5pt, bottom=5pt,
+}
+
+%% methodbox: navy left bar, for model/identification
+\newtcolorbox{methodbox}{%
+  colback=navyblue!5!white,
+  colframe=navyblue,
+  leftrule=4pt, rightrule=0pt, toprule=0pt, bottomrule=0pt,
+  arc=4pt, outer arc=4pt,
+  boxsep=2pt, left=6pt, right=6pt, top=5pt, bottom=5pt,
+}
+
+%% resultbox: gold border, for main findings
+\newtcolorbox{resultbox}{%
+  colback=institutgold!10!white,
+  colframe=institutgold,
+  leftrule=2pt, rightrule=2pt, toprule=2pt, bottomrule=2pt,
+  arc=4pt, outer arc=4pt,
+  boxsep=2pt, left=6pt, right=6pt, top=5pt, bottom=5pt,
+}
+
+%% assumptionbox: titled, formal assumptions
+\newtcolorbox{assumptionbox}[1][]{%
+  colback=highlightyellow!8!white,
+  colframe=highlightyellow!70!black,
+  leftrule=2pt, rightrule=2pt, toprule=2pt, bottomrule=2pt,
+  arc=4pt, outer arc=4pt,
+  boxsep=2pt, left=6pt, right=6pt, top=5pt, bottom=5pt,
+  title={#1},
+  fonttitle=\bfseries\small,
+  attach boxed title to top left={yshift=-2mm, xshift=6pt},
+  boxed title style={colback=highlightyellow!70!black, arc=2pt},
+}
+
+%% ---- Convenience Commands -----------------------------------
+\newcommand{\gold}[1]{{\color{institutgold}\textbf{#1}}}
+\newcommand{\navy}[1]{{\color{navyblue}\textbf{#1}}}
+\newcommand{\pos}[1]{{\color{positivegreen}\textbf{#1}}}
+\newcommand{\bad}[1]{{\color{negativered}\textbf{#1}}}   % red annotation
+\newcommand{\hi}[1]{{\color{navyblue}\textbf{#1}}}
+% Note: \alert is Beamer built-in (styled gold via alerted text color below)
+\setbeamercolor{alerted text}{fg=institutgold}
+
+%% ---- Math shortcuts -----------------------------------------
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\ATE}{\mathrm{ATE}}
+\newcommand{\ATT}{\mathrm{ATT}}
+\newcommand{\MTE}{\mathrm{MTE}}
+\newcommand{\Norm}{\mathcal{N}}
