@@ -145,8 +145,8 @@ Defined in `Preambles/header.tex`. Font: TeX Gyre Heros (Helvetica-style, MiKTeX
 
 | Paper | Beamer | Quarto | Key Content |
 |-------|--------|--------|-------------|
-| 01: Child Sponsorship | `Paper01_ChildSponsorship.tex` ✓ | -- | CI impact on higher-ed aspirations, rural Mexico; Roy model, MTE, subjective expectations |
-| 02: [Title TBD] | -- | -- | -- |
+| 01: Child Sponsorship | `Paper01_ChildSponsorship.tex` ✓ | `Paper01_ChildSponsorship.qmd` ✓ | CI impact on higher-ed aspirations, rural Mexico; Roy model, MTE, subjective expectations |
+| 02: WD Aspirations | `Paper02_WD_Aspirations.tex` ✓ | `Paper02_WD_Aspirations_Interactive.qmd` ✓ | CI effects on self-esteem, optimism, aspirations; Kenya/Indonesia/Mexico; age-eligibility IV; mediation |
 | 03: [Title TBD] | -- | -- | -- |
 | 04: [Title TBD] | -- | -- | -- |
 | 05–08: TBD | -- | -- | -- |

@@ -1,9 +1,8 @@
 ---
 title: "Child Sponsorship and Educational Aspirations"
-subtitle: "Evidence from Rural Mexico — Summary"
-author: "D. Prudencio"
-institute: "M Csapek SA"
-date: "Education Economics (2025)"
+subtitle: "Evidence from Rural Mexico, Summary"
+author: "Daniel Prudencio"
+institute: "M Csapek SA, Tecnológico de Monterrey<br><span style='display:block; margin-top:1.4em; font-size:1.05em; opacity:0.85'>Published in <em>Education Economics</em>, 2025</span>"
 format:
   revealjs:
     theme: [default, emory-clean.scss]
@@ -23,12 +22,12 @@ bibliography: ../Bibliography_base.bib
 
 ::: {.columns}
 ::: {.column width="60%"}
-**The gap:** Returns to education are positive — yet [educational attainment stays very low]{.hi-gold}
+**The gap:** Returns to education are positive, yet [educational attainment stays very low]{.hi-gold}
 
-- Adults in Oaxaca and Chiapas average only **7.5 and 7.2 years** of schooling — barely above primary
+- Adults in Oaxaca and Chiapas average only **7.5 and 7.2 years** of schooling, barely above primary
 - Both regions among the poorest in Mexico
 
-**Standard explanation:** [external constraints]{.negative} — poverty, distance to schools, poor health
+**Standard explanation:** [external constraints]{.negative}, poverty, distance to schools, poor health
 
 **But also:** Growing evidence that [internal constraints]{.hi-gold} matter too
 
@@ -45,9 +44,9 @@ Can an international child sponsorship program shift *the level of education* ch
 ::: {.keybox}
 **Compassion International (CI):** Third-largest child sponsorship program worldwide
 
-≈**2.2 million** children across **29 countries**
+≈ **2.2 million** children across **29 countries**
 
-In Mexico: **33,360** children in >185 centers
+In Mexico: **33, 360** children in >185 centers
 :::
 :::
 :::
@@ -58,9 +57,9 @@ In Mexico: **33,360** children in >185 centers
 ::: {.column width="50%"}
 **Three program pillars:**
 
-1. [Material support]{.hi-gold} — school supplies, uniforms, food, healthcare
-2. [After-school program]{.hi-gold} — 5–6 hrs/week of academic tutoring and socio-emotional development (self-esteem, self-efficacy, life skills)
-3. [Letter exchanges]{.hi-gold} with international sponsors — broadens career horizons and life possibilities
+1. [Material support]{.hi-gold}, school supplies, uniforms, food, healthcare
+2. [After-school program]{.hi-gold}, 5–6 hrs/week of academic tutoring and socio-emotional development (self-esteem, self-efficacy, life skills)
+3. [Letter exchanges]{.hi-gold} with international sponsors, broadens career horizons and life possibilities
 
 Average **9.3 years** of participation
 
@@ -83,13 +82,13 @@ Average **9.3 years** of participation
 
 ::: {.columns}
 ::: {.column width="52%"}
-**The challenge:** CI deliberately targets the [poorest]{.negative} children — sponsored and non-sponsored kids differ in ways we cannot fully measure
+**The challenge:** CI deliberately targets the [poorest]{.negative} children, sponsored and non-sponsored kids differ in ways we cannot fully measure
 
 - Raw comparison of aspirations = [not causal]{.negative}
 
 **The solution:** A [binary Roy model]{.hi} [@Aakvik2005]
 
-- [Instrument ($Z$):]{.hi-gold} Age when CI arrived in the village — younger children more likely selected, but age-at-arrival should not affect current aspirations
+- [Instrument ($Z$):]{.hi-gold} Age when CI arrived in the village, younger children more likely selected, but age-at-arrival should not affect current aspirations
 
 Identifies [ATE]{.hi} (average child), [ATT]{.hi} (sponsored), [MTE]{.hi} (by disadvantage)
 :::
@@ -98,13 +97,13 @@ Identifies [ATE]{.hi} (average child), [ATT]{.hi} (sponsored), [MTE]{.hi} (by di
 <svg viewBox="0 0 500 255" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:205px;">
   <defs>
     <marker id="mn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-      <path d="M0,0 L10,5 L0,10 Z" fill="#555"/>
+      <path d="M0, 0 L10, 5 L0, 10 Z" fill="#555"/>
     </marker>
     <marker id="mg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-      <path d="M0,0 L10,5 L0,10 Z" fill="#2E75B6"/>
+      <path d="M0, 0 L10, 5 L0, 10 Z" fill="#2E75B6"/>
     </marker>
     <marker id="mr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-      <path d="M0,0 L10,5 L0,10 Z" fill="#b91c1c"/>
+      <path d="M0, 0 L10, 5 L0, 10 Z" fill="#b91c1c"/>
     </marker>
   </defs>
   <!-- Node Z -->
@@ -123,21 +122,21 @@ Identifies [ATE]{.hi} (average child), [ATT]{.hi} (sponsored), [MTE]{.hi} (by di
   <text x="420" y="95" text-anchor="middle" font-size="11" fill="#333" font-family="sans-serif">Higher-Ed</text>
   <text x="420" y="108" text-anchor="middle" font-size="11" fill="#333" font-family="sans-serif">Aspiration</text>
   <!-- Node U (latent, dashed ellipse) -->
-  <ellipse cx="250" cy="210" rx="90" ry="36" fill="#fff5f5" stroke="#888" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <ellipse cx="250" cy="210" rx="90" ry="36" fill="#fff5f5" stroke="#888" stroke-width="1.5" stroke-dasharray="6, 3"/>
   <text x="250" y="207" text-anchor="middle" font-size="13" font-weight="bold" fill="#555" font-family="sans-serif">U</text>
   <text x="250" y="222" text-anchor="middle" font-size="10" fill="#666" font-family="sans-serif">Unobservables</text>
   <!-- Arrow Z→S (solid, navy) -->
   <line x1="138" y1="85" x2="186" y2="85" stroke="#555" stroke-width="1.6" marker-end="url(#mn)"/>
   <text x="162" y="78" text-anchor="middle" font-size="10" fill="#555" font-family="sans-serif">↑ prob.</text>
-  <!-- Arrow S→Y (solid, steel blue — effect of interest) -->
+  <!-- Arrow S→Y (solid, steel blue, effect of interest) -->
   <line x1="308" y1="85" x2="356" y2="85" stroke="#2E75B6" stroke-width="2.2" marker-end="url(#mg)"/>
   <text x="332" y="78" text-anchor="middle" font-size="10" font-weight="bold" fill="#2E75B6" font-family="sans-serif">effect?</text>
   <!-- Arrow U→S (red dashed) -->
-  <line x1="228" y1="176" x2="237" y2="115" stroke="#b91c1c" stroke-width="1.4" stroke-dasharray="5,3" marker-end="url(#mr)"/>
+  <line x1="228" y1="176" x2="237" y2="115" stroke="#b91c1c" stroke-width="1.4" stroke-dasharray="5, 3" marker-end="url(#mr)"/>
   <!-- Arrow U→Y (red dashed) -->
-  <line x1="320" y1="185" x2="390" y2="115" stroke="#b91c1c" stroke-width="1.4" stroke-dasharray="5,3" marker-end="url(#mr)"/>
+  <line x1="320" y1="185" x2="390" y2="115" stroke="#b91c1c" stroke-width="1.4" stroke-dasharray="5, 3" marker-end="url(#mr)"/>
   <!-- Arc Z→Y excluded path (curved over top, red dashed) -->
-  <path d="M 80 59 Q 250 5 420 59" fill="none" stroke="#b91c1c" stroke-width="1.4" stroke-dasharray="5,3" marker-end="url(#mr)"/>
+  <path d="M 80 59 Q 250 5 420 59" fill="none" stroke="#b91c1c" stroke-width="1.4" stroke-dasharray="5, 3" marker-end="url(#mr)"/>
   <text x="250" y="20" text-anchor="middle" font-size="14" font-weight="bold" fill="#b91c1c" font-family="sans-serif">✗</text>
 </svg>
 
@@ -160,8 +159,8 @@ The Roy model corrects for $U$ by exploiting variation in $Z$
 
 **Statistical precision:**
 
-- [Not statistically significant]{.negative} — small sample ($N=163$ sponsored) combined with a complex estimation model amplify uncertainty
-- Results are *suggestive*, not definitive — but the direction is clear and meaningful
+- [Not statistically significant]{.negative}, small sample ($N=163$ sponsored) combined with a complex estimation model amplify uncertainty
+- Results are *suggestive*, not definitive, but the direction is clear and meaningful
 :::
 
 ::: {.column width="41%"}
@@ -190,18 +189,18 @@ Even an imprecise result is informative: the program appears to be working in th
 The Marginal Treatment Effect (MTE) shows that children [most likely to be selected]{.hi-gold} into CI are also those who [benefit the most]{.hi-gold} from it
 
 ::: {.resultbox}
-**No efficiency-equity trade-off:** Aid programs often face a dilemma — targeting the most vulnerable may not reach those with the highest gains. [CI avoids this dilemma:]{.positive} the most disadvantaged children extract the greatest benefit
+**No efficiency-equity trade-off:** Aid programs often face a dilemma, targeting the most vulnerable may not reach those with the highest gains. [CI avoids this dilemma:]{.positive} the most disadvantaged children extract the greatest benefit
 :::
 :::
 
 ::: {.column width="48%"}
 **[Insight 2:]{.hi} A surprising gender gap**
 
-- [Girls aspire more]{.hi-gold} to higher education than boys (boys are ≈12 pp less likely to aspire, among non-sponsored)
-- Yet girls expect [≈50% lower income]{.negative} than boys at the same education level
+- [Girls aspire more]{.hi-gold} to higher education than boys (boys are ≈ 12 pp less likely to aspire, among non-sponsored)
+- Yet girls expect [≈ 50% lower income]{.negative} than boys at the same education level
 
 ::: {.keybox}
-The gender gap in aspirations is **not** explained by income beliefs — structural barriers and identity formation dominate at ages 12–15
+The gender gap in aspirations is **not** explained by income beliefs, structural barriers and identity formation dominate at ages 12–15
 
 Information campaigns about female earnings alone are unlikely to close the gap
 :::
@@ -214,9 +213,9 @@ Information campaigns about female earnings alone are unlikely to close the gap
 ::: {.column width="50%"}
 **What we found:**
 
-1. CI has a [positive, economically meaningful effect]{.hi} on aspirations for higher education (ATT ≈17–20 pp) — suggestive, not conclusive
-2. CI's targeting is [efficient]{.hi}: the most vulnerable children benefit the most — no equity-efficiency trade-off
-3. [Girls aspire more than boys]{.hi} despite expecting much lower earnings — the gap is not explained by beliefs about future income
+1. CI has a [positive, economically meaningful effect]{.hi} on aspirations for higher education (ATT ≈ 17–20 pp), suggestive, not conclusive
+2. CI's targeting is [efficient]{.hi}: the most vulnerable children benefit the most, no equity-efficiency trade-off
+3. [Girls aspire more than boys]{.hi} despite expecting much lower earnings, the gap is not explained by beliefs about future income
 :::
 
 ::: {.column width="47%"}
@@ -224,10 +223,10 @@ Information campaigns about female earnings alone are unlikely to close the gap
 **What it means:**
 
 ::: {.keybox}
-Holistic programs that [combine material support with socio-emotional development]{.hi-gold} are well-positioned to shift aspirations — not just economic constraints
+Holistic programs that [combine material support with socio-emotional development]{.hi-gold} are well-positioned to shift aspirations, not just economic constraints
 :::
 
-- [Informal attendance requirements]{.hi-gold} may be a valuable design feature — more time in school strengthens educational identity
+- [Informal attendance requirements]{.hi-gold} may be a valuable design feature, more time in school strengthens educational identity
 - Intervening [early (ages 9–12)]{.hi-gold} may be more effective than waiting for aspirations to be fully formed
 - Gender-specific barriers require [targeted interventions]{.hi-gold} beyond information provision
 :::

@@ -190,7 +190,6 @@ $selection-bg: $primary-gold !default;
   color: $primary-gold;
   font-style: italic;
   font-weight: 500;
-  font-size: 1em;
   margin-top: 1em;
   margin-bottom: 0.5em;
 }
@@ -651,7 +650,6 @@ $selection-bg: $primary-gold !default;
 
 .reveal .callout-body-container,
 .reveal .callout-body {
-  font-size: 1em;
   line-height: 1.5;
 }
 
@@ -660,7 +658,6 @@ $selection-bg: $primary-gold !default;
 // ==============================================================================
 
 #refs {
-  font-size: 1em;
   line-height: 1.4;
   column-count: 1;
 

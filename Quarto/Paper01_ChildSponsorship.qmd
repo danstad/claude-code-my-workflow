@@ -1,9 +1,8 @@
 ---
 title: "Child Sponsorship and Educational Aspirations"
 subtitle: "Evidence from Rural Mexico"
-author: "D. Prudencio"
-institute: "M Csapek SA"
-date: "2026"
+author: "Daniel Prudencio"
+institute: "M Csapek SA, Tecnológico de Monterrey<br><span style='display:block; margin-top:1.4em; font-size:1.05em; opacity:0.85'>Published in <em>Education Economics</em>, 2025</span>"
 format:
   revealjs:
     theme: [default, emory-clean.scss]
@@ -51,11 +50,11 @@ Growing evidence: [internal constraints]{.hi-gold} — aspirations, grit, self-e
 ::: {.column width="50%"}
 **Compassion International:** Third largest child sponsorship program worldwide
 
-- Sponsors $\approx$**2.2 million children** across **29 countries**
+- Sponsors $\approx$ **2.2 million children** across **29 countries**
 - Faith-based NGO; collaborates with local churches
 - In Mexico: **33,360 children** in $>185$ centers
 
-**Duration:** Average **9.3 years** of sponsorship ($\approx$4,000 hrs of organized activities)
+**Duration:** Average **9.3 years** of sponsorship ($\approx$ 4,000 hrs of organized activities)
 :::
 
 ::: {.column width="46%"}
@@ -185,7 +184,7 @@ Data collected as part of a companion study with @Ross2021 evaluating CI's impac
 |---|---|---:|
 | Initial survey | Ages 10–18 | 926 |
 | Age restriction | Ages 12–15 only | — |
-| &nbsp;&nbsp;&nbsp;&nbsp;Reason 1: | Children start working after primary ($\approx$age 12) | |
+| &nbsp;&nbsp;&nbsp;&nbsp;Reason 1: | Children start working after primary ($\approx$ age 12) | |
 | &nbsp;&nbsp;&nbsp;&nbsp;Reason 2: | CI sites operational < 6 years on average | |
 | &nbsp;&nbsp;&nbsp;&nbsp;Reason 3: | Aligns with sponsorship eligibility (age ≤ 9 at start) | |
 | **Final sample** | | **403** |
@@ -686,7 +685,7 @@ Heterogeneity Analysis
 
 **Income expectations (Table 2):**
 
-- Females expect $\approx$[50% lower income]{.negative} than males at high-school level
+- Females expect $\approx$ [50% lower income]{.negative} than males at high-school level
 - Gender gap exists even among 12–15 year olds
 - Females have *higher* aspirations despite expecting *lower* income — gap is [not explained by income beliefs]{.hi-gold}
 :::
@@ -717,7 +716,7 @@ Discussion & Conclusions
 **Main results are robust to:**
 
 1. **Distributional assumption for income**: Uniform distribution (instead of triangular) for $f(Y^\ell)$ — nearly identical estimates
-2. **Prospera overlap**: $\approx$85% of sample participates in Prospera (conditional cash transfer). Assuming Prospera affects both groups equally and re-estimating on Prospera participants only: conclusions unchanged
+2. **Prospera overlap**: $\approx$ 85% of sample participates in Prospera (conditional cash transfer). Assuming Prospera affects both groups equally and re-estimating on Prospera participants only: conclusions unchanged
 3. **Standard Roy model with continuous outcome + IV**: Using exclusion restrictions as instruments; results not statistically significant either (Table 9, Appendix)
 4. **Alternative controls**: Removing asset index, distance, or location variables; main conclusions unchanged (Table 11, Appendix)
 
