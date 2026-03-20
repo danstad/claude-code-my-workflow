@@ -1,0 +1,597 @@
+---
+title: "Developing Educational and Vocational Aspirations through International Child Sponsorship: Evidence from Kenya, Indonesia, and Mexico"
+subtitle: "Interactive Results — [Ross, Glewwe, Prudencio & Wydick (2021)](https://doi.org/10.1016/j.worlddev.2020.105336)"
+format:
+  html:
+    theme: cosmo
+    self-contained: true
+    toc: false
+    code-fold: true
+    page-layout: full
+    include-in-header:
+      text: |
+        <style>
+        /* Make title span the same grid column as .column-screen-inset content */
+        .page-columns #title-block-header {
+          grid-column: screen-start-inset / screen-end-inset !important;
+          max-width: none !important;
+        }
+        </style>
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(tidyverse)
+library(plotly)
+library(htmlwidgets)
+library(jsonlite)
+
+## ---- Pooled effect sizes (exact SEs from paper Table 8, Panel D) ----
+## Country-specific SEs: approximate from significance levels in Table 6
+## TODO: replace country SEs with exact values from paper Table 6
+
+iv_data <- tribble(
+  ~country,     ~outcome,       ~ols,  ~ols_se, ~iv,    ~iv_se,
+  # Pooled: exact estimates + exact SEs from Table 8 Panel D
+  "Pooled",     "Self-esteem",  0.155, 0.060,   0.255,  0.110,
+  "Pooled",     "Optimism",     0.111, 0.058,   0.259,  0.109,
+  "Pooled",     "Aspirations",  0.163, 0.063,   0.292,  0.119,
+  # Kenya: estimates exact from Table 6 Panel A; SEs approximate
+  "Kenya",      "Self-esteem",  0.230, 0.075,   0.336,  0.115,
+  "Kenya",      "Optimism",     0.020, 0.090,  -0.001,  0.155,
+  "Kenya",      "Aspirations",  0.230, 0.078,   0.368,  0.120,
+  # Indonesia: estimates exact from Table 6 Panel B; SEs approximate
+  "Indonesia",  "Self-esteem",  0.090, 0.070,   0.138,  0.145,
+  "Indonesia",  "Optimism",     0.280, 0.090,   0.512,  0.145,
+  "Indonesia",  "Aspirations",  0.140, 0.075,   0.225,  0.170,
+  # Mexico: estimates exact from Table 6 Panel C; SEs approximate
+  "Mexico",     "Self-esteem",  0.030, 0.090,  -0.004,  0.310,
+  "Mexico",     "Optimism",    -0.050, 0.120,  -0.280,  0.390,
+  "Mexico",     "Aspirations",  0.100, 0.110,   0.402,  0.360
+)
+
+## ---- Combo list for dropdown ----------------------------------------
+combos <- expand_grid(
+  country = c("Pooled", "Kenya", "Indonesia", "Mexico"),
+  method  = c("2SLS", "OLS")
+) |> mutate(label = paste0(country, " \u2014 ", method))
+
+## ---- Interpretation texts -------------------------------------------
+interp <- list(
+  "Pooled \u2014 2SLS" = "
+    <strong>Pooled results (2SLS).</strong> Across all three countries, sponsored children
+    score significantly higher on all three psychological outcomes. Aspirations show the
+    largest gain (+0.29\u03c3), with equally meaningful improvements in self-esteem and
+    optimism (each \u2248+0.26\u03c3). These estimates use the age-eligibility rule as an
+    instrument, so they reflect the causal impact of sponsorship rather than the selection
+    of disadvantaged children into the program.",
+
+  "Pooled \u2014 OLS" = "
+    <strong>Pooled results (OLS).</strong> The ordinary least-squares estimates are
+    consistently smaller than the 2SLS estimates. This is expected: Compassion specifically
+    targets the neediest children, so a naive comparison understates the true effect.
+    The gap between OLS and 2SLS confirms downward selection bias \u2014 without the
+    instrument, we would systematically undercount how much sponsorship helps.",
+
+  "Kenya \u2014 2SLS" = "
+    <strong>Kenya (2SLS).</strong> Kenya shows the strongest effects overall. Self-esteem
+    (+0.34\u03c3) and aspirations (+0.37\u03c3) are both significant at q\u00a0&lt;\u00a00.01.
+    Optimism, however, is essentially zero (\u22120.001\u03c3), an unexpected null result.
+    The comparison group is siblings of sponsored children who were too old to qualify
+    at enrollment \u2014 a rigorous within-household comparison. Kenya also has the
+    strongest first stage (F\u00a0=\u00a075) and the longest average sponsorship
+    duration (7.0 years).",
+
+  "Kenya \u2014 OLS" = "
+    <strong>Kenya (OLS).</strong> OLS estimates for Kenya are attenuated relative to 2SLS,
+    particularly for self-esteem and aspirations, consistent with downward selection bias.
+    The near-zero optimism result persists across both estimators, suggesting this is
+    not a precision issue but a genuine difference in how Kenyan children respond to
+    the program.",
+
+  "Indonesia \u2014 2SLS" = "
+    <strong>Indonesia (2SLS).</strong> The standout result is optimism: +0.51\u03c3
+    \u2014 the largest single effect in the study. Gains in self-esteem (+0.14\u03c3)
+    and aspirations (+0.23\u03c3) are positive but imprecisely estimated.
+    The comparison group is children from waitlist households, who are already
+    disadvantaged \u2014 this compressed comparison may reduce the estimated effect
+    sizes for self-esteem and aspirations.",
+
+  "Indonesia \u2014 OLS" = "
+    <strong>Indonesia (OLS).</strong> OLS estimates for Indonesia fall well below the
+    2SLS, especially for optimism. The large gap suggests strong downward selection
+    bias in Indonesia, where Compassion\u2019s targeting effectively reaches the most
+    disadvantaged children.",
+
+  "Mexico \u2014 2SLS" = "
+    <strong>Mexico (2SLS).</strong> All estimates are statistically insignificant due
+    to large standard errors. The weak first stage (F\u00a0=\u00a08.07) amplifies
+    variance in 2SLS, and the short average sponsorship duration (3.98 years vs.
+    7+ in Kenya and Indonesia) limits the program\u2019s cumulative impact. The
+    comparison group is children in neighboring villages rather than within-household,
+    introducing additional noise.",
+
+  "Mexico \u2014 OLS" = "
+    <strong>Mexico (OLS).</strong> OLS estimates for Mexico are close to zero across
+    all outcomes. The near-zero OLS results combined with large-but-positive 2SLS
+    point estimates for aspirations (+0.40\u03c3) suggest the program may have real
+    effects that the available data cannot detect with precision given the weak
+    first-stage instrument."
+)
+
+## ---- Build interactive CI figure ------------------------------------
+fig <- plot_ly()
+
+for (k in seq_len(nrow(combos))) {
+  cty <- combos$country[k]
+  mth <- combos$method[k]
+  d   <- iv_data |> filter(country == cty)
+  est <- if (mth == "2SLS") d$iv     else d$ols
+  se  <- if (mth == "2SLS") d$iv_se  else d$ols_se
+
+  fig <- fig |> add_trace(
+    type    = "scatter",
+    mode    = "markers",
+    x       = est,
+    y       = d$outcome,
+    error_x = list(
+      type      = "data",
+      symmetric = TRUE,
+      array     = 1.96 * se,
+      color     = "#012169",
+      thickness = 2.5,
+      width     = 8
+    ),
+    marker        = list(color = "#012169", size = 11),
+    visible       = (k == 1),
+    showlegend    = FALSE,
+    hovertemplate = paste0(
+      "<b>%{y}</b><br>",
+      mth, ": %{x:.3f}\u03c3  (\u00b1%{error_x.array:.3f})<extra></extra>"
+    )
+  )
+}
+
+fig <- fig |> layout(
+  xaxis = list(
+    title         = "Effect size (\u03c3)",
+    range         = c(-0.70, 0.95),
+    zeroline      = TRUE,
+    zerolinecolor = "#bbb",
+    zerolinewidth = 1,
+    gridcolor     = "#eee",
+    tickfont      = list(size = 13)
+  ),
+  yaxis = list(
+    title      = "",
+    tickfont   = list(size = 13),
+    automargin = TRUE
+  ),
+  plot_bgcolor  = "white",
+  paper_bgcolor = "white",
+  height        = 310,
+  margin        = list(l = 150, r = 20, t = 25, b = 55),
+  font          = list(family = "sans-serif", color = "#444")
+)
+
+labels_json <- toJSON(combos$label, auto_unbox = FALSE)
+texts_json  <- toJSON(interp, auto_unbox = TRUE)
+n_traces    <- nrow(combos)
+
+fig <- fig |> onRender(sprintf("
+function(el, data) {
+  var labels = %s;
+  var texts  = %s;
+  var n      = %d;
+
+  var wrapper = document.createElement('div');
+  wrapper.style.cssText = 'margin-bottom:10px';
+  var lbl = document.createElement('span');
+  lbl.innerHTML = '<strong>Show results for:</strong>&nbsp;';
+  var sel = document.createElement('select');
+  sel.style.cssText = [
+    'font-size:14px', 'padding:4px 12px',
+    'border:1px solid #012169', 'border-radius:4px',
+    'color:#012169', 'cursor:pointer', 'background:white'
+  ].join(';');
+  labels.forEach(function(l, i) {
+    var o = document.createElement('option');
+    o.value = i; o.text = l; sel.appendChild(o);
+  });
+  wrapper.appendChild(lbl);
+  wrapper.appendChild(sel);
+  el.parentNode.insertBefore(wrapper, el);
+
+  var box = document.getElementById('interp-box');
+  if (box) box.innerHTML = texts[labels[0]];
+
+  sel.addEventListener('change', function() {
+    var idx = parseInt(this.value);
+    var vis = Array(n).fill(false);
+    vis[idx] = true;
+    Plotly.restyle(el, {visible: vis});
+    if (box) box.innerHTML = texts[labels[idx]];
+  });
+}
+", labels_json, texts_json, n_traces))
+
+## ---- Country comparison data (2SLS only) ----------------------------
+cmp <- tribble(
+  ~country,    ~outcome,       ~est,    ~se,
+  "Kenya",     "Self-esteem",  0.336,   0.115,
+  "Indonesia", "Self-esteem",  0.138,   0.145,
+  "Mexico",    "Self-esteem", -0.004,   0.310,
+  "Pooled",    "Self-esteem",  0.255,   0.110,
+  "Kenya",     "Optimism",    -0.001,   0.155,
+  "Indonesia", "Optimism",     0.512,   0.145,
+  "Mexico",    "Optimism",    -0.280,   0.390,
+  "Pooled",    "Optimism",     0.259,   0.109,
+  "Kenya",     "Aspirations",  0.368,   0.120,
+  "Indonesia", "Aspirations",  0.225,   0.170,
+  "Mexico",    "Aspirations",  0.402,   0.360,
+  "Pooled",    "Aspirations",  0.292,   0.119
+) |>
+  mutate(
+    ci_lo = est - 1.96 * se,
+    ci_hi = est + 1.96 * se,
+    g = case_when(
+      outcome == "Self-esteem" ~ 0, outcome == "Optimism" ~ 5,
+      outcome == "Aspirations" ~ 10
+    ),
+    c = case_when(
+      country == "Kenya" ~ 3, country == "Indonesia" ~ 2,
+      country == "Mexico" ~ 1, country == "Pooled"   ~ 0
+    ),
+    y = g + c
+  )
+
+col_map <- c(Kenya="#012169", Indonesia="#2E75B6", Mexico="#C27700", Pooled="#555555")
+sym_map <- c(Kenya="circle", Indonesia="diamond", Mexico="square", Pooled="circle-open")
+
+fig_cmp <- plot_ly()
+for (cty in c("Kenya","Indonesia","Mexico","Pooled")) {
+  d   <- cmp |> filter(country == cty)
+  col <- col_map[[cty]]
+  sym <- sym_map[[cty]]
+
+  fig_cmp <- fig_cmp |> add_trace(
+    type    = "scatter",
+    mode    = "markers",
+    name    = cty,
+    x       = d$est,
+    y       = d$y,
+    error_x = list(
+      type       = "data",
+      symmetric  = FALSE,
+      array      = d$ci_hi - d$est,
+      arrayminus = d$est - d$ci_lo,
+      color      = col,
+      thickness  = 2,
+      width      = 6
+    ),
+    marker = list(color = col, size = 10, symbol = sym, line = list(color = col, width = 2)),
+    hovertemplate = paste0(
+      "<b>", cty, " \u2014 %{customdata}</b><br>",
+      "2SLS: %{x:.3f}\u03c3<extra></extra>"
+    ),
+    customdata  = d$outcome,
+    showlegend  = TRUE
+  )
+}
+
+fig_cmp <- fig_cmp |> layout(
+  xaxis = list(
+    title         = "Effect size (\u03c3, 2SLS with household FE)",
+    range         = c(-1.15, 1.15),
+    zeroline      = TRUE,
+    zerolinecolor = "#999",
+    zerolinewidth = 1.5,
+    gridcolor     = "#eee",
+    tickfont      = list(size = 13)
+  ),
+  yaxis = list(
+    title     = "",
+    tickvals  = c(0, 1, 2, 3, 5, 6, 7, 8, 10, 11, 12, 13),
+    ticktext  = rep(c("Pooled", "Mexico", "Indonesia", "Kenya"), 3),
+    range     = c(-0.8, 14.9),
+    showgrid  = FALSE,
+    tickfont  = list(size = 13)
+  ),
+  shapes = list(
+    # Gray separator bands between outcome groups
+    list(type="rect", x0=-1.15, x1=1.15, y0=3.6, y1=4.4,
+         fillcolor="#f0f0f0", line=list(width=0), xref="x", yref="y", layer="below"),
+    list(type="rect", x0=-1.15, x1=1.15, y0=8.6, y1=9.4,
+         fillcolor="#f0f0f0", line=list(width=0), xref="x", yref="y", layer="below"),
+    list(type="rect", x0=-1.15, x1=1.15, y0=13.6, y1=14.3,
+         fillcolor="#f0f0f0", line=list(width=0), xref="x", yref="y", layer="below")
+  ),
+  annotations = list(
+    list(x=-1.10, y=4.0, text="<b>SELF-ESTEEM</b>", showarrow=FALSE,
+         xref="x", yref="y", xanchor="left",
+         font=list(size=13, color="#555")),
+    list(x=-1.10, y=9.0, text="<b>OPTIMISM</b>", showarrow=FALSE,
+         xref="x", yref="y", xanchor="left",
+         font=list(size=13, color="#555")),
+    list(x=-1.10, y=13.95, text="<b>ASPIRATIONS</b>", showarrow=FALSE,
+         xref="x", yref="y", xanchor="left",
+         font=list(size=13, color="#555"))
+  ),
+  legend        = list(orientation="h", x=0, y=-0.12, font=list(size=13)),
+  showlegend    = TRUE,
+  plot_bgcolor  = "white",
+  paper_bgcolor = "white",
+  height        = 490,
+  margin        = list(l=95, r=20, t=30, b=70),
+  font          = list(family="sans-serif", color="#444")
+)
+
+## ---- Mediation path diagram (plotly) --------------------------------
+# Coordinate space: x in [0,10], y in [0,6]
+# T box: [0.3, 2.3] x [2.1, 3.9]   center (1.3, 3.0)
+# M1 box: [3.9, 6.1] x [3.8, 5.0]  center (5.0, 4.4)
+# M2 box: [3.9, 6.1] x [1.0, 2.2]  center (5.0, 1.6)
+# Y box: [7.7, 9.7] x [2.1, 3.9]   center (8.7, 3.0)
+
+hover_traces <- tribble(
+  ~x,   ~y,   ~tip,
+  1.3,  3.0,  "Compassion International's program provides<br>material support and socio-emotional investment<br>to 2,022 children in Kenya, Indonesia, and Mexico.",
+  5.0,  4.4,  "<b>Aspirations</b><br>Sponsorship raises aspirations by +0.29σ<br>(pooled 2SLS, p < 0.05).<br>Children develop stronger hopes for white-collar<br>careers and expect more years of education.",
+  5.0,  1.6,  "<b>Self-esteem</b><br>Sponsorship raises self-esteem by +0.26σ<br>(pooled 2SLS, p < 0.05).",
+  8.7,  3.0,  "<b>Total schooling gain: +0.567 years</b><br>SE = 0.131, p &lt; 0.01<br><br>Decomposition (Table 10, 2SLS):<br>&nbsp;&nbsp;Via aspirations: 0.054 yrs (\u224810%, p&lt;0.05)<br>&nbsp;&nbsp;Via self-esteem: 0.020 yrs (\u22485%, p&lt;0.10)<br>&nbsp;&nbsp;Via optimism: 0.015 yrs (n.s.)<br>&nbsp;&nbsp;Direct effect: 0.477 yrs (\u224884%)",
+  # Arrow midpoints
+  3.15, 3.85, "<b>Sponsorship → Aspirations</b><br>First-stage effect: +0.29σ",
+  3.15, 2.15, "<b>Sponsorship → Self-esteem</b><br>First-stage effect: +0.26σ",
+  6.95, 3.85, "<b>Aspirations → Schooling</b><br>Mediates 10% of total gain<br>Indirect effect: 0.054 yrs<br>Bootstrap CI: [0.010, 0.105]",
+  6.95, 2.15, "<b>Self-esteem → Schooling</b><br>Mediates 4–5% of total gain<br>Indirect effect: 0.020 yrs<br>Bootstrap CI: [0.001, 0.048]",
+  5.0,  0.28, "<b>Direct effect: \u224884%</b><br>0.477 years of schooling<br>not mediated through psychological channels.<br>Includes material support (fees, meals, tutoring)<br>and other direct program inputs.<br>Optimism indirect: 0.015 yrs (not significant)."
+)
+
+fig_med <- plot_ly() |>
+  add_trace(
+    type          = "scatter",
+    mode          = "markers",
+    x             = hover_traces$x,
+    y             = hover_traces$y,
+    marker        = list(opacity = 0, size = 22),
+    hovertemplate = paste0(hover_traces$tip, "<extra></extra>"),
+    showlegend    = FALSE
+  ) |>
+  layout(
+    xaxis = list(range = c(0, 10), visible = FALSE, fixedrange = TRUE),
+    yaxis = list(range = c(-0.6, 6), visible = FALSE, fixedrange = TRUE),
+    plot_bgcolor  = "white",
+    paper_bgcolor = "white",
+    height        = 310,
+    margin        = list(l = 10, r = 10, t = 10, b = 10),
+    shapes = list(
+      # ── T box ────────────────────────────────────────────────
+      list(type="rect", x0=0.3, x1=2.3, y0=2.1, y1=3.9,
+           fillcolor="#012169", line=list(color="#012169", width=0),
+           xref="x", yref="y"),
+      # ── M1 box (Aspirations) ──────────────────────────────────
+      list(type="rect", x0=3.9, x1=6.1, y0=3.8, y1=5.0,
+           fillcolor="#F2A900", line=list(color="#c88a00", width=1),
+           xref="x", yref="y"),
+      # ── M2 box (Self-esteem) ──────────────────────────────────
+      list(type="rect", x0=3.9, x1=6.1, y0=1.0, y1=2.2,
+           fillcolor="#F2A900", line=list(color="#c88a00", width=1),
+           xref="x", yref="y"),
+      # ── Y box ─────────────────────────────────────────────────
+      list(type="rect", x0=7.7, x1=9.7, y0=2.1, y1=3.9,
+           fillcolor="#012169", line=list(color="#012169", width=0),
+           xref="x", yref="y"),
+      # ── Direct effect arc (bezier path, dashed) ───────────────
+      list(type="path",
+           path="M 2.3 3.0 C 3.0 -0.6, 7.0 -0.6, 7.7 3.0",
+           line=list(color="#012169", width=2, dash="dot"),
+           xref="x", yref="y")
+    ),
+    annotations = list(
+      # ── T box text ────────────────────────────────────────────
+      list(x=1.3, y=3.15, text="<b>Sponsorship</b>", showarrow=FALSE,
+           font=list(color="white", size=12), xref="x", yref="y"),
+      list(x=1.3, y=2.85, text="<b>Program</b>", showarrow=FALSE,
+           font=list(color="white", size=12), xref="x", yref="y"),
+      # ── M1 box text ───────────────────────────────────────────
+      list(x=5.0, y=4.4, text="<b>Aspirations</b>", showarrow=FALSE,
+           font=list(color="#1a1a1a", size=13), xref="x", yref="y"),
+      # ── M2 box text ───────────────────────────────────────────
+      list(x=5.0, y=1.6, text="<b>Self-esteem</b>", showarrow=FALSE,
+           font=list(color="#1a1a1a", size=13), xref="x", yref="y"),
+      # ── Y box text ────────────────────────────────────────────
+      list(x=8.7, y=3.2, text="<b>Years of Schooling</b>", showarrow=FALSE,
+           font=list(color="white", size=12), xref="x", yref="y"),
+      list(x=8.7, y=2.8, text="+0.567 years total", showarrow=FALSE,
+           font=list(color="#F2A900", size=12), xref="x", yref="y"),
+      # ── T → M1 arrow ─────────────────────────────────────────
+      list(x=3.9, y=4.3, ax=2.3, ay=3.6,
+           xref="x", yref="y", axref="x", ayref="y",
+           showarrow=TRUE, arrowhead=2, arrowsize=1.2, arrowwidth=1.8,
+           arrowcolor="#666", text=""),
+      # ── T → M2 arrow ─────────────────────────────────────────
+      list(x=3.9, y=1.7, ax=2.3, ay=2.4,
+           xref="x", yref="y", axref="x", ayref="y",
+           showarrow=TRUE, arrowhead=2, arrowsize=1.2, arrowwidth=1.8,
+           arrowcolor="#666", text=""),
+      # ── M1 → Y arrow ─────────────────────────────────────────
+      list(x=7.7, y=3.6, ax=6.1, ay=4.3,
+           xref="x", yref="y", axref="x", ayref="y",
+           showarrow=TRUE, arrowhead=2, arrowsize=1.2, arrowwidth=1.8,
+           arrowcolor="#666", text=""),
+      # ── M2 → Y arrow ─────────────────────────────────────────
+      list(x=7.7, y=2.4, ax=6.1, ay=1.7,
+           xref="x", yref="y", axref="x", ayref="y",
+           showarrow=TRUE, arrowhead=2, arrowsize=1.2, arrowwidth=1.8,
+           arrowcolor="#666", text=""),
+      # ── Direct arc arrowhead ──────────────────────────────────
+      list(x=7.7, y=3.0, ax=7.62, ay=2.72,
+           xref="x", yref="y", axref="x", ayref="y",
+           showarrow=TRUE, arrowhead=2, arrowsize=1.2, arrowwidth=1.8,
+           arrowcolor="#012169", text=""),
+      # ── Arrow labels ──────────────────────────────────────────
+      list(x=2.95, y=4.15, text="+0.29\u03c3", showarrow=FALSE,
+           font=list(color="#555", size=11), xref="x", yref="y"),
+      list(x=2.95, y=1.90, text="+0.26\u03c3", showarrow=FALSE,
+           font=list(color="#555", size=11), xref="x", yref="y"),
+      list(x=7.05, y=4.15, text="10% \u2022 0.054 yrs", showarrow=FALSE,
+           font=list(color="#012169", size=11, family="sans-serif"), xref="x", yref="y"),
+      list(x=7.05, y=1.90, text="5% \u2022 0.020 yrs", showarrow=FALSE,
+           font=list(color="#012169", size=11, family="sans-serif"), xref="x", yref="y"),
+      list(x=5.0, y=-0.08, text="<b>Direct: \u224884% \u2022 0.477 yrs</b>",
+           showarrow=FALSE, font=list(color="#012169", size=11), xref="x", yref="y")
+    )
+  )
+```
+
+::: {.column-screen-inset}
+
+```{=html}
+<div style="margin-bottom:1.5em; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+
+  <!-- Research question card (B&W) -->
+  <div style="border:1px solid #d0d5de; border-left:5px solid #444; border-radius:0 6px 6px 0; padding:1.2em 1.8em; margin-bottom:1.2em; background:white;">
+    <div style="font-size:0.72em; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; color:#999; margin-bottom:0.55em;">Research Question</div>
+    <p style="margin:0 0 0.45em; font-size:1.08em; line-height:1.55; color:#1a1a1a; font-weight:600;">Can child sponsorship change how children see themselves &mdash; and their future?</p>
+    <p style="margin:0; font-size:0.88em; color:#555; line-height:1.5;">Compassion International's program in Kenya, Indonesia, and Mexico — 2,022 children, causal identification, three psychological outcomes, and schooling attainment.</p>
+  </div>
+
+  <!-- Three story cards -->
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1em; margin-bottom:1.2em;">
+
+    <div style="border-top:4px solid #012169; background:#f4f6f9; border-radius:0 0 6px 6px; padding:1.15em 1.3em;">
+      <div style="font-size:0.73em; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#012169; margin-bottom:0.45em;">The Question</div>
+      <p style="margin:0 0 0.5em; font-size:0.93em; line-height:1.6; color:#1a1a1a; font-weight:500;">Does international child sponsorship change how children see themselves &mdash; and their future?</p>
+      <p style="margin:0; font-size:0.85em; color:#555; line-height:1.5;"><strong>Compassion International</strong> — the world's largest child sponsorship organization, reaching over 2 million children across 29 countries — pairs material inputs (school fees, meals, uniforms, healthcare) with personal mentoring and regular letters from sponsors. We test whether this psycho-social investment drives outcomes independently from the material support.</p>
+    </div>
+
+    <div style="border-top:4px solid #F2A900; background:#f4f6f9; border-radius:0 0 6px 6px; padding:1.15em 1.3em;">
+      <div style="font-size:0.73em; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#c88a00; margin-bottom:0.45em;">Why It Matters</div>
+      <p style="margin:0 0 0.5em; font-size:0.93em; line-height:1.6; color:#1a1a1a; font-weight:500;">Poverty constrains not just resources &mdash; it constrains <em>aspirations</em>.</p>
+      <p style="margin:0; font-size:0.85em; color:#555; line-height:1.5;">If low self-esteem and low aspirations cause children to under-invest in education, then programs that raise aspirations can break the poverty trap in ways material aid alone cannot. This is the <em>poverty-of-mind</em> hypothesis &mdash; and it is testable.</p>
+    </div>
+
+    <div style="border-top:4px solid #2E75B6; background:#f4f6f9; border-radius:0 0 6px 6px; padding:1.15em 1.3em;">
+      <div style="font-size:0.73em; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#2E75B6; margin-bottom:0.45em;">How We Know</div>
+      <p style="margin:0 0 0.5em; font-size:0.93em; line-height:1.6; color:#1a1a1a; font-weight:500;">A natural experiment using Compassion International's age-eligibility rule.</p>
+      <p style="margin:0; font-size:0.85em; color:#555; line-height:1.5;">Children <em>just old enough</em> to be ineligible serve as the comparison for children <em>just young enough</em> to enroll. The age cutoff is our instrument &mdash; it predicts sponsorship without directly causing outcomes.</p>
+    </div>
+
+  </div>
+
+</div>
+```
+
+```{r study-design}
+#| output: asis
+#| echo: false
+img_file <- file.path("..", "Figures", "fig1_discontinuity.png")
+img_src  <- paste0("data:image/png;base64,",
+                   jsonlite::base64_enc(readBin(img_file, "raw", file.size(img_file))))
+
+svg_left <- paste0(
+  '<div style="text-align:center; font-family:-apple-system,BlinkMacSystemFont,sans-serif;">',
+  '<div style="font-size:0.84em; font-weight:600; color:#555; letter-spacing:0.03em; margin-bottom:0.7em;">',
+  'Study Design: Age-Eligibility Instrument</div>',
+  '<svg viewBox="0 0 600 92" style="display:block; margin:0 auto; width:100%;" ',
+  'aria-label="Age cutoff instrument diagram">',
+  '<line x1="30" y1="48" x2="570" y2="48" stroke="#ccc" stroke-width="2.5"/>',
+  '<line x1="300" y1="8" x2="300" y2="76" stroke="#444" stroke-width="2" stroke-dasharray="5,3"/>',
+  '<text x="162" y="28" text-anchor="middle" font-size="16" fill="#333" font-weight="700" font-family="sans-serif">Sponsored (eligible)</text>',
+  '<text x="162" y="66" text-anchor="middle" font-size="13" fill="#666" font-family="sans-serif">age \u2264 cutoff at enrollment</text>',
+  '<text x="438" y="28" text-anchor="middle" font-size="16" fill="#555" font-weight="700" font-family="sans-serif">Comparison group</text>',
+  '<text x="438" y="66" text-anchor="middle" font-size="13" fill="#666" font-family="sans-serif">age &gt; cutoff at enrollment</text>',
+  '<text x="300" y="88" text-anchor="middle" font-size="13" fill="#444" font-weight="600" font-family="sans-serif">\u25b2 Age cutoff (instrument)</text>',
+  '<polygon points="30,48 47,39 47,57" fill="#444"/>',
+  '<polygon points="570,48 553,39 553,57" fill="#aaa"/>',
+  '</svg>',
+  '<div style="font-size:0.8em; color:#777; margin-top:0.45em;">',
+  'Outcomes: self-esteem \u00b7 optimism \u00b7 aspirations \u00b7 years of schooling</div>',
+  '</div>'
+)
+
+img_right <- paste0(
+  '<div style="text-align:center;">',
+  '<img src="', img_src, '" style="width:62%; display:inline-block; border-radius:4px;" ',
+  'alt="Regression discontinuity in sponsorship take-up at age-eligibility cutoff" />',
+  '<p style="font-size:0.82em; color:#666; text-align:center; margin-top:0.35em; font-style:italic;">',
+  'Figure 1. Discontinuity in program take-up at the age-eligibility cutoff (Ross et al., 2021).</p>',
+  '</div>'
+)
+
+cat(paste0(
+  '<div style="display:grid; grid-template-columns:1fr 1fr; gap:2.5em; align-items:center; ',
+  'margin-bottom:1.5em;">',
+  svg_left, img_right,
+  '</div>'
+))
+```
+
+---
+
+## Effect Sizes
+
+Each dot is a causal estimate. Horizontal bars are **95% confidence intervals**. Effects are in standard deviations (σ): a gain of 0.26σ corresponds to moving from roughly the 50th to the 60th percentile (under normality, Φ(0.26) ≈ 0.60). Use the dropdown to switch between countries and estimation methods.
+
+```{=html}
+<div style="display:grid; grid-template-columns:58fr 42fr; gap:2em; align-items:start; margin-bottom:1em;">
+  <div id="ci-left-col">
+```
+
+```{r ci-chart}
+fig
+```
+
+```{=html}
+  </div>
+  <div id="interp-box" style="background:#f4f6f9; border-left:4px solid #012169; padding:1.1em 1.5em; border-radius:0 6px 6px 0; font-size:1.0em; line-height:1.8; color:#333;">
+  </div>
+</div>
+```
+
+## Results by Country
+
+The chart below shows all four groups simultaneously so you can compare across countries. The pattern is striking: **Kenya dominates in self-esteem and aspirations; Indonesia dominates in optimism; Mexico is imprecise throughout.** Hover over any point for details.
+
+```{r country-comparison}
+fig_cmp
+```
+
+::: {style="background:#f4f6f9; border-left:4px solid #012169; padding:0.85em 1.4em; margin-top:0.5em; border-radius:0 4px 4px 0; font-size:1.0em; line-height:1.85; color:#333;"}
+
+**Why do results differ so much across countries?**
+
+Two factors explain the heterogeneity (see paper, Section 5.3):
+
+1. **Baseline conditions.** Effects are largest where children face the greatest constraints at baseline. Kenya has the lowest baseline education levels, worst employment prospects, and lowest income. Sponsorship has more "room to grow" when aspirations are most depressed. This is consistent with Wydick et al. (2013), who found the largest adult impacts in Sub-Saharan Africa.
+
+2. **Duration of sponsorship.** Kenya and Indonesia children had been sponsored for an average of 7.0 and 7.3 years respectively at the time of the survey. Mexico children averaged only 3.98 years — shorter exposure limits cumulative psychological impact.
+
+:::
+
+---
+
+## How the Schooling Gain Works: A Mediation Path
+
+Sponsored children complete **0.567 more years of school** on average (SE = 0.131, *p* < 0.01). The program does this through two routes: **direct** inputs (fees, meals, tutoring) and an **indirect** psychological channel — children who develop higher aspirations study harder and drop out less.
+
+The diagram maps these pathways. **Hover over any element** for the underlying estimates.
+
+> Mediation estimated pooled across all three countries (Table 10). The indirect effect via aspirations has a bootstrap 95% CI of [0.010, 0.105]; via self-esteem [0.001, 0.048]. Optimism shows a positive but insignificant indirect effect.
+
+```{r mediation-diagram}
+fig_med
+```
+
+---
+
+::: {style="color:#555; margin-top:2em; border-top:1px solid #dee2e8; padding-top:1em;"}
+**Citation:** Ross, P.H., Glewwe, P., Prudencio, D., & Wydick, B. (2021). Developing educational and vocational aspirations through international child sponsorship: Evidence from Kenya, Indonesia, and Mexico. *World Development*, 140, 105336.
+
+**Methodology note:** Effects estimated by 2SLS using an age-eligibility rule as an instrument. OLS shown for comparison in the first chart. Standard deviations (σ) use the pooled comparison-group distribution. Confidence intervals are 95% (±1.96 SE). Pooled standard errors are exact from Table 8, Panel D. Country-specific standard errors are approximate — supply exact values from Table 6 to finalize.
+:::
+
+:::
