@@ -1,0 +1,226 @@
+[
+  {
+    "objectID": "results.html",
+    "href": "results.html",
+    "title": "Results",
+    "section": "",
+    "text": "The central question of this paper is whether firms that the government selects for less-competitive settings (Type 1) are actually more cost-efficient than firms that compete only in public auctions (Type 0). The structural model recovers pseudo-costs from observed bids; comparing their distributions reveals whether the government’s discretion is well-placed.\n\n\nThe chart below shows the cumulative distribution functions (CDFs) of pseudo-costs for each firm type. A CDF shifted to the left indicates that a firm type has systematically lower costs — a higher share of its firms can complete the project below any given cost threshold.\n\n\n                            \n                                            \n\n\n\n\n\n\n\n\nNoteHow to read this chart\n\n\n\nEach curve shows the share of firms (vertical axis) that have a pseudo-cost below each cost value (horizontal axis). A curve shifted to the left means lower costs — firms of that type are cheaper, on average. Toggle between simple and complex projects to see how the cost advantage reverses.\n\n\n\n\n\n\n\n  \n    Simple contracts (no sewage)\n    Type 0 has lower costs ✗\n    The Type 0 CDF lies to the left of Type 1. Government-selected firms (Type 1) are more expensive for routine pavement work — the 76% of invitation-only contracts without sewage work.\n  \n\n  \n    Complex contracts (sewage work)\n    Type 1 has lower costs ✓\n    The Type 1 CDF lies to the left of Type 0. Government-selected firms are genuinely more cost-efficient for projects with sewage — consistent with economies of scope."
+  },
+  {
+    "objectID": "results.html#cost-efficiency-by-firm-type",
+    "href": "results.html#cost-efficiency-by-firm-type",
+    "title": "Results",
+    "section": "",
+    "text": "The central question of this paper is whether firms that the government selects for less-competitive settings (Type 1) are actually more cost-efficient than firms that compete only in public auctions (Type 0). The structural model recovers pseudo-costs from observed bids; comparing their distributions reveals whether the government’s discretion is well-placed.\n\n\nThe chart below shows the cumulative distribution functions (CDFs) of pseudo-costs for each firm type. A CDF shifted to the left indicates that a firm type has systematically lower costs — a higher share of its firms can complete the project below any given cost threshold.\n\n\n                            \n                                            \n\n\n\n\n\n\n\n\nNoteHow to read this chart\n\n\n\nEach curve shows the share of firms (vertical axis) that have a pseudo-cost below each cost value (horizontal axis). A curve shifted to the left means lower costs — firms of that type are cheaper, on average. Toggle between simple and complex projects to see how the cost advantage reverses.\n\n\n\n\n\n\n\n  \n    Simple contracts (no sewage)\n    Type 0 has lower costs ✗\n    The Type 0 CDF lies to the left of Type 1. Government-selected firms (Type 1) are more expensive for routine pavement work — the 76% of invitation-only contracts without sewage work.\n  \n\n  \n    Complex contracts (sewage work)\n    Type 1 has lower costs ✓\n    The Type 1 CDF lies to the left of Type 0. Government-selected firms are genuinely more cost-efficient for projects with sewage — consistent with economies of scope."
+  },
+  {
+    "objectID": "results.html#stochastic-frontier-efficiency-index",
+    "href": "results.html#stochastic-frontier-efficiency-index",
+    "title": "Results",
+    "section": "Stochastic Frontier Efficiency Index",
+    "text": "Stochastic Frontier Efficiency Index\nThe structural model recovers pseudo-costs; the SFA model then decomposes these into a frontier cost (the minimum achievable) plus excess cost due to inefficiency. The Battese-Coelli (BC) efficiency index is \\(BC = e^{-\\hat{\\eta}} \\in (0,1]\\). A value close to 1 means low excess cost; values far from 1 indicate significant inefficiency.\n\n\n                            \n                                            \n\n\n\n\n\n\n\n\nNoteInterpreting the efficiency index\n\n\n\nThe BC index is bounded between 0 and 1. A firm with \\(BC = 1\\) is on the cost frontier — it cannot reduce costs further given its inputs and output. A firm with \\(BC = 0.80\\) uses 25% more inputs than a frontier firm to produce the same output (\\(1/0.80 = 1.25\\)). Higher values (further right) indicate less excess cost.\n\n\n\nEfficiency Index: Key Numbers\nThe table below summarizes the efficiency index by firm type (half-normal model, complex projects with sewage):\n\n\n\n\n\n\n\n\nStatistic\nType 0 (Public-auction-only)\nType 1 (Government-selected)\n\n\n\n\nMean BC index\nLower\nHigher\n\n\nInterpretation\nMore excess cost\nLess excess cost\n\n\nConsistent with CDFs?\n✓ Yes\n✓ Yes\n\n\n\nType 1 firms exhibit higher efficiency indexes on average for complex projects — confirming that the government’s discretion aligns with genuine cost advantages when the contract involves sewage work."
+  },
+  {
+    "objectID": "results.html#geographic-distribution-of-efficiency",
+    "href": "results.html#geographic-distribution-of-efficiency",
+    "title": "Results",
+    "section": "Geographic Distribution of Efficiency",
+    "text": "Geographic Distribution of Efficiency\nThe map below shows the average efficiency index by Mexican state, weighted by contract volume. Darker shades indicate lower efficiency (higher excess costs). States are identified by their INEGI codes.\n\n\n                            \n                                            \n\n\n\n\n\n\n\n\nNoteNotes on geographic variation\n\n\n\n\n\nState-level efficiency averages reflect the municipalities that conducted public pavement auctions during 2011–2018. Not all states have the same number of contracts, so estimates for sparsely represented states are less precise. The map uses contract-volume-weighted averages to give more weight to states with a higher share of observed contracts."
+  },
+  {
+    "objectID": "results.html#summary-of-main-results",
+    "href": "results.html#summary-of-main-results",
+    "title": "Results",
+    "section": "Summary of Main Results",
+    "text": "Summary of Main Results\n\n\n\n\n\n\n\n\nFinding\nSimple contracts\nComplex contracts\n\n\n\n\nType 1 pseudo-costs vs. Type 0\nHigher (worse)\nLower (better)\n\n\nEfficiency index (BC), Type 1 vs. Type 0\nLower (worse)\nHigher (better)\n\n\nPolicy implication\nUse public auctions\nDiscretion may be justified\n\n\nShare of I3P contracts\n~76%\n~24%\n\n\n\nThe results have a clear policy prescription: for the majority of contracts — small, homogeneous pavement projects without sewage — the government’s selection of firms leads to higher costs. Switching these to public auctions would reduce procurement costs. The exception is complex projects with sewage work, where the selected firms appear to have genuine cost advantages, likely through economies of scope."
+  },
+  {
+    "objectID": "politics.html",
+    "href": "politics.html",
+    "title": "Political Factors",
+    "section": "",
+    "text": "The choice of allocation mechanism is not purely technical — it is also shaped by political incentives. This section documents two political patterns in the data: the electoral cycle and party alignment."
+  },
+  {
+    "objectID": "politics.html#politics-and-procurement-discretion",
+    "href": "politics.html#politics-and-procurement-discretion",
+    "title": "Political Factors",
+    "section": "",
+    "text": "The choice of allocation mechanism is not purely technical — it is also shaped by political incentives. This section documents two political patterns in the data: the electoral cycle and party alignment."
+  },
+  {
+    "objectID": "politics.html#electoral-cycle",
+    "href": "politics.html#electoral-cycle",
+    "title": "Political Factors",
+    "section": "Electoral Cycle",
+    "text": "Electoral Cycle\nLocal governments are more likely to bypass public auctions in the year before municipal elections. The probit model on mechanism choice (public auction = 0, I3P or direct = 1) shows:\n\n\n\n\n\n\nImportantElectoral cycle finding\n\n\n\nBeing in the year before municipal elections increases the probability of using a discretionary allocation mechanism by 6.2 percentage points, controlling for project size, complexity, and state fixed effects.\n\n\nThis pattern is consistent with electoral-motivated contracting: governments distribute contracts to politically connected firms ahead of elections. The effect is especially pronounced in municipalities governed by the PRI.\n\nExcess Costs Rise Near Elections\nThe electoral cycle also affects cost efficiency in public auctions — even when the mechanism itself is competitive:\n\nFirm excess costs in public auctions are 13.8% higher in the year before elections\nThis suggests political pressure distorts bidding behavior even within competitive auctions\nOne interpretation: connected firms bid less aggressively, expecting future rewards regardless of auction outcomes\n\n\n  Mechanism:\n  \n    In election years, firms that expect future direct contracts may shade their bids upward in public auctions — reducing competitive pressure and raising the government's procurement costs. The structural model captures this as higher markup over cost."
+  },
+  {
+    "objectID": "politics.html#party-alignment",
+    "href": "politics.html#party-alignment",
+    "title": "Political Factors",
+    "section": "Party Alignment",
+    "text": "Party Alignment\nMunicipal governments that share a party affiliation with the state government face different incentive structures when allocating contracts.\n\n\n\n\n\n\nNoteParty alignment result\n\n\n\nMunicipalities governed by PAN are 18.9 percentage points less likely to use discretionary allocation mechanisms than PRI-governed municipalities, all else equal.\n\n\nThis finding is consistent with institutional explanations: PAN municipalities, at least during 2011–2018, faced stronger internal party pressure toward procedural compliance, or had less access to the political networks that facilitated direct contracting.\nAdditionally:\n\nWhen the municipal and state government share a party, firm excess costs fall by approximately 9.8% in public auctions — suggesting that aligned governments may coordinate more efficiently, or face less political pressure to protect connected contractors"
+  },
+  {
+    "objectID": "politics.html#probit-results-mechanism-choice",
+    "href": "politics.html#probit-results-mechanism-choice",
+    "title": "Political Factors",
+    "section": "Probit Results: Mechanism Choice",
+    "text": "Probit Results: Mechanism Choice\nThe table below summarizes the marginal effects from the probit model predicting whether a contract bypasses a public auction (I3P or direct allocation = 1).\n\n\n\n\n\n\n\n\nPredictor\nMarginal Effect\nInterpretation\n\n\n\n\nConcrete volume (1 SD increase)\n−11.4 pp\nLarger projects → more likely to use public auction\n\n\nSewage work dummy\n−9.8 pp\nComplex projects → more likely to use public auction\n\n\nElection year (year before municipal election)\n+6.2 pp\nElection pressure → more discretionary allocation\n\n\nPAN municipality (vs. PRI)\n−18.9 pp\nPAN → more likely to use public auction\n\n\n\nAll effects are evaluated at the sample mean. Standard errors clustered at the municipality level."
+  },
+  {
+    "objectID": "politics.html#what-this-means",
+    "href": "politics.html#what-this-means",
+    "title": "Political Factors",
+    "section": "What This Means",
+    "text": "What This Means\nThe political economy findings complement the cost-efficiency results:\n\nDiscretion is selectively misused. Governments bypass auctions more often near elections, when political motivations are strongest. This is precisely when cost-efficiency is least likely to drive the selection.\nEven competitive auctions are affected. Higher excess costs in public auctions during election years suggest that the distortions reach beyond the choice of mechanism — they affect competitive behavior within auctions.\nParty institutions matter. The large PAN–PRI difference suggests that reducing discretionary contracting may require institutional reforms at the party level, not just legal restrictions on procurement mechanisms.\n\n\n  Policy Implication\n  Procurement reform should target election-period contracting\n  The results suggest that a targeted rule — requiring public auctions for simple pavement contracts in the year before elections — could substantially reduce procurement costs without restricting legitimate use of discretion for complex projects."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Productivity in Procurement Auctions of Pavement Contracts in Mexico",
+    "section": "",
+    "text": "Daniel Prudencio  · \n    Tecnológico de Monterrey  · \n    Journal of Productivity Analysis, 2025"
+  },
+  {
+    "objectID": "index.html#the-question",
+    "href": "index.html#the-question",
+    "title": "Productivity in Procurement Auctions of Pavement Contracts in Mexico",
+    "section": "The Question",
+    "text": "The Question\nWhen local governments allocate public infrastructure contracts, they can choose between open competition (public auctions) or greater hiring discretion — inviting a handful of firms or directly picking a preferred contractor.\nIn theory, discretion allows governments to select the most capable firms. In practice, it opens the door to favoritism and corruption. Which is actually happening in Mexico?\nThis paper answers that question using street pavement contracts in Mexico (2011–2018), combining a structural auction model with stochastic frontier analysis to recover firm-level productivity and compare it across allocation mechanisms."
+  },
+  {
+    "objectID": "index.html#key-findings",
+    "href": "index.html#key-findings",
+    "title": "Productivity in Procurement Auctions of Pavement Contracts in Mexico",
+    "section": "Key Findings",
+    "text": "Key Findings\n\n\n  \n    Complex Contracts\n    Government selects the right firms ✓\n    For projects that include sewage work, firms selected to settings with less competition have lower costs than firms that only participate in public auctions. Economies of scope likely explain this advantage.\n  \n\n  \n    Simple Contracts\n    Government selects the wrong firms ✗\n    For small, simple pavement projects (76% of invitation-only auctions), selected firms have higher costs. These contracts should be put out to public auction.\n  \n\n  \n    Political Factors\n    Electoral cycle drives discretion\n    Governments are 6.2% more likely to bypass public auctions in the year before elections. Firm excess costs rise 13.8% near election time in public auctions."
+  },
+  {
+    "objectID": "index.html#study-at-a-glance",
+    "href": "index.html#study-at-a-glance",
+    "title": "Productivity in Procurement Auctions of Pavement Contracts in Mexico",
+    "section": "Study at a Glance",
+    "text": "Study at a Glance\n\n\n\n\nPublic Auction\nInvitation (I3P)\nDirect Allocation\n\n\n\n\nContracts (2011–2018)\n617\n2,633\n448\n\n\nBids observed\n2,784\n—\n—\n\n\nAvg. bidders per auction\n6.9\n≥ 3 (by law)\n1\n\n\nCompetition level\nHigh\nMedium\nNone\n\n\nGovernment discretion\nLow\nMedium\nHigh"
+  },
+  {
+    "objectID": "index.html#abstract",
+    "href": "index.html#abstract",
+    "title": "Productivity in Procurement Auctions of Pavement Contracts in Mexico",
+    "section": "Abstract",
+    "text": "Abstract\n\nWhen allocating contracts, governments decide between exercising hiring discretion or allowing higher competition without firm selection. Ex-ante, it is not clear which allocation format leads to better outcomes. The trade-off depends in part on the government’s ability to select the best firms when restricting competition and on the probability that this practice leads to corruption. In this paper, I study the allocation of street pavement contracts in Mexico. I combine auction methods with a productivity analysis to indirectly test whether local governments select firms with low excess costs when restricting competition. This indirect approach allows the monitoring of contract allocation in settings with little information on firm reputation. I find that firms selected to settings with less competition have lower costs in complex pavement contracts, but higher costs in simple ones. Contrary to the current practice, the results suggest that the government would benefit from using public auctions for simple pavement contracts."
+  },
+  {
+    "objectID": "index.html#how-to-navigate-this-site",
+    "href": "index.html#how-to-navigate-this-site",
+    "title": "Productivity in Procurement Auctions of Pavement Contracts in Mexico",
+    "section": "How to Navigate This Site",
+    "text": "How to Navigate This Site\n\n\n\nPage\nWhat you will find\n\n\n\n\nContext & Data\nMexico’s procurement law, the three allocation mechanisms, data overview\n\n\nMethods\nThe structural auction model and stochastic frontier analysis\n\n\nResults\nCost distributions and efficiency estimates by firm type\n\n\nPolitical Factors\nElectoral cycle and party alignment effects\n\n\nReplication\nCitation, bibtex, and code"
+  },
+  {
+    "objectID": "context.html",
+    "href": "context.html",
+    "title": "Context & Data",
+    "section": "",
+    "text": "Mexico’s Law of Public Works and Related Services requires governments to allocate infrastructure contracts through the procedure that minimizes construction costs. In practice, this means three possible mechanisms:\n\n\n  \n    Mechanism 1\n    Public Auction\n    Open to all qualified firms. First-price sealed-bid. The law favors this procedure. 617 contracts in 2011–2018.\n  \n\n  \n    Mechanism 2\n    Invitation (I3P)\n    Government invites ≥ 3 firms. Used when the project is small or urgent. 2,633 contracts in 2011–2018.\n  \n\n  \n    Mechanism 3\n    Direct Allocation\n    Government selects one firm without competition. Allowed under specific legal exceptions. 448 contracts in 2011–2018.\n  \n\n\nThe exceptions allowing governments to bypass public auctions are deliberately broad — including vague language about “significant losses” or “force majeure” — giving local officials wide discretion in practice."
+  },
+  {
+    "objectID": "context.html#mexicos-procurement-system",
+    "href": "context.html#mexicos-procurement-system",
+    "title": "Context & Data",
+    "section": "",
+    "text": "Mexico’s Law of Public Works and Related Services requires governments to allocate infrastructure contracts through the procedure that minimizes construction costs. In practice, this means three possible mechanisms:\n\n\n  \n    Mechanism 1\n    Public Auction\n    Open to all qualified firms. First-price sealed-bid. The law favors this procedure. 617 contracts in 2011–2018.\n  \n\n  \n    Mechanism 2\n    Invitation (I3P)\n    Government invites ≥ 3 firms. Used when the project is small or urgent. 2,633 contracts in 2011–2018.\n  \n\n  \n    Mechanism 3\n    Direct Allocation\n    Government selects one firm without competition. Allowed under specific legal exceptions. 448 contracts in 2011–2018.\n  \n\n\nThe exceptions allowing governments to bypass public auctions are deliberately broad — including vague language about “significant losses” or “force majeure” — giving local officials wide discretion in practice."
+  },
+  {
+    "objectID": "context.html#the-two-types-of-firms",
+    "href": "context.html#the-two-types-of-firms",
+    "title": "Context & Data",
+    "section": "The Two Types of Firms",
+    "text": "The Two Types of Firms\nThe key distinction in this study is between firms based on their history with the government:\n\nType 1 — “Government-selected”: firms that have received at least one contract by direct allocation or been invited to an I3P auction. More experienced, more politically connected.\nType 0 — “Public-auction-only”: firms that have only ever competed in open public auctions. Less experience, no special relationship with the government.\n\nThe central question: are Type 1 firms actually more cost-efficient, or are they just better connected?"
+  },
+  {
+    "objectID": "context.html#bid-data-public-procurement-auctions",
+    "href": "context.html#bid-data-public-procurement-auctions",
+    "title": "Context & Data",
+    "section": "Bid Data: Public Procurement Auctions",
+    "text": "Bid Data: Public Procurement Auctions\nThe analysis focuses on the 617 public auction contracts for which full bid data are available (2,784 individual bids after removing contracts missing project characteristics).\n\n\n\nStatistic\nValue\n\n\n\n\nAverage bid (thousands MXN per m³ concrete, 2018 prices)\n9.01\n\n\nAverage winning bid\n9.40\n\n\nStd. deviation of bids\n7.57\n\n\nAverage number of bidders per auction\n6.9\n\n\n— of which Type 1 (government-selected)\n2.0\n\n\n— of which Type 0 (public-auction-only)\n4.9\n\n\nAverage concrete volume per contract (m³)\n730.8\n\n\nShare of contracts with sewage work\n38%\n\n\nAverage project duration (months)\n3.4\n\n\n\n\nNote on project size: The average project paves 8–9 blocks (50 m each), using hydraulic concrete — a relatively homogeneous, small-scale construction task. This homogeneity is intentional: it reduces unobserved heterogeneity in the structural model."
+  },
+  {
+    "objectID": "context.html#evidence-of-asymmetry-between-firm-types",
+    "href": "context.html#evidence-of-asymmetry-between-firm-types",
+    "title": "Context & Data",
+    "section": "Evidence of Asymmetry Between Firm Types",
+    "text": "Evidence of Asymmetry Between Firm Types\nBefore structural estimation, simple reduced-form evidence already reveals important differences between firm types:\nBidding behavior: Type 1 firms bid on average 8.5% higher than Type 0 firms in the same auction, even after controlling for project characteristics. This is consistent with Type 1 firms having lower costs but shading bids upward, or alternatively, being selected for non-cost reasons.\nExperience gap: Type 1 firms competed in an average of 6.6 contracts (all mechanisms) versus only 3.4 for Type 0 firms. In public auctions alone, Type 1 firms averaged 4.5 auctions vs. 3.4 for Type 0 firms.\nBid distributions: A Kolmogorov-Smirnov test rejects equality of bid distributions at the 25th and 75th percentiles of project size."
+  },
+  {
+    "objectID": "context.html#estimated-cost-distributions",
+    "href": "context.html#estimated-cost-distributions",
+    "title": "Context & Data",
+    "section": "Estimated Cost Distributions",
+    "text": "Estimated Cost Distributions\nThe chart below shows the distributions of pseudo-costs (bids minus the markup implied by the structural auction model) for each firm type in public auctions. A distribution shifted to the left indicates lower costs.\n\n\n                            \n                                            \n\n\n\n\n\n\n\n\nNoteHow are pseudo-costs estimated?\n\n\n\n\n\nThe observed bids are not firms’ costs — they include a strategic markup. The structural auction model (explained in Methods) recovers each firm’s underlying cost from its bid, using the equilibrium relationship between bidding strategies and cost distributions. These recovered values are called pseudo-costs."
+  },
+  {
+    "objectID": "context.html#choice-of-allocation-mechanism",
+    "href": "context.html#choice-of-allocation-mechanism",
+    "title": "Context & Data",
+    "section": "Choice of Allocation Mechanism",
+    "text": "Choice of Allocation Mechanism\nA probit model on the choice of mechanism (public auction = 0, direct/I3P = 1) reveals that:\n\nProject size: A one-standard-deviation increase in concrete volume reduces the probability of bypassing a public auction by 11.4 percentage points. Smaller projects are more likely to use discretionary mechanisms.\nSewage work: Projects with sewage work are 9.8 pp less likely to be directly allocated or invited — complex projects go to public auction more often.\nElection year: Being in the year before municipal elections increases the probability of bypassing a public auction by 6.2 pp.\nParty (PAN vs. PRI): PAN-governed municipalities are 18.9 pp less likely to use discretionary mechanisms than PRI municipalities."
+  },
+  {
+    "objectID": "methods.html",
+    "href": "methods.html",
+    "title": "Methods",
+    "section": "",
+    "text": "This paper combines two econometric approaches that are rarely used together: a structural procurement auction model to recover firm costs from observed bids, and a stochastic frontier analysis (SFA) to measure how efficiently each firm uses inputs. The diagram below summarizes the two-step procedure."
+  },
+  {
+    "objectID": "methods.html#step-1-structural-procurement-auction-model",
+    "href": "methods.html#step-1-structural-procurement-auction-model",
+    "title": "Methods",
+    "section": "Step 1: Structural Procurement Auction Model",
+    "text": "Step 1: Structural Procurement Auction Model\n\nSetup\nThe government runs a first-price sealed-bid procurement auction. There are \\(n\\) risk-neutral bidders, of two types:\n\nType 1 (\\(n_1\\) bidders): firms that have at some point received a direct contract or I3P invitation\nType 0 (\\(n_0\\) bidders): firms that have only participated in public auctions, with \\(n_0 + n_1 = n\\)\n\nEach firm \\(i\\) of type \\(j \\in \\{0, 1\\}\\) has a private cost \\(c_{ji}\\) drawn independently from \\(F_j(\\cdot)\\), defined on \\([\\underline{c}, \\bar{c}]\\). Costs are independent private values (IPV) — a natural assumption for small, homogeneous pavement projects where a common value component is unlikely.\n\n\nEquilibrium and Identification\nAt Bayesian Nash Equilibrium, each bidder chooses a bid to maximize expected profit. For a Type 1 firm:\n\\[b_{1i} - c_{1i} = \\frac{1}{(n_1 - 1)\\,\\frac{g_1(b_{1i})}{1 - G_1(b_{1i})} + n_0\\,\\frac{g_0(b_{1i})}{1 - G_0(b_{1i})}}\\]\nwhere \\(G_j(\\cdot)\\) and \\(g_j(\\cdot)\\) are the bid CDF and PDF of type \\(j\\) firms. A symmetric equation holds for Type 0. This is the GPV inversion formula (Guerre, Perrigne & Vuong 2000), extended to asymmetric bidders by Flambard & Perrigne (2006).\n\n\n\n\n\n\nNoteThe key insight\n\n\n\nThe equilibrium condition directly maps observed bids to unobserved costs — without needing to know the equilibrium strategies explicitly. The bid distributions \\(G_0(\\cdot)\\) and \\(G_1(\\cdot)\\) are estimated nonparametrically from the data.\n\n\n\n\nEstimation\nThe estimation proceeds in three nonparametric steps:\n\nEstimate bid distributions \\(\\hat{G}_j(\\cdot)\\) and \\(\\hat{g}_j(\\cdot)\\) using kernel density estimators, conditioning on project characteristics \\(\\mathbf{z}\\) (concrete volume, sewage dummy)\nRecover pseudo-costs \\(\\hat{c}_{ji}\\) by plugging estimated bid densities into the inversion formula above\nEstimate cost distributions \\(\\hat{f}_j(\\cdot)\\) from the recovered pseudo-costs\n\nPractical details: a triweight kernel is used for continuous variables; a smoothed binary kernel for the sewage dummy; 10% boundary trimming is applied; and bids are log-transformed to reduce skewness."
+  },
+  {
+    "objectID": "methods.html#step-2-stochastic-frontier-analysis",
+    "href": "methods.html#step-2-stochastic-frontier-analysis",
+    "title": "Methods",
+    "section": "Step 2: Stochastic Frontier Analysis",
+    "text": "Step 2: Stochastic Frontier Analysis\n\nThe Cost Frontier\nGiven a level of output \\(z\\) (cubic meters of concrete) and input prices \\(w\\) (concrete price, construction wages, machinery rental), each firm minimizes cost subject to a production constraint. Allowing for technical inefficiency \\(\\eta \\geq 0\\), the firm’s actual cost relates to the optimal (frontier) cost by:\n\\[C^a = C^*(w, z) \\cdot e^\\eta\\]\nwhere \\(\\eta\\) is the excess cost — the proportional amount by which the firm overuses all inputs relative to the efficient frontier. A firm with \\(\\eta = 0\\) is fully efficient; \\(\\eta &gt; 0\\) means it could produce the same output with fewer inputs.\n\n\nThe SFA Model\nTaking logs and adding a noise term \\(\\varepsilon \\sim \\mathcal{N}(0, \\sigma_\\varepsilon^2)\\):\n\\[\\ln C^a = \\ln C^*(w, z) + \\eta + \\varepsilon\\]\nThe inefficiency term \\(\\eta \\geq 0\\) is estimated under two distributional assumptions (for robustness):\n\n\n\nModel\nDistribution of \\(\\eta\\)\n\n\n\n\nHalf-normal\n\\(\\eta \\sim \\lvert \\mathcal{N}(0, \\sigma_u^2) \\rvert\\)\n\n\nTruncated-normal\n\\(\\eta \\sim \\mathcal{N}^+(\\mu, \\sigma_u^2)\\)\n\n\n\nThe efficiency index reported in Results is \\(BC = e^{-\\eta}\\), bounded between 0 and 1. A value close to 1 means the firm is near the cost frontier (low excess cost); values further from 1 indicate greater inefficiency.\n\n\nConnection Between Steps 1 and 2\nThe pseudo-costs \\(\\hat{c}_{ji}\\) from Step 1 serve as the dependent variable \\(C^a\\) in the SFA. This is the methodological novelty of the paper: auction methods provide the cost data that SFA requires but typically cannot observe directly.\nBy comparing the efficiency index distributions of Type 1 and Type 0 firms, we can test whether the government’s discretionary selection of firms corresponds to genuine cost advantages."
+  },
+  {
+    "objectID": "replication.html",
+    "href": "replication.html",
+    "title": "Replication",
+    "section": "",
+    "text": "Prudencio, D. (2025). Productivity in procurement auctions of pavement contracts in Mexico. Journal of Productivity Analysis. https://doi.org/10.1007/s11123-025-00733-3"
+  },
+  {
+    "objectID": "replication.html#citation",
+    "href": "replication.html#citation",
+    "title": "Replication",
+    "section": "",
+    "text": "Prudencio, D. (2025). Productivity in procurement auctions of pavement contracts in Mexico. Journal of Productivity Analysis. https://doi.org/10.1007/s11123-025-00733-3"
+  },
+  {
+    "objectID": "replication.html#bibtex-entry",
+    "href": "replication.html#bibtex-entry",
+    "title": "Replication",
+    "section": "BibTeX Entry",
+    "text": "BibTeX Entry\n@article{prudencio2025procurement,\n  author    = {Prudencio, Daniel},\n  title     = {Productivity in procurement auctions of pavement contracts in {Mexico}},\n  journal   = {Journal of Productivity Analysis},\n  year      = {2025},\n  publisher = {Springer},\n  doi       = {10.1007/s11123-025-00733-3}\n}"
+  },
+  {
+    "objectID": "replication.html#data-and-code",
+    "href": "replication.html#data-and-code",
+    "title": "Replication",
+    "section": "Data and Code",
+    "text": "Data and Code\n\nData Sources\nThe analysis uses administrative procurement data from Mexico’s CompraNet platform (Mexico’s public procurement registry), covering pavement contracts in the state of Jalisco from 2011 to 2018.\n\n\n\nDataset\nDescription\nUse\n\n\n\n\ndata_final.csv\nBid-level data with pseudo-costs (c) and bid values (f_c) by firm type (typeb)\nCost density chart in Context & Data\n\n\ndata_densities.csv\nCDF of pseudo-costs at project size quantiles, simple projects\nCost CDF chart in Results\n\n\ndata_densities_drenaje.csv\nCDF of pseudo-costs at project size quantiles, complex projects\nCost CDF chart in Results\n\n\nefficiency_index_comparison_drenaje_sfa.csv\nFirm-level BC efficiency index (bc_h) by type\nEfficiency density chart in Results\n\n\nefficiency_index_sfa_drenaje.csv\nState-level weighted efficiency index (bc_t_weighted_ent)\nMexico map in Results\n\n\n\n\n\nMethodological Code\nThe structural auction model is estimated in R using custom kernel density estimation routines. Pseudo-costs are recovered from observed bids using the GPV inversion formula, with:\n\nTriweight kernel for continuous project characteristics (concrete volume)\nSmoothed binary kernel for the sewage dummy\n10% boundary trimming to reduce kernel edge bias\nLog-transformation of bids to reduce skewness\n\nThe stochastic frontier analysis is estimated using maximum likelihood, with two distributional assumptions for the inefficiency term (half-normal and truncated-normal).\n\n\nThis Website\nThis website was built with Quarto as a multi-page HTML site. All charts are rendered in Python using plotly and scipy. The source .qmd files are in Quarto/Paper03_ProcurementAuctions/."
+  },
+  {
+    "objectID": "replication.html#contact",
+    "href": "replication.html#contact",
+    "title": "Replication",
+    "section": "Contact",
+    "text": "Contact\nDaniel Prudencio Tecnológico de Monterrey prudencio.daniel@tec.mx"
+  }
+]

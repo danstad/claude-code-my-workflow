@@ -1,0 +1,91 @@
+---
+title: "Political Factors"
+---
+
+## Politics and Procurement Discretion
+
+The choice of allocation mechanism is not purely technical — it is also shaped by political incentives. This section documents two political patterns in the data: the **electoral cycle** and **party alignment**.
+
+---
+
+## Electoral Cycle
+
+Local governments are more likely to bypass public auctions in the year **before municipal elections**. The probit model on mechanism choice (public auction = 0, I3P or direct = 1) shows:
+
+::: {.callout-important}
+## Electoral cycle finding
+
+Being in the year before municipal elections increases the probability of using a discretionary allocation mechanism by **6.2 percentage points**, controlling for project size, complexity, and state fixed effects.
+:::
+
+This pattern is consistent with **electoral-motivated contracting**: governments distribute contracts to politically connected firms ahead of elections. The effect is especially pronounced in municipalities governed by the PRI.
+
+### Excess Costs Rise Near Elections
+
+The electoral cycle also affects cost efficiency in **public** auctions — even when the mechanism itself is competitive:
+
+- Firm excess costs in public auctions are **13.8% higher** in the year before elections
+- This suggests political pressure distorts bidding behavior even within competitive auctions
+- One interpretation: connected firms bid less aggressively, expecting future rewards regardless of auction outcomes
+
+```{=html}
+<div style="background:#E8EDF5; border-left:4px solid #F2A900; border-radius:0 6px 6px 0; padding:1.2em 1.5em; margin:1.5em 0;">
+  <strong style="color:#012169;">Mechanism:</strong>
+  <p style="margin:0.5em 0 0; color:#444; font-size:0.93em;">
+    In election years, firms that expect future direct contracts may shade their bids upward in public auctions — reducing competitive pressure and raising the government's procurement costs. The structural model captures this as higher markup over cost.
+  </p>
+</div>
+```
+
+---
+
+## Party Alignment
+
+Municipal governments that share a party affiliation with the state government face different incentive structures when allocating contracts.
+
+::: {.callout-note}
+## Party alignment result
+
+Municipalities governed by **PAN** are **18.9 percentage points less likely** to use discretionary allocation mechanisms than PRI-governed municipalities, all else equal.
+:::
+
+This finding is consistent with institutional explanations: PAN municipalities, at least during 2011–2018, faced stronger internal party pressure toward procedural compliance, or had less access to the political networks that facilitated direct contracting.
+
+Additionally:
+
+- When the **municipal and state government share a party**, firm excess costs fall by approximately **9.8%** in public auctions — suggesting that aligned governments may coordinate more efficiently, or face less political pressure to protect connected contractors
+
+---
+
+## Probit Results: Mechanism Choice
+
+The table below summarizes the marginal effects from the probit model predicting whether a contract bypasses a public auction (I3P or direct allocation = 1).
+
+| Predictor | Marginal Effect | Interpretation |
+|-----------|----------------|----------------|
+| Concrete volume (1 SD increase) | −11.4 pp | Larger projects → more likely to use public auction |
+| Sewage work dummy | −9.8 pp | Complex projects → more likely to use public auction |
+| Election year (year before municipal election) | **+6.2 pp** | Election pressure → more discretionary allocation |
+| PAN municipality (vs. PRI) | **−18.9 pp** | PAN → more likely to use public auction |
+
+All effects are evaluated at the sample mean. Standard errors clustered at the municipality level.
+
+---
+
+## What This Means
+
+The political economy findings complement the cost-efficiency results:
+
+1. **Discretion is selectively misused.** Governments bypass auctions more often near elections, when political motivations are strongest. This is precisely when cost-efficiency is least likely to drive the selection.
+
+2. **Even competitive auctions are affected.** Higher excess costs in public auctions during election years suggest that the distortions reach beyond the choice of mechanism — they affect competitive behavior within auctions.
+
+3. **Party institutions matter.** The large PAN–PRI difference suggests that reducing discretionary contracting may require institutional reforms at the party level, not just legal restrictions on procurement mechanisms.
+
+```{=html}
+<div class="finding-card neutral-card" style="margin-top:1.5em;">
+  <div class="finding-label">Policy Implication</div>
+  <div class="finding-headline">Procurement reform should target election-period contracting</div>
+  <p class="finding-body">The results suggest that a targeted rule — requiring public auctions for simple pavement contracts in the year before elections — could substantially reduce procurement costs without restricting legitimate use of discretion for complex projects.</p>
+</div>
+```

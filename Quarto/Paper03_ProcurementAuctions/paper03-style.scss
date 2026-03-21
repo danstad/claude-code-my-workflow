@@ -1,0 +1,189 @@
+/*-- scss:defaults --*/
+
+$navy:        #012169;
+$gold:        #F2A900;
+$steelblue:   #2E75B6;
+$lightbg:     #E8EDF5;
+$positive:    #15803d;
+$negative:    #B91C1C;
+$medgray:     #555555;
+$lightgray:   #f8f9fa;
+
+$link-color:          $steelblue;
+$navbar-bg:           $navy;
+$navbar-fg:           white;
+
+/*-- scss:rules --*/
+
+/* ---- Typography ---- */
+body {
+  font-size: 1.0rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+h1, h2, h3 {
+  color: $navy;
+  font-weight: 700;
+}
+
+h2 {
+  border-bottom: 2px solid $gold;
+  padding-bottom: 0.3em;
+  margin-top: 2em;
+}
+
+/* ---- Key finding cards ---- */
+.finding-card {
+  background: white;
+  border-top: 4px solid $gold;
+  border-radius: 0 0 6px 6px;
+  padding: 1.4em 1.6em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  height: 100%;
+}
+
+.finding-card.positive-card {
+  border-top-color: $positive;
+}
+
+.finding-card.negative-card {
+  border-top-color: $negative;
+}
+
+.finding-card.neutral-card {
+  border-top-color: $steelblue;
+}
+
+.finding-label {
+  font-size: 0.7em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $medgray;
+  margin-bottom: 0.5em;
+}
+
+.finding-headline {
+  font-size: 1.05em;
+  font-weight: 600;
+  color: $navy;
+  margin-bottom: 0.5em;
+  line-height: 1.4;
+}
+
+.finding-body {
+  font-size: 0.9em;
+  color: #555;
+  margin: 0;
+}
+
+/* ---- Cards grid ---- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2em;
+  margin: 1.5em 0 2em;
+}
+
+/* ---- Mechanism badges ---- */
+.badge-public {
+  display: inline-block;
+  background: $steelblue;
+  color: white;
+  font-size: 0.78em;
+  font-weight: 600;
+  padding: 0.15em 0.6em;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+.badge-i3p {
+  display: inline-block;
+  background: $gold;
+  color: $navy;
+  font-size: 0.78em;
+  font-weight: 600;
+  padding: 0.15em 0.6em;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+.badge-direct {
+  display: inline-block;
+  background: $navy;
+  color: white;
+  font-size: 0.78em;
+  font-weight: 600;
+  padding: 0.15em 0.6em;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+/* ---- Two-column chart+text layout ---- */
+.chart-row {
+  display: grid;
+  grid-template-columns: 60fr 40fr;
+  gap: 2em;
+  align-items: start;
+  margin: 1.5em 0;
+}
+
+/* ---- Title block ---- */
+.paper-title-block {
+  background: $lightbg;
+  border-left: 5px solid $navy;
+  border-radius: 0 6px 6px 0;
+  padding: 1.5em 2em;
+  margin-bottom: 2em;
+}
+
+.paper-title-block h1 {
+  margin: 0 0 0.3em;
+  font-size: 1.5em;
+  line-height: 1.3;
+}
+
+.paper-title-block .meta {
+  color: $medgray;
+  font-size: 0.9em;
+  margin: 0;
+}
+
+/* ---- Equation callout ---- */
+.eq-box {
+  background: $lightbg;
+  border: 1px solid #c8d4e8;
+  border-radius: 6px;
+  padding: 1em 1.5em;
+  margin: 1em 0;
+  font-size: 0.95em;
+}
+
+/* ---- Diagram box ---- */
+.diagram-box {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 1.5em;
+  background: white;
+  text-align: center;
+  margin: 1.5em auto;
+  max-width: 700px;
+}
+
+/* ---- Footer ---- */
+.page-footer {
+  border-top: 2px solid $gold;
+  font-size: 0.85em;
+  color: $medgray;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .chart-row {
+    grid-template-columns: 1fr;
+  }
+}

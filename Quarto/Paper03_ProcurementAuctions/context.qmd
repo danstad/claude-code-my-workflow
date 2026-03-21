@@ -1,0 +1,146 @@
+---
+title: "Context & Data"
+---
+
+## Mexico's Procurement System
+
+Mexico's **Law of Public Works and Related Services** requires governments to allocate infrastructure contracts through the procedure that minimizes construction costs. In practice, this means three possible mechanisms:
+
+```{=html}
+<div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.2em; margin:1.5em 0;">
+
+  <div style="border-top:4px solid #2E75B6; background:white; padding:1.2em 1.4em; border-radius:0 0 6px 6px; box-shadow:0 2px 6px rgba(0,0,0,0.07);">
+    <div style="font-size:0.72em;font-weight:700;text-transform:uppercase;color:#888;margin-bottom:0.4em;">Mechanism 1</div>
+    <div style="font-weight:700;color:#012169;font-size:1.05em;margin-bottom:0.5em;">Public Auction</div>
+    <p style="font-size:0.88em;color:#555;margin:0;">Open to all qualified firms. First-price sealed-bid. The law <em>favors</em> this procedure. <strong>617 contracts</strong> in 2011–2018.</p>
+  </div>
+
+  <div style="border-top:4px solid #F2A900; background:white; padding:1.2em 1.4em; border-radius:0 0 6px 6px; box-shadow:0 2px 6px rgba(0,0,0,0.07);">
+    <div style="font-size:0.72em;font-weight:700;text-transform:uppercase;color:#888;margin-bottom:0.4em;">Mechanism 2</div>
+    <div style="font-weight:700;color:#012169;font-size:1.05em;margin-bottom:0.5em;">Invitation (I3P)</div>
+    <p style="font-size:0.88em;color:#555;margin:0;">Government invites ≥ 3 firms. Used when the project is small or urgent. <strong>2,633 contracts</strong> in 2011–2018.</p>
+  </div>
+
+  <div style="border-top:4px solid #012169; background:white; padding:1.2em 1.4em; border-radius:0 0 6px 6px; box-shadow:0 2px 6px rgba(0,0,0,0.07);">
+    <div style="font-size:0.72em;font-weight:700;text-transform:uppercase;color:#888;margin-bottom:0.4em;">Mechanism 3</div>
+    <div style="font-weight:700;color:#012169;font-size:1.05em;margin-bottom:0.5em;">Direct Allocation</div>
+    <p style="font-size:0.88em;color:#555;margin:0;">Government selects one firm without competition. Allowed under specific legal exceptions. <strong>448 contracts</strong> in 2011–2018.</p>
+  </div>
+
+</div>
+```
+
+The exceptions allowing governments to bypass public auctions are deliberately broad — including vague language about "significant losses" or "force majeure" — giving local officials wide discretion in practice.
+
+---
+
+## The Two Types of Firms
+
+The key distinction in this study is between firms based on their history with the government:
+
+- **Type 1 — "Government-selected"**: firms that have received at least one contract by direct allocation or been invited to an I3P auction. More experienced, more politically connected.
+- **Type 0 — "Public-auction-only"**: firms that have only ever competed in open public auctions. Less experience, no special relationship with the government.
+
+The central question: **are Type 1 firms actually more cost-efficient, or are they just better connected?**
+
+---
+
+## Bid Data: Public Procurement Auctions
+
+The analysis focuses on the **617 public auction contracts** for which full bid data are available (2,784 individual bids after removing contracts missing project characteristics).
+
+| Statistic | Value |
+|-----------|-------|
+| Average bid (thousands MXN per m³ concrete, 2018 prices) | 9.01 |
+| Average winning bid | 9.40 |
+| Std. deviation of bids | 7.57 |
+| Average number of bidders per auction | 6.9 |
+| — of which Type 1 (government-selected) | 2.0 |
+| — of which Type 0 (public-auction-only) | 4.9 |
+| Average concrete volume per contract (m³) | 730.8 |
+| Share of contracts with sewage work | 38% |
+| Average project duration (months) | 3.4 |
+
+> **Note on project size:** The average project paves 8–9 blocks (50 m each), using hydraulic concrete — a relatively homogeneous, small-scale construction task. This homogeneity is intentional: it reduces unobserved heterogeneity in the structural model.
+
+---
+
+## Evidence of Asymmetry Between Firm Types
+
+Before structural estimation, simple reduced-form evidence already reveals important differences between firm types:
+
+**Bidding behavior:** Type 1 firms bid on average **8.5% higher** than Type 0 firms in the same auction, even after controlling for project characteristics. This is consistent with Type 1 firms having lower costs but shading bids upward, or alternatively, being selected for non-cost reasons.
+
+**Experience gap:** Type 1 firms competed in an average of **6.6 contracts** (all mechanisms) versus only **3.4 for Type 0 firms**. In public auctions alone, Type 1 firms averaged 4.5 auctions vs. 3.4 for Type 0 firms.
+
+**Bid distributions:** A Kolmogorov-Smirnov test rejects equality of bid distributions at the 25th and 75th percentiles of project size.
+
+---
+
+## Estimated Cost Distributions
+
+The chart below shows the distributions of **pseudo-costs** (bids minus the markup implied by the structural auction model) for each firm type in public auctions. A distribution shifted to the *left* indicates lower costs.
+
+```{python}
+import pandas as pd
+import numpy as np
+from scipy.stats import gaussian_kde
+import plotly.graph_objects as go
+
+DATA_PATH = "../../code_jmp/Exploratory R/"
+
+df = pd.read_csv(DATA_PATH + "data_final.csv")
+df = df[df["c"] > 0].dropna(subset=["c", "typeb"])
+
+# Trim top 2% to remove kernel boundary artifacts
+q98 = df["c"].quantile(0.98)
+df = df[df["c"] <= q98]
+
+colors = {0: "#2E75B6", 1: "#F2A900"}
+labels = {0: "Type 0 — Public-auction-only", 1: "Type 1 — Government-selected"}
+line_styles = {0: "solid", 1: "dash"}
+
+fig = go.Figure()
+
+for t in [0, 1]:
+    vals = df[df["typeb"] == t]["c"].values
+    kde = gaussian_kde(vals, bw_method="scott")
+    x = np.linspace(vals.min(), vals.max(), 400)
+    y = kde(x)
+    fig.add_trace(go.Scatter(
+        x=x, y=y,
+        mode="lines",
+        name=labels[t],
+        line=dict(color=colors[t], width=2.5, dash=line_styles[t])
+    ))
+
+fig.update_layout(
+    title=dict(text="Estimated Cost Distributions by Firm Type (Public Auctions)",
+               font=dict(size=14, color="#012169")),
+    xaxis=dict(title="Pseudo-cost (thousands MXN per m³, 2018 prices)",
+               tickfont=dict(size=12), gridcolor="#eee"),
+    yaxis=dict(title="Density", tickfont=dict(size=12), gridcolor="#eee"),
+    legend=dict(orientation="h", x=0, y=-0.18, font=dict(size=12)),
+    plot_bgcolor="white", paper_bgcolor="white",
+    height=380,
+    margin=dict(l=60, r=20, t=50, b=80)
+)
+fig.show()
+```
+
+::: {.callout-note collapse="true"}
+## How are pseudo-costs estimated?
+
+The observed bids are **not** firms' costs — they include a strategic markup. The structural auction model (explained in [Methods](methods.qmd)) recovers each firm's underlying cost from its bid, using the equilibrium relationship between bidding strategies and cost distributions. These recovered values are called **pseudo-costs**.
+:::
+
+---
+
+## Choice of Allocation Mechanism
+
+A probit model on the choice of mechanism (public auction = 0, direct/I3P = 1) reveals that:
+
+- **Project size:** A one-standard-deviation increase in concrete volume reduces the probability of bypassing a public auction by **11.4 percentage points**. Smaller projects are more likely to use discretionary mechanisms.
+- **Sewage work:** Projects with sewage work are **9.8 pp less likely** to be directly allocated or invited — complex projects go to public auction more often.
+- **Election year:** Being in the year before municipal elections increases the probability of bypassing a public auction by **6.2 pp**.
+- **Party (PAN vs. PRI):** PAN-governed municipalities are **18.9 pp less likely** to use discretionary mechanisms than PRI municipalities.

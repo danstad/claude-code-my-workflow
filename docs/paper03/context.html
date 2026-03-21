@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Context &amp; Data – Productivity in Procurement Auctions</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3f230b53dc93e4a04bf4a3505d77a42a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-caadb7d1d5779c27255657b913a87f67.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script>
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+</script>
+<script type="module">import "https://cdn.plot.ly/plotly-3.4.0.min"</script>
+
+
+
+</head>
+
+<body class="floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Productivity in Procurement Auctions</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./context.html" aria-current="page"> 
+<span class="menu-text">Context &amp; Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./methods.html"> 
+<span class="menu-text">Methods</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./results.html"> 
+<span class="menu-text">Results</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./politics.html"> 
+<span class="menu-text">Political Factors</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./replication.html"> 
+<span class="menu-text">Replication</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#mexicos-procurement-system" id="toc-mexicos-procurement-system" class="nav-link active" data-scroll-target="#mexicos-procurement-system">Mexico’s Procurement System</a></li>
+  <li><a href="#the-two-types-of-firms" id="toc-the-two-types-of-firms" class="nav-link" data-scroll-target="#the-two-types-of-firms">The Two Types of Firms</a></li>
+  <li><a href="#bid-data-public-procurement-auctions" id="toc-bid-data-public-procurement-auctions" class="nav-link" data-scroll-target="#bid-data-public-procurement-auctions">Bid Data: Public Procurement Auctions</a></li>
+  <li><a href="#evidence-of-asymmetry-between-firm-types" id="toc-evidence-of-asymmetry-between-firm-types" class="nav-link" data-scroll-target="#evidence-of-asymmetry-between-firm-types">Evidence of Asymmetry Between Firm Types</a></li>
+  <li><a href="#estimated-cost-distributions" id="toc-estimated-cost-distributions" class="nav-link" data-scroll-target="#estimated-cost-distributions">Estimated Cost Distributions</a></li>
+  <li><a href="#choice-of-allocation-mechanism" id="toc-choice-of-allocation-mechanism" class="nav-link" data-scroll-target="#choice-of-allocation-mechanism">Choice of Allocation Mechanism</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Context &amp; Data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="mexicos-procurement-system" class="level2">
+<h2 class="anchored" data-anchor-id="mexicos-procurement-system">Mexico’s Procurement System</h2>
+<p>Mexico’s <strong>Law of Public Works and Related Services</strong> requires governments to allocate infrastructure contracts through the procedure that minimizes construction costs. In practice, this means three possible mechanisms:</p>
+<div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.2em; margin:1.5em 0;">
+
+  <div style="border-top:4px solid #2E75B6; background:white; padding:1.2em 1.4em; border-radius:0 0 6px 6px; box-shadow:0 2px 6px rgba(0,0,0,0.07);">
+    <div style="font-size:0.72em;font-weight:700;text-transform:uppercase;color:#888;margin-bottom:0.4em;">Mechanism 1</div>
+    <div style="font-weight:700;color:#012169;font-size:1.05em;margin-bottom:0.5em;">Public Auction</div>
+    <p style="font-size:0.88em;color:#555;margin:0;">Open to all qualified firms. First-price sealed-bid. The law <em>favors</em> this procedure. <strong>617 contracts</strong> in 2011–2018.</p>
+  </div>
+
+  <div style="border-top:4px solid #F2A900; background:white; padding:1.2em 1.4em; border-radius:0 0 6px 6px; box-shadow:0 2px 6px rgba(0,0,0,0.07);">
+    <div style="font-size:0.72em;font-weight:700;text-transform:uppercase;color:#888;margin-bottom:0.4em;">Mechanism 2</div>
+    <div style="font-weight:700;color:#012169;font-size:1.05em;margin-bottom:0.5em;">Invitation (I3P)</div>
+    <p style="font-size:0.88em;color:#555;margin:0;">Government invites ≥ 3 firms. Used when the project is small or urgent. <strong>2,633 contracts</strong> in 2011–2018.</p>
+  </div>
+
+  <div style="border-top:4px solid #012169; background:white; padding:1.2em 1.4em; border-radius:0 0 6px 6px; box-shadow:0 2px 6px rgba(0,0,0,0.07);">
+    <div style="font-size:0.72em;font-weight:700;text-transform:uppercase;color:#888;margin-bottom:0.4em;">Mechanism 3</div>
+    <div style="font-weight:700;color:#012169;font-size:1.05em;margin-bottom:0.5em;">Direct Allocation</div>
+    <p style="font-size:0.88em;color:#555;margin:0;">Government selects one firm without competition. Allowed under specific legal exceptions. <strong>448 contracts</strong> in 2011–2018.</p>
+  </div>
+
+</div>
+<p>The exceptions allowing governments to bypass public auctions are deliberately broad — including vague language about “significant losses” or “force majeure” — giving local officials wide discretion in practice.</p>
+<hr>
+</section>
+<section id="the-two-types-of-firms" class="level2">
+<h2 class="anchored" data-anchor-id="the-two-types-of-firms">The Two Types of Firms</h2>
+<p>The key distinction in this study is between firms based on their history with the government:</p>
+<ul>
+<li><strong>Type 1 — “Government-selected”</strong>: firms that have received at least one contract by direct allocation or been invited to an I3P auction. More experienced, more politically connected.</li>
+<li><strong>Type 0 — “Public-auction-only”</strong>: firms that have only ever competed in open public auctions. Less experience, no special relationship with the government.</li>
+</ul>
+<p>The central question: <strong>are Type 1 firms actually more cost-efficient, or are they just better connected?</strong></p>
+<hr>
+</section>
+<section id="bid-data-public-procurement-auctions" class="level2">
+<h2 class="anchored" data-anchor-id="bid-data-public-procurement-auctions">Bid Data: Public Procurement Auctions</h2>
+<p>The analysis focuses on the <strong>617 public auction contracts</strong> for which full bid data are available (2,784 individual bids after removing contracts missing project characteristics).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Statistic</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Average bid (thousands MXN per m³ concrete, 2018 prices)</td>
+<td>9.01</td>
+</tr>
+<tr class="even">
+<td>Average winning bid</td>
+<td>9.40</td>
+</tr>
+<tr class="odd">
+<td>Std. deviation of bids</td>
+<td>7.57</td>
+</tr>
+<tr class="even">
+<td>Average number of bidders per auction</td>
+<td>6.9</td>
+</tr>
+<tr class="odd">
+<td>— of which Type 1 (government-selected)</td>
+<td>2.0</td>
+</tr>
+<tr class="even">
+<td>— of which Type 0 (public-auction-only)</td>
+<td>4.9</td>
+</tr>
+<tr class="odd">
+<td>Average concrete volume per contract (m³)</td>
+<td>730.8</td>
+</tr>
+<tr class="even">
+<td>Share of contracts with sewage work</td>
+<td>38%</td>
+</tr>
+<tr class="odd">
+<td>Average project duration (months)</td>
+<td>3.4</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p><strong>Note on project size:</strong> The average project paves 8–9 blocks (50 m each), using hydraulic concrete — a relatively homogeneous, small-scale construction task. This homogeneity is intentional: it reduces unobserved heterogeneity in the structural model.</p>
+</blockquote>
+<hr>
+</section>
+<section id="evidence-of-asymmetry-between-firm-types" class="level2">
+<h2 class="anchored" data-anchor-id="evidence-of-asymmetry-between-firm-types">Evidence of Asymmetry Between Firm Types</h2>
+<p>Before structural estimation, simple reduced-form evidence already reveals important differences between firm types:</p>
+<p><strong>Bidding behavior:</strong> Type 1 firms bid on average <strong>8.5% higher</strong> than Type 0 firms in the same auction, even after controlling for project characteristics. This is consistent with Type 1 firms having lower costs but shading bids upward, or alternatively, being selected for non-cost reasons.</p>
+<p><strong>Experience gap:</strong> Type 1 firms competed in an average of <strong>6.6 contracts</strong> (all mechanisms) versus only <strong>3.4 for Type 0 firms</strong>. In public auctions alone, Type 1 firms averaged 4.5 auctions vs.&nbsp;3.4 for Type 0 firms.</p>
+<p><strong>Bid distributions:</strong> A Kolmogorov-Smirnov test rejects equality of bid distributions at the 25th and 75th percentiles of project size.</p>
+<hr>
+</section>
+<section id="estimated-cost-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="estimated-cost-distributions">Estimated Cost Distributions</h2>
+<p>The chart below shows the distributions of <strong>pseudo-costs</strong> (bids minus the markup implied by the structural auction model) for each firm type in public auctions. A distribution shifted to the <em>left</em> indicates lower costs.</p>
+<div id="99ed48cf" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.4.0.min.js" integrity="sha256-KEmPoupLpFyGMyGAiOsiNDbKDKAvxXAn/W+oQa0ZAfk=" crossorigin="anonymous"></script>                <div id="c6e9c0ec-5bb6-48f9-a183-5fc6bdf428dd" class="plotly-graph-div" style="height:380px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("c6e9c0ec-5bb6-48f9-a183-5fc6bdf428dd")) {                    Plotly.newPlot(                        "c6e9c0ec-5bb6-48f9-a183-5fc6bdf428dd",                        [{"line":{"color":"#2E75B6","dash":"solid","width":2.5},"mode":"lines","name":"Type 0 \u2014 Public-auction-only","x":{"dtype":"f8","bdata":"ZsrmO7w6Rj+4DD1kNMGiPyM\u002fxeu+lLI\u002f6vdrpePIuz9YWIkvhH7CP7y0XIyWGMc\u002fHxEw6aiyyz\u002fBtgGjXSbQP\u002fNka9Fmc9I\u002fJRPV\u002f2\u002fA1D9XwT4ueQ3XP4hvqFyCWtk\u002fuh0Si4un2z\u002fsy3u5lPTdPw+98vPOIOA\u002fKJQni1NH4T9Ba1wi2G3iP1pCkblclOM\u002fcxnGUOG65D+M8PrnZeHlP6XHL3\u002fqB+c\u002fvZ5kFm8u6D\u002fWdZmt81TpP+9MzkR4e+o\u002fCCQD3Pyh6z8h+zdzgcjsPzrSbAoG7+0\u002fU6mhoYoV7z81QGucBx7wP8KrBehJsfA\u002fThegM4xE8T\u002fbgjp\u002fztfxP2fu1MoQa\u002fI\u002f81lvFlP+8j+AxQlilZHzPwwxpK3XJPQ\u002fmZw++Rm49D8lCNlEXEv1P7Jzc5Ce3vU\u002fPt8N3OBx9j\u002fLSqgnIwX3P1e2QnNlmPc\u002f4yHdvqcr+D9wjXcK6r74P\u002fz4EVYsUvk\u002fiWSsoW7l+T8V0EbtsHj6P6I74TjzC\u002fs\u002fLqd7hDWf+z+6EhbQdzL8P0d+sBu6xfw\u002f0+lKZ\u002fxY\u002fT9gVeWyPuz9P+zAf\u002f6Af\u002f4\u002feSwaSsMS\u002fz8FmLSVBab\u002fP8mBp\u002fCjHABAj7d0FkVmAEBW7UE85q8AQBwjD2KH+QBA4ljchyhDAUCojqmtyYwBQG\u002fEdtNq1gFANfpD+QsgAkD7LxEfrWkCQMFl3kROswJAh5urau\u002f8AkBO0XiQkEYDQBQHRrYxkANA2jwT3NLZA0CgcuABdCMEQGeorScVbQRALd56Tba2BEDzE0hzVwAFQLlJFZn4SQVAf3\u002fivpmTBUBGta\u002fkOt0FQAzrfArcJgZA0iBKMH1wBkCYVhdWHroGQF+M5Hu\u002fAwdAJcKxoWBNB0Dr937HAZcHQLEtTO2i4AdAd2MZE0QqCEA+meY45XMIQATPs16GvQhAygSBhCcHCUCQOk6qyFAJQFZwG9BpmglAHabo9QrkCUDj27UbrC0KQKkRg0FNdwpAb0dQZ+7ACkA2fR2NjwoLQPyy6rIwVAtAwui32NGdC0CIHoX+cucLQE5UUiQUMQxAFYofSrV6DEDbv+xvVsQMQKH1uZX3DQ1AZyuHu5hXDUAuYVThOaENQPSWIQfb6g1AuszuLHw0DkCAArxSHX4OQEY4iXi+xw5ADW5Wnl8RD0DToyPEAFsPQJnZ8OmhpA9AXw++D0PuD0CSosUa8hsQQHU9rK3CQBBAWNiSQJNlEEA8c3nTY4oQQB8OYGY0rxBAAqlG+QTUEEDlQy2M1fgQQMjeEx+mHRFAq3n6sXZCEUCOFOFER2cRQHGvx9cXjBFAVEquauiwEUA45ZT9uNURQBuAe5CJ+hFA\u002fhpiI1ofEkDhtUi2KkQSQMRQL0n7aBJAp+sV3MuNEkCKhvxunLISQG0h4wFt1xJAULzJlD38EkA0V7AnDiETQBfylrreRRNA+ox9Ta9qE0DdJ2Tgf48TQMDCSnNQtBNAo10xBiHZE0CG+BeZ8f0TQGmT\u002fivCIhRATC7lvpJHFEAwyctRY2wUQBNksuQzkRRA9v6YdwS2FEDZmX8K1doUQLw0Zp2l\u002fxRAn89MMHYkFUCCajPDRkkVQGUFGlYXbhVASKAA6eeSFUAsO+d7uLcVQA\u002fWzQ6J3BVA8nC0oVkBFkDVC5s0KiYWQLimgcf6ShZAm0FoWstvFkB+3E7tm5QWQGF3NYBsuRZARBIcEz3eFkAorQKmDQMXQAtI6TjeJxdA7uLPy65MF0DRfbZef3EXQLQYnfFPlhdAl7ODhCC7F0B6TmoX8d8XQF3pUKrBBBhAQIQ3PZIpGEAjHx7QYk4YQAe6BGMzcxhA6lTr9QOYGEDN79GI1LwYQLCKuBul4RhAkyWfrnUGGUB2wIVBRisZQFlbbNQWUBlAPPZSZ+d0GUAfkTn6t5kZQAMsII2IvhlA5sYGIFnjGUDJYe2yKQgaQKz800X6LBpAj5e62MpRGkByMqFrm3YaQFXNh\u002f5rmxpAOGhukTzAGkAbA1UkDeUaQP+dO7fdCRtA4jgiSq4uG0DF0wjdflMbQKhu729PeBtAiwnWAiCdG0BupLyV8MEbQFE\u002foyjB5htANNqJu5ELHEAXdXBOYjAcQPsPV+EyVRxA3qo9dAN6HEDBRSQH1J4cQKTgCpqkwxxAh3vxLHXoHEBqFti\u002fRQ0dQE2xvlIWMh1AMEyl5eZWHUAT54t4t3sdQPeBcguIoB1A2hxZnljFHUC9tz8xKeodQKBSJsT5Dh5Ag+0MV8ozHkBmiPPpmlgeQEkj2nxrfR5ALL7ADzyiHkAPWaeiDMceQPPzjTXd6x5A1o50yK0QH0C5KVtbfjUfQJzEQe5OWh9Af18ogR9\u002fH0Bi+g4U8KMfQEWV9abAyB9AKDDcOZHtH0CGZWHmMAkgQPey1C+ZGyBAaQBIeQEuIEDaTbvCaUAgQEybLgzSUiBAveihVTplIEAvNhWfoncgQKGDiOgKiiBAEtH7MXOcIECEHm97264gQPVr4sRDwSBAZ7lVDqzTIEDYBslXFOYgQEpUPKF8+CBAu6Gv6uQKIUAt7yI0TR0hQJ88ln21LyFAEIoJxx1CIUCC13wQhlQhQPMk8FnuZiFAZXJjo1Z5IUDWv9bsvoshQEgNSjYnniFAuVq9f4+wIUArqDDJ98IhQJ31oxJg1SFADkMXXMjnIUCAkIqlMPohQPHd\u002fe6YDCJAYytxOAEfIkDUeOSBaTEiQEbGV8vRQyJAtxPLFDpWIkApYT5eomgiQJuusacKeyJADPwk8XKNIkB+SZg6258iQO+WC4RDsiJAYeR+zavEIkDSMfIWFNciQER\u002fZWB86SJAtczYqeT7IkAnGkzzTA4jQJlnvzy1ICNACrUyhh0zI0B8AqbPhUUjQO1PGRnuVyNAX52MYlZqI0DQ6v+rvnwjQEI4c\u002fUmjyNAs4XmPo+hI0Al01mI97MjQJcgzdFfxiNACG5AG8jYI0B6u7NkMOsjQOsIJ66Y\u002fSNAXVaa9wAQJEDOow1BaSIkQEDxgIrRNCRAsT700zlHJEAjjGcdolkkQJXZ2mYKbCRABidOsHJ+JEB4dMH52pAkQOnBNENDoyRAWw+ojKu1JEDMXBvWE8gkQD6qjh982iRAr\u002fcBaeTsJEAhRXWyTP8kQJOS6Pu0ESVABOBbRR0kJUB2Lc+OhTYlQOd6QtjtSCVAWci1IVZbJUDKFSlrvm0lQDxjnLQmgCVArbAP\u002fo6SJUAf\u002foJH96QlQJFL9pBftyVAAplp2sfJJUB05twjMNwlQOUzUG2Y7iVAV4HDtgABJkDIzjYAaRMmQDocqknRJSZAq2kdkzk4JkAdt5DcoUomQI8EBCYKXSZAAFJ3b3JvJkByn+q42oEmQOPsXQJDlCZAVTrRS6umJkDGh0SVE7kmQDjVt957yyZAqSIrKOTdJkAbcJ5xTPAmQI29Ebu0AidA\u002fgqFBB0VJ0BwWPhNhScnQOGla5ftOSdAU\u002fPe4FVMJ0DEQFIqvl4nQDaOxXMmcSdAp9s4vY6DJ0AZKawG95UnQIp2H1BfqCdA\u002fMOSmce6J0BuEQbjL80nQN9eeSyY3ydAUazsdQDyJ0DC+V+\u002faAQoQDRH0wjRFihApZRGUjkpKEAX4rmboTsoQIgvLeUJTihA+nygLnJgKEBsyhN42nIoQN0Xh8FChShAT2X6CquXKEDAsm1UE6ooQDIA4Z17vChAo01U5+POKEAVm8cwTOEoQIboOnq08yhA+DWuwxwGKUBqgyENhRgpQNvQlFbtKilATR4IoFU9KUC+a3vpvU8pQDC57jImYilAoQZifI50KUATVNXF9oYpQIShSA9fmSlA9u67WMerKUBoPC+iL74pQNmJouuX0ClAS9cVNQDjKUC8JIl+aPUpQC5y\u002fMfQBypAn79vETkaKkARDeNaoSwqQIJaVqQJPypA9KfJ7XFRKkBm9Tw32mMqQNdCsIBCdipASZAjyqqIKkC63ZYTE5sqQCwrCl17rSpAnXh9puO\u002fKkAPxvDvS9IqQIATZDm05CpA8mDXghz3KkBkrkrMhAkrQNX7vRXtGytAR0kxX1UuK0C4lqSovUArQCrkF\u002fIlUytAmzGLO45lK0ANf\u002f6E9ncrQH7Mcc5eiitA8BnlF8ecK0BiZ1hhL68rQNO0y6qXwStARQI\u002f9P\u002fTK0C2T7I9aOYrQCidJYfQ+CtAmeqY0DgLLEALOAwaoR0sQHyFf2MJMCxA7tLyrHFCLEBgIGb22VQsQNFt2T9CZyxAQ7tMiap5LEC0CMDSEowsQCZWMxx7nixAl6OmZeOwLEA="},"y":{"dtype":"f8","bdata":"gu9O5BVmuD+BGZ\u002fyE\u002fy5PxtcmMZJmLs\u002fBAboSzQ5vT+fv2OwR92+P1kVYPB5QcA\u002ffUHFdVQUwT+0L7SYbebBPx1nEaYDt8I\u002fyAChzFqFwz+1emusvlDEP950qqqDGMU\u002fdJPuBgjcxT+rLXWwtJrGP3lY1tz9U8c\u002fYBA7Y2MHyD\u002fWLRPhcLTIP4lDuq69Wsk\u002fW56Uq+z5yT93JuLpq5HKP3eu0EK0Ics\u002fHAo828ipyz89uA6htinMP1TMZMhTocw\u002ff6B6Tn8QzT939SKHIHfNP\u002f3JD7gm1c0\u002f1FG6w4gqzj8hLj3kRHfOPzkKE3Vgu84\u002fNQ50yef2zj95KQwM7inPP5LvBSSNVM8\u002fNnPwmuV2zz95UN1+HpHPP+HYNTxlo88\u002f6DYua+2tzz8jO2ON8LDPPysOCLmtrM8\u002fIwAHMGmhzz\u002fuQ43ia4\u002fPP5Mcld0Cd88\u002f078Vp35Yzz9gnX2KMjTPP6lW9thzCs8\u002f1lWfIZnbzj8I9mRm+afOP89QWlLrb84\u002fX4yBdsQzzj9u0LuR2PPNP4dzM+h4sM0\u002fqYz\u002frfNpzT9E8AiIkyDNP0k9aCWf1Mw\u002fS\u002f6V8liGzD8wbuTm\u002fjXMP0214GvK48s\u002fYRhxXfCPyz+KhdYgoTrLP7hEKNAI5Mo\u002fjDZ0d0+Myj9Lq2ZgmTPKPwYPOmkH2sk\u002fs\u002fGtY7d\u002fyT+vX+J4xCTJP+2yKo9Hycg\u002fjeczr1dtyD+Moy9mChHIP+IhECN0tMc\u002fDFM8jahXxz+4zXnTuvrGP8nXF\u002fK9ncY\u002flG+p78RAxj9EutIP4+PFP4fQ2Psrh8U\u002fsvzC4LMqxT9AkfSCj87EP5Z7OUfUcsQ\u002f9ShRMZgXxD\u002fpgxbY8bzDPyree0\u002f4YsM\u002fz+qwCMMJwz+rD\u002fGoabHCPzO6qdcDWsI\u002faHPiBKkDwj8URREpcK7BP67Ryn9vWsE\u002fY3gCP7wHwT+EpM9MarbAP\u002fEq5fWLZsA\u002fz54RpzEYwD+\u002fnG5Y05a\u002fP5rEWO5\u002fAL8\u002fZv244Xttvj91XKet1N29PwsWHE6SUb0\u002fBIADN7fIvD\u002fj0bhsQEO8PxVTu74lwbs\u002f8vo4JFpCuz9VZMM4zMa6P36QPtZmTro\u002f6E7jxxHZuT8N6ReRsma5P37s9kEt97g\u002fGtKpUmWKuD8Hsk1+PiC4P35I8pWduLc\u002ftORqRGlTtz8xmR28ivC2P6SWu0juj7Y\u002fr\u002fTOv4Mxtj+X7UPMPtW1PyS5eBIXe7U\u002fGGfgKwgjtT\u002fJv9F6Ec20P2zjodg1ebQ\u002fxQWaIXsntD83BqCj6dezP5GDfHWLirM\u002fZW16vWs\u002fsz9JLKPulfayPyTxEQQVsLI\u002fX9K+wfJrsj8LRrkBNyqyP2H6FhTn6rE\u002fhUTpNgWusT+VVmQqkHOxP2awFuSCO7E\u002fpKusYtQFsT\u002fHmVSid9KwPwtmfLBbobA\u002fnyli3GtysD9UA9wAkEWwP1bv3OKsGrA\u002fOhw7P0njrz+PW+1JrpSvP32m1FxFSa8\u002f6C8bg8gArz\u002foFvpJ8LquP0VkbJt0d64\u002fjF0gfw02rj\u002f4xxy9c\u002fatP\u002fhItl9huK0\u002fI9GdFJJ7rT8QOuVuwz+tP0Iotg21BK0\u002fR3UHrSjKrD+0M8om4o+sP8r9wWunVaw\u002f+EV8e0AbrD9alp5id+CrP\u002fB2EUYYpas\u002fj0RxgPFoqz9pXbnV0yurPx1EZ7+S7ao\u002fyJd00QSuqj842Zs2BG2qPwH\u002fgEBvKqo\u002fVqumBinmqT9zm6sNGqCpP02kNe8wWKk\u002fWF4\u002f+mIOqT8EuTzDrMKoP\u002f4svJsSdag\u002fqxfL6aAlqD+2C2tYbNSnP\u002fRxxduRgac\u002fB2RwhTYtpz+Sru0mh9emP7MMfMK3gKY\u002fLglDzAIppj8yUrw\u002fqNClPzJn7I7sd6U\u002fBAtuchcfpT8pIXmicsakP0s23IFIbqQ\u002fqgpSxOIWpD8RvLAZicCjPyCZKed\u002fa6M\u002fvxo2FwcYoz\u002fsBOoHWcaiP+vjQJ6pdqI\u002fNEysgyUpoj\u002fZqreR8d2hPwFtFW4qlaE\u002fO7TmV+ROoT+6WZglKwuhPy\u002fmUXECyqA\u002fZpu38GWLoD8l6q\u002fzSU+gP37B\u002fAScFaA\u002fpOebTYe8nz+TvvpJRlKfP1xez+ww7J4\u002fgYaXTfyJnj\u002fuKYiFWCueP3oBiX\u002fyz50\u002frecMtXV3nT+VG9\u002fNjSGdP487eRrozZw\u002fV9ga4jR8nD96QZt\u002fKCycP3y4uUl83Zs\u002fDft4Re+Pmz9OBsuiRkObPzoCbAVO95o\u002fP8o7ndermj8yhKISvGCaPyhMjkzaFZo\u002fJ4RYFhfLmT\u002fnxl2sXICZP55LSzaaNZk\u002fmtMZNsPqmD8ceGXyzp+YP6WdUeK3VJg\u002fTHB5IHsJmD\u002f0fpnpF76XPwocsSqPcpc\u002fOjZdIeMmlz+ySS0QF9uWP7MZuAcvj5Y\u002fVTNKxC9Dlj8NaTOfHveVP2OAAJIBq5U\u002f70xXSd9elT97vbdEvxKVP8mBFACqxpQ\u002fpv8IJKl6lD+vAGa5xy6UP2O231wS45M\u002fK3bSb5eXkz8FvlNDZ0yTP5VUFjuUAZM\u002f7o4G5jK3kj9ZIOsKWm2SP2rlw6ciJJI\u002frekP46fbkT8L5JPuBpSRP5JpqNteTZE\u002f1yqBYdAHkT+DAUOWfcOQP5epG5yJgJA\u002fJxjiQxg\u002fkD8Vih9Om\u002f6PP+RlQHabgo8\u002forwlwXcKjz\u002fB1NXfdJaOP5cWLI7UJo4\u002fOqlAs9S7jT\u002fddgiMrlWNP9DSeuSV9Iw\u002fAYIVY7iYjD\u002fUkQPqPEKMP7PlexBD8Ys\u002ff90ntuKliz9mM5CxK2CLP2qOtpklIIs\u002fXQMuqs\u002flij8B3TzAILGKP9Mq324Hgoo\u002fd67rJmpYij8vnCpwJzSKP++W5C8WFYo\u002fpPNT+QX7iT9iW3Rkv+WJP3IG7WcE1Yk\u002fw7c9s5DIiT9UG+oGGsCJP5gsFIlQu4k\u002f\u002fDHFFd+5iT\u002f8qgSLa7uJP6U\u002fwxGXv4k\u002f8nSCZf7FiT+KdHUdOs6JP95AkPre14k\u002f41mOPn7iiT98910Qpu2JP124iPLh+Ik\u002fpsAeULsDij8Fz1Akug2KP7dRRsBlFoo\u002fga\u002fWsUUdij\u002frpaTM4iGKP58xt1XII4o\u002fh9sXUIUiij8TpkjnrR2KP6VunfLcFIo\u002fZvLAirUHij+\u002f9QGp5PWJPwErh8Yi34k\u002frsBNcDXDiT96xvLD8KGJPwvZy8g4e4k\u002f4NXMmAJPiT\u002f8\u002fS5NVR2JP5yIxKNK5og\u002f4dNWUw+qiD\u002fullMH42iIP7E6V\u002f0XI4g\u002fTA67QRLZhz8rQhyLRouHP3A0uLc4Ooc\u002fYaFd8nnmhj+brXKHppCGPy\u002fTEHVjOYY\u002fgddfw1vhhT+otxK0PYmFP4noJNm3MYU\u002fo36pI3bbhD9aVqX7HoeEP+oujHFQNYQ\u002fIckXmZ3mgz\u002fUyd0bjJuDP43DVxCSVIM\u002fBtMVIBQSgz8roaYFZNSCP+2idmi\u002fm4I\u002fqj+aGk9ogj8FHTe6JjqCP60RIbZEEYI\u002fvFpMs5LtgT\u002fnxPlO5s6BP1Cg\u002fzcCtYE\u002f\u002fsxMmJefgT9v9rfGR46BP5yIVzimgIE\u002ftpv4pzp2gT84rcxpg26BP60OCOH3aIE\u002fX8HmDAtlgT++p10iLmKBP\u002f\u002f+nifTX4E\u002fBI6Jhm9dgT+AtxqLflqBP9uPD8ODVoE\u002fRAcNNA1RgT94SfFdtUmBP\u002fuwX\u002f8kQIE\u002ftkQ0kxQ0gT9fclp+TSWBP4sziuaqE4E\u002f4+KyKxr\u002fgD+uSF3\u002fmueAP5WZDRc\u002fzYA\u002fMACmeCmwgD+VRPNhjZCAP6p13M6sboA\u002fUjYWpNZKgD8Y1qmGZCWAP25oCdZw\u002fX8\u002fN\u002fkR0XOufz8UOVDBpl5\u002fPx2ipxTeDn8\u002fv7Lv5+e\u002ffj8wxEIehnJ+P5Gi1LJoJ34\u002fthJDbCjffT\u002fY0+wWQpp9P4SqRWkSWX0\u002fhwtesdIbfT8dLP1lluJ8P8tg2q9JrXw\u002fTKjf+LB7fD\u002fT0h2IaU18P7TzdSnrIXw\u002f8Ns02Ir4ez+pATlcftB7P8Hv\u002fsHgqHs\u002fsHVfj7eAez9kdSOR+FZ7P7WBCRmQKns\u002foyidgGf6ej8jyW3Da8V6P0gc3AKUino\u002fSQbcxudIej8+k57RhP95P5VHAmCkrXk\u002fMPC8tZ9SeT9pNj3a8+14P9DQBXJEf3g\u002fNJB8p10GeD9YKY4dNYN3P54w1u3p9XY\u002f4XDuusNedj8dHuXlML51P62vavvDFHU\u002f+YnlcTBjdD+hPSbVRqpzP0Hx4n7w6nI\u002fjkto\u002fComcj\u002frnxpCA11xP6rrhsyQkHA\u002fV0D6meGDbz95akD6guRtP8WdWmM7RWw\u002fBmY6gjGoaj8d77uddQ9pP5UnwA\u002f7fGc\u002fpXRwspLyZT8="},"type":"scatter"},{"line":{"color":"#F2A900","dash":"dash","width":2.5},"mode":"lines","name":"Type 1 \u2014 Government-selected","x":{"dtype":"f8","bdata":"wHQeG89dmT8NfCV37oCuP93eXbB6Kbg\u002f2n+UEj+JwD9FEPrMwP3EP7CgX4dCcsk\u002fHDHFQcTmzT\u002fEYBX+oi3RP\u002fkoSNvjZ9M\u002fL\u002fF6uCSi1T9kua2VZdzXP5qB4HKmFto\u002f0EkTUOdQ3D8FEkYtKIvePx5tPIW0YuA\u002fONHV89R\u002f4T9TNW9i9ZziP26ZCNEVuuM\u002fif2hPzbX5D+jYTuuVvTlP77F1Bx3Eec\u002f2Slui5cu6D\u002f0jQf6t0vpPw\u002fyoGjYaOo\u002fKlY61\u002fiF6z9EutNFGaPsP18ebbQ5wO0\u002feoIGI1rd7j+V5p+RevrvP1ilHIDNi\u002fA\u002fZVdpt10a8T9zCbbu7ajxP4C7AiZ+N\u002fI\u002fjW1PXQ7G8j+bH5yUnlTzP6jR6Msu4\u002fM\u002ftoM1A79x9D\u002fDNYI6TwD1P9DnznHfjvU\u002f3pkbqW8d9j\u002frS2jg\u002f6v2P\u002fn9tBeQOvc\u002fBrABTyDJ9z8TYk6GsFf4PyEUm71A5vg\u002fLsbn9NB0+T88eDQsYQP6P0kqgWPxkfo\u002fV9zNmoEg+z9kjhrSEa\u002f7P3FAZwmiPfw\u002ff\u002fKzQDLM\u002fD+MpAB4wlr9P5pWTa9S6f0\u002fpwia5uJ3\u002fj+0uuYdcwb\u002fP8JsM1UDlf8\u002faA9AxskRAEBuaObhEVkAQHTBjP1ZoABAfBozGaLnAECCc9k06i4BQIrMf1AydgFAkCUmbHq9AUCWfsyHwgQCQJ7XcqMKTAJApDAZv1KTAkCqib\u002famtoCQLLiZfbiIQNAuDsMEitpA0C+lLItc7ADQMbtWEm79wNAzEb\u002fZAM\u002fBEDSn6WAS4YEQNr4S5yTzQRA4FHyt9sUBUDmqpjTI1wFQO4DP+9rowVA9FzlCrTqBUD8tYsm\u002fDEGQAIPMkJEeQZACGjYXYzABkAQwX551AcHQBYaJZUcTwdAHHPLsGSWB0AkzHHMrN0HQColGOj0JAhAMH6+Az1sCEA412QfhbMIQD4wCzvN+ghARImxVhVCCUBM4ldyXYkJQFI7\u002fo2l0AlAWJSkqe0XCkBg7UrFNV8KQGZG8eB9pgpAbp+X\u002fMXtCkB0+D0YDjULQHpR5DNWfAtAgqqKT57DC0CIAzFr5goMQI5c14YuUgxAlrV9onaZDECcDiS+vuAMQKJnytkGKA1AqsBw9U5vDUCwGRcRl7YNQLZyvSzf\u002fQ1AvstjSCdFDkDEJApkb4wOQMp9sH+30w5A0tZWm\u002f8aD0DYL\u002f22R2IPQN6Io9KPqQ9A5uFJ7tfwD0B2HfgEEBwQQPpJyxK0PxBAfXaeIFhjEEAAo3Eu\u002fIYQQITPRDygqhBAB\u002fwXSkTOEECLKOtX6PEQQA5VvmWMFRFAkYGRczA5EUAVrmSB1FwRQJjaN494gBFAGwcLnRykEUCfM96qwMcRQCJgsbhk6xFApYyExggPEkApuVfUrDISQKzlKuJQVhJALxL+7\u002fR5EkCzPtH9mJ0SQDZrpAs9wRJAuZd3GeHkEkA9xEonhQgTQMDwHTUpLBNARB3xQs1PE0DHScRQcXMTQEp2l14VlxNAzqJqbLm6E0BRzz16Xd4TQNT7EIgBAhRAWCjklaUlFEDbVLejSUkUQF6BirHtbBRA4q1dv5GQFEBl2jDNNbQUQOgGBNvZ1xRAbDPX6H37FEDvX6r2IR8VQHKMfQTGQhVA9rhQEmpmFUB55SMgDooVQPwR9y2yrRVAgD7KO1bRFUADa51J+vQVQIeXcFeeGBZACsRDZUI8FkCN8BZz5l8WQBEd6oCKgxZAlEm9ji6nFkAXdpCc0soWQJuiY6p27hZAHs82uBoSF0Ch+wnGvjUXQCUo3dNiWRdAqFSw4QZ9F0ArgYPvqqAXQK+tVv1OxBdAMtopC\u002fPnF0C1Bv0YlwsYQDkz0CY7LxhAvF+jNN9SGEBAjHZCg3YYQMO4SVAnmhhARuUcXsu9GEDKEfBrb+EYQE0+w3kTBRlA0GqWh7coGUBUl2mVW0wZQNfDPKP\u002fbxlAWvAPsaOTGUDeHOO+R7cZQGFJtszr2hlA5HWJ2o\u002f+GUBoolzoMyIaQOvOL\u002fbXRRpAbvsCBHxpGkDyJ9YRII0aQHVUqR\u002fEsBpA+YB8LWjUGkB8rU87DPgaQP\u002fZIkmwGxtAgwb2VlQ\u002fG0AGM8lk+GIbQIlfnHKchhtADYxvgECqG0CQuEKO5M0bQBPlFZyI8RtAlxHpqSwVHEAaPry30DgcQJ1qj8V0XBxAIZdi0xiAHECkwzXhvKMcQCfwCO9gxxxAqxzc\u002fATrHEAuSa8KqQ4dQLF1ghhNMh1ANaJVJvFVHUC4zig0lXkdQDz7+0E5nR1AvyfPT93AHUBCVKJdgeQdQMaAdWslCB5ASa1IeckrHkDM2RuHbU8eQFAG75QRcx5A0zLCorWWHkBWX5WwWboeQNqLaL793R5AXbg7zKEBH0Dg5A7aRSUfQGQR4ufpSB9A5z219Y1sH0BqaogDMpAfQO6WWxHWsx9AccMuH3rXH0D17wEtHvsfQDuOah1hDyBAfSRUJDMhIEC\u002fuj0rBTMgQABRJzLXRCBAQucQOalWIECEffo\u002fe2ggQMUT5EZNeiBAB6rNTR+MIEBJQLdU8Z0gQIvWoFvDryBAzGyKYpXBIEAOA3RpZ9MgQFCZXXA55SBAkS9Hdwv3IEDTxTB+3QghQBVcGoWvGiFAVvIDjIEsIUCYiO2SUz4hQNoe15klUCFAG7XAoPdhIUBdS6qnyXMhQJ\u002fhk66bhSFA4Hd9tW2XIUAiDme8P6khQGSkUMMRuyFApTo6yuPMIUDn0CPRtd4hQClnDdiH8CFAav323lkCIkCsk+DlKxQiQO4pyuz9JSJAL8Cz8883IkBxVp36oUkiQLPshgF0WyJA9IJwCEZtIkA2GVoPGH8iQHivQxbqkCJAuUUtHbyiIkD72xYkjrQiQD1yACtgxiJAfgjqMTLYIkDAntM4BOoiQAI1vT\u002fW+yJAQ8umRqgNI0CFYZBNeh8jQMf3eVRMMSNACY5jWx5DI0BKJE1i8FQjQIy6NmnCZiNAzlAgcJR4I0AP5wl3ZoojQFF98304nCNAkxPdhAquI0DUqcaL3L8jQBZAsJKu0SNAWNaZmYDjI0CZbIOgUvUjQNsCbackByRAHZlWrvYYJEBeL0C1yCokQKDFKbyaPCRA4lsTw2xOJEAj8vzJPmAkQGWI5tAQciRApx7Q1+KDJEDotLnetJUkQCpLo+WGpyRAbOGM7Fi5JECtd3bzKsskQO8NYPr83CRAMaRJAc\u002fuJEByOjMIoQAlQLTQHA9zEiVA9mYGFkUkJUA3\u002fe8cFzYlQHmT2SPpRyVAuynDKrtZJUD8v6wxjWslQD5WljhffSVAgOx\u002fPzGPJUDBgmlGA6ElQAMZU03VsiVARa88VKfEJUCHRSZbedYlQMjbD2JL6CVACnL5aB36JUBMCONv7wsmQI2ezHbBHSZAzzS2fZMvJkARy5+EZUEmQFJhiYs3UyZAlPdykgllJkDWjVyZ23YmQBckRqCtiCZAWbovp3+aJkCbUBmuUawmQNzmArUjviZAHn3su\u002fXPJkBgE9bCx+EmQKGpv8mZ8yZA4z+p0GsFJ0Al1pLXPRcnQGZsfN4PKSdAqAJm5eE6J0DqmE\u002fss0wnQCsvOfOFXidAbcUi+ldwJ0CvWwwBKoInQPDx9Qf8kydAMojfDs6lJ0B0HskVoLcnQLW0shxyySdA90qcI0TbJ0A54YUqFu0nQHp3bzHo\u002fidAvA1ZOLoQKED+o0I\u002fjCIoQD86LEZeNChAgdAVTTBGKEDDZv9TAlgoQAX96FrUaShARpPSYaZ7KECIKbxoeI0oQMq\u002fpW9KnyhAC1aPdhyxKEBN7Hh97sIoQI+CYoTA1ChA0BhMi5LmKEASrzWSZPgoQFRFH5k2CilAldsIoAgcKUDXcfKm2i0pQBkI3K2sPylAWp7FtH5RKUCcNK+7UGMpQN7KmMIidSlAH2GCyfSGKUBh92vQxpgpQKONVdeYqilA5CM\u002f3mq8KUAmuijlPM4pQGhQEuwO4ClAqeb78uDxKUDrfOX5sgMqQC0TzwCFFSpAbqm4B1cnKkCwP6IOKTkqQPLVixX7SipAM2x1HM1cKkB1Al8jn24qQLeYSCpxgCpA+C4yMUOSKkA6xRs4FaQqQHxbBT\u002fntSpAvvHuRbnHKkD\u002fh9hMi9kqQEEewlNd6ypAg7SrWi\u002f9KkDESpVhAQ8rQAbhfmjTICtASHdob6UyK0CJDVJ2d0QrQMujO31JVitADTolhBtoK0BO0A6L7XkrQJBm+JG\u002fiytA0vzhmJGdK0ATk8ufY68rQFUptaY1wStAlr+erQfTK0A="},"y":{"dtype":"f8","bdata":"nT6XyG1owT8+NBwZ2g7CP1C5wp2PtcI\u002fDVsw+zVcwz+7oj7AcwLEP4+4CtXup8Q\u002fppEl60xMxT\u002fZN+ztM+\u002fFP+loEHJKkMY\u002fGJhdIzgvxz9HNc0vpsvHP63iBq8\u002fZcg\u002fcM11BbL7yD8mdStCrY7JP0yX2XbkHco\u002fxGRACQ6pyj8zUIP94y\u002fLP2dR7Tgksss\u002fGhHFvJAvzD+FtenY76fMPz6eCVYMG80\u002fXOlcl7WIzT\u002fnv+Wzv\u002fDNP7fRT4cDU84\u002fb8Seul6vzj9+XPDEswXPP6iPquTpVc8\u002fjkJ\u002fEe2fzz\u002fq+77nrePPP16ZwMaQENA\u002f4PMZySAs0D8yc5bkhUTQP9Sj7g\u002fBWdA\u002f+tMlONVr0D83ez0ox3rQPw52sW+dhtA\u002fCBkOSGCP0D8DlO55GZXQPxmhrkHUl9A\u002fBiUWNJ2X0D9bUEAjgpTQP6IX+gOSjtA\u002fuJrN09yF0D9xbOl\u002fc3rQP0G+C81nbNA\u002ft1qSQMxb0D8INckKtEjQP3FAivIyM9A\u002fBlo6Ql0b0D\u002fMbCi2RwHQP4xkm9gOys8\u002fPDjQqmONzz\u002fDRMVOuUzPP3vj9KE7CM8\u002f+akX3RbAzj8Tdtx\u002fd3TOP2Tfhz6KJc4\u002fJgNA8XvTzT+UysaEeX7NP7hRY+yvJs0\u002fAuq6FEzMzD\u002feSFvXem\u002fMP2Wzue5oEMw\u002fwUlu6kKvyz8B3XYjNUzLP5rYUbBr58o\u002f\u002fp3HWBKByj9XFj+JVBnKP\u002foWgUVdsMk\u002fiFXVGldGyT+o9GoRbNvIP1cCBp3Fb8g\u002fOnfyjIwDyD9JQ0T76JbHP9iccjsCKsc\u002fuwBjyP68xj\u002flBv4xBFDGP9lPbQo348U\u002fPUYm07p2xT8uOOnpsQrFP\u002f9Z33U9n8Q\u002f0JIEVX00xD+phAsKkMrDPxAS66qSYcM\u002furxE0KD5wj8tndKF1JLCP7RuCjxGLcI\u002fjEYhuwzJwT+gFZkXPWbBPxIWfqjqBME\u002f\u002fs52\u002fyalwD9yecXiAUfAP\u002fynqpIS1b8\u002fENTTsZIfvz\u002fCFwPNmG2+P0B17vE1v70\u002fxl7Wm3cUvT9J4ufBZ228P85fKeoMyrs\u002for7gQGoquz9Kule0f466P5Kw2BRK9rk\u002fW3S0OMNhuT9PGRgk4tC4P\u002fWMcDSbQ7g\u002ftzMRT+C5tz9mtsoSoTO3PyXLFwzLsLY\u002ftR5\u002f60kxtj9Up8O9B7W1P8+udyXtO7U\u002fX9OCleHFtD9gLSiMy1K0P\u002frDF86Q4rM\u002fEI0VoRZ1sz98ZsAFQgqzP47TBPD3obI\u002fx8\u002fJfR08sj8uu2krmNixPzREjgVOd7E\u002fszEM2CUYsT+nCmNZB7uwP9C7jFLbX7A\u002f33TSwosGsD+l4sv+B16vP\u002f4+Ep1hsq4\u002fn\u002f0y\u002fAAKrj8m8sDqxWStP9GTLISTwqw\u002f6BwjQVAjrD95bFT+5YarP\u002fksxvlB7ao\u002f7lfzxlRWqj9d\u002fQ46EsKpP\u002f7n10pxMKk\u002frQaA72uhqD8jLT7w\u002fhSoP0l8MrQpi6c\u002f8WFVCO4Dpz8JcTbhT3+mP9IqWxhV\u002faU\u002fKxYWJgV+pT8kHbTYaAGlPwsR4QmKh6Q\u002fgWokU3MQpD++5lTCL5yjP0iY3I7KKqM\u002f2Huf0E68oj+fxUw5x1CiP2gU19A96KE\u002fbbfBtbuCoT9BcuHhSCChP8XkHfTrwKA\u002fHDOu\u002f6lkoD8m\u002fjdhhgugPxLsRjQFa58\u002fqiHFZDzFnj+\u002fAKlBrSWePxJFs3ROjJ0\u002fNj4vTxL5nD+D3rLC5mucPwrLx2a15Js\u002fLFwKi2Njmz9KuClV0ueaPzU+FerecZo\u002fzqOHoWIBmj\u002fCxgdDM5aZP8hnYksjMJk\u002f4xSPOQLPmD9tfeXhnHKYPxtmf8a9Gpg\u002f026ecy3Hlz+c1+vesneXP5BQa8gTLJc\u002fcIQAHBXklj9fRHFSe5+WP23J29AKXpY\u002fSySpRYgflj+wUxcCueOVP01GjE9jqpU\u002fnNv6v05zlT\u002fUYrx4RD6VPxOxW3cPC5U\u002frT7qz3zZlD\u002fXV5PkW6mUP3zhPJZ+epQ\u002fewMgbrlMlD890V3A4x+UP99VrMfX85M\u002fGN5OunLIkz\u002f5mqDYlJ2TP+J4inUhc5M\u002fUANM+f5Ikz9ZNQvfFh+TP80AqK1V9ZI\u002f5hFW7KrLkj8B2oETCaKSP9NJhXpleJI\u002fgfWsQrhOkj8g0QdA\u002fCSSP3SIcuAu+5E\u002fQ\u002fRDEVDRkT\u002fms\u002fIjYqeRP3Le\u002fLFpfZE\u002f7IJKgG1TkT91vjJidimRP44COhyP\u002f5A\u002fcjuPRsTVkD9\u002fVD0vJKyQP+CZ97u+gpA\u002fvhlaS6VZkD+a02uV6jCQPy2WJ4uiCJA\u002fbmSUacTBjz9HvUIdf3OPP0AALciiJo8\u002flCFnUV7bjj8vXM2d4ZGOP02PpDhdSo4\u002fudII9wEFjj\u002fK1\u002f2VAMKNP5RcGFOJgY0\u002f3fjff8tDjT97BjQQ9QiNP59kLCQy0Yw\u002fjEQejqycjD+f9JxVi2uMP1iNfTjyPYw\u002fM04RKwEUjD+7LvTY0+2LP36F8ieBy4s\u002fSJeovhqtiz\u002fXYJiQrJKLP7kahHE8fIs\u002fzQ\u002fmsclpiz9zxF\u002fGTFuLP4yu8vu2UIs\u002fkZrDOvJJiz+gPQ\u002fZ4EaLPzd80n9dR4s\u002fTPF7IjtLiz+8v8YKRVKLP05qofk+XIs\u002fbjO\u002fXeVoiz\u002fUayig7XeLPwBNz4YGiYs\u002fsNbcrNibiz\u002fkCRUQB7CLPxVLXbIvxYs\u002fmjMcTuzaiz\u002faNNkb0\u002fCLPxeuNad3Bow\u002fjvARsWsbjD+5jXAcQC+MP0F5cuOFQYw\u002f\u002fi+YEc9RjD\u002f7MlDAr1+MP8eOwhK\u002faow\u002ffXi8LZhyjD90rJ4o23aMP2VePfQtd4w\u002fQSK5ND1zjD+B\u002fnwLvWqMP6ROvs5pXYw\u002fzowWrAhLjD\u002ftkxQ0aDOMP2lX8cxgFow\u002frx\u002fqCtXziz86rR7tscuLPyqoMv7unYs\u002fK91VWI5qiz88TLyMnDGLPwVG9G4w84o\u002fkxPsxGqvij\u002fxQtjcdWaKP8whhgqFGIo\u002fYrL5DdTFiT8XLYJlpm6JP263so1GE4k\u002fMmDlMQW0iD+f2BtQOFGIP0gtM1M664c\u002fYY91JmmChz8m3J5FJReHP3EQZszQqYY\u002f6HKPiM46hj8GdXERgcqFP5S7sedJWYU\u002fFkTRn4jnhD\u002fqKecZmnWEP+BIqsjXA4Q\u002fcRikCZeSgz946BuQKCKDP5CI+uPXsoI\u002f\u002frOU9epEgj+5x\u002ffGodiBP++pASs2boE\u002fELo7mtsFgT9+WCIdv5+AP71GOEsHPIA\u002fgan\u002fu6i1fz+67mitgPh+PyyTzWq+QH4\u002fL4\u002fXf36OfT+jhs2t0uF8P7oNKa7COnw\u002fuP3KCU2Zez+AWMkAaP16P9HXwn4CZ3o\u002frjqlFwXWeT9sAOQIU0p5P3SUPDvLw3g\u002f99hRQUlCeD8GLqJPpsV3P\u002f4cnyq6TXc\u002fFyD7B1zadj+Z9pZgY2t2P3Tn0rCoAHY\u002fjIpnJQaadT9hfkszWDd1P0cpjhl+2HQ\u002f+LhxTFp9dD+xeG7J0iV0P7TsJVTR0XM\u002fepujnEOBcz\u002fY6ZpPGzRzP1jqmxFO6nI\u002fmqh7ZtWjcj8hnWaGrmByP+YVRSLaIHI\u002fkiZBGVzkcT+e8VshO6txP5nVFGWAdXE\u002fQ2MwGDdDcT+ZS68FbBRxP18g\u002fxgt6XA\u002fN2Vg5IjBcD+muGcmjp1wP+GZY1BLfXA\u002f719OD85gcD\u002feS83YIkhwP3A2k31UM3A\u002f7zdQwmsicD+j1CgAbxVwP6+2f81hDHA\u002fB8utr0QHcD8NohbWFAZwP90d297LCHA\u002flYdDpV8PcD8AzdQZwhlwPwB84yPhJ3A\u002fIYdajKY5cD+yS1Tx905wPxPoEcK2Z3A\u002focDPQsCDcD\u002fJCO6X7aJwP1kP4dcTxXA\u002ffpdeIwTqcD+IQEPDixFxP+1ctEt0O3E\u002fEPwOxINncT9moUPTfJVxP6luTvAexXE\u002f6KOMlib2cT9wfMF9TShyPxLZrNVKW3I\u002fQh0lhdOOcj96dbJsmsJyP1PUs6xQ9nI\u002f3csc76Upcz8and60SFxzPwgdDqfmjXM\u002fHEDT6yy+cz8iMCZ\u002fyOxzPwPjUI9mGXQ\u002fzHcb3bRDdD9hhnUfYmt0PweKV2oekHQ\u002frTV+mJuxdD\u002fOfIa3jc90P6sv1XWr6XQ\u002fiP2Yka7\u002fdD\u002fZWhpIVBF1P3f+csRdHnU\u002fzDuvjJAmdT9iN0fstil1P1uIzVqgJ3U\u002fPPCk3SEgdT8494djFhN1PybbqxhfAHU\u002fFKpMsuPndD+IwXqwksl0P6RJEpVhpXQ\u002fLYLbDk17dD8ilu4XWUt0PwHFlgaRFXQ\u002fdIQWkAfacz\u002fxI9i81phzP+bAw80fUnM\u002fXyWjEgsGcz8="},"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"title":{"font":{"size":14,"color":"#012169"},"text":"Estimated Cost Distributions by Firm Type (Public Auctions)"},"xaxis":{"tickfont":{"size":12},"title":{"text":"Pseudo-cost (thousands MXN per m\u00b3, 2018 prices)"},"gridcolor":"#eee"},"yaxis":{"tickfont":{"size":12},"title":{"text":"Density"},"gridcolor":"#eee"},"legend":{"font":{"size":12},"orientation":"h","x":0,"y":-0.18},"margin":{"l":60,"r":20,"t":50,"b":80},"plot_bgcolor":"white","paper_bgcolor":"white","height":380},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('c6e9c0ec-5bb6-48f9-a183-5fc6bdf428dd');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };            </script>        </div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>How are pseudo-costs estimated?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The observed bids are <strong>not</strong> firms’ costs — they include a strategic markup. The structural auction model (explained in <a href="./methods.html">Methods</a>) recovers each firm’s underlying cost from its bid, using the equilibrium relationship between bidding strategies and cost distributions. These recovered values are called <strong>pseudo-costs</strong>.</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="choice-of-allocation-mechanism" class="level2">
+<h2 class="anchored" data-anchor-id="choice-of-allocation-mechanism">Choice of Allocation Mechanism</h2>
+<p>A probit model on the choice of mechanism (public auction = 0, direct/I3P = 1) reveals that:</p>
+<ul>
+<li><strong>Project size:</strong> A one-standard-deviation increase in concrete volume reduces the probability of bypassing a public auction by <strong>11.4 percentage points</strong>. Smaller projects are more likely to use discretionary mechanisms.</li>
+<li><strong>Sewage work:</strong> Projects with sewage work are <strong>9.8 pp less likely</strong> to be directly allocated or invited — complex projects go to public auction more often.</li>
+<li><strong>Election year:</strong> Being in the year before municipal elections increases the probability of bypassing a public auction by <strong>6.2 pp</strong>.</li>
+<li><strong>Party (PAN vs.&nbsp;PRI):</strong> PAN-governed municipalities are <strong>18.9 pp less likely</strong> to use discretionary mechanisms than PRI municipalities.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Daniel Prudencio — <em>Journal of Productivity Analysis</em> (2025)</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

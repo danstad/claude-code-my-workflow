@@ -1,0 +1,80 @@
+---
+title: "Productivity in Procurement Auctions of Pavement Contracts in Mexico"
+---
+
+```{=html}
+<div class="paper-title-block">
+  <h1>Productivity in Procurement Auctions of Pavement Contracts in Mexico</h1>
+  <p class="meta">
+    <strong>Daniel Prudencio</strong> &nbsp;·&nbsp;
+    Tecnológico de Monterrey &nbsp;·&nbsp;
+    <em>Journal of Productivity Analysis</em>, 2025
+  </p>
+</div>
+```
+
+## The Question
+
+When local governments allocate public infrastructure contracts, they can choose between **open competition** (public auctions) or **greater hiring discretion** — inviting a handful of firms or directly picking a preferred contractor.
+
+In theory, discretion allows governments to select the most capable firms. In practice, it opens the door to favoritism and corruption. **Which is actually happening in Mexico?**
+
+This paper answers that question using street pavement contracts in Mexico (2011–2018), combining a structural auction model with stochastic frontier analysis to recover firm-level productivity and compare it across allocation mechanisms.
+
+---
+
+## Key Findings
+
+```{=html}
+<div class="cards-grid">
+
+  <div class="finding-card positive-card">
+    <div class="finding-label">Complex Contracts</div>
+    <div class="finding-headline">Government selects the right firms ✓</div>
+    <p class="finding-body">For projects that include sewage work, firms selected to settings with less competition have <strong>lower costs</strong> than firms that only participate in public auctions. Economies of scope likely explain this advantage.</p>
+  </div>
+
+  <div class="finding-card negative-card">
+    <div class="finding-label">Simple Contracts</div>
+    <div class="finding-headline">Government selects the wrong firms ✗</div>
+    <p class="finding-body">For small, simple pavement projects (76% of invitation-only auctions), selected firms have <strong>higher costs</strong>. These contracts should be put out to public auction.</p>
+  </div>
+
+  <div class="finding-card neutral-card">
+    <div class="finding-label">Political Factors</div>
+    <div class="finding-headline">Electoral cycle drives discretion</div>
+    <p class="finding-body">Governments are <strong>6.2% more likely</strong> to bypass public auctions in the year before elections. Firm excess costs rise 13.8% near election time in public auctions.</p>
+  </div>
+
+</div>
+```
+
+---
+
+## Study at a Glance
+
+| | Public Auction | Invitation (I3P) | Direct Allocation |
+|---|---|---|---|
+| **Contracts (2011–2018)** | 617 | 2,633 | 448 |
+| **Bids observed** | 2,784 | — | — |
+| **Avg. bidders per auction** | 6.9 | ≥ 3 (by law) | 1 |
+| **Competition level** | High | Medium | None |
+| **Government discretion** | Low | Medium | High |
+
+---
+
+## Abstract
+
+> When allocating contracts, governments decide between exercising hiring discretion or allowing higher competition without firm selection. Ex-ante, it is not clear which allocation format leads to better outcomes. The trade-off depends in part on the government's ability to select the best firms when restricting competition and on the probability that this practice leads to corruption. In this paper, I study the allocation of street pavement contracts in Mexico. I combine auction methods with a productivity analysis to indirectly test whether local governments select firms with low excess costs when restricting competition. This indirect approach allows the monitoring of contract allocation in settings with little information on firm reputation. I find that firms selected to settings with less competition have lower costs in complex pavement contracts, but higher costs in simple ones. Contrary to the current practice, the results suggest that the government would benefit from using public auctions for simple pavement contracts.
+
+---
+
+## How to Navigate This Site
+
+| Page | What you will find |
+|------|--------------------|
+| [Context & Data](context.qmd) | Mexico's procurement law, the three allocation mechanisms, data overview |
+| [Methods](methods.qmd) | The structural auction model and stochastic frontier analysis |
+| [Results](results.qmd) | Cost distributions and efficiency estimates by firm type |
+| [Political Factors](politics.qmd) | Electoral cycle and party alignment effects |
+| [Replication](replication.qmd) | Citation, bibtex, and code |

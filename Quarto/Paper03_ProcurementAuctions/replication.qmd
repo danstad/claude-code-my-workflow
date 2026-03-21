@@ -1,0 +1,61 @@
+---
+title: "Replication"
+---
+
+## Citation
+
+> Prudencio, D. (2025). Productivity in procurement auctions of pavement contracts in Mexico. *Journal of Productivity Analysis*. https://doi.org/10.1007/s11123-025-00733-3
+
+---
+
+## BibTeX Entry
+
+```bibtex
+@article{prudencio2025procurement,
+  author    = {Prudencio, Daniel},
+  title     = {Productivity in procurement auctions of pavement contracts in {Mexico}},
+  journal   = {Journal of Productivity Analysis},
+  year      = {2025},
+  publisher = {Springer},
+  doi       = {10.1007/s11123-025-00733-3}
+}
+```
+
+---
+
+## Data and Code
+
+### Data Sources
+
+The analysis uses administrative procurement data from Mexico's **CompraNet** platform (Mexico's public procurement registry), covering pavement contracts in the state of Jalisco from 2011 to 2018.
+
+| Dataset | Description | Use |
+|---------|-------------|-----|
+| `data_final.csv` | Bid-level data with pseudo-costs (`c`) and bid values (`f_c`) by firm type (`typeb`) | Cost density chart in [Context & Data](context.qmd) |
+| `data_densities.csv` | CDF of pseudo-costs at project size quantiles, simple projects | Cost CDF chart in [Results](results.qmd) |
+| `data_densities_drenaje.csv` | CDF of pseudo-costs at project size quantiles, complex projects | Cost CDF chart in [Results](results.qmd) |
+| `efficiency_index_comparison_drenaje_sfa.csv` | Firm-level BC efficiency index (`bc_h`) by type | Efficiency density chart in [Results](results.qmd) |
+| `efficiency_index_sfa_drenaje.csv` | State-level weighted efficiency index (`bc_t_weighted_ent`) | Mexico map in [Results](results.qmd) |
+
+### Methodological Code
+
+The structural auction model is estimated in **R** using custom kernel density estimation routines. Pseudo-costs are recovered from observed bids using the GPV inversion formula, with:
+
+- **Triweight kernel** for continuous project characteristics (concrete volume)
+- **Smoothed binary kernel** for the sewage dummy
+- **10% boundary trimming** to reduce kernel edge bias
+- **Log-transformation** of bids to reduce skewness
+
+The stochastic frontier analysis is estimated using maximum likelihood, with two distributional assumptions for the inefficiency term (half-normal and truncated-normal).
+
+### This Website
+
+This website was built with [Quarto](https://quarto.org) as a multi-page HTML site. All charts are rendered in **Python** using `plotly` and `scipy`. The source `.qmd` files are in `Quarto/Paper03_ProcurementAuctions/`.
+
+---
+
+## Contact
+
+Daniel Prudencio
+Tecnológico de Monterrey
+[prudencio.daniel@tec.mx](mailto:prudencio.daniel@tec.mx)
