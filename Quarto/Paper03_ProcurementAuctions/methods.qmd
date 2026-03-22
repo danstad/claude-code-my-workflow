@@ -185,9 +185,12 @@ The inequality $\eta_i \geq 0$ is what distinguishes SFA from standard regressio
 
 The frontier $\ln C^*(w_i, z_i)$ is approximated by a **translog** specification — the standard flexible functional form for cost functions, which nests the Cobb-Douglas as a special case. Using three inputs ($w_1$ = daily wage, $w_2$ = price of concrete, $w_3$ = daily machinery rent) and imposing homogeneity of degree one in input prices by normalizing on $w_1$, the estimated cost equation is:
 
-$$\ln\!\left(\frac{\hat{c}_i}{w_{1,i}}\right) = \beta_0 + \beta_z \ln z_i + \beta_2 \ln\!\left(\frac{w_{2,i}}{w_{1,i}}\right) + \beta_3 \ln\!\left(\frac{w_{3,i}}{w_{1,i}}\right) + \frac{1}{2}\beta_{23} \ln\!\left(\frac{w_{2,i}}{w_{1,i}}\right)\ln\!\left(\frac{w_{3,i}}{w_{1,i}}\right)$$
-
-$$+ \frac{1}{2}\beta_{zz}(\ln z_i)^2 + \frac{1}{2}\beta_{22}\!\left[\ln\!\left(\frac{w_{2,i}}{w_{1,i}}\right)\right]^{\!2} + \frac{1}{2}\beta_{33}\!\left[\ln\!\left(\frac{w_{3,i}}{w_{1,i}}\right)\right]^{\!2} + \beta_{2z}\ln\!\left(\frac{w_{2,i}}{w_{1,i}}\right)\ln z_i + \beta_{3z}\ln\!\left(\frac{w_{3,i}}{w_{1,i}}\right)\ln z_i + \beta_{K+1}\text{Controls}_i + \eta_i + \nu_i \tag{11}$$
+$$\begin{aligned}
+\ln\!\left(\frac{\hat{c}_i}{w_{1,i}}\right) =\;& \beta_0 + \beta_z \ln z_i + \beta_2 \ln\!\left(\frac{w_{2,i}}{w_{1,i}}\right) + \beta_3 \ln\!\left(\frac{w_{3,i}}{w_{1,i}}\right) \\[4pt]
+&+ \tfrac{1}{2}\beta_{zz}(\ln z_i)^2 + \tfrac{1}{2}\beta_{22}\!\left[\ln\!\left(\frac{w_{2,i}}{w_{1,i}}\right)\right]^{\!2} + \tfrac{1}{2}\beta_{33}\!\left[\ln\!\left(\frac{w_{3,i}}{w_{1,i}}\right)\right]^{\!2} \\[4pt]
+&+ \tfrac{1}{2}\beta_{23}\ln\!\left(\frac{w_{2,i}}{w_{1,i}}\right)\ln\!\left(\frac{w_{3,i}}{w_{1,i}}\right) + \beta_{2z}\ln\!\left(\frac{w_{2,i}}{w_{1,i}}\right)\ln z_i + \beta_{3z}\ln\!\left(\frac{w_{3,i}}{w_{1,i}}\right)\ln z_i \\[4pt]
+&+ \beta_{K+1}\,\text{Controls}_i + \eta_i + \nu_i
+\end{aligned} \tag{11}$$
 
 Symmetry requires $\beta_{kk'} = \beta_{k'k}$. Homogeneity of degree one in input prices further requires $\sum_k \beta_k = 1$, $\sum_k \beta_{kk'} = 0$ for all $k'$, and $\sum_k \beta_{kz} = 0$ — restrictions imposed during estimation by the normalization on $w_1$. Controls include state fixed effects and a sewage work dummy. The noise term $\nu_i$ can be interpreted as coming from the error in pseudo-cost estimation.
 
