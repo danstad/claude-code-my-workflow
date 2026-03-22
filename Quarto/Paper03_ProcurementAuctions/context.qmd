@@ -42,9 +42,9 @@ As shown in [Political Factors](politics.qmd), the probability of bypassing a pu
 
 ---
 
-## Scope: Jalisco, 2011–2018
+## Scope: Mexico, 2011–2018
 
-The analysis focuses on **street pavement contracts** (pavimentación de calles) in the state of Jalisco, covering all contracts recorded in Mexico's national procurement registry (CompraNet) from 2011 to 2018. Jalisco is a large, economically significant state with multiple municipalities spanning urban, semi-urban, and rural areas — providing variation in economic conditions, local governments, and contractor markets.
+The analysis focuses on **street pavement contracts** (pavimentación de calles) across Mexico, covering all contracts recorded in Mexico's national procurement registry (CompraNet) from 2011 to 2018. The data spans municipalities in multiple states, providing variation in economic conditions, local governments, contractor markets, and political environments.
 
 Pavement contracts are particularly well-suited for structural analysis because:
 
@@ -125,10 +125,12 @@ import plotly.graph_objects as go
 
 DATA_PATH = "../../code_jmp/Exploratory R/"
 
-df = pd.read_csv(DATA_PATH + "data_final.csv")
-df_bids = df[df["f_c"] > 0].dropna(subset=["f_c", "typeb"])
-q98 = df_bids["f_c"].quantile(0.98)
-df_bids = df_bids[df_bids["f_c"] <= q98]
+# bids_asym.csv: fallo_concrete = bid per m³ concrete (thousands MXN, 2018 prices)
+#                anydir_pav = 0 (public-auction-only) | 1 (government-selected)
+df = pd.read_csv(DATA_PATH + "bids_asym.csv")
+df = df[df["fallo_concrete"] > 0].dropna(subset=["fallo_concrete", "anydir_pav"])
+q99 = df["fallo_concrete"].quantile(0.99)
+df = df[df["fallo_concrete"] <= q99]
 
 colors = {0: "#2E75B6", 1: "#F2A900"}
 labels = {0: "Type 0 — Public-auction-only", 1: "Type 1 — Government-selected"}
@@ -138,23 +140,22 @@ fig = go.Figure()
 vals_by_type = {}
 
 for t in [0, 1]:
-    vals = df_bids[df_bids["typeb"] == t]["f_c"].values
+    vals = df[df["anydir_pav"] == t]["fallo_concrete"].values
     vals_by_type[t] = vals
-    kde = gaussian_kde(vals, bw_method="scott")
-    x = np.linspace(vals.min(), vals.max(), 400)
+    kde = gaussian_kde(vals, bw_method=0.3)
+    x = np.linspace(vals.min(), vals.max(), 500)
     y = kde(x)
     fig.add_trace(go.Scatter(
         x=x, y=y,
         mode="lines",
-        name=labels[t],
+        name=f"{labels[t]} (n={len(vals):,})",
         line=dict(color=colors[t], width=2.5, dash=line_styles[t])
     ))
 
-# KS test
 ks_stat, ks_p = ks_2samp(vals_by_type[0], vals_by_type[1])
 
 fig.add_annotation(
-    text=f"KS statistic: {ks_stat:.3f} (p = {ks_p:.4f})",
+    text=f"KS statistic: {ks_stat:.3f}  (p = {ks_p:.4f})",
     x=0.98, y=0.95,
     xref="paper", yref="paper",
     showarrow=False,
@@ -193,10 +194,12 @@ import plotly.graph_objects as go
 
 DATA_PATH = "../../code_jmp/Exploratory R/"
 
-df = pd.read_csv(DATA_PATH + "data_final.csv")
-df = df[df["c"] > 0].dropna(subset=["c", "typeb"])
-q98 = df["c"].quantile(0.98)
-df = df[df["c"] <= q98]
+# data_xi.csv: c_hat = pseudo-cost (thousands MXN per m³, 2018 prices)
+#              typeb2 = 0 (public-auction-only) | 1 (government-selected)
+df = pd.read_csv(DATA_PATH + "data_xi.csv")
+df = df[df["c_hat"] > 0].dropna(subset=["c_hat", "typeb2"])
+q99 = df["c_hat"].quantile(0.99)
+df = df[df["c_hat"] <= q99]
 
 colors = {0: "#2E75B6", 1: "#F2A900"}
 labels = {0: "Type 0 — Public-auction-only", 1: "Type 1 — Government-selected"}
@@ -205,14 +208,16 @@ line_styles = {0: "solid", 1: "dash"}
 fig = go.Figure()
 
 for t in [0, 1]:
-    vals = df[df["typeb"] == t]["c"].values
-    kde = gaussian_kde(vals, bw_method="scott")
-    x = np.linspace(vals.min(), vals.max(), 400)
+    vals = df[df["typeb2"] == t]["c_hat"].values
+    if len(vals) < 5:
+        continue
+    kde = gaussian_kde(vals, bw_method=0.3)
+    x = np.linspace(vals.min(), vals.max(), 500)
     y = kde(x)
     fig.add_trace(go.Scatter(
         x=x, y=y,
         mode="lines",
-        name=labels[t],
+        name=f"{labels[t]} (n={len(vals):,})",
         line=dict(color=colors[t], width=2.5, dash=line_styles[t])
     ))
 

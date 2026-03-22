@@ -91,7 +91,8 @@ fig.add_trace(go.Scatter(
 fig.update_layout(
     title=dict(
         text="Cost CDFs by Firm Type — Simple Pavement Projects (no sewage)",
-        font=dict(size=14, color="#012169")
+        font=dict(size=14, color="#012169"),
+        y=0.97, x=0.0, xanchor="left"
     ),
     xaxis=dict(
         title="Pseudo-cost (thousands MXN per m³, 2018 prices)",
@@ -104,16 +105,16 @@ fig.update_layout(
     ),
     legend=dict(orientation="h", x=0, y=-0.22, font=dict(size=12)),
     plot_bgcolor="white", paper_bgcolor="white",
-    height=430,
-    margin=dict(l=60, r=20, t=70, b=100),
+    height=440,
+    margin=dict(l=60, r=20, t=80, b=110),
     updatemenus=[dict(
-        type="buttons",
-        direction="right",
-        x=0.0, y=1.15,
+        type="dropdown",
+        x=0.0, y=1.0,
+        xanchor="left", yanchor="bottom",
         showactive=True,
         buttons=[
             dict(
-                label="Simple projects (no sewage)",
+                label="Simple (no sewage)",
                 method="update",
                 args=[
                     {"visible": [True, True, False, False]},
@@ -121,7 +122,7 @@ fig.update_layout(
                 ]
             ),
             dict(
-                label="Complex projects (sewage work)",
+                label="Complex (with sewage)",
                 method="update",
                 args=[
                     {"visible": [False, False, True, True]},
@@ -211,7 +212,7 @@ fig.update_layout(
         font=dict(size=14, color="#012169")
     ),
     xaxis=dict(
-        title="BC Efficiency Index  [ e^{−η̂} ]  (1 = fully efficient, 0 = maximally inefficient)",
+        title="BC Efficiency Index = exp(-η̂)   [range: 0 to 1;  higher = more efficient]",
         tickfont=dict(size=12), gridcolor="#eee",
         range=[0.08, 1.0]
     ),
@@ -368,7 +369,7 @@ except Exception as e:
 ```
 
 ::: {.callout-note collapse="true"}
-## Interpreting the geographic variation
+## Interpreting the geographic variation (state map)
 
 The state-level average reflects the composition of firms participating in public auctions in that state's municipalities. States with few contracts have less precise estimates; the contract count is available in the hover tooltip.
 
@@ -376,6 +377,105 @@ Large variation across states may reflect:
 1. **Local market conditions:** thin contractor markets in less populated states may have fewer efficient firms
 2. **Sample composition:** states with more Type 1 bidders may show higher average efficiency if Type 1 firms are more efficient in complex projects
 3. **Contract mix:** states with more complex (sewage-inclusive) contracts may show different average efficiency than states with mostly simple pavement work
+:::
+
+---
+
+### Municipality-Level Efficiency Map
+
+The map below disaggregates to the **municipality level** — the actual unit of government that awards contracts. Municipality codes follow the INEGI 5-digit classification (first 2 digits = state, last 3 = municipality within state).
+
+```{python}
+import pandas as pd
+import numpy as np
+import plotly.graph_objects as go
+import requests
+
+DATA_PATH = "../../code_jmp/Exploratory R/"
+
+df_raw = pd.read_csv(DATA_PATH + "efficiency_index_sfa_drenaje.csv")
+df_raw = df_raw.dropna(subset=["region", "bc_h"])
+df_raw["region"] = df_raw["region"].astype(int)
+
+df_mun = df_raw.groupby("region").agg(
+    bc_mean=("bc_h", "mean"),
+    n=("bc_h", "count")
+).reset_index()
+df_mun["mun_code"] = df_mun["region"].astype(str).str.zfill(5)
+n_muns = len(df_mun)
+
+MUN_URLS = [
+    "https://raw.githubusercontent.com/angelnmara/geojson/master/mexico-municipios.json",
+    "https://raw.githubusercontent.com/hectorip/mexico-geojson/master/data/mexico.json",
+]
+
+geojson_mun = None
+for url in MUN_URLS:
+    try:
+        r = requests.get(url, timeout=15)
+        if r.status_code == 200:
+            geojson_mun = r.json()
+            break
+    except Exception:
+        continue
+
+if geojson_mun is not None:
+    id_candidates = ["CVEGEO", "CVE_MUN", "cve_mun", "id", "CVE"]
+    for feature in geojson_mun.get("features", []):
+        fid = feature.get("id", None)
+        if not fid:
+            for key in id_candidates:
+                if key in feature.get("properties", {}):
+                    feature["id"] = str(feature["properties"][key]).zfill(5)
+                    break
+
+    fig = go.Figure(go.Choropleth(
+        geojson=geojson_mun,
+        locations=df_mun["mun_code"],
+        z=df_mun["bc_mean"],
+        colorscale=[[0.0,"#012169"],[0.4,"#2E75B6"],[0.7,"#8AADDA"],[1.0,"#F2A900"]],
+        zmin=df_mun["bc_mean"].min(),
+        zmax=df_mun["bc_mean"].max(),
+        marker_line_color="white",
+        marker_line_width=0.3,
+        colorbar=dict(title=dict(text="BC Index",font=dict(size=11)),tickfont=dict(size=10),len=0.6,thickness=14),
+        customdata=df_mun[["mun_code","n"]].values,
+        hovertemplate="<b>Municipality %{location}</b><br>BC Index: %{z:.3f}<br>Contracts: %{customdata[1]}<extra></extra>"
+    ))
+    fig.update_geos(fitbounds="locations", visible=False, bgcolor="white")
+    fig.update_layout(
+        title=dict(text=f"Average BC Efficiency Index by Municipality (n = {n_muns} municipalities)",
+                   font=dict(size=14, color="#012169")),
+        geo=dict(showframe=False, showcoastlines=False, projection_type="mercator"),
+        height=500, margin=dict(l=0,r=0,t=55,b=10), paper_bgcolor="white"
+    )
+    fig.show()
+else:
+    df_sorted = df_mun.sort_values("bc_mean")
+    fig = go.Figure(go.Bar(
+        x=df_sorted["bc_mean"],
+        y=df_sorted["mun_code"],
+        orientation="h",
+        marker_color=df_sorted["bc_mean"],
+        marker_colorscale=[[0,"#012169"],[1,"#F2A900"]],
+        hovertemplate="Municipality: %{y}<br>BC Index: %{x:.3f}<extra></extra>"
+    ))
+    fig.update_layout(
+        title=dict(text=f"Municipality Efficiency Index — {n_muns} municipalities (GeoJSON unavailable, bar chart shown)",
+                   font=dict(size=13, color="#012169")),
+        xaxis=dict(title="BC Efficiency Index", range=[0,1]),
+        yaxis=dict(title="Municipality (INEGI code)", tickfont=dict(size=8)),
+        height=max(400, n_muns*10),
+        margin=dict(l=80,r=40,t=60,b=40),
+        paper_bgcolor="white", plot_bgcolor="white"
+    )
+    fig.show()
+```
+
+::: {.callout-note collapse="true"}
+## Notes on the municipality map
+
+Municipality-level estimates are based on firm-level pseudo-costs aggregated within each municipality. Municipalities with fewer contracts have noisier estimates. Hover over any municipality to see its INEGI code, average BC efficiency index, and number of underlying contract observations.
 :::
 
 ---
