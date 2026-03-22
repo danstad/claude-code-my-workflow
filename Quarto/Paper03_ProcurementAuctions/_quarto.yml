@@ -18,6 +18,8 @@ website:
         text: Results
       - href: politics.qmd
         text: Political Factors
+      - href: discussion.qmd
+        text: Discussion
       - href: replication.qmd
         text: Replication
   page-footer:
