@@ -23,7 +23,7 @@ website:
       - href: citation.qmd
         text: Citation
   page-footer:
-    left: "Daniel Prudencio — *Journal of Productivity Analysis* (2023)"
+    left: "Daniel Prudencio — [*Journal of Productivity Analysis* (2023)](https://link.springer.com/article/10.1007/s11123-023-00677-0)"
     right: "Built with [Quarto](https://quarto.org)"
 
 format:
