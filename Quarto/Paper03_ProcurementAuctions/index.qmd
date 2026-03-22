@@ -1,10 +1,10 @@
 ---
-title: "Productivity in Procurement Auctions of Pavement Contracts in Mexico"
+title-block-style: none
 ---
 
 ```{=html}
 <div class="paper-title-block">
-  <h1>When Does Government Discretion Pay Off? Procurement Efficiency and Political Distortions in Mexico</h1>
+  <h1>Productivity in Procurement Auctions of Pavement Contracts in Mexico</h1>
   <p class="meta">
     <strong>Daniel Prudencio</strong> &nbsp;·&nbsp;
     Tecnológico de Monterrey &nbsp;·&nbsp;
