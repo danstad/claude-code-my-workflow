@@ -333,7 +333,7 @@ window.Quarto = {
 <p>A more serious problem is <strong>boundary bias</strong>: near the lower boundary of the bid support (<span class="math inline">\(\underline{b}\)</span>), the kernel function extends below the support, causing the density estimator to underestimate the true density. Two strategies address this:</p>
 <ol type="1">
 <li><p><strong>Log transformation</strong>: bids are log-transformed before kernel estimation. This maps the support from <span class="math inline">\([\underline{b}, \infty)\)</span> to <span class="math inline">\((-\infty, \infty)\)</span>, eliminating the lower boundary problem and also reducing right-skewness.</p></li>
-<li><p><strong>10% boundary trimming</strong>: observations in the bottom and top 10% of the bid distribution are excluded from the inversion step. This removes the region where boundary effects are most severe, at the cost of losing information about the tails. An alternative that avoids trimming altogether is the boundary-corrected kernel estimator proposed by <strong>Hickman and Hubbard (2015)</strong>, which directly adjusts the kernel near the support boundary.</p></li>
+<li><p><strong>10% boundary trimming</strong>: the 10% of observations at the tails of the bid distribution (combined across both ends) are excluded from the inversion step. This removes the region where boundary effects are most severe, at the cost of losing information about the tails. An alternative that avoids trimming altogether is the boundary-corrected kernel estimator proposed by <strong>Hickman and Hubbard (2015)</strong>, which directly adjusts the kernel near the support boundary.</p></li>
 </ol>
 </div>
 </div>
