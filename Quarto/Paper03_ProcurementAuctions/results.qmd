@@ -390,84 +390,162 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 import requests
+import unicodedata
 
 DATA_PATH = "../../code_jmp/Exploratory R/"
 
+# ── Efficiency data ──────────────────────────────────────────────────────────
 df_raw = pd.read_csv(DATA_PATH + "efficiency_index_sfa_drenaje.csv")
 df_raw = df_raw.dropna(subset=["region", "bc_h"])
 df_raw["region"] = df_raw["region"].astype(int)
+df_raw["id_ent"]  = df_raw["id_ent"].astype(int)
 
 df_mun = df_raw.groupby("region").agg(
     bc_mean=("bc_h", "mean"),
-    n=("bc_h", "count")
+    n=("bc_h", "count"),
+    id_ent=("id_ent", "first")
 ).reset_index()
 df_mun["mun_code"] = df_mun["region"].astype(str).str.zfill(5)
-n_muns = len(df_mun)
+eff_dict = dict(zip(df_mun["mun_code"], df_mun["bc_mean"]))
+n_dict   = dict(zip(df_mun["mun_code"], df_mun["n"]))
 
-MUN_URLS = [
-    "https://raw.githubusercontent.com/angelnmara/geojson/master/mexico-municipios.json",
-    "https://raw.githubusercontent.com/hectorip/mexico-geojson/master/data/mexico.json",
-]
+# ── Municipality name → INEGI code lookup ───────────────────────────────────
+def normalize(s):
+    s = str(s).upper()
+    return "".join(c for c in unicodedata.normalize("NFD", s)
+                   if unicodedata.category(c) != "Mn").strip()
 
-geojson_mun = None
-for url in MUN_URLS:
+ref = pd.read_csv(DATA_PATH + "panel_variables.csv", encoding="latin1",
+                  usecols=["id_ent", "name_mun", "cve_inegi"])
+ref = ref.drop_duplicates(subset=["cve_inegi"])
+ref["cve_inegi_str"] = ref["cve_inegi"].astype(int).astype(str).str.zfill(5)
+ref["name_norm"]     = ref["name_mun"].apply(normalize)
+mun_lookup = {(int(row.id_ent), row.name_norm): row.cve_inegi_str
+              for _, row in ref.iterrows()}
+
+# ── Per-state GeoJSON file names ─────────────────────────────────────────────
+STATE_FILES = {
+     1:"01_Aguascalientes",  2:"02_BajaCalifornia",   3:"03_BajaCaliforniaSur",
+     4:"04_Campeche",        5:"05_Coahuila",          6:"06_Colima",
+     7:"07_Chiapas",         8:"08_Chihuahua",          9:"09_CDMX",
+    10:"10_Durango",         11:"11_Guanajuato",       12:"12_Guerrero",
+    13:"13_Hidalgo",         14:"14_Jalisco",           15:"15_Mexico",
+    16:"16_Michoacan",       17:"17_Morelos",           18:"18_Nayarit",
+    19:"19_Nuevo_Leon",      20:"20_Oaxaca",            21:"21_Puebla",
+    22:"22_Queretaro",       23:"23_QuintanaRoo",       24:"24_SanLuisPotosi",
+    25:"25_Sinaloa",         26:"26_Sonora",            27:"27_Tabasco",
+    28:"28_Tamaulipas",      29:"29_Tlaxcala",          30:"30_Veracruz",
+    31:"31_Yucatan",         32:"32_Zacatecas",
+}
+BASE = "https://raw.githubusercontent.com/angelnmara/geojson/master/Municipios/"
+
+# ── Fetch and match ───────────────────────────────────────────────────────────
+states_needed = sorted(df_mun["id_ent"].unique().astype(int))
+features_with_data = []
+features_bg        = []   # background (all muns in states with data)
+
+for sid in states_needed:
+    fname = STATE_FILES.get(sid)
+    if not fname:
+        continue
     try:
-        r = requests.get(url, timeout=15)
-        if r.status_code == 200:
-            geojson_mun = r.json()
-            break
+        r = requests.get(f"{BASE}{fname}.json", timeout=12)
+        if r.status_code != 200:
+            continue
+        for feat in r.json().get("features", []):
+            mun_name  = feat.get("properties", {}).get("NAME_2", "")
+            mun_norm  = normalize(mun_name)
+            inegi_str = mun_lookup.get((sid, mun_norm))
+            if inegi_str:
+                feat["id"] = inegi_str
+                features_bg.append(feat)          # always add to background
+                if inegi_str in eff_dict:
+                    features_with_data.append(feat)
     except Exception:
         continue
 
-if geojson_mun is not None:
-    id_candidates = ["CVEGEO", "CVE_MUN", "cve_mun", "id", "CVE"]
-    for feature in geojson_mun.get("features", []):
-        fid = feature.get("id", None)
-        if not fid:
-            for key in id_candidates:
-                if key in feature.get("properties", {}):
-                    feature["id"] = str(feature["properties"][key]).zfill(5)
-                    break
+n_matched = len(features_with_data)
 
-    fig = go.Figure(go.Choropleth(
-        geojson=geojson_mun,
-        locations=df_mun["mun_code"],
-        z=df_mun["bc_mean"],
-        colorscale=[[0.0,"#012169"],[0.4,"#2E75B6"],[0.7,"#8AADDA"],[1.0,"#F2A900"]],
-        zmin=df_mun["bc_mean"].min(),
-        zmax=df_mun["bc_mean"].max(),
-        marker_line_color="white",
-        marker_line_width=0.3,
-        colorbar=dict(title=dict(text="BC Index",font=dict(size=11)),tickfont=dict(size=10),len=0.6,thickness=14),
-        customdata=df_mun[["mun_code","n"]].values,
-        hovertemplate="<b>Municipality %{location}</b><br>BC Index: %{z:.3f}<br>Contracts: %{customdata[1]}<extra></extra>"
+if n_matched > 0:
+    # Background layer: all municipalities in states with data (light outline)
+    geojson_bg   = {"type": "FeatureCollection", "features": features_bg}
+    bg_ids = [f["id"] for f in features_bg]
+
+    # Data layer: only municipalities with efficiency index
+    geojson_data = {"type": "FeatureCollection", "features": features_with_data}
+    data_ids = [f["id"] for f in features_with_data]
+    data_z   = [eff_dict[fid] for fid in data_ids]
+    data_n   = [n_dict[fid]   for fid in data_ids]
+
+    fig = go.Figure()
+
+    # Grey background for all municipalities in covered states
+    fig.add_trace(go.Choropleth(
+        geojson=geojson_bg,
+        locations=bg_ids,
+        z=[0.5] * len(bg_ids),
+        colorscale=[[0,"#e8e8e8"],[1,"#e8e8e8"]],
+        showscale=False,
+        marker_line_color="#cccccc",
+        marker_line_width=0.4,
+        hoverinfo="skip",
     ))
+
+    # Colored layer for municipalities with data
+    fig.add_trace(go.Choropleth(
+        geojson=geojson_data,
+        locations=data_ids,
+        z=data_z,
+        colorscale=[[0.0,"#012169"],[0.35,"#2E75B6"],[0.7,"#8AADDA"],[1.0,"#F2A900"]],
+        zmin=min(data_z),
+        zmax=max(data_z),
+        marker_line_color="white",
+        marker_line_width=0.6,
+        colorbar=dict(
+            title=dict(text="BC Index<br>(higher = more efficient)", font=dict(size=11)),
+            tickfont=dict(size=10), len=0.65, thickness=15,
+        ),
+        customdata=list(zip(data_ids, data_n)),
+        hovertemplate=(
+            "<b>Municipality %{location}</b><br>"
+            "BC Efficiency Index: %{z:.3f}<br>"
+            "N contracts: %{customdata[1]}<extra></extra>"
+        ),
+    ))
+
     fig.update_geos(fitbounds="locations", visible=False, bgcolor="white")
     fig.update_layout(
-        title=dict(text=f"Average BC Efficiency Index by Municipality (n = {n_muns} municipalities)",
-                   font=dict(size=14, color="#012169")),
+        title=dict(
+            text=f"Average BC Efficiency Index by Municipality ({n_matched} municipalities with data; others in grey)",
+            font=dict(size=13, color="#012169"),
+        ),
         geo=dict(showframe=False, showcoastlines=False, projection_type="mercator"),
-        height=500, margin=dict(l=0,r=0,t=55,b=10), paper_bgcolor="white"
+        height=530,
+        margin=dict(l=0, r=0, t=60, b=10),
+        paper_bgcolor="white",
     )
     fig.show()
+
 else:
+    # Fallback bar chart
     df_sorted = df_mun.sort_values("bc_mean")
     fig = go.Figure(go.Bar(
         x=df_sorted["bc_mean"],
         y=df_sorted["mun_code"],
         orientation="h",
-        marker_color=df_sorted["bc_mean"],
-        marker_colorscale=[[0,"#012169"],[1,"#F2A900"]],
+        marker=dict(color=df_sorted["bc_mean"],
+                    colorscale=[[0,"#012169"],[1,"#F2A900"]],
+                    showscale=True),
         hovertemplate="Municipality: %{y}<br>BC Index: %{x:.3f}<extra></extra>"
     ))
     fig.update_layout(
-        title=dict(text=f"Municipality Efficiency Index — {n_muns} municipalities (GeoJSON unavailable, bar chart shown)",
+        title=dict(text="Municipality Efficiency Index (map unavailable — bar chart shown)",
                    font=dict(size=13, color="#012169")),
         xaxis=dict(title="BC Efficiency Index", range=[0,1]),
-        yaxis=dict(title="Municipality (INEGI code)", tickfont=dict(size=8)),
-        height=max(400, n_muns*10),
-        margin=dict(l=80,r=40,t=60,b=40),
-        paper_bgcolor="white", plot_bgcolor="white"
+        yaxis=dict(title="INEGI code", tickfont=dict(size=8)),
+        height=max(500, len(df_mun)*12),
+        margin=dict(l=80, r=40, t=60, b=40),
+        paper_bgcolor="white", plot_bgcolor="white",
     )
     fig.show()
 ```

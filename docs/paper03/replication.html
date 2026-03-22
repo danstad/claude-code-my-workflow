@@ -172,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">Data Sources</a></li>
   <li><a href="#methodological-code" id="toc-methodological-code" class="nav-link" data-scroll-target="#methodological-code">Methodological Code</a></li>
-  <li><a href="#this-website" id="toc-this-website" class="nav-link" data-scroll-target="#this-website">This Website</a></li>
+  <li><a href="#about-this-website" id="toc-about-this-website" class="nav-link" data-scroll-target="#about-this-website">About This Website</a></li>
   </ul></li>
   <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">Contact</a></li>
   </ul>
@@ -207,17 +207,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="citation" class="level2">
 <h2 class="anchored" data-anchor-id="citation">Citation</h2>
 <blockquote class="blockquote">
-<p>Prudencio, D. (2025). Productivity in procurement auctions of pavement contracts in Mexico. <em>Journal of Productivity Analysis</em>. https://doi.org/10.1007/s11123-025-00733-3</p>
+<p>Prudencio, D. (2023). Productivity in procurement auctions of pavement contracts in Mexico. <em>Journal of Productivity Analysis</em>. https://doi.org/10.1007/s11123-025-00733-3</p>
 </blockquote>
 <hr>
 </section>
 <section id="bibtex-entry" class="level2">
 <h2 class="anchored" data-anchor-id="bibtex-entry">BibTeX Entry</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@article</span>{<span class="ot">prudencio2025procurement</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@article</span>{<span class="ot">prudencio2023procurement</span>,</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span>    = {Prudencio, Daniel},</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span>     = {Productivity in procurement auctions of pavement contracts in {Mexico}},</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">journal</span>   = {Journal of Productivity Analysis},</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span>      = {2025},</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span>      = {2023},</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">publisher</span> = {Springer},</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">doi</span>       = {10.1007/s11123-025-00733-3}</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -227,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="data-and-code">Data and Code</h2>
 <section id="data-sources" class="level3">
 <h3 class="anchored" data-anchor-id="data-sources">Data Sources</h3>
-<p>The analysis uses administrative procurement data from Mexico’s <strong>CompraNet</strong> platform (Mexico’s public procurement registry), covering pavement contracts in the state of Jalisco from 2011 to 2018.</p>
+<p>The analysis uses administrative procurement data from Mexico’s <strong>CompraNet</strong> platform (Mexico’s public procurement registry), covering pavement contracts across municipalities in Mexico from 2011 to 2018.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -238,53 +238,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>data_final.csv</code></td>
-<td>Bid-level data with pseudo-costs (<code>c</code>) and bid values (<code>f_c</code>) by firm type (<code>typeb</code>)</td>
-<td>Cost density chart in <a href="./context.html">Context &amp; Data</a></td>
+<td><code>bids_asym.csv</code></td>
+<td>Bid-level data with bid per m³ concrete (<code>fallo_concrete</code>) and firm type (<code>anydir_pav</code>)</td>
+<td>Bid distribution chart in <a href="./context.html">Context &amp; Data</a></td>
 </tr>
 <tr class="even">
+<td><code>data_xi.csv</code></td>
+<td>Pseudo-costs (<code>c_hat</code>) recovered from the structural model, by firm type (<code>typeb2</code>)</td>
+<td>Pseudo-cost distribution chart in <a href="./context.html">Context &amp; Data</a></td>
+</tr>
+<tr class="odd">
 <td><code>data_densities.csv</code></td>
-<td>CDF of pseudo-costs at project size quantiles, simple projects</td>
+<td>CDF of pseudo-costs at project size quantiles, simple contracts</td>
+<td>Cost CDF chart in <a href="./results.html">Results</a></td>
+</tr>
+<tr class="even">
+<td><code>data_densities_drenaje.csv</code></td>
+<td>CDF of pseudo-costs at project size quantiles, complex contracts</td>
 <td>Cost CDF chart in <a href="./results.html">Results</a></td>
 </tr>
 <tr class="odd">
-<td><code>data_densities_drenaje.csv</code></td>
-<td>CDF of pseudo-costs at project size quantiles, complex projects</td>
-<td>Cost CDF chart in <a href="./results.html">Results</a></td>
-</tr>
-<tr class="even">
 <td><code>efficiency_index_comparison_drenaje_sfa.csv</code></td>
 <td>Firm-level BC efficiency index (<code>bc_h</code>) by type</td>
 <td>Efficiency density chart in <a href="./results.html">Results</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>efficiency_index_sfa_drenaje.csv</code></td>
-<td>State-level weighted efficiency index (<code>bc_t_weighted_ent</code>)</td>
-<td>Mexico map in <a href="./results.html">Results</a></td>
+<td>Firm-level BC index with state and municipality identifiers</td>
+<td>State and municipality maps in <a href="./results.html">Results</a></td>
+</tr>
+<tr class="odd">
+<td><code>panel_variables.csv</code></td>
+<td>Contract-level panel with municipality names and INEGI codes</td>
+<td>Municipality–name lookup for maps</td>
 </tr>
 </tbody>
 </table>
+<hr>
 </section>
 <section id="methodological-code" class="level3">
 <h3 class="anchored" data-anchor-id="methodological-code">Methodological Code</h3>
-<p>The structural auction model is estimated in <strong>R</strong> using custom kernel density estimation routines. Pseudo-costs are recovered from observed bids using the GPV inversion formula, with:</p>
-<ul>
-<li><strong>Triweight kernel</strong> for continuous project characteristics (concrete volume)</li>
-<li><strong>Smoothed binary kernel</strong> for the sewage dummy</li>
-<li><strong>10% boundary trimming</strong> to reduce kernel edge bias</li>
-<li><strong>Log-transformation</strong> of bids to reduce skewness</li>
-</ul>
-<p>The stochastic frontier analysis is estimated using maximum likelihood, with two distributional assumptions for the inefficiency term (half-normal and truncated-normal).</p>
+<p>The paper uses three separate computational environments, each for a different stage of the analysis:</p>
+<p><strong>Stage 1 — Structural auction model (Julia)</strong></p>
+<p>The nonparametric GPV estimation — including kernel density estimation of bid distributions and recovery of pseudo-costs via the inversion formula — is implemented in <strong>Julia</strong>. Julia’s performance is well-suited to the computationally intensive kernel bandwidth selection and cross-validation steps. The output is the pseudo-cost dataset (<code>data_xi.csv</code>, <code>data_densities.csv</code>, <code>data_densities_drenaje.csv</code>).</p>
+<p><strong>Stage 2 — Stochastic frontier analysis (Julia/Stata)</strong></p>
+<p>The SFA models (half-normal and truncated-normal) are estimated via maximum likelihood. The efficiency index datasets (<code>efficiency_index_*.csv</code>) are the output of this stage.</p>
+<p><strong>Stage 3 — Figures in the paper (R)</strong></p>
+<p>All figures published in the <em>Journal of Productivity Analysis</em> article were produced in <strong>R</strong> using <code>ggplot2</code>. The R scripts that generate the published figures are available in the project’s <code>code_jmp/Exploratory R/</code> directory.</p>
+<p><strong>This website (Python)</strong></p>
+<p>The interactive charts on this website are independent reproductions of the paper’s figures using <strong>Python</strong> (<code>plotly</code>, <code>scipy</code>, <code>pandas</code>). They draw on the same CSV output files as the R scripts, so the underlying data is identical — only the rendering tool differs.</p>
+<hr>
 </section>
-<section id="this-website" class="level3">
-<h3 class="anchored" data-anchor-id="this-website">This Website</h3>
-<p>This website was built with <a href="https://quarto.org">Quarto</a> as a multi-page HTML site. All charts are rendered in <strong>Python</strong> using <code>plotly</code> and <code>scipy</code>. The source <code>.qmd</code> files are in <code>Quarto/Paper03_ProcurementAuctions/</code>.</p>
+<section id="about-this-website" class="level3">
+<h3 class="anchored" data-anchor-id="about-this-website">About This Website</h3>
+<p>This interactive summary was built with <a href="https://quarto.org">Quarto</a>, a scientific publishing system that renders Markdown and Python code into HTML. The source files for this website are available in the same GitHub repository as the paper’s replication code.</p>
 <hr>
 </section>
 </section>
 <section id="contact" class="level2">
 <h2 class="anchored" data-anchor-id="contact">Contact</h2>
-<p>Daniel Prudencio Tecnológico de Monterrey <a href="mailto:prudencio.daniel@tec.mx">prudencio.daniel@tec.mx</a></p>
+<p>Daniel Prudencio <a href="mailto:prudencio.da@gmail.com">prudencio.da@gmail.com</a></p>
 
 
 </section>
@@ -694,7 +707,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Daniel Prudencio — <em>Journal of Productivity Analysis</em> (2025)</p>
+<p>Daniel Prudencio — <em>Journal of Productivity Analysis</em> (2023)</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
