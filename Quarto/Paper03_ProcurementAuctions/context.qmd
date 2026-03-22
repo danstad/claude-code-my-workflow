@@ -123,11 +123,11 @@ The chart below shows the **conditional bid CDF** $F(b \mid Z = z)$ for each fir
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
-from scipy.interpolate import make_interp_spline
 
 DATA_PATH = "../../code_jmp/Exploratory R/"
 
-df = pd.read_csv(DATA_PATH + "data_G_conditional.csv")
+# Use the same file as the paper (data_G_conditional_diri3p.csv)
+df = pd.read_csv(DATA_PATH + "data_G_conditional_diri3p.csv")
 df = df.dropna(subset=["bid", "G_cond25", "G_cond50", "G_cond75", "typeb"])
 
 colors = {0: "#2E75B6", 1: "#F2A900"}
@@ -137,18 +137,6 @@ dashes  = {0: "solid", 1: "dot"}
 cols       = ["G_cond25", "G_cond50", "G_cond75"]
 pct_labels = ["25th percentile", "50th percentile", "75th percentile"]
 pct_subs   = ["small projects", "median projects", "large projects"]
-
-def smooth_cdf(x_raw, y_raw, n=500):
-    """Interpolate a CDF onto a dense evenly-spaced grid for smooth rendering."""
-    # Remove duplicates and ensure monotone x
-    order = np.argsort(x_raw)
-    x_raw, y_raw = x_raw[order], y_raw[order]
-    _, unique_idx = np.unique(x_raw, return_index=True)
-    x_raw, y_raw = x_raw[unique_idx], y_raw[unique_idx]
-    x_smooth = np.linspace(x_raw.min(), x_raw.max(), n)
-    spl = make_interp_spline(x_raw, y_raw, k=3)
-    y_smooth = np.clip(spl(x_smooth), 0, 1)
-    return x_smooth, y_smooth
 
 fig = go.Figure()
 
@@ -164,13 +152,13 @@ for t in [0, 1]:
     ))
 
 # Real data traces: 3 percentiles × 2 types (indices 2–7)
+# No interpolation needed — the pre-computed Julia kernel estimates are already dense
 for i, col in enumerate(cols):
     for t in [0, 1]:
         sub = df[df["typeb"] == t].sort_values("bid")
-        x_s, y_s = smooth_cdf(sub["bid"].values, sub[col].values)
         fig.add_trace(go.Scatter(
-            x=x_s,
-            y=y_s,
+            x=sub["bid"],
+            y=sub[col],
             mode="lines",
             name=labels[t],
             line=dict(color=colors[t], width=2.5, dash=dashes[t]),
@@ -237,65 +225,6 @@ fig.show()
 
 Type 1 firms bid on average **8.5% higher** than Type 0 firms in the same auctions, controlling for project characteristics. A Kolmogorov-Smirnov test rejects equality of the two bid distributions at conventional significance levels. Notably, the separation between the two types is **more pronounced for larger projects** (75th percentile) than for smaller ones (25th percentile), where the CDFs are nearly indistinguishable. This justifies the asymmetric model specification, since pooling the two types would be inconsistent with the data.
 
-### Estimated Cost Distributions
-
-The chart below shows the **pseudo-cost distributions** — bids minus the strategic markup recovered by the structural model. These are the distributions that enter the SFA in Step 2.
-
-```{python}
-import pandas as pd
-import numpy as np
-from scipy.stats import gaussian_kde
-import plotly.graph_objects as go
-
-DATA_PATH = "../../code_jmp/Exploratory R/"
-
-# data_xi.csv: c_hat = pseudo-cost (thousands MXN per m³, 2018 prices)
-#              typeb2 = 0 (public-auction-only) | 1 (government-selected)
-df = pd.read_csv(DATA_PATH + "data_xi.csv")
-df = df[df["c_hat"] > 0].dropna(subset=["c_hat", "typeb2"])
-q99 = df["c_hat"].quantile(0.99)
-df = df[df["c_hat"] <= q99]
-
-colors = {0: "#2E75B6", 1: "#F2A900"}
-labels = {0: "Type 0 — Public-auction-only", 1: "Type 1 — Government-selected"}
-line_styles = {0: "solid", 1: "dash"}
-
-fig = go.Figure()
-
-for t in [0, 1]:
-    vals = df[df["typeb2"] == t]["c_hat"].values
-    if len(vals) < 5:
-        continue
-    kde = gaussian_kde(vals, bw_method=0.3)
-    x = np.linspace(vals.min(), vals.max(), 500)
-    y = kde(x)
-    fig.add_trace(go.Scatter(
-        x=x, y=y,
-        mode="lines",
-        name=f"{labels[t]} (n={len(vals):,})",
-        line=dict(color=colors[t], width=2.5, dash=line_styles[t])
-    ))
-
-fig.update_layout(
-    title=dict(text="Estimated Pseudo-Cost Distributions by Firm Type (Public Auctions)",
-               font=dict(size=14, color="#012169")),
-    xaxis=dict(title="Pseudo-cost (thousands MXN per m³, 2018 prices)",
-               tickfont=dict(size=12), gridcolor="#eee"),
-    yaxis=dict(title="Density", tickfont=dict(size=12), gridcolor="#eee"),
-    legend=dict(orientation="h", x=0, y=-0.22, font=dict(size=12)),
-    plot_bgcolor="white", paper_bgcolor="white",
-    height=400,
-    margin=dict(l=60, r=20, t=60, b=90)
-)
-fig.show()
-```
-
-::: {.callout-note}
-## Bids vs. pseudo-costs
-
-Comparing the bid distribution chart above with the pseudo-cost chart reveals an important pattern: **the distributions shift relative to each other** once the strategic markup is removed. Type 1 bids higher, but the pseudo-cost comparison is more nuanced, which is why the structural model is necessary. Simply comparing bids would conflate cost differences with differences in competitive pressure.
-:::
-
 ---
 
 ## Choice of Allocation Mechanism
@@ -310,11 +239,11 @@ where $D_i = 1$ if contract $i$ is allocated by I3P or direct method, $z_i$ is c
 
 ### Results
 
-| Predictor | Marginal Effect | 95% CI |
-|-----------|----------------|--------|
-| Concrete volume (1 SD increase) | −11.4 pp | Negative: larger → public auction |
-| Sewage work dummy | −9.8 pp | Negative: complex → public auction |
-| Election year | **+6.2 pp** | Positive: elections → more discretion |
-| PAN municipality (vs. PRI) | **−18.9 pp** | Negative: PAN → less discretion |
+| Predictor | Effect | Interpretation |
+|-----------|:------:|----------------|
+| Concrete volume (1 SD increase) | −11.4 pp | Larger projects are more likely to go to public auction (consistent with the law's value thresholds) |
+| Sewage work dummy | −9.8 pp | More complex projects are more likely to go to public auction |
+| Election year | **+6.2 pp** | In pre-election years, governments bypass public auctions more often |
+| PAN municipality (vs. PRI) | **−18.9 pp** | Municipalities governed by the opposition party (PAN) use significantly less discretion |
 
 The strong negative effect of project size is consistent with the law's intent: the value thresholds that allow I3P and direct methods are designed for small contracts. The election-year and party effects (discussed in detail in [Political Factors](politics.qmd)) suggest that political incentives also shape the allocation decision.
