@@ -424,16 +424,16 @@ window.Quarto = {
 <p>The model is estimated by <strong>maximum likelihood</strong>. Under the half-normal specification, the log-likelihood for observation <span class="math inline">\(i\)</span> is:</p>
 <p><span class="math display">\[\ell_i = \text{const} - \ln \sigma - \ln \Phi\!\left(\frac{\mu^*_i}{\sigma^*}\right) + \ln \phi\!\left(\frac{u_i}{\sigma}\right)\]</span></p>
 <p>where <span class="math inline">\(\sigma^2 = \sigma_u^2 + \sigma_\varepsilon^2\)</span>, <span class="math inline">\(\lambda = \sigma_u/\sigma_\varepsilon\)</span> is the signal-to-noise ratio, and <span class="math inline">\(u_i = \ln C^a_i - \ln C^*(w_i, z_i)\)</span> is the composite residual.</p>
-<p>Once the frontier parameters are estimated, firm-level efficiency is recovered using the <strong>Jondrow, Lovell, Materov, and Schmidt (1982)</strong> conditional mean:</p>
+<p>Once the frontier parameters are estimated, firm-level efficiency is recovered via the conditional mean of <span class="math inline">\(\eta_i\)</span> given the composite residual:</p>
 <p><span class="math display">\[\hat{\eta}_i = \mathbb{E}[\eta_i \mid \varepsilon_i + \eta_i = u_i] = \frac{\sigma_u \sigma_\varepsilon}{\sigma} \left[\frac{\phi(\mu^*_i/\sigma^*)}{\Phi(\mu^*_i/\sigma^*)} + \frac{\mu^*_i}{\sigma^*}\right]\]</span></p>
-<p>This is not the true inefficiency but the best prediction of it given the observable composite error. It converges to the true <span class="math inline">\(\eta_i\)</span> only as the time dimension grows (Horrace and Schmidt, 1996), a limitation shared by all cross-sectional SFA models.</p>
+<p>This is not the true inefficiency but the best prediction of it given the observable composite error.</p>
 </div>
 </div>
 </div>
 </section>
 <section id="the-efficiency-index" class="level3">
 <h3 class="anchored" data-anchor-id="the-efficiency-index">The Efficiency Index</h3>
-<p>The <strong>Battese and Coelli (1988, 1992) efficiency index</strong> is reported as the primary result:</p>
+<p>The <strong>Battese and Coelli efficiency index</strong> is reported as the primary result:</p>
 <p><span class="math display">\[BC_i = e^{-\hat{\eta}_i} \in (0, 1]\]</span></p>
 <p>Interpretation: <span class="math inline">\(BC_i = 1\)</span> means the firm is on the cost frontier, with zero excess cost. <span class="math inline">\(BC_i = 0.80\)</span> means the firm uses <span class="math inline">\(1/0.80 = 1.25\)</span> times the inputs of a frontier firm to produce the same output, implying a 25% excess cost. Values closer to 1 indicate less inefficiency.</p>
 <p>The paper reports mean <span class="math inline">\(BC\)</span> by firm type, testing whether Type 1 (government-selected) and Type 0 (public-auction-only) firms have statistically different efficiency levels.</p>
@@ -522,7 +522,7 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td>Trimming</td>
-<td>10% at each boundary</td>
+<td>10% total (combined tails)</td>
 <td>Reduces kernel boundary effects</td>
 </tr>
 <tr class="odd">

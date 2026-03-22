@@ -212,16 +212,16 @@ $$\ell_i = \text{const} - \ln \sigma - \ln \Phi\!\left(\frac{\mu^*_i}{\sigma^*}\
 
 where $\sigma^2 = \sigma_u^2 + \sigma_\varepsilon^2$, $\lambda = \sigma_u/\sigma_\varepsilon$ is the signal-to-noise ratio, and $u_i = \ln C^a_i - \ln C^*(w_i, z_i)$ is the composite residual.
 
-Once the frontier parameters are estimated, firm-level efficiency is recovered using the **Jondrow, Lovell, Materov, and Schmidt (1982)** conditional mean:
+Once the frontier parameters are estimated, firm-level efficiency is recovered via the conditional mean of $\eta_i$ given the composite residual:
 
 $$\hat{\eta}_i = \mathbb{E}[\eta_i \mid \varepsilon_i + \eta_i = u_i] = \frac{\sigma_u \sigma_\varepsilon}{\sigma} \left[\frac{\phi(\mu^*_i/\sigma^*)}{\Phi(\mu^*_i/\sigma^*)} + \frac{\mu^*_i}{\sigma^*}\right]$$
 
-This is not the true inefficiency but the best prediction of it given the observable composite error. It converges to the true $\eta_i$ only as the time dimension grows (Horrace and Schmidt, 1996), a limitation shared by all cross-sectional SFA models.
+This is not the true inefficiency but the best prediction of it given the observable composite error.
 :::
 
 ### The Efficiency Index
 
-The **Battese and Coelli (1988, 1992) efficiency index** is reported as the primary result:
+The **Battese and Coelli efficiency index** is reported as the primary result:
 
 $$BC_i = e^{-\hat{\eta}_i} \in (0, 1]$$
 
@@ -278,7 +278,7 @@ The answer is that bids confound **costs** and **strategy**. Type 1 firms bid 8.
 | Identification | GPV nonparametric inversion | No parametric assumption on cost distribution |
 | Asymmetry | Flambard-Perrigne extension | Type-specific bid distributions differ (KS test) |
 | Kernel | Triweight, log-transformed bids | Bounded support; reduces boundary bias |
-| Trimming | 10% at each boundary | Reduces kernel boundary effects |
+| Trimming | 10% total (combined tails) | Reduces kernel boundary effects |
 | Cost frontier | Translog log-cost function | Standard flexible form for cost functions |
 | Inefficiency distribution | Half-normal + truncated-normal | Robustness check; half-normal is baseline |
 | Efficiency index | Battese-Coelli $BC = e^{-\hat{\eta}}$ | Standard in SFA literature |
