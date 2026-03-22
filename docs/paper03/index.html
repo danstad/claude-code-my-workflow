@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-3f230b53dc93e4a04bf4a3505d77a42a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cf34676ab74c4d6acebc365d24fea9de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dfb5b25460269b898dd98cba8c7bc1c5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,6 +72,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -219,33 +248,31 @@ ul.task-list li input[type="checkbox"] {
     </div>
   </div>
 
-  <!-- Merging lines -->
+  <!-- Merging lines + arrow into GPV box -->
   <div class="id-merge-row">
     <div class="id-vline"></div>
     <div class="id-vline"></div>
   </div>
   <div class="id-arrow-center">↓</div>
 
-  <!-- GPV Inversion -->
-  <div class="id-center-step">
-    <div class="id-step-title">GPV Inversion — applied to all public auction bids</div>
-    <div class="id-step-formula">
-      \(\hat{c}_i \;=\; b_i \;-\; \dfrac{1 - \hat{F}(b_i)}{\hat{f}(b_i)}\)
-    </div>
-    <div class="id-step-sub">Pseudo-cost \(\hat{c}_i\) recovered for every bidder in both firm types</div>
-  </div>
-
+</div>
+<div class="id-center-step">
+<p><strong>GPV Inversion</strong> — applied to all public auction bids</p>
+<p><span class="math display">\[\hat{c}_i \;=\; b_i \;-\; \frac{1 - \hat{F}(b_i)}{\hat{f}(b_i)}\]</span></p>
+<p><span class="id-step-sub">Pseudo-cost <span class="math inline">\(\hat{c}_i\)</span> recovered for every bidder in both firm types</span></p>
+</div>
+<div class="id-diagram-lower">
   <div class="id-arrow-center">↓</div>
 
   <!-- Recovered CDFs -->
   <div class="id-cdf-row">
     <div class="id-cdf-box cdf0">
-      \(\hat{F}_0(c)\)
+      F̂<sub>0</sub>(c)
       <div style="font-weight:400; font-size:0.82em; color:#555; margin-top:0.2em;">Type 0 cost distribution</div>
     </div>
     <div class="id-vs">vs.</div>
     <div class="id-cdf-box cdf1">
-      \(\hat{F}_1(c)\)
+      F̂<sub>1</sub>(c)
       <div style="font-weight:400; font-size:0.82em; color:#555; margin-top:0.2em;">Type 1 cost distribution</div>
     </div>
   </div>
@@ -255,24 +282,10 @@ ul.task-list li input[type="checkbox"] {
   <!-- The test -->
   <div class="id-question-box">
     <div class="id-q-title">Does the government select cost-efficient firms?</div>
-    <div class="id-q-yes">✓ &nbsp;If \(\hat{F}_1(c) \geq \hat{F}_0(c)\): Type 1 draws lower costs — selection is justified.</div>
-    <div class="id-q-no">✗ &nbsp;If \(\hat{F}_0(c) \geq \hat{F}_1(c)\): Type 0 draws lower costs — selection is not justified.</div>
+    <div class="id-q-yes">✓ &nbsp;If F̂<sub>1</sub>(c) ≥ F̂<sub>0</sub>(c): Type 1 draws lower costs — selection is justified.</div>
+    <div class="id-q-no">✗ &nbsp;If F̂<sub>0</sub>(c) ≥ F̂<sub>1</sub>(c): Type 0 draws lower costs — selection is not justified.</div>
   </div>
-
 </div>
-
-<script>
-  // Force MathJax to process the diagram after page load
-  (function waitForMathJax() {
-    if (window.MathJax && window.MathJax.typesetPromise) {
-      window.MathJax.typesetPromise(
-        [document.querySelector('.id-diagram')]
-      );
-    } else {
-      setTimeout(waitForMathJax, 150);
-    }
-  })();
-</script>
 <hr>
 </section>
 </section>
