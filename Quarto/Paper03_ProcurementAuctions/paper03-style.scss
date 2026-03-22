@@ -339,14 +339,6 @@ h2 {
 .id-q-yes { color: $positive; margin-bottom: 0.15em; }
 .id-q-no  { color: $negative; }
 
-/* Suppress Pandoc paragraph margins inside diagram divs */
-.id-diagram p, .id-firm-box p, .id-obs-cell p,
-.id-center-step p, .id-cdf-box p, .id-question-box p {
-  margin: 0;
-  padding: 0;
-  line-height: 1.4;
-}
-
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
   .cards-grid {
