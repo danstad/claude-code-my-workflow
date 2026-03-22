@@ -403,7 +403,7 @@ Large variation across states may reflect:
 | **Type 1 pseudo-costs vs. Type 0** | Higher (worse ✗) | Lower (better ✓) |
 | **Type 1 efficiency index vs. Type 0** | Lower (worse ✗) | Higher (better ✓) |
 | **CDF dominance** | Type 0 dominates | Type 1 dominates |
-| **Share of I3P auctions** | ~76% | ~24% |
+| **Share of public auctions** | ~62% | ~38% |
 | **Policy implication** | Switch to public auction | Discretion may be justified |
 
 The combined evidence from the structural model (CDFs) and the SFA (efficiency index) points consistently in the same direction. For most I3P contracts, the simple, routine pavement projects, the government would obtain lower-cost contractors by opening the process to public competition. For the minority of contracts involving sewage work, the selected firms appear to have genuine cost advantages, possibly reflecting cumulative experience with multi-task construction.
