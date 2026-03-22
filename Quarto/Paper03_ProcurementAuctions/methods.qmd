@@ -64,13 +64,23 @@ In a first-price procurement auction, the firm submitting the **lowest** bid win
 
 $$\Pr(i \text{ wins} \mid b_{ji}) = \Pr(\text{all rivals bid above } b_{ji})$$
 
-At equilibrium, each firm uses a bidding strategy $\beta_j(\cdot)$ — a function mapping its private cost into a bid, and the equilibrium strategies are mutually best responses. Several properties hold at equilibrium:
+At equilibrium, each firm uses a bidding strategy $s_j(\cdot)$ — a strictly increasing function mapping its private cost into a bid — and the equilibrium strategies are mutually best responses. Several properties hold at equilibrium:
 
 1. **Bidding above cost:** $b_{ji} > c_{ji}$ always, as firms shade their bids upward to earn a markup
-2. **Monotonicity:** $\beta_j(\cdot)$ is strictly increasing, meaning lower-cost firms bid lower
-3. **Type-specific strategies:** because $F_0 \neq F_1$, the equilibrium strategies $\beta_0$ and $\beta_1$ differ
+2. **Monotonicity:** $s_j(\cdot)$ is strictly increasing, meaning lower-cost firms bid lower
+3. **Type-specific strategies:** because $F_0 \neq F_1$, the equilibrium strategies $s_0$ and $s_1$ differ
 
 The existence and uniqueness of such equilibria in asymmetric auctions is non-trivial and was established by Maskin and Riley (2003) under regularity conditions satisfied in this setting.
+
+Differentiating the expected profit with respect to $b_{1i}$ for Type 1 firms and $b_{0i}$ for Type 0 firms yields the first-order conditions. For $i = 1, \ldots, n_1$:
+
+$$(b_{1i} - c_{1i})\left\{(n_1-1)\frac{f_1[s_1^{-1}(b_{1i})]}{1-F_1[s_1^{-1}(b_{1i})]}\frac{1}{s_1'[s_1^{-1}(b_{1i})]} + n_0\frac{f_0[s_0^{-1}(b_{1i})]}{1-F_0[s_0^{-1}(b_{1i})]}\frac{1}{s_0'[s_0^{-1}(b_{1i})]}\right\} = 1 \tag{1}$$
+
+and for $i = 1, \ldots, n_0$:
+
+$$(b_{0i} - c_{0i})\left\{n_1\frac{f_1[s_1^{-1}(b_{0i})]}{1-F_1[s_1^{-1}(b_{0i})]}\frac{1}{s_1'[s_1^{-1}(b_{0i})]} + (n_0-1)\frac{f_0[s_0^{-1}(b_{0i})]}{1-F_0[s_0^{-1}(b_{0i})]}\frac{1}{s_0'[s_0^{-1}(b_{0i})]}\right\} = 1 \tag{2}$$
+
+This system does not have a closed-form solution. The indirect approach of Flambard and Perrigne (2006) avoids having to solve it explicitly.
 
 ### The GPV Inversion Formula
 
@@ -104,11 +114,15 @@ The estimation proceeds in three steps:
 
 The bid CDFs are estimated by:
 
-$$\hat{G}_1(b \mid \mathbf{z}, n_1, n_0) = \frac{\displaystyle\sum_{\substack{\ell=1 \\ n_{1\ell}=n_1,\, n_{0\ell}=n_0}}^{L} \frac{1}{n_1}\sum_{p=1}^{n_{1\ell}} \mathbf{1}(b_{1p\ell} \leq b)\; K_G\!\!\left(\dfrac{\mathbf{z}-\mathbf{z}_\ell}{h_{zG}}\right)}{\displaystyle\sum_{\substack{\ell=1 \\ n_{1\ell}=n_1,\, n_{0\ell}=n_0}}^{L} K_z\!\!\left(\dfrac{\mathbf{z}-\mathbf{z}_\ell}{h_{zG}}\right)}, \qquad \hat{G}_0(b \mid \mathbf{z}, n_1, n_0) = \frac{\displaystyle\sum_{\substack{\ell=1 \\ n_{1\ell}=n_1,\, n_{0\ell}=n_0}}^{L} \frac{1}{n_0}\sum_{q=1}^{n_{0\ell}} \mathbf{1}(b_{0q\ell} \leq b)\; K_G\!\!\left(\dfrac{\mathbf{z}-\mathbf{z}_\ell}{h_{zG}}\right)}{\displaystyle\sum_{\substack{\ell=1 \\ n_{1\ell}=n_1,\, n_{0\ell}=n_0}}^{L} K_z\!\!\left(\dfrac{\mathbf{z}-\mathbf{z}_\ell}{h_{zG}}\right)}$$
+$$\hat{G}_1(b \mid \mathbf{z}, n_1, n_0) = \frac{\displaystyle\sum_{\substack{\ell:\, n_{1\ell}=n_1,\, n_{0\ell}=n_0}} \frac{1}{n_1}\sum_{p=1}^{n_{1\ell}} \mathbf{1}(b_{1p\ell} \leq b)\; K_G\!\!\left(\frac{\mathbf{z}-\mathbf{z}_\ell}{h_{zG}}\right)}{\displaystyle\sum_{\ell:\, n_{1\ell}=n_1,\, n_{0\ell}=n_0} K_G\!\!\left(\frac{\mathbf{z}-\mathbf{z}_\ell}{h_{zG}}\right)}$$
+
+$$\hat{G}_0(b \mid \mathbf{z}, n_1, n_0) = \frac{\displaystyle\sum_{\substack{\ell:\, n_{1\ell}=n_1,\, n_{0\ell}=n_0}} \frac{1}{n_0}\sum_{q=1}^{n_{0\ell}} \mathbf{1}(b_{0q\ell} \leq b)\; K_G\!\!\left(\frac{\mathbf{z}-\mathbf{z}_\ell}{h_{zG}}\right)}{\displaystyle\sum_{\ell:\, n_{1\ell}=n_1,\, n_{0\ell}=n_0} K_G\!\!\left(\frac{\mathbf{z}-\mathbf{z}_\ell}{h_{zG}}\right)}$$
 
 The corresponding bid densities are:
 
-$$\hat{g}_1(b \mid \mathbf{z}, n_1, n_0) = \frac{\dfrac{1}{h_{1g}}\displaystyle\sum_{\ell=1}^{L} \frac{1}{n_1}\sum_{p=1}^{n_{1\ell}} K_g\!\!\left(\dfrac{b - b_{1p\ell}}{h_{1g}},\; \dfrac{\mathbf{z}-\mathbf{z}_\ell}{h_{zg}}\right)}{\displaystyle\sum_{\substack{\ell=1 \\ n_{1\ell}=n_1,\, n_{0\ell}=n_0}}^{L} K_z\!\!\left(\dfrac{\mathbf{z}-\mathbf{z}_\ell}{h_{zg}}\right)}, \qquad \hat{g}_0(b \mid \mathbf{z}, n_1, n_0) = \frac{\dfrac{1}{h_{0g}}\displaystyle\sum_{\ell=1}^{L} \frac{1}{n_0}\sum_{q=1}^{n_{0\ell}} K_g\!\!\left(\dfrac{b - b_{0q\ell}}{h_{0g}},\; \dfrac{\mathbf{z}-\mathbf{z}_\ell}{h_{zg}}\right)}{\displaystyle\sum_{\substack{\ell=1 \\ n_{1\ell}=n_1,\, n_{0\ell}=n_0}}^{L} K_z\!\!\left(\dfrac{\mathbf{z}-\mathbf{z}_\ell}{h_{zg}}\right)}$$
+$$\hat{g}_1(b \mid \mathbf{z}, n_1, n_0) = \frac{\dfrac{1}{h_{1g}}\displaystyle\sum_{\substack{\ell:\, n_{1\ell}=n_1,\, n_{0\ell}=n_0}} \frac{1}{n_1}\sum_{p=1}^{n_{1\ell}} K_g\!\!\left(\frac{b - b_{1p\ell}}{h_{1g}},\; \frac{\mathbf{z}-\mathbf{z}_\ell}{h_{zg}}\right)}{\displaystyle\sum_{\ell:\, n_{1\ell}=n_1,\, n_{0\ell}=n_0} K_g\!\!\left(\frac{\mathbf{z}-\mathbf{z}_\ell}{h_{zg}}\right)}$$
+
+$$\hat{g}_0(b \mid \mathbf{z}, n_1, n_0) = \frac{\dfrac{1}{h_{0g}}\displaystyle\sum_{\substack{\ell:\, n_{1\ell}=n_1,\, n_{0\ell}=n_0}} \frac{1}{n_0}\sum_{q=1}^{n_{0\ell}} K_g\!\!\left(\frac{b - b_{0q\ell}}{h_{0g}},\; \frac{\mathbf{z}-\mathbf{z}_\ell}{h_{zg}}\right)}{\displaystyle\sum_{\ell:\, n_{1\ell}=n_1,\, n_{0\ell}=n_0} K_g\!\!\left(\frac{\mathbf{z}-\mathbf{z}_\ell}{h_{zg}}\right)}$$
 
 where $K_G(\cdot)$ and $K_g(\cdot)$ are kernel functions, and $h_{zG}$, $h_{zg}$, $h_{1g}$, $h_{0g}$ are optimal bandwidths. The key feature of these estimators is that the sums in the denominators run only over auctions with exactly $n_{1\ell} = n_1$ and $n_{0\ell} = n_0$, conditioning on the same competitive environment as the auction being evaluated. A **triweight kernel** $K(u) = \tfrac{35}{32}(1-u^2)^3\,\mathbf{1}(|u|\leq 1)$ is used for the continuous variable (concrete volume), and the Aitchison-Aitken (1976) kernel for the sewage dummy.
 
@@ -166,6 +180,16 @@ where:
 - $\varepsilon_i \sim \mathcal{N}(0, \sigma_\varepsilon^2)$ captures **random noise**, including idiosyncratic shocks, measurement error, and other factors outside the firm's control
 
 The inequality $\eta_i \geq 0$ is what distinguishes SFA from standard regression: costs can only be at or above the frontier, never below. The key insight is that $\eta_i$ and $\varepsilon_i$ have different distributions and are therefore separately identified (in principle) from the skewness of the composite error $\varepsilon_i + \eta_i$.
+
+### The Frontier Cost Function
+
+The frontier $\ln C^*(w_i, z_i)$ is approximated by a **translog** specification — the standard flexible functional form for cost functions, which nests the Cobb-Douglas as a special case. Using three inputs ($w_1$ = daily wage, $w_2$ = price of concrete, $w_3$ = daily machinery rent) and imposing homogeneity of degree one in input prices by normalizing on $w_1$, the estimated cost equation is:
+
+$$\ln\!\left(\frac{\hat{c}_i}{w_{1,i}}\right) = \beta_0 + \beta_z \ln z_i + \beta_2 \ln\!\left(\frac{w_{2,i}}{w_{1,i}}\right) + \beta_3 \ln\!\left(\frac{w_{3,i}}{w_{1,i}}\right) + \frac{1}{2}\beta_{23} \ln\!\left(\frac{w_{2,i}}{w_{1,i}}\right)\ln\!\left(\frac{w_{3,i}}{w_{1,i}}\right)$$
+
+$$+ \frac{1}{2}\beta_{zz}(\ln z_i)^2 + \frac{1}{2}\beta_{22}\!\left[\ln\!\left(\frac{w_{2,i}}{w_{1,i}}\right)\right]^{\!2} + \frac{1}{2}\beta_{33}\!\left[\ln\!\left(\frac{w_{3,i}}{w_{1,i}}\right)\right]^{\!2} + \beta_{2z}\ln\!\left(\frac{w_{2,i}}{w_{1,i}}\right)\ln z_i + \beta_{3z}\ln\!\left(\frac{w_{3,i}}{w_{1,i}}\right)\ln z_i + \beta_{K+1}\text{Controls}_i + \eta_i + \nu_i \tag{11}$$
+
+Symmetry requires $\beta_{kk'} = \beta_{k'k}$. Homogeneity of degree one in input prices further requires $\sum_k \beta_k = 1$, $\sum_k \beta_{kk'} = 0$ for all $k'$, and $\sum_k \beta_{kz} = 0$ — restrictions imposed during estimation by the normalization on $w_1$. Controls include state fixed effects and a sewage work dummy. The noise term $\nu_i$ can be interpreted as coming from the error in pseudo-cost estimation.
 
 ### Distributional Assumptions on Inefficiency
 
