@@ -158,7 +158,7 @@ These $\hat{c}_{jp\ell}$ values are the **pseudo-costs**: not directly observed,
 
 Even if we could observe a firm's actual cost directly, that cost tells us little about whether the firm is using its inputs efficiently. A firm may face high costs simply because wages or materials are expensive in its region; that is not inefficiency. **Technical inefficiency** refers to excess input use given the firm's output and the prices it faces: a firm is technically inefficient if it uses more inputs than necessary to produce a given output.
 
-The concept of a **production frontier** dates to Farrell (1957): the frontier is the minimum cost achievable by the best-practice firm given its output level and input prices. The distance between a firm's actual cost and the frontier cost is a measure of inefficiency. The challenge is that the frontier is unobserved and must be estimated from the data.
+The concept of a **production frontier** is that there exists a minimum cost achievable by the best-practice firm given its output level and input prices. The distance between a firm's actual cost and the frontier cost is a measure of inefficiency. The challenge is that the frontier is unobserved and must be estimated from the data.
 
 Ordinary least squares (OLS) on a cost function:
 
@@ -168,7 +168,7 @@ estimates the **average** relationship between inputs and costs, not the frontie
 
 ### The Stochastic Frontier Model
 
-The SFA approach, introduced by Aigner, Lovell, and Schmidt (1977) and Meeusen and van den Broeck (1977), decomposes the cost deviation from the frontier into two components:
+The SFA approach decomposes the cost deviation from the frontier into two components:
 
 $$\ln C^a_i = \underbrace{\ln C^*(w_i, z_i)}_{\text{frontier cost}} + \underbrace{\eta_i}_{\substack{\text{technical} \\ \text{inefficiency}}} + \underbrace{\varepsilon_i}_{\substack{\text{noise}}}$$
 
@@ -201,7 +201,7 @@ The model is estimated under two alternative specifications for $\eta_i$:
 | Half-normal | $\eta_i \sim \lvert \mathcal{N}(0, \sigma_u^2) \rvert$ | $\sigma_u$ | Restricted: mean inefficiency is $\sigma_u \sqrt{2/\pi}$, a fixed function of spread |
 | Truncated-normal | $\eta_i \sim \mathcal{N}^+(\mu, \sigma_u^2)$ | $\mu, \sigma_u$ | More general: $\mu$ freely estimated; half-normal is the $\mu = 0$ special case |
 
-The **half-normal** model (Aigner et al., 1977) is simpler and more commonly used. The **truncated-normal** model (Stevenson, 1980) allows the modal inefficiency to differ from zero, which is important if most firms in the sample are systematically far from the frontier. Both are estimated and compared for robustness.
+The **half-normal** model is simpler and more commonly used. The **truncated-normal** model allows the modal inefficiency to differ from zero, which is important if most firms in the sample are systematically far from the frontier. Both are estimated and compared for robustness. The specification follows **Kumbhakar, Wang, and Horncastle (2015)**.
 
 ::: {.callout-note collapse="true"}
 ## Maximum likelihood estimation and the JLMS decomposition

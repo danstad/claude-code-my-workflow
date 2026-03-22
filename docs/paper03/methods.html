@@ -352,14 +352,14 @@ window.Quarto = {
 <section id="efficiency-in-production-the-conceptual-framework" class="level3">
 <h3 class="anchored" data-anchor-id="efficiency-in-production-the-conceptual-framework">Efficiency in Production: The Conceptual Framework</h3>
 <p>Even if we could observe a firm’s actual cost directly, that cost tells us little about whether the firm is using its inputs efficiently. A firm may face high costs simply because wages or materials are expensive in its region; that is not inefficiency. <strong>Technical inefficiency</strong> refers to excess input use given the firm’s output and the prices it faces: a firm is technically inefficient if it uses more inputs than necessary to produce a given output.</p>
-<p>The concept of a <strong>production frontier</strong> dates to Farrell (1957): the frontier is the minimum cost achievable by the best-practice firm given its output level and input prices. The distance between a firm’s actual cost and the frontier cost is a measure of inefficiency. The challenge is that the frontier is unobserved and must be estimated from the data.</p>
+<p>The concept of a <strong>production frontier</strong> is that there exists a minimum cost achievable by the best-practice firm given its output level and input prices. The distance between a firm’s actual cost and the frontier cost is a measure of inefficiency. The challenge is that the frontier is unobserved and must be estimated from the data.</p>
 <p>Ordinary least squares (OLS) on a cost function:</p>
 <p><span class="math display">\[\ln C_i = \alpha + \boldsymbol{\beta}' \mathbf{x}_i + \varepsilon_i\]</span></p>
 <p>estimates the <strong>average</strong> relationship between inputs and costs, not the frontier. The intercept <span class="math inline">\(\alpha\)</span> absorbs both the frontier and the average inefficiency level, making it impossible to recover firm-level efficiency from residuals.</p>
 </section>
 <section id="the-stochastic-frontier-model" class="level3">
 <h3 class="anchored" data-anchor-id="the-stochastic-frontier-model">The Stochastic Frontier Model</h3>
-<p>The SFA approach, introduced by Aigner, Lovell, and Schmidt (1977) and Meeusen and van den Broeck (1977), decomposes the cost deviation from the frontier into two components:</p>
+<p>The SFA approach decomposes the cost deviation from the frontier into two components:</p>
 <p><span class="math display">\[\ln C^a_i = \underbrace{\ln C^*(w_i, z_i)}_{\text{frontier cost}} + \underbrace{\eta_i}_{\substack{\text{technical} \\ \text{inefficiency}}} + \underbrace{\varepsilon_i}_{\substack{\text{noise}}}\]</span></p>
 <p>where: - <span class="math inline">\(C^*(w_i, z_i)\)</span> is the <strong>minimum achievable cost</strong> for a firm with output <span class="math inline">\(z_i\)</span> (cubic meters of concrete) and input prices <span class="math inline">\(w_i\)</span> (concrete, wages, machinery rental) - <span class="math inline">\(\eta_i \geq 0\)</span> is the <strong>inefficiency term</strong>, the proportional excess cost due to overuse of inputs; <span class="math inline">\(e^{\eta_i}\)</span> is the factor by which costs exceed the frontier - <span class="math inline">\(\varepsilon_i \sim \mathcal{N}(0, \sigma_\varepsilon^2)\)</span> captures <strong>random noise</strong>, including idiosyncratic shocks, measurement error, and other factors outside the firm’s control</p>
 <p>The inequality <span class="math inline">\(\eta_i \geq 0\)</span> is what distinguishes SFA from standard regression: costs can only be at or above the frontier, never below. The key insight is that <span class="math inline">\(\eta_i\)</span> and <span class="math inline">\(\varepsilon_i\)</span> have different distributions and are therefore separately identified (in principle) from the skewness of the composite error <span class="math inline">\(\varepsilon_i + \eta_i\)</span>.</p>
@@ -408,7 +408,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<p>The <strong>half-normal</strong> model (Aigner et al., 1977) is simpler and more commonly used. The <strong>truncated-normal</strong> model (Stevenson, 1980) allows the modal inefficiency to differ from zero, which is important if most firms in the sample are systematically far from the frontier. Both are estimated and compared for robustness.</p>
+<p>The <strong>half-normal</strong> model is simpler and more commonly used. The <strong>truncated-normal</strong> model allows the modal inefficiency to differ from zero, which is important if most firms in the sample are systematically far from the frontier. Both are estimated and compared for robustness. The specification follows <strong>Kumbhakar, Wang, and Horncastle (2015)</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
