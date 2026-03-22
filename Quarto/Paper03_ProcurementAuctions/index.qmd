@@ -35,6 +35,77 @@ The workaround exploits a key feature of the data: **most firms that receive dir
 
 The comparison then becomes: **do Type 1 firms, the ones the government selects when it has discretion, have systematically lower costs than Type 0 firms?**
 
+```{=html}
+<div class="id-diagram">
+
+  <!-- Row 1: Firm type boxes -->
+  <div class="id-firm-row">
+    <div class="id-firm-box id-type0">
+      <div class="id-firm-title">Type 0 — Public-auction firms</div>
+      <div class="id-firm-sub">Win contracts only through open competitive auctions.<br>Never selected by government discretion.</div>
+    </div>
+    <div class="id-firm-box id-type1">
+      <div class="id-firm-title">Type 1 — Government-selected firms</div>
+      <div class="id-firm-sub">Participate in public auctions <em>and</em> receive contracts via I3P or direct allocation.</div>
+    </div>
+  </div>
+
+  <!-- Row 2: What is and is not observable -->
+  <div class="id-obs-row">
+    <div class="id-obs-cell">
+      <span class="id-tag yes">✓ Bids in public auctions — observable</span>
+    </div>
+    <div class="id-obs-cell">
+      <span class="id-tag yes">✓ Bids in public auctions — observable</span>
+      <span class="id-tag no">✗ Costs under I3P / direct allocation — not observable</span>
+    </div>
+  </div>
+
+  <!-- Merging lines -->
+  <div class="id-merge-row">
+    <div class="id-vline"></div>
+    <div class="id-vline"></div>
+  </div>
+
+  <!-- Arrow -->
+  <div class="id-arrow-center">↓</div>
+
+  <!-- GPV Inversion -->
+  <div class="id-center-step">
+    <div class="id-step-title">GPV Inversion — applied to all public auction bids</div>
+    <div class="id-step-formula">
+      \(\hat{c}_i \;=\; b_i \;-\; \dfrac{1 - \hat{F}(b_i)}{\hat{f}(b_i)}\)
+      &nbsp;&nbsp; (pseudo-cost recovered from each bid)
+    </div>
+  </div>
+
+  <div class="id-arrow-center">↓</div>
+
+  <!-- Recovered CDFs -->
+  <div class="id-cdf-row">
+    <div class="id-cdf-box cdf0">
+      \(\hat{F}_0(c)\)
+      <div style="font-weight:400; font-size:0.82em; color:#555; margin-top:0.2em;">Type 0 cost distribution</div>
+    </div>
+    <div class="id-vs">vs.</div>
+    <div class="id-cdf-box cdf1">
+      \(\hat{F}_1(c)\)
+      <div style="font-weight:400; font-size:0.82em; color:#555; margin-top:0.2em;">Type 1 cost distribution</div>
+    </div>
+  </div>
+
+  <div class="id-arrow-center">↓</div>
+
+  <!-- The test -->
+  <div class="id-question-box">
+    <div class="id-q-title">Does the government select cost-efficient firms?</div>
+    <div class="id-q-yes">✓ &nbsp;If \(\hat{F}_1(c) \geq \hat{F}_0(c)\): Type 1 draws lower costs — selection is justified.</div>
+    <div class="id-q-no">✗ &nbsp;If \(\hat{F}_0(c) \geq \hat{F}_1(c)\): Type 0 draws lower costs — selection is not justified.</div>
+  </div>
+
+</div>
+```
+
 ---
 
 ## Key Findings

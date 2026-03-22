@@ -178,6 +178,167 @@ h2 {
   color: $medgray;
 }
 
+/* ---- Identification Diagram ---- */
+.id-diagram {
+  max-width: 680px;
+  margin: 2em auto;
+  font-size: 0.88em;
+  line-height: 1.5;
+}
+
+.id-firm-row {
+  display: flex;
+  gap: 1.5em;
+  justify-content: center;
+}
+
+.id-firm-box {
+  flex: 1;
+  border: 2px solid;
+  border-radius: 6px;
+  padding: 0.7em 1em;
+  text-align: center;
+}
+
+.id-firm-box .id-firm-title {
+  font-weight: 700;
+  font-size: 1em;
+  margin-bottom: 0.15em;
+}
+
+.id-firm-box .id-firm-sub {
+  font-size: 0.82em;
+  color: $medgray;
+  margin: 0;
+}
+
+.id-firm-box.id-type0 { border-color: $steelblue; background: #f0f5fb; }
+.id-firm-box.id-type0 .id-firm-title { color: $steelblue; }
+
+.id-firm-box.id-type1 { border-color: $gold; background: #fdf8ec; }
+.id-firm-box.id-type1 .id-firm-title { color: #b37d00; }
+
+.id-obs-row {
+  display: flex;
+  gap: 1.5em;
+  margin: 0.5em 0;
+  justify-content: center;
+}
+
+.id-obs-cell { flex: 1; }
+
+.id-tag {
+  display: block;
+  font-size: 0.79em;
+  padding: 0.22em 0.6em;
+  border-radius: 4px;
+  margin-bottom: 0.28em;
+  text-align: center;
+}
+
+.id-tag.yes { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+.id-tag.no  { background: #ffeef0; color: #c62828; border: 1px solid #ef9a9a; }
+
+.id-merge-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  height: 2em;
+  margin: 0;
+  position: relative;
+}
+
+.id-merge-row::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc(25% + 0.75em);
+  right: calc(25% + 0.75em);
+  border-top: 2px dashed #aaa;
+}
+
+.id-merge-row .id-vline {
+  flex: 1;
+  border-left: 2px dashed #aaa;
+  height: 100%;
+  margin-left: calc(50% - 1px);
+}
+
+.id-arrow-center {
+  text-align: center;
+  color: $navy;
+  font-size: 1.5em;
+  margin: 0.1em 0;
+  line-height: 1;
+}
+
+.id-center-step {
+  max-width: 420px;
+  margin: 0 auto 0;
+  text-align: center;
+  border: 1.5px solid $navy;
+  border-radius: 6px;
+  padding: 0.7em 1.4em;
+  background: $lightbg;
+}
+
+.id-center-step .id-step-title {
+  font-weight: 700;
+  color: $navy;
+  font-size: 0.9em;
+  margin-bottom: 0.3em;
+}
+
+.id-center-step .id-step-formula {
+  font-size: 0.84em;
+  color: $medgray;
+}
+
+.id-cdf-row {
+  display: flex;
+  gap: 1.5em;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5em 0;
+}
+
+.id-cdf-box {
+  flex: 1;
+  max-width: 220px;
+  text-align: center;
+  border: 1.5px solid;
+  border-radius: 6px;
+  padding: 0.5em 0.75em;
+  font-weight: 600;
+}
+
+.id-cdf-box.cdf0 { border-color: $steelblue; background: #f0f5fb; color: $steelblue; }
+.id-cdf-box.cdf1 { border-color: $gold; background: #fdf8ec; color: #b37d00; }
+
+.id-vs { font-weight: 700; color: $medgray; font-size: 1.1em; flex-shrink: 0; }
+
+.id-question-box {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: left;
+  border: 2px solid $navy;
+  border-radius: 6px;
+  padding: 0.75em 1.25em;
+  background: white;
+  font-size: 0.86em;
+}
+
+.id-question-box .id-q-title {
+  font-weight: 700;
+  color: $navy;
+  margin-bottom: 0.4em;
+  text-align: center;
+}
+
+.id-q-yes { color: $positive; margin-bottom: 0.15em; }
+.id-q-no  { color: $negative; }
+
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
   .cards-grid {
