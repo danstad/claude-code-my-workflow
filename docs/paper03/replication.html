@@ -278,14 +278,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="methodological-code" class="level3">
 <h3 class="anchored" data-anchor-id="methodological-code">Methodological Code</h3>
 <p>The paper uses three separate computational environments, each for a different stage of the analysis:</p>
-<p><strong>Stage 1 — Structural auction model (Julia)</strong></p>
-<p>The nonparametric GPV estimation — including kernel density estimation of bid distributions and recovery of pseudo-costs via the inversion formula — is implemented in <strong>Julia</strong>. Julia’s performance is well-suited to the computationally intensive kernel bandwidth selection and cross-validation steps. The output is the pseudo-cost dataset (<code>data_xi.csv</code>, <code>data_densities.csv</code>, <code>data_densities_drenaje.csv</code>).</p>
-<p><strong>Stage 2 — Stochastic frontier analysis (Julia/Stata)</strong></p>
+<p><strong>Stage 1: Structural auction model (Julia)</strong></p>
+<p>The nonparametric GPV estimation, including kernel density estimation of bid distributions and recovery of pseudo-costs via the inversion formula, is implemented in <strong>Julia</strong>. Julia’s performance is well-suited to the computationally intensive kernel bandwidth selection and cross-validation steps. The output is the pseudo-cost dataset (<code>data_xi.csv</code>, <code>data_densities.csv</code>, <code>data_densities_drenaje.csv</code>).</p>
+<p><strong>Stage 2: Stochastic frontier analysis (Julia/Stata)</strong></p>
 <p>The SFA models (half-normal and truncated-normal) are estimated via maximum likelihood. The efficiency index datasets (<code>efficiency_index_*.csv</code>) are the output of this stage.</p>
-<p><strong>Stage 3 — Figures in the paper (R)</strong></p>
+<p><strong>Stage 3: Figures in the paper (R)</strong></p>
 <p>All figures published in the <em>Journal of Productivity Analysis</em> article were produced in <strong>R</strong> using <code>ggplot2</code>. The R scripts that generate the published figures are available in the project’s <code>code_jmp/Exploratory R/</code> directory.</p>
 <p><strong>This website (Python)</strong></p>
-<p>The interactive charts on this website are independent reproductions of the paper’s figures using <strong>Python</strong> (<code>plotly</code>, <code>scipy</code>, <code>pandas</code>). They draw on the same CSV output files as the R scripts, so the underlying data is identical — only the rendering tool differs.</p>
+<p>The interactive charts on this website are independent reproductions of the paper’s figures using <strong>Python</strong> (<code>plotly</code>, <code>scipy</code>, <code>pandas</code>). They draw on the same CSV output files as the R scripts, so the underlying data is identical, only the rendering tool differs.</p>
 <hr>
 </section>
 <section id="about-this-website" class="level3">

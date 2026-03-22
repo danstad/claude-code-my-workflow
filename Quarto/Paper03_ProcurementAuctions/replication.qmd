@@ -45,21 +45,21 @@ The analysis uses administrative procurement data from Mexico's **CompraNet** pl
 
 The paper uses three separate computational environments, each for a different stage of the analysis:
 
-**Stage 1 — Structural auction model (Julia)**
+**Stage 1: Structural auction model (Julia)**
 
-The nonparametric GPV estimation — including kernel density estimation of bid distributions and recovery of pseudo-costs via the inversion formula — is implemented in **Julia**. Julia's performance is well-suited to the computationally intensive kernel bandwidth selection and cross-validation steps. The output is the pseudo-cost dataset (`data_xi.csv`, `data_densities.csv`, `data_densities_drenaje.csv`).
+The nonparametric GPV estimation, including kernel density estimation of bid distributions and recovery of pseudo-costs via the inversion formula, is implemented in **Julia**. Julia's performance is well-suited to the computationally intensive kernel bandwidth selection and cross-validation steps. The output is the pseudo-cost dataset (`data_xi.csv`, `data_densities.csv`, `data_densities_drenaje.csv`).
 
-**Stage 2 — Stochastic frontier analysis (Julia/Stata)**
+**Stage 2: Stochastic frontier analysis (Julia/Stata)**
 
 The SFA models (half-normal and truncated-normal) are estimated via maximum likelihood. The efficiency index datasets (`efficiency_index_*.csv`) are the output of this stage.
 
-**Stage 3 — Figures in the paper (R)**
+**Stage 3: Figures in the paper (R)**
 
 All figures published in the *Journal of Productivity Analysis* article were produced in **R** using `ggplot2`. The R scripts that generate the published figures are available in the project's `code_jmp/Exploratory R/` directory.
 
 **This website (Python)**
 
-The interactive charts on this website are independent reproductions of the paper's figures using **Python** (`plotly`, `scipy`, `pandas`). They draw on the same CSV output files as the R scripts, so the underlying data is identical — only the rendering tool differs.
+The interactive charts on this website are independent reproductions of the paper's figures using **Python** (`plotly`, `scipy`, `pandas`). They draw on the same CSV output files as the R scripts, so the underlying data is identical, only the rendering tool differs.
 
 ---
 

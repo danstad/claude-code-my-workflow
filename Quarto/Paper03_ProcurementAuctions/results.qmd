@@ -4,7 +4,7 @@ title: "Results"
 
 ## Overview
 
-The results address the central question: **do firms that the government selects for less-competitive mechanisms have lower costs than firms that only compete in public auctions?** The answer depends on the type of project. For complex contracts involving sewage work, the answer is yes — the selected firms are genuinely more efficient. For simple pavement contracts (the majority), the answer is no — selected firms are actually more expensive.
+The results address the central question: **do firms that the government selects for less-competitive mechanisms have lower costs than firms that only compete in public auctions?** The answer depends on the type of project. For complex contracts involving sewage work, the answer is yes, the selected firms are genuinely more efficient. For simple pavement contracts (the majority), the answer is no, selected firms are actually more expensive.
 
 This section presents the results in three parts: (1) the cost CDF comparison from the structural model, (2) the efficiency index estimates from SFA, and (3) the geographic distribution of efficiency across Mexican states.
 
@@ -14,9 +14,9 @@ This section presents the results in three parts: (1) the cost CDF comparison fr
 
 ### Reading a CDF in This Context
 
-The cumulative distribution function $\hat{F}_j(c)$ gives the **fraction of firms of type $j$ with pseudo-cost below $c$**. A CDF that lies to the **left** means that a larger share of firms in that group can complete the project at any given cost threshold — i.e., that type has systematically lower costs.
+The cumulative distribution function $\hat{F}_j(c)$ gives the **fraction of firms of type $j$ with pseudo-cost below $c$**. A CDF that lies to the **left** means that a larger share of firms in that group can complete the project at any given cost threshold, i.e., that type has systematically lower costs.
 
-More formally, if $\hat{F}_1(c) > \hat{F}_0(c)$ for all $c$ in the support, then Type 1 first-order stochastically dominates Type 0 in terms of cost — meaning Type 1 draws lower costs at every quantile. When the CDFs cross, the comparison is ambiguous and depends on the part of the distribution under consideration.
+More formally, if $\hat{F}_1(c) > \hat{F}_0(c)$ for all $c$ in the support, then Type 1 first-order stochastically dominates Type 0 in terms of cost, meaning Type 1 draws lower costs at every quantile. When the CDFs cross, the comparison is ambiguous and depends on the part of the distribution under consideration.
 
 ::: {.callout-note collapse="true"}
 ## First-order stochastic dominance and what it implies for welfare
@@ -138,23 +138,23 @@ fig.show()
 
 ### Interpreting the CDF Results
 
-**Simple projects (no sewage — ~76% of I3P contracts):** The Type 0 CDF lies to the **left** of the Type 1 CDF. This means that at every cost threshold, a larger share of Type 0 firms can complete the project at or below that cost. Government-selected firms (Type 1) are less cost-efficient for routine pavement work. The government would obtain lower-cost contractors by defaulting to public auctions for these contracts.
+**Simple projects (no sewage, ~76% of I3P contracts):** The Type 0 CDF lies to the **left** of the Type 1 CDF. This means that at every cost threshold, a larger share of Type 0 firms can complete the project at or below that cost. Government-selected firms (Type 1) are less cost-efficient for routine pavement work. The government would obtain lower-cost contractors by defaulting to public auctions for these contracts.
 
-**Complex projects (with sewage work — ~24% of I3P contracts):** The pattern **reverses**. The Type 1 CDF lies to the left of the Type 0 CDF. Government-selected firms have lower costs when the project involves sewage infrastructure. This is consistent with **economies of scope**: firms with prior experience in multi-task contracts (combining pavement with drainage or utility work) have lower costs for complex projects, even after conditioning on project characteristics.
+**Complex projects (with sewage work, ~24% of I3P contracts):** The pattern **reverses**. The Type 1 CDF lies to the left of the Type 0 CDF. Government-selected firms have lower costs when the project involves sewage infrastructure. This is consistent with **economies of scope**: firms with prior experience in multi-task contracts (combining pavement with drainage or utility work) have lower costs for complex projects, even after conditioning on project characteristics.
 
 ::: {.callout-note}
 ## Why does the result flip for complex projects?
 
-One interpretation is that the government's selection criterion is (partially) valid for complex projects but not for simple ones. A second interpretation is that Type 1 firms have invested in capabilities — equipment, workforce, project management — that are only cost-advantageous when projects involve multiple types of work. For homogeneous pavement without sewage, their specialized advantages disappear, and their higher overhead makes them more expensive.
+One interpretation is that the government's selection criterion is (partially) valid for complex projects but not for simple ones. A second interpretation is that Type 1 firms have invested in capabilities, including equipment, workforce, and project management, that are only cost-advantageous when projects involve multiple types of work. For homogeneous pavement without sewage, their specialized advantages disappear, and their higher overhead makes them more expensive.
 
-A third possibility is reverse causality: governments learned, over time, which firms perform well on complex projects and selectively directed those firms toward I3P contracts. If so, the efficiency advantage of Type 1 firms on complex projects is partly a consequence of the selection process itself — governments learned by doing. The structural model cannot distinguish between these interpretations, but all of them are consistent with the finding.
+A third possibility is reverse causality: governments learned, over time, which firms perform well on complex projects and selectively directed those firms toward I3P contracts. If so, the efficiency advantage of Type 1 firms on complex projects is partly a consequence of the selection process itself, as governments learned by doing. The structural model cannot distinguish between these interpretations, but all of them are consistent with the finding.
 :::
 
 ---
 
 ## Part 2: Stochastic Frontier Efficiency Index
 
-The SFA estimates a **cost frontier** — the minimum cost achievable given output and input prices — and recovers firm-level deviations from it. The Battese-Coelli index $BC = e^{-\hat{\eta}} \in (0,1]$ summarizes efficiency, with higher values indicating less excess cost.
+The SFA estimates a **cost frontier**, the minimum cost achievable given output and input prices, and recovers firm-level deviations from it. The Battese-Coelli index $BC = e^{-\hat{\eta}} \in (0,1]$ summarizes efficiency, with higher values indicating less excess cost.
 
 ### Efficiency Index Distributions by Firm Type
 
@@ -235,12 +235,12 @@ The density plot shows the full distribution of $BC$ efficiency scores for each 
 
 If a firm has a BC efficiency index of 0.65, it means that firm uses $1/0.65 = 1.54$ times the inputs that a frontier firm would use to produce the same output. In other words, it incurs **54% excess costs** relative to the best-practice firm in the sample.
 
-This does not mean the firm is wasting resources in an obvious sense — the frontier is estimated from the sample and reflects what is achievable given the technology and market conditions in Jalisco. A BC of 0.65 simply means there are firms in the same market producing the same output at meaningfully lower cost.
+This does not mean the firm is wasting resources in an obvious sense, as the frontier is estimated from the sample and reflects what is achievable given the technology and market conditions in Jalisco. A BC of 0.65 simply means there are firms in the same market producing the same output at meaningfully lower cost.
 :::
 
 The SFA results confirm the CDF patterns:
 
-- For **complex projects**, the Type 1 distribution is shifted toward higher BC values (closer to 1), indicating less excess cost — consistent with genuine efficiency advantages
+- For **complex projects**, the Type 1 distribution is shifted toward higher BC values (closer to 1), indicating less excess cost, consistent with genuine efficiency advantages
 - The difference in means is statistically significant at conventional levels under both the half-normal and truncated-normal specifications
 
 ### Half-Normal vs. Truncated-Normal: Robustness
@@ -391,4 +391,4 @@ Large variation across states may reflect:
 | **Share of I3P auctions** | ~76% | ~24% |
 | **Policy implication** | Switch to public auction | Discretion may be justified |
 
-The combined evidence from the structural model (CDFs) and the SFA (efficiency index) points consistently in the same direction. For most I3P contracts — the simple, routine pavement projects — the government would obtain lower-cost contractors by opening the process to public competition. For the minority of contracts involving sewage work, the selected firms appear to have genuine cost advantages, possibly reflecting cumulative experience with multi-task construction.
+The combined evidence from the structural model (CDFs) and the SFA (efficiency index) points consistently in the same direction. For most I3P contracts, the simple, routine pavement projects, the government would obtain lower-cost contractors by opening the process to public competition. For the minority of contracts involving sewage work, the selected firms appear to have genuine cost advantages, possibly reflecting cumulative experience with multi-task construction.

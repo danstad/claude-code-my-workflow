@@ -20,7 +20,7 @@ This paper combines two approaches that are rarely used together: a **structural
     </div>
   </div>
   <div style="margin-top:1em; font-size:0.82em; color:#777; text-align:left;">
-    <strong>Key contribution:</strong> Pseudo-costs from Step 1 serve as the cost variable in Step 2 — circumventing the need for direct observation of firm costs, which is typically unavailable in procurement data.
+    <strong>Key contribution:</strong> Pseudo-costs from Step 1 serve as the cost variable in Step 2, circumventing the need for direct observation of firm costs, which is typically unavailable in procurement data.
   </div>
 </div>
 ```
@@ -33,7 +33,7 @@ This paper combines two approaches that are rarely used together: a **structural
 
 The fundamental challenge in procurement auction analysis is that **firm costs are unobserved**. We observe the bids that firms submit, but not the actual cost each firm would incur to complete the contract. Without knowing costs, we cannot say whether a winning firm is genuinely efficient or simply lucky in the strategic interaction.
 
-A reduced-form approach — simply comparing winning bids across firm types — confounds cost differences with strategic behavior. A Type 1 firm that bids higher than a Type 0 firm might be doing so because: (a) it has higher costs, (b) it has lower costs but shades its bid more aggressively knowing it faces less competition, or (c) some combination of both. The structural model separates these two channels by exploiting the equilibrium relationship between bidding strategies and cost distributions.
+A reduced-form approach, simply comparing winning bids across firm types, confounds cost differences with strategic behavior. A Type 1 firm that bids higher than a Type 0 firm might be doing so because: (a) it has higher costs, (b) it has lower costs but shades its bid more aggressively knowing it faces less competition, or (c) some combination of both. The structural model separates these two channels by exploiting the equilibrium relationship between bidding strategies and cost distributions.
 
 ### Setup and Assumptions
 
@@ -64,17 +64,17 @@ In a first-price procurement auction, the firm submitting the **lowest** bid win
 
 $$\Pr(i \text{ wins} \mid b_{ji}) = \Pr(\text{all rivals bid above } b_{ji})$$
 
-At equilibrium, each firm uses a bidding strategy $\beta_j(\cdot)$ — a function mapping its private cost into a bid — and the equilibrium strategies are mutually best responses. Several properties hold at equilibrium:
+At equilibrium, each firm uses a bidding strategy $\beta_j(\cdot)$ — a function mapping its private cost into a bid, and the equilibrium strategies are mutually best responses. Several properties hold at equilibrium:
 
-1. **Bidding above cost:** $b_{ji} > c_{ji}$ always — firms shade their bids upward to earn a markup
-2. **Monotonicity:** $\beta_j(\cdot)$ is strictly increasing — lower-cost firms bid lower
+1. **Bidding above cost:** $b_{ji} > c_{ji}$ always, as firms shade their bids upward to earn a markup
+2. **Monotonicity:** $\beta_j(\cdot)$ is strictly increasing, meaning lower-cost firms bid lower
 3. **Type-specific strategies:** because $F_0 \neq F_1$, the equilibrium strategies $\beta_0$ and $\beta_1$ differ
 
 The existence and uniqueness of such equilibria in asymmetric auctions is non-trivial and was established by Maskin and Riley (2003) under regularity conditions satisfied in this setting.
 
 ### The GPV Inversion Formula
 
-The core identification result is due to **Guerre, Perrigne, and Vuong (2000)**, who showed that the equilibrium condition — firm $i$ of type $j$ setting its bid optimally — directly maps from the **observable bid distribution** to the **unobservable cost distribution**, without requiring any parametric assumption on $F_j(\cdot)$.
+The core identification result is due to **Guerre, Perrigne, and Vuong (2000)**, who showed that the equilibrium condition that firm $i$ of type $j$ sets its bid optimally, which directly maps from the **observable bid distribution** to the **unobservable cost distribution**, without requiring any parametric assumption on $F_j(\cdot)$.
 
 The first-order condition of firm $i$'s profit maximization problem, at an interior optimum, yields:
 
@@ -84,16 +84,16 @@ For a **Type 1 firm**, this becomes:
 
 $$b_{1i} - c_{1i} = \frac{1}{(n_1 - 1)\,\dfrac{g_1(b_{1i})}{1 - G_1(b_{1i})} + n_0\,\dfrac{g_0(b_{1i})}{1 - G_0(b_{1i})}}$$
 
-and symmetrically for a Type 0 firm. Here $G_j(\cdot)$ and $g_j(\cdot)$ are the **bid** CDF and PDF of type $j$ firms (not cost distributions — cost distributions are recovered using this formula).
+and symmetrically for a Type 0 firm. Here $G_j(\cdot)$ and $g_j(\cdot)$ are the **bid** CDF and PDF of type $j$ firms (not cost distributions; cost distributions are recovered using this formula).
 
 ::: {.callout-note}
 ## Intuition for the inversion formula
 
-The left-hand side $b - c$ is the **markup** — the profit a firm earns per unit if it wins. The right-hand side is an inverse hazard rate of the bid distribution, adjusted for the presence of rivals of each type.
+The left-hand side $b - c$ is the **markup**, i.e., the profit a firm earns per unit if it wins. The right-hand side is an inverse hazard rate of the bid distribution, adjusted for the presence of rivals of each type.
 
 The denominator captures the **competitive pressure** on firm $i$ at bid $b$: it is the probability-weighted density of rivals' bids at $b$, given that they are bidding above $b$. A higher hazard rate means rivals are bunching near $b$, so a small increase in $b$ sharply reduces the probability of winning — forcing the firm to keep its markup small. A lower hazard rate means the firm has more pricing power and can charge a larger markup.
 
-This formula allows us to go from the **shape** of the bid distribution directly to the **level** of underlying costs — which is why it is sometimes called "identification without parametric structure."
+This formula allows us to go from the **shape** of the bid distribution directly to the **level** of underlying costs, which is why it is sometimes called "identification without parametric structure."
 :::
 
 This formula was extended to **two types of asymmetric bidders** by Flambard and Perrigne (2006), which is the specification used here. The extension requires estimating two separate bid distributions $G_0(\cdot)$ and $G_1(\cdot)$ and plugging both into the respective inversion formulas. Asymmetry matters: if we incorrectly pooled both types and estimated a single bid distribution, we would mismeasure the competitive pressure each firm faces and obtain biased pseudo-costs.
@@ -136,7 +136,7 @@ These $\hat{c}_{ji}$ values are called **pseudo-costs** because they are not dir
 
 ### Efficiency in Production: The Conceptual Framework
 
-Even if we could observe a firm's actual cost directly, that cost tells us little about whether the firm is using its inputs efficiently. A firm may face high costs simply because wages or materials are expensive in its region — that is not inefficiency. **Technical inefficiency** refers to excess input use given the firm's output and the prices it faces: a firm is technically inefficient if it uses more inputs than necessary to produce a given output.
+Even if we could observe a firm's actual cost directly, that cost tells us little about whether the firm is using its inputs efficiently. A firm may face high costs simply because wages or materials are expensive in its region; that is not inefficiency. **Technical inefficiency** refers to excess input use given the firm's output and the prices it faces: a firm is technically inefficient if it uses more inputs than necessary to produce a given output.
 
 The concept of a **production frontier** dates to Farrell (1957): the frontier is the minimum cost achievable by the best-practice firm given its output level and input prices. The distance between a firm's actual cost and the frontier cost is a measure of inefficiency. The challenge is that the frontier is unobserved and must be estimated from the data.
 
@@ -154,8 +154,8 @@ $$\ln C^a_i = \underbrace{\ln C^*(w_i, z_i)}_{\text{frontier cost}} + \underbrac
 
 where:
 - $C^*(w_i, z_i)$ is the **minimum achievable cost** for a firm with output $z_i$ (cubic meters of concrete) and input prices $w_i$ (concrete, wages, machinery rental)
-- $\eta_i \geq 0$ is the **inefficiency term** — the proportional excess cost due to overuse of inputs; $e^{\eta_i}$ is the factor by which costs exceed the frontier
-- $\varepsilon_i \sim \mathcal{N}(0, \sigma_\varepsilon^2)$ captures **random noise** — idiosyncratic shocks, measurement error, and other factors outside the firm's control
+- $\eta_i \geq 0$ is the **inefficiency term**, the proportional excess cost due to overuse of inputs; $e^{\eta_i}$ is the factor by which costs exceed the frontier
+- $\varepsilon_i \sim \mathcal{N}(0, \sigma_\varepsilon^2)$ captures **random noise**, including idiosyncratic shocks, measurement error, and other factors outside the firm's control
 
 The inequality $\eta_i \geq 0$ is what distinguishes SFA from standard regression: costs can only be at or above the frontier, never below. The key insight is that $\eta_i$ and $\varepsilon_i$ have different distributions and are therefore separately identified (in principle) from the skewness of the composite error $\varepsilon_i + \eta_i$.
 
@@ -168,7 +168,7 @@ The model is estimated under two alternative specifications for $\eta_i$:
 | Half-normal | $\eta_i \sim \lvert \mathcal{N}(0, \sigma_u^2) \rvert$ | $\sigma_u$ | Restricted: mean inefficiency is $\sigma_u \sqrt{2/\pi}$, a fixed function of spread |
 | Truncated-normal | $\eta_i \sim \mathcal{N}^+(\mu, \sigma_u^2)$ | $\mu, \sigma_u$ | More general: $\mu$ freely estimated; half-normal is the $\mu = 0$ special case |
 
-The **half-normal** model (Aigner et al., 1977) is simpler and more commonly used. The **truncated-normal** model (Stevenson, 1980) allows the modal inefficiency to differ from zero — important if most firms in the sample are systematically far from the frontier. Both are estimated and compared for robustness.
+The **half-normal** model (Aigner et al., 1977) is simpler and more commonly used. The **truncated-normal** model (Stevenson, 1980) allows the modal inefficiency to differ from zero, which is important if most firms in the sample are systematically far from the frontier. Both are estimated and compared for robustness.
 
 ::: {.callout-note collapse="true"}
 ## Maximum likelihood estimation and the JLMS decomposition
@@ -183,7 +183,7 @@ Once the frontier parameters are estimated, firm-level efficiency is recovered u
 
 $$\hat{\eta}_i = \mathbb{E}[\eta_i \mid \varepsilon_i + \eta_i = u_i] = \frac{\sigma_u \sigma_\varepsilon}{\sigma} \left[\frac{\phi(\mu^*_i/\sigma^*)}{\Phi(\mu^*_i/\sigma^*)} + \frac{\mu^*_i}{\sigma^*}\right]$$
 
-This is not the true inefficiency but the best prediction of it given the observable composite error. It converges to the true $\eta_i$ only as the time dimension grows (Horrace and Schmidt, 1996) — a limitation shared by all cross-sectional SFA models.
+This is not the true inefficiency but the best prediction of it given the observable composite error. It converges to the true $\eta_i$ only as the time dimension grows (Horrace and Schmidt, 1996), a limitation shared by all cross-sectional SFA models.
 :::
 
 ### The Efficiency Index
@@ -192,7 +192,7 @@ The **Battese and Coelli (1988, 1992) efficiency index** is reported as the prim
 
 $$BC_i = e^{-\hat{\eta}_i} \in (0, 1]$$
 
-Interpretation: $BC_i = 1$ means the firm is on the cost frontier — zero excess cost. $BC_i = 0.80$ means the firm uses $1/0.80 = 1.25$ times the inputs of a frontier firm to produce the same output — a 25% excess cost. Values closer to 1 indicate less inefficiency.
+Interpretation: $BC_i = 1$ means the firm is on the cost frontier, with zero excess cost. $BC_i = 0.80$ means the firm uses $1/0.80 = 1.25$ times the inputs of a frontier firm to produce the same output, implying a 25% excess cost. Values closer to 1 indicate less inefficiency.
 
 The paper reports mean $BC$ by firm type, testing whether Type 1 (government-selected) and Type 0 (public-auction-only) firms have statistically different efficiency levels.
 
@@ -204,7 +204,7 @@ The paper reports mean $BC$ by firm type, testing whether Type 1 (government-sel
 
 The key innovation is using **pseudo-costs from Step 1 as the dependent variable in Step 2**.
 
-Normally, SFA requires actual cost data — accounting records or cost reports. In procurement contexts, such data is almost never available: firms do not disclose their project-level costs, and governments typically record only contract values (bids), not actual expenditures. This has historically limited the joint application of auction theory and efficiency analysis.
+Normally, SFA requires actual cost data, such as accounting records or cost reports. In procurement contexts, such data is almost never available: firms do not disclose their project-level costs, and governments typically record only contract values (bids), not actual expenditures. This has historically limited the joint application of auction theory and efficiency analysis.
 
 By recovering pseudo-costs $\hat{c}_{ji}$ from the structural auction model, we obtain a proxy for $C^a_i$ that can be plugged into the SFA framework. The model then estimates:
 
@@ -216,16 +216,16 @@ treating pseudo-costs as the observable cost measure.
 
 This approach is valid under two conditions:
 
-1. **Consistency of pseudo-costs:** The GPV inversion formula recovers true costs consistently as the sample size grows. In finite samples, kernel estimation introduces bias, particularly near the boundaries of the bid support. The boundary trimming and log transformation discussed above mitigate — but do not eliminate — this concern.
+1. **Consistency of pseudo-costs:** The GPV inversion formula recovers true costs consistently as the sample size grows. In finite samples, kernel estimation introduces bias, particularly near the boundaries of the bid support. The boundary trimming and log transformation discussed above mitigate, but do not eliminate, this concern.
 
-2. **Classical measurement error:** If pseudo-costs differ from true costs by a classical measurement error (mean zero, independent of explanatory variables), the SFA estimates remain consistent. Non-classical measurement error — systematic bias correlated with firm type — would bias the efficiency comparison.
+2. **Classical measurement error:** If pseudo-costs differ from true costs by a classical measurement error (mean zero, independent of explanatory variables), the SFA estimates remain consistent. Non-classical measurement error, i.e., systematic bias correlated with firm type, would bias the efficiency comparison.
 
 ::: {.callout-important}
 ## What could go wrong
 
 The most important potential concern is that pseudo-costs may be systematically biased for one firm type. If, for example, Type 1 firms submit bids in a thinner part of the distribution where kernel estimation is less precise, their pseudo-costs would have larger measurement error than Type 0. This would artificially inflate the variance of their efficiency distribution. The robustness checks using both half-normal and truncated-normal specifications, and the trimming of extreme observations, are partly designed to address this concern.
 
-Another concern is **model misspecification** at the auction level: if firms do not play Bayesian Nash Equilibrium — perhaps due to collusion or bounded rationality — the inversion formula does not recover true costs. The paper addresses this indirectly by examining the KS tests for distributional equality and the reduced-form bid regressions as consistency checks.
+Another concern is **model misspecification** at the auction level: if firms do not play Bayesian Nash Equilibrium, perhaps due to collusion or bounded rationality, the inversion formula does not recover true costs. The paper addresses this indirectly by examining the KS tests for distributional equality and the reduced-form bid regressions as consistency checks.
 :::
 
 ### Why Not Just Compare Bids?

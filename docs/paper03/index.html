@@ -208,29 +208,29 @@ window.Quarto = {
 </div>
 <section id="motivation" class="level2">
 <h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
-<p>A recurring concern in development economics is whether public institutions in low- and middle-income countries are capable of allocating resources efficiently — or whether political incentives and weak accountability lead to systematic misallocation. Infrastructure procurement is a natural setting to study this question: governments spend large sums, contracts are observable in administrative records, and the allocation process is legally defined but often subject to discretion.</p>
-<p>In Mexico, as in many developing countries, <strong>public construction auctions have a reputation for corruption</strong>. The firms that win contracts are not always the ones with the lowest costs or the best track record — they are sometimes the ones with the right political connections. This perception is not unfounded: there is substantial empirical and anecdotal evidence linking procurement discretion to rent extraction and cost overruns in Latin America and elsewhere.</p>
+<p>A recurring concern in development economics is whether public institutions in low- and middle-income countries are capable of allocating resources efficiently, or whether political incentives and weak accountability lead to systematic misallocation. Infrastructure procurement is a natural setting to study this question: governments spend large sums, contracts are observable in administrative records, and the allocation process is legally defined but often subject to discretion.</p>
+<p>In Mexico, as in many developing countries, <strong>public construction auctions have a reputation for corruption</strong>. The firms that win contracts are not always the ones with the lowest costs or the best track record, they are sometimes the ones with the right political connections. This perception is not unfounded: there is substantial empirical and anecdotal evidence linking procurement discretion to rent extraction and cost overruns in Latin America and elsewhere.</p>
 <p>The question motivating this paper is deceptively simple: <strong>when the Mexican government bypasses open competition and selects firms directly, is it choosing better firms or favored ones?</strong></p>
 <section id="a-development-economics-question-answered-with-structural-io-methods" class="level3">
 <h3 class="anchored" data-anchor-id="a-development-economics-question-answered-with-structural-io-methods">A Development Economics Question, Answered with Structural IO Methods</h3>
-<p>This paper sits at the intersection of development economics and industrial organization. The central question — whether government discretion in procurement serves efficiency or facilitates favoritism — is squarely a development economics concern. It touches on institutional quality, state capacity, corruption, and the efficiency of public spending in a middle-income country.</p>
-<p>The method, however, is borrowed from structural industrial organization: a nonparametric auction model (Guerre, Perrigne &amp; Vuong, 2000) extended to allow asymmetric bidders (Flambard &amp; Perrigne, 2006), combined with stochastic frontier analysis. This is a deliberate choice. The question demands a method that can recover firm-level cost distributions from observed behavior without imposing strong distributional assumptions — and the structural IO toolkit provides exactly that. The field of economics does not own questions; methods should follow questions, not the other way around.</p>
+<p>This paper sits at the intersection of development economics and industrial organization. The central question, whether government discretion in procurement serves efficiency or facilitates favoritism, is squarely a development economics concern. It touches on institutional quality, state capacity, corruption, and the efficiency of public spending in a middle-income country.</p>
+<p>The method, however, is borrowed from structural industrial organization: a nonparametric auction model (Guerre, Perrigne &amp; Vuong, 2000) extended to allow asymmetric bidders (Flambard &amp; Perrigne, 2006), combined with stochastic frontier analysis. This is a deliberate choice. The question demands a method that can recover firm-level cost distributions from observed behavior without imposing strong distributional assumptions, and the structural IO toolkit provides exactly that. The field of economics does not own questions; methods should follow questions, not the other way around.</p>
 </section>
 <section id="the-identification-challenge" class="level3">
 <h3 class="anchored" data-anchor-id="the-identification-challenge">The Identification Challenge</h3>
 <p>A natural approach to answering the question would be to compare costs or productivity across allocation mechanisms directly. But there is a fundamental data limitation: <strong>firms that receive contracts through direct allocation are not required to disclose their cost structures.</strong> There are no public financial records for these firms at the contract level, and the government’s selection criteria are opaque.</p>
-<p>The workaround exploits a key feature of the data: <strong>most firms that receive directly allocated contracts also participate in public auctions.</strong> In public auctions, bids are observable. The structural auction model allows us to invert observed bids into unobserved costs, using the equilibrium condition that a rational bidder shades their bid above cost by an amount that depends on the competitive environment. By recovering pseudo-costs from public auction bids, we obtain cost estimates for both types of firms — those that only win through public auctions (Type 0) and those that also receive contracts through more discretionary mechanisms (Type 1) — without ever observing private cost data directly.</p>
+<p>The workaround exploits a key feature of the data: <strong>most firms that receive directly allocated contracts also participate in public auctions.</strong> In public auctions, bids are observable. The structural auction model allows us to invert observed bids into unobserved costs, using the equilibrium condition that a rational bidder shades their bid above cost by an amount that depends on the competitive environment. By recovering pseudo-costs from public auction bids, we obtain cost estimates for both types of firms, those that only win through public auctions (Type 0) and those that also receive contracts through more discretionary mechanisms (Type 1), without ever observing private cost data directly.</p>
 <p>The comparison then becomes: <strong>do Type 1 firms, the ones the government selects when it has discretion, have systematically lower costs than Type 0 firms?</strong></p>
 <div class="id-diagram">
 
   <!-- Row 1: Firm type boxes -->
   <div class="id-firm-row">
     <div class="id-firm-box id-type0">
-      <div class="id-firm-title">Type 0 — Public-auction firms</div>
+      <div class="id-firm-title">Type 0, Public-auction firms</div>
       <div class="id-firm-sub">Win contracts only through open competitive auctions. Never selected by government discretion.</div>
     </div>
     <div class="id-firm-box id-type1">
-      <div class="id-firm-title">Type 1 — Government-selected firms</div>
+      <div class="id-firm-title">Type 1, Government-selected firms</div>
       <div class="id-firm-sub">Participate in public auctions <em>and</em> receive contracts via I3P or direct allocation.</div>
     </div>
   </div>
@@ -239,11 +239,9 @@ window.Quarto = {
   <div class="id-obs-row">
     <div class="id-obs-cell">
       <span class="id-tag yes">✓ &nbsp;Bids in public auctions — observable</span>
-      <span class="id-tag no">✗ &nbsp;True production costs — not directly observable</span>
     </div>
     <div class="id-obs-cell">
       <span class="id-tag yes">✓ &nbsp;Bids in public auctions — observable</span>
-      <span class="id-tag no">✗ &nbsp;True production costs — not directly observable</span>
       <span class="id-tag no">✗ &nbsp;I3P / direct contract costs — no bids, inference impossible</span>
     </div>
   </div>
@@ -257,7 +255,7 @@ window.Quarto = {
 
 </div>
 <div class="id-center-step">
-<p><strong>GPV Inversion</strong> — applied to all public auction bids</p>
+<p><strong>GPV Inversion</strong>, applied to all public auction bids</p>
 <p><span class="math display">\[\hat{c}_i \;=\; b_i \;-\; \frac{1 - \hat{F}(b_i)}{\hat{f}(b_i)}\]</span></p>
 <p><span class="id-step-sub">Pseudo-cost <span class="math inline">\(\hat{c}_i\)</span> recovered for every bidder in both firm types</span></p>
 </div>
@@ -282,8 +280,8 @@ window.Quarto = {
   <!-- The test -->
   <div class="id-question-box">
     <div class="id-q-title">Does the government select cost-efficient firms?</div>
-    <div class="id-q-yes">✓ &nbsp;If F̂<sub>1</sub>(c) ≥ F̂<sub>0</sub>(c): Type 1 draws lower costs — selection is justified.</div>
-    <div class="id-q-no">✗ &nbsp;If F̂<sub>0</sub>(c) ≥ F̂<sub>1</sub>(c): Type 0 draws lower costs — selection is not justified.</div>
+    <div class="id-q-yes">✓ &nbsp;If F̂<sub>1</sub>(c) ≥ F̂<sub>0</sub>(c): Type 1 draws lower costs, selection is justified.</div>
+    <div class="id-q-no">✗ &nbsp;If F̂<sub>0</sub>(c) ≥ F̂<sub>1</sub>(c): Type 0 draws lower costs, selection is not justified.</div>
   </div>
 </div>
 <hr>

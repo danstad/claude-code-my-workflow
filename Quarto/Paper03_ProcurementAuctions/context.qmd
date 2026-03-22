@@ -30,12 +30,12 @@ Mexico's **Law of Public Works and Related Services** (Ley de Obras Públicas y 
 </div>
 ```
 
-The law establishes explicit exceptions permitting departure from the public auction default: projects that are small in value, urgent in nature, involve proprietary technology, or face risks of "significant losses" or "force majeure." These exceptions are deliberately broad — the vague language gives local officials substantial discretion in classifying contracts.
+The law establishes explicit exceptions permitting departure from the public auction default: projects that are small in value, urgent in nature, involve proprietary technology, or face risks of "significant losses" or "force majeure." These exceptions are deliberately broad, and the vague language gives local officials substantial discretion in classifying contracts.
 
 ::: {.callout-important}
 ## The discretion problem
 
-The three mechanisms represent a tradeoff between **competition** (public auction) and **government discretion** (invitation or direct). The law's intent is that discretion should be used only when genuine technical or logistical reasons justify bypassing competition. The concern is that broad exceptions allow discretion to be used for political or relational reasons — awarding contracts to preferred firms rather than the most cost-efficient ones.
+The three mechanisms represent a tradeoff between **competition** (public auction) and **government discretion** (invitation or direct). The law's intent is that discretion should be used only when genuine technical or logistical reasons justify bypassing competition. The concern is that broad exceptions allow discretion to be used for political or relational reasons, awarding contracts to preferred firms rather than the most cost-efficient ones.
 
 As shown in [Political Factors](politics.qmd), the probability of bypassing a public auction rises significantly in election years and varies systematically with the governing party — consistent with discretionary allocation being driven partly by political rather than technical factors.
 :::
@@ -50,7 +50,7 @@ Pavement contracts are particularly well-suited for structural analysis because:
 
 - **Homogeneity:** Projects are measured in cubic meters of hydraulic concrete. This homogeneity reduces unobserved quality heterogeneity that would complicate the comparison of costs across contracts.
 - **Frequency:** The large number of contracts in a single state means we can estimate bid distributions nonparametrically with reasonable precision.
-- **Common value unlikely:** Unlike complex infrastructure (dams, tunnels, bridges), simple pavement work has well-understood costs. Each firm knows its own labor rates, equipment costs, and material prices. There is little information a rival's bid could reveal about a firm's own cost — supporting the IPV assumption.
+- **Common value unlikely:** Unlike complex infrastructure (dams, tunnels, bridges), simple pavement work has well-understood costs. Each firm knows its own labor rates, equipment costs, and material prices. There is little information a rival's bid could reveal about a firm's own cost, supporting the IPV assumption.
 
 ---
 
@@ -63,7 +63,7 @@ The central distinction in this study is between firms based on their **complete
   <div class="finding-card neutral-card">
     <div class="finding-label">Type 1 — "Government-selected"</div>
     <div class="finding-headline">Firms with prior direct or I3P experience</div>
-    <p class="finding-body">Has received at least one contract by direct allocation or been invited to at least one I3P auction. More experienced in total: average <strong>6.6 total contracts</strong> (all mechanisms) over the sample period. These firms have some form of prior relationship with the government — whether based on competence, connections, or both.</p>
+    <p class="finding-body">Has received at least one contract by direct allocation or been invited to at least one I3P auction. More experienced in total: average <strong>6.6 total contracts</strong> (all mechanisms) over the sample period. These firms have some form of prior relationship with the government, whether based on competence, connections, or both.</p>
   </div>
   <div class="finding-card neutral-card">
     <div class="finding-label">Type 0 — "Public-auction-only"</div>
@@ -78,7 +78,7 @@ This classification is **retrospective**: a firm's type is determined by its his
 ::: {.callout-note}
 ## Why this classification?
 
-The type classification aims to capture a latent characteristic that is correlated with both cost efficiency (experience, scale) and government favoritism (relationships, political connections). The identifying assumption is that Type 1 and Type 0 are meaningfully different in ways that affect their cost distributions — which is verified empirically through the Kolmogorov-Smirnov test below.
+The type classification aims to capture a latent characteristic that is correlated with both cost efficiency (experience, scale) and government favoritism (relationships, political connections). The identifying assumption is that Type 1 and Type 0 are meaningfully different in ways that affect their cost distributions, which is verified empirically through the Kolmogorov-Smirnov test below.
 
 An alternative classification — based solely on the current auction or recent history — would be noisier and more endogenous to current conditions. Using the full-sample history makes the assignment more stable and less likely to reflect temporary changes in firm strategy.
 :::
@@ -89,7 +89,7 @@ An alternative classification — based solely on the current auction or recent 
 
 ## Bid Data: Public Procurement Auctions
 
-The structural model is estimated using **only public auction data**, where full bid-level information is available. Invitation (I3P) and direct allocation contracts are excluded from the structural estimation because bids from invited or selected firms are not comparable — the competitive environment is fundamentally different.
+The structural model is estimated using **only public auction data**, where full bid-level information is available. Invitation (I3P) and direct allocation contracts are excluded from the structural estimation because bids from invited or selected firms are not comparable, as the competitive environment is fundamentally different.
 
 After excluding contracts missing project characteristics (concrete volume, sewage dummy), the estimation sample contains:
 
@@ -180,7 +180,7 @@ fig.update_layout(
 fig.show()
 ```
 
-Type 1 firms bid on average **8.5% higher** than Type 0 firms in the same auctions, controlling for project characteristics. A Kolmogorov-Smirnov test rejects equality of the two bid distributions at conventional significance levels (see annotation above). This justifies the asymmetric model specification — pooling the two types would be inconsistent with the data.
+Type 1 firms bid on average **8.5% higher** than Type 0 firms in the same auctions, controlling for project characteristics. A Kolmogorov-Smirnov test rejects equality of the two bid distributions at conventional significance levels (see annotation above). This justifies the asymmetric model specification, since pooling the two types would be inconsistent with the data.
 
 ### Estimated Cost Distributions
 
@@ -238,7 +238,7 @@ fig.show()
 ::: {.callout-note}
 ## Bids vs. pseudo-costs
 
-Comparing the bid distribution chart above with the pseudo-cost chart reveals an important pattern: **the distributions shift relative to each other** once the strategic markup is removed. Type 1 bids higher, but the pseudo-cost comparison is more nuanced — this is why the structural model is necessary. Simply comparing bids would conflate cost differences with differences in competitive pressure.
+Comparing the bid distribution chart above with the pseudo-cost chart reveals an important pattern: **the distributions shift relative to each other** once the strategic markup is removed. Type 1 bids higher, but the pseudo-cost comparison is more nuanced, which is why the structural model is necessary. Simply comparing bids would conflate cost differences with differences in competitive pressure.
 :::
 
 ---
