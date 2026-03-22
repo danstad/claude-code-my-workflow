@@ -150,12 +150,6 @@ $$\hat{c}_i \;=\; b_i \;-\; \frac{1 - \hat{F}(b_i)}{\hat{f}(b_i)}$$
 
 ---
 
-## Abstract
-
-> When allocating contracts, governments decide between exercising hiring discretion or allowing higher competition without firm selection. Ex-ante, it is not clear which allocation format leads to better outcomes. The trade-off depends in part on the government's ability to select the best firms when restricting competition and on the probability that this practice leads to corruption. In this paper, I study the allocation of street pavement contracts in Mexico. I combine auction methods with a productivity analysis to indirectly test whether local governments select firms with low excess costs when restricting competition. This indirect approach allows the monitoring of contract allocation in settings with little information on firm reputation. I find that firms selected to settings with less competition have lower costs in complex pavement contracts, but higher costs in simple ones. Contrary to the current practice, the results suggest that the government would benefit from using public auctions for simple pavement contracts.
-
----
-
 ## How to Navigate This Site
 
 | Page | What you will find |
