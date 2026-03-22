@@ -415,18 +415,20 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Maximum likelihood estimation and the JLMS decomposition
+<span class="screen-reader-only">Note</span>Maximum likelihood estimation
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The model is estimated by <strong>maximum likelihood</strong>. Under the half-normal specification, the log-likelihood for observation <span class="math inline">\(i\)</span> is:</p>
-<p><span class="math display">\[\ell_i = \text{const} - \ln \sigma - \ln \Phi\!\left(\frac{\mu^*_i}{\sigma^*}\right) + \ln \phi\!\left(\frac{u_i}{\sigma}\right)\]</span></p>
-<p>where <span class="math inline">\(\sigma^2 = \sigma_u^2 + \sigma_\varepsilon^2\)</span>, <span class="math inline">\(\lambda = \sigma_u/\sigma_\varepsilon\)</span> is the signal-to-noise ratio, and <span class="math inline">\(u_i = \ln C^a_i - \ln C^*(w_i, z_i)\)</span> is the composite residual.</p>
-<p>Once the frontier parameters are estimated, firm-level efficiency is recovered via the conditional mean of <span class="math inline">\(\eta_i\)</span> given the composite residual:</p>
-<p><span class="math display">\[\hat{\eta}_i = \mathbb{E}[\eta_i \mid \varepsilon_i + \eta_i = u_i] = \frac{\sigma_u \sigma_\varepsilon}{\sigma} \left[\frac{\phi(\mu^*_i/\sigma^*)}{\Phi(\mu^*_i/\sigma^*)} + \frac{\mu^*_i}{\sigma^*}\right]\]</span></p>
-<p>This is not the true inefficiency but the best prediction of it given the observable composite error.</p>
+<p><strong>Error term specifications.</strong> The statistical noise is normally distributed, <span class="math inline">\(\nu_i \sim N(0, \sigma_\nu^2)\)</span>, and the inefficiency term follows a truncated normal whose mean depends on observable firm characteristics <span class="math inline">\(W\)</span> (firm type, election-year indicator, and municipal–state party alignment):</p>
+<p><span class="math display">\[\eta_i \sim N^+\!\bigl(\mu(W),\, \sigma_\eta^2\bigr)\]</span></p>
+<p>The composite error is <span class="math inline">\(\epsilon_i = \eta_i + \nu_i\)</span>.</p>
+<p><strong>Likelihood function.</strong> Given these parametric assumptions, the log-likelihood for observation <span class="math inline">\(i\)</span> is (equation 12):</p>
+<p><span class="math display">\[L_i = -\frac{1}{2}\ln(\sigma_\eta^2 + \sigma_\nu^2) + \ln\phi\!\left(\frac{\mu(W) - \epsilon_i}{\sqrt{\sigma_\eta^2 + \sigma_\nu^2}}\right) + \ln\Phi\!\left(\frac{\mu_{*i}}{\sigma_*}\right) + \ln\Phi\!\left(\frac{\mu(W)}{\sigma_\eta}\right)\]</span></p>
+<p>where the auxiliary quantities are:</p>
+<p><span class="math display">\[\mu_{*i} = \frac{\sigma_\nu^2\,\mu(W) + \sigma_\eta^2\,\epsilon_i}{\sigma_\nu^2 + \sigma_\eta^2}, \qquad \sigma_* = \frac{\sigma_\nu^2\,\sigma_\eta^2}{\sigma_\nu^2 + \sigma_\eta^2}\]</span></p>
+<p><strong>Efficiency recovery.</strong> Once the model is estimated by MLE, the firm’s excess use of inputs is approximated by <span class="math inline">\(E[\eta_i \mid \epsilon_i]\)</span>, and the efficiency index by <span class="math inline">\(E[\exp(-\eta_i) \mid \epsilon_i]\)</span>, both evaluated at the estimated parameters. A full derivation is provided in the paper’s Appendix (subsection 6.3).</p>
 </div>
 </div>
 </div>
