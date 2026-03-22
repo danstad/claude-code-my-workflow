@@ -13,13 +13,27 @@ title: "Productivity in Procurement Auctions of Pavement Contracts in Mexico"
 </div>
 ```
 
-## The Question
+## Motivation
 
-When local governments allocate public infrastructure contracts, they can choose between **open competition** (public auctions) or **greater hiring discretion** — inviting a handful of firms or directly picking a preferred contractor.
+A recurring concern in development economics is whether public institutions in low- and middle-income countries are capable of allocating resources efficiently — or whether political incentives and weak accountability lead to systematic misallocation. Infrastructure procurement is a natural setting to study this question: governments spend large sums, contracts are observable in administrative records, and the allocation process is legally defined but often subject to discretion.
 
-In theory, discretion allows governments to select the most capable firms. In practice, it opens the door to favoritism and corruption. **Which is actually happening in Mexico?**
+In Mexico, as in many developing countries, **public construction auctions have a reputation for corruption**. The firms that win contracts are not always the ones with the lowest costs or the best track record — they are sometimes the ones with the right political connections. This perception is not unfounded: there is substantial empirical and anecdotal evidence linking procurement discretion to rent extraction and cost overruns in Latin America and elsewhere.
 
-This paper answers that question using street pavement contracts in Mexico (2011–2018), combining a structural auction model with stochastic frontier analysis to recover firm-level productivity and compare it across allocation mechanisms.
+The question motivating this paper is deceptively simple: **when the Mexican government bypasses open competition and selects firms directly, is it choosing better firms or favored ones?**
+
+### A Development Economics Question, Answered with Structural IO Methods
+
+This paper sits at the intersection of development economics and industrial organization. The central question — whether government discretion in procurement serves efficiency or facilitates favoritism — is squarely a development economics concern. It touches on institutional quality, state capacity, corruption, and the efficiency of public spending in a middle-income country.
+
+The method, however, is borrowed from structural industrial organization: a nonparametric auction model (Guerre, Perrigne & Vuong, 2000) extended to allow asymmetric bidders (Flambard & Perrigne, 2006), combined with stochastic frontier analysis. This is a deliberate choice. The question demands a method that can recover firm-level cost distributions from observed behavior without imposing strong distributional assumptions — and the structural IO toolkit provides exactly that. The field of economics does not own questions; methods should follow questions, not the other way around.
+
+### The Identification Challenge
+
+A natural approach to answering the question would be to compare costs or productivity across allocation mechanisms directly. But there is a fundamental data limitation: **firms that receive contracts through direct allocation are not required to disclose their cost structures.** There are no public financial records for these firms at the contract level, and the government's selection criteria are opaque.
+
+The workaround exploits a key feature of the data: **most firms that receive directly allocated contracts also participate in public auctions.** In public auctions, bids are observable. The structural auction model allows us to invert observed bids into unobserved costs, using the equilibrium condition that a rational bidder shades their bid above cost by an amount that depends on the competitive environment. By recovering pseudo-costs from public auction bids, we obtain cost estimates for both types of firms — those that only win through public auctions (Type 0) and those that also receive contracts through more discretionary mechanisms (Type 1) — without ever observing private cost data directly.
+
+The comparison then becomes: **do Type 1 firms, the ones the government selects when it has discretion, have systematically lower costs than Type 0 firms?**
 
 ---
 
