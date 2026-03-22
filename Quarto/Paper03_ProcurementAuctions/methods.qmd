@@ -74,17 +74,17 @@ The existence and uniqueness of such equilibria in asymmetric auctions is non-tr
 
 ### The GPV Inversion Formula
 
-The core identification result is due to **Guerre, Perrigne, and Vuong (2000)**, who showed that the equilibrium condition that firm $i$ of type $j$ sets its bid optimally, which directly maps from the **observable bid distribution** to the **unobservable cost distribution**, without requiring any parametric assumption on $F_j(\cdot)$.
+The core identification result is due to **Guerre, Perrigne, and Vuong (2000)**, extended to asymmetric bidders by **Flambard and Perrigne (2006)**. Using the one-to-one mapping between equilibrium strategies and bid distributions — $G_j(b) = F_j(s_j^{-1}(b))$ and $g_j(b) = f_j(s_j^{-1}(b))/s_j'(s_j^{-1}(b))$ — the system of first-order conditions can be rewritten directly in terms of the observable bid distributions $G_j(\cdot|n_1,n_0)$ and $g_j(\cdot|n_1,n_0)$, eliminating the need to solve for the equilibrium strategies $s_j(\cdot)$.
 
-The first-order condition of firm $i$'s profit maximization problem, at an interior optimum, yields:
+For a **Type 1 firm** ($i = 1, \ldots, n_1$), the pseudo-cost is recovered by:
 
-$$b_{ji} - c_{ji} = \frac{1}{(n_j - 1)\,\dfrac{g_j(b_{ji})}{1 - G_j(b_{ji})} + \displaystyle\sum_{k \neq j} n_k \,\dfrac{g_k(b_{ji})}{1 - G_k(b_{ji})}}$$
+$$c_{1i} = b_{1i} - \frac{1}{(n_1 - 1)\,\dfrac{g_1(b_{1i}|n_1,n_0)}{1 - G_1(b_{1i}|n_1,n_0)} + n_0\,\dfrac{g_0(b_{1i}|n_1,n_0)}{1 - G_0(b_{1i}|n_1,n_0)}} \tag{3}$$
 
-For a **Type 1 firm**, this becomes:
+For a **Type 0 firm** ($i = 1, \ldots, n_0$), the pseudo-cost is:
 
-$$b_{1i} - c_{1i} = \frac{1}{(n_1 - 1)\,\dfrac{g_1(b_{1i})}{1 - G_1(b_{1i})} + n_0\,\dfrac{g_0(b_{1i})}{1 - G_0(b_{1i})}}$$
+$$c_{0i} = b_{0i} - \frac{1}{n_1\,\dfrac{g_1(b_{0i}|n_1,n_0)}{1 - G_1(b_{0i}|n_1,n_0)} + (n_0 - 1)\,\dfrac{g_0(b_{0i}|n_1,n_0)}{1 - G_0(b_{0i}|n_1,n_0)}} \tag{4}$$
 
-and symmetrically for a Type 0 firm. Here $G_j(\cdot)$ and $g_j(\cdot)$ are the **bid** CDF and PDF of type $j$ firms (not cost distributions; cost distributions are recovered using this formula).
+Here $G_j(\cdot|n_1,n_0)$ and $g_j(\cdot|n_1,n_0)$ are the **bid** CDF and PDF of type $j$ firms, conditional on the number of bidders of each type. Note that the two formulas are not symmetric: in equation (3) the rival type 0 terms enter with weight $n_0$ (all type 0 rivals), while in equation (4) the type 0 hazard rate enters with weight $(n_0-1)$ (excluding firm $i$ itself). Both formulas deliver pseudo-costs $c_{ji}$ that converge to true costs under the model's assumptions as the sample grows.
 
 ::: {.callout-note}
 ## Intuition for the inversion formula
@@ -96,17 +96,21 @@ The denominator captures the **competitive pressure** on firm $i$ at bid $b$: it
 This formula allows us to go from the **shape** of the bid distribution directly to the **level** of underlying costs, which is why it is sometimes called "identification without parametric structure."
 :::
 
-This formula was extended to **two types of asymmetric bidders** by Flambard and Perrigne (2006), which is the specification used here. The extension requires estimating two separate bid distributions $G_0(\cdot)$ and $G_1(\cdot)$ and plugging both into the respective inversion formulas. Asymmetry matters: if we incorrectly pooled both types and estimated a single bid distribution, we would mismeasure the competitive pressure each firm faces and obtain biased pseudo-costs.
-
 ### Nonparametric Estimation
 
 The estimation proceeds in three steps:
 
-**Step 1: Estimate bid distributions.** For each type $j \in \{0,1\}$, estimate $\hat{G}_j(\cdot)$ and $\hat{g}_j(\cdot)$ using **kernel density estimation** conditional on project characteristics $\mathbf{z}$ (concrete volume in m³, sewage dummy). The estimator is:
+**Step 1: Estimate bid distributions.** Consider $L$ auctions indexed by $\ell = 1, \ldots, L$. Let $\mathbf{z}_\ell$ be a vector of covariates characterizing auction $\ell$ (cubic meters of concrete, sewage dummy), observed by the econometrician. In auction $\ell$, there are $n_{1\ell}$ Type 1 bidders submitting bids $\{b_{1p\ell}\}_{p=1}^{n_{1\ell}}$ and $n_{0\ell}$ Type 0 bidders submitting bids $\{b_{0q\ell}\}_{q=1}^{n_{0\ell}}$.
 
-$$\hat{g}_j(b \mid \mathbf{z}) = \frac{1}{n_j h^{d+1}} \sum_{i=1}^{n_j} K\!\left(\frac{b - b_i}{h}\right) \prod_{\ell=1}^d K_\ell\!\left(\frac{z_\ell - z_{i\ell}}{h_\ell}\right)$$
+The bid CDFs are estimated by:
 
-where $K(\cdot)$ is the **triweight kernel** $K(u) = \tfrac{35}{32}(1-u^2)^3 \mathbf{1}(|u| \leq 1)$ for continuous variables, and a smoothed binary kernel is used for the sewage dummy. The triweight kernel is used rather than the more common Gaussian because it has bounded support, which avoids assigning probability mass outside the observed bid range; it is also known to have superior finite-sample properties for second-order density estimation.
+$$\hat{G}_1(b \mid \mathbf{z}, n_1, n_0) = \frac{\displaystyle\sum_{\substack{\ell=1 \\ n_{1\ell}=n_1,\, n_{0\ell}=n_0}}^{L} \frac{1}{n_1}\sum_{p=1}^{n_{1\ell}} \mathbf{1}(b_{1p\ell} \leq b)\; K_G\!\!\left(\dfrac{\mathbf{z}-\mathbf{z}_\ell}{h_{zG}}\right)}{\displaystyle\sum_{\substack{\ell=1 \\ n_{1\ell}=n_1,\, n_{0\ell}=n_0}}^{L} K_z\!\!\left(\dfrac{\mathbf{z}-\mathbf{z}_\ell}{h_{zG}}\right)}, \qquad \hat{G}_0(b \mid \mathbf{z}, n_1, n_0) = \frac{\displaystyle\sum_{\substack{\ell=1 \\ n_{1\ell}=n_1,\, n_{0\ell}=n_0}}^{L} \frac{1}{n_0}\sum_{q=1}^{n_{0\ell}} \mathbf{1}(b_{0q\ell} \leq b)\; K_G\!\!\left(\dfrac{\mathbf{z}-\mathbf{z}_\ell}{h_{zG}}\right)}{\displaystyle\sum_{\substack{\ell=1 \\ n_{1\ell}=n_1,\, n_{0\ell}=n_0}}^{L} K_z\!\!\left(\dfrac{\mathbf{z}-\mathbf{z}_\ell}{h_{zG}}\right)}$$
+
+The corresponding bid densities are:
+
+$$\hat{g}_1(b \mid \mathbf{z}, n_1, n_0) = \frac{\dfrac{1}{h_{1g}}\displaystyle\sum_{\ell=1}^{L} \frac{1}{n_1}\sum_{p=1}^{n_{1\ell}} K_g\!\!\left(\dfrac{b - b_{1p\ell}}{h_{1g}},\; \dfrac{\mathbf{z}-\mathbf{z}_\ell}{h_{zg}}\right)}{\displaystyle\sum_{\substack{\ell=1 \\ n_{1\ell}=n_1,\, n_{0\ell}=n_0}}^{L} K_z\!\!\left(\dfrac{\mathbf{z}-\mathbf{z}_\ell}{h_{zg}}\right)}, \qquad \hat{g}_0(b \mid \mathbf{z}, n_1, n_0) = \frac{\dfrac{1}{h_{0g}}\displaystyle\sum_{\ell=1}^{L} \frac{1}{n_0}\sum_{q=1}^{n_{0\ell}} K_g\!\!\left(\dfrac{b - b_{0q\ell}}{h_{0g}},\; \dfrac{\mathbf{z}-\mathbf{z}_\ell}{h_{zg}}\right)}{\displaystyle\sum_{\substack{\ell=1 \\ n_{1\ell}=n_1,\, n_{0\ell}=n_0}}^{L} K_z\!\!\left(\dfrac{\mathbf{z}-\mathbf{z}_\ell}{h_{zg}}\right)}$$
+
+where $K_G(\cdot)$ and $K_g(\cdot)$ are kernel functions, and $h_{zG}$, $h_{zg}$, $h_{1g}$, $h_{0g}$ are optimal bandwidths. The key feature of these estimators is that the sums in the denominators run only over auctions with exactly $n_{1\ell} = n_1$ and $n_{0\ell} = n_0$, conditioning on the same competitive environment as the auction being evaluated. A **triweight kernel** $K(u) = \tfrac{35}{32}(1-u^2)^3\,\mathbf{1}(|u|\leq 1)$ is used for the continuous variable (concrete volume), and the Aitchison-Aitken (1976) kernel for the sewage dummy.
 
 ::: {.callout-note collapse="true"}
 ## Bandwidth selection and the boundary bias problem
@@ -122,11 +126,15 @@ A more serious problem is **boundary bias**: near the lower boundary of the bid 
 These choices follow the practice in Guerre, Perrigne, and Vuong (2000) and subsequent empirical applications of the GPV approach (e.g., Krasnokutskaya, 2011; Perrigne and Vuong, 2011).
 :::
 
-**Step 2: Recover pseudo-costs.** For each observed bid $b_{ji}$, plug the estimated densities into the type-specific inversion formula to recover:
+**Step 2: Recover pseudo-costs.** Plugging the estimated distributions into the type-specific inversion formulas (3) and (4) yields the sample analogues. For each Type 1 bid $b_{1p\ell}$ in auction $\ell$:
 
-$$\hat{c}_{ji} = b_{ji} - \frac{1}{(n_j - 1)\,\dfrac{\hat{g}_j(b_{ji})}{1 - \hat{G}_j(b_{ji})} + n_k \,\dfrac{\hat{g}_k(b_{ji})}{1 - \hat{G}_k(b_{ji})}}$$
+$$\hat{c}_{1p\ell} = b_{1p\ell} - \frac{1}{(n_1-1)\,\dfrac{\hat{g}_1(b_{1p\ell}\mid\mathbf{z}_\ell, n_1, n_0)}{1 - \hat{G}_1(b_{1p\ell}\mid\mathbf{z}_\ell, n_1, n_0)} + n_0\,\dfrac{\hat{g}_0(b_{1p\ell}\mid\mathbf{z}_\ell, n_1, n_0)}{1 - \hat{G}_0(b_{1p\ell}\mid\mathbf{z}_\ell, n_1, n_0)}} \tag{5}$$
 
-These $\hat{c}_{ji}$ values are called **pseudo-costs** because they are not directly observed, but rather recovered by inverting the equilibrium condition. Under the model's assumptions, $\hat{c}_{ji} \to c_{ji}$ as the sample grows.
+and for each Type 0 bid $b_{0q\ell}$:
+
+$$\hat{c}_{0q\ell} = b_{0q\ell} - \frac{1}{n_1\,\dfrac{\hat{g}_1(b_{0q\ell}\mid\mathbf{z}_\ell, n_1, n_0)}{1 - \hat{G}_1(b_{0q\ell}\mid\mathbf{z}_\ell, n_1, n_0)} + (n_0-1)\,\dfrac{\hat{g}_0(b_{0q\ell}\mid\mathbf{z}_\ell, n_1, n_0)}{1 - \hat{G}_0(b_{0q\ell}\mid\mathbf{z}_\ell, n_1, n_0)}} \tag{6}$$
+
+These $\hat{c}_{jp\ell}$ values are the **pseudo-costs**: not directly observed, but recovered by inverting the equilibrium condition using only observable bids and estimated distributions. Under the model's assumptions, $\hat{c}_{jp\ell} \to c_{jp\ell}$ as the sample grows.
 
 **Step 3: Estimate cost distributions.** Use kernel density estimation on the recovered pseudo-costs $\{\hat{c}_{ji}\}$ to obtain $\hat{f}_j(\cdot)$. These cost distributions are the structural objects of interest.
 
