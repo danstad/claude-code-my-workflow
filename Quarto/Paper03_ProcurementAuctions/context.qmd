@@ -123,6 +123,7 @@ The chart below shows the **conditional bid CDF** $F(b \mid Z = z)$ for each fir
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
+from scipy.interpolate import make_interp_spline
 
 DATA_PATH = "../../code_jmp/Exploratory R/"
 
@@ -136,6 +137,18 @@ dashes  = {0: "solid", 1: "dot"}
 cols       = ["G_cond25", "G_cond50", "G_cond75"]
 pct_labels = ["25th percentile", "50th percentile", "75th percentile"]
 pct_subs   = ["small projects", "median projects", "large projects"]
+
+def smooth_cdf(x_raw, y_raw, n=500):
+    """Interpolate a CDF onto a dense evenly-spaced grid for smooth rendering."""
+    # Remove duplicates and ensure monotone x
+    order = np.argsort(x_raw)
+    x_raw, y_raw = x_raw[order], y_raw[order]
+    _, unique_idx = np.unique(x_raw, return_index=True)
+    x_raw, y_raw = x_raw[unique_idx], y_raw[unique_idx]
+    x_smooth = np.linspace(x_raw.min(), x_raw.max(), n)
+    spl = make_interp_spline(x_raw, y_raw, k=3)
+    y_smooth = np.clip(spl(x_smooth), 0, 1)
+    return x_smooth, y_smooth
 
 fig = go.Figure()
 
@@ -154,9 +167,10 @@ for t in [0, 1]:
 for i, col in enumerate(cols):
     for t in [0, 1]:
         sub = df[df["typeb"] == t].sort_values("bid")
+        x_s, y_s = smooth_cdf(sub["bid"].values, sub[col].values)
         fig.add_trace(go.Scatter(
-            x=sub["bid"],
-            y=sub[col],
+            x=x_s,
+            y=y_s,
             mode="lines",
             name=labels[t],
             line=dict(color=colors[t], width=2.5, dash=dashes[t]),
