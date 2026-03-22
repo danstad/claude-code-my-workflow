@@ -67,9 +67,3 @@ The interactive charts on this website are independent reproductions of the pape
 
 This interactive summary was built with [Quarto](https://quarto.org), a scientific publishing system that renders Markdown and Python code into HTML. The source files for this website are available in the same GitHub repository as the paper's replication code.
 
----
-
-## Contact
-
-Daniel Prudencio
-[prudencio.da@gmail.com](mailto:prudencio.da@gmail.com)
