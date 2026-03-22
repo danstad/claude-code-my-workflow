@@ -152,9 +152,9 @@ fig.show()
 
 ### Interpreting the CDF Results
 
-**Simple projects (no sewage, ~76% of I3P contracts):** The Type 0 CDF lies to the **left** of the Type 1 CDF. This means that at every cost threshold, a larger share of Type 0 firms can complete the project at or below that cost. Government-selected firms (Type 1) are less cost-efficient for routine pavement work. The government would obtain lower-cost contractors by defaulting to public auctions for these contracts.
+**Simple projects (no sewage, ~62% of public contracts):** The Type 0 CDF lies to the **left** of the Type 1 CDF. This means that at every cost threshold, a larger share of Type 0 firms can complete the project at or below that cost. Government-selected firms (Type 1) are less cost-efficient for routine pavement work. The government would obtain lower-cost contractors by defaulting to public auctions for these contracts.
 
-**Complex projects (with sewage work, ~24% of I3P contracts):** The pattern **reverses**. The Type 1 CDF lies to the left of the Type 0 CDF. Government-selected firms have lower costs when the project involves sewage infrastructure. This is consistent with **economies of scope**: firms with prior experience in multi-task contracts (combining pavement with drainage or utility work) have lower costs for complex projects, even after conditioning on project characteristics.
+**Complex projects (with sewage, ~38% of public contracts):** The pattern **reverses**. The Type 1 CDF lies to the left of the Type 0 CDF. Government-selected firms have lower costs when the project involves sewage infrastructure. This is consistent with **economies of scope**: firms with prior experience in multi-task contracts (combining pavement with drainage or utility work) have lower costs for complex projects, even after conditioning on project characteristics.
 
 ::: {.callout-note}
 ## Why does the result flip for complex projects?
