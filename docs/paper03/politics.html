@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Political Factors – Productivity in Procurement Auctions</title>
+<title>Context &amp; Data – Productivity in Procurement Auctions</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -179,6 +179,19 @@ window.Quarto = {
   <li><a href="#full-results-summary" id="toc-full-results-summary" class="nav-link" data-scroll-target="#full-results-summary">Full Results Summary</a></li>
   </ul></li>
   <li><a href="#policy-implications" id="toc-policy-implications" class="nav-link" data-scroll-target="#policy-implications">Policy Implications</a></li>
+  <li><a href="#mexicos-procurement-system" id="toc-mexicos-procurement-system" class="nav-link" data-scroll-target="#mexicos-procurement-system">Mexico’s Procurement System</a></li>
+  <li><a href="#scope-mexico-20112018" id="toc-scope-mexico-20112018" class="nav-link" data-scroll-target="#scope-mexico-20112018">Scope: Mexico, 2011–2018</a></li>
+  <li><a href="#the-two-types-of-firms" id="toc-the-two-types-of-firms" class="nav-link" data-scroll-target="#the-two-types-of-firms">The Two Types of Firms</a></li>
+  <li><a href="#bid-data-public-procurement-auctions" id="toc-bid-data-public-procurement-auctions" class="nav-link" data-scroll-target="#bid-data-public-procurement-auctions">Bid Data: Public Procurement Auctions</a></li>
+  <li><a href="#preliminary-evidence-of-asymmetry-between-firm-types" id="toc-preliminary-evidence-of-asymmetry-between-firm-types" class="nav-link" data-scroll-target="#preliminary-evidence-of-asymmetry-between-firm-types">Preliminary Evidence of Asymmetry Between Firm Types</a>
+  <ul class="collapse">
+  <li><a href="#bid-distributions" id="toc-bid-distributions" class="nav-link" data-scroll-target="#bid-distributions">Bid Distributions</a></li>
+  </ul></li>
+  <li><a href="#choice-of-allocation-mechanism" id="toc-choice-of-allocation-mechanism" class="nav-link" data-scroll-target="#choice-of-allocation-mechanism">Choice of Allocation Mechanism</a>
+  <ul class="collapse">
+  <li><a href="#probit-specification" id="toc-probit-specification" class="nav-link" data-scroll-target="#probit-specification">Probit Specification</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -191,7 +204,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Political Factors</h1>
+<h1 class="title">Context &amp; Data</h1>
 </div>
 
 
@@ -273,7 +286,6 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <p>This is a very large effect. One standard deviation in the party alignment variable corresponds to nearly twice the effect of a one-standard-deviation increase in project size.</p>
 <p>Several interpretations are possible: (1) PAN municipalities face stronger internal party discipline or external accountability that discourages discretionary contracting; (2) PAN municipalities have less-developed networks of politically connected contractors; (3) PAN municipalities are more likely to be in urban areas where the contractor market is thicker and public auctions are more feasible; (4) PAN governments face greater scrutiny from civil society and media.</p>
-<p>The data cannot fully distinguish between these explanations.</p>
 </div>
 </div>
 </section>
@@ -284,7 +296,6 @@ window.Quarto = {
 <li>When the <strong>municipal and state government share a party</strong>, firm excess costs in public auctions fall by approximately <strong>9.8%</strong></li>
 <li>When party alignment coincides with an election year, the two effects partially offset each other: alignment reduces costs, but the election-year effect increases them</li>
 </ul>
-<p>Taking both firm type and political factors together, the weighted average efficiency index is <strong>0.68 for Type 0 firms</strong> and <strong>0.62 for Type 1 firms</strong> — meaning that on average, the minimum cost is 68% and 62% of actual cost respectively. A possible explanation for the alignment effect is better coordination between the municipal and state administration when the parties are the same, which in turn may decrease delays due to bureaucracy.</p>
 <hr>
 </section>
 </section>
@@ -326,7 +337,7 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td>Sewage work</td>
-<td>−9.8 pp</td>
+<td>−9.3 pp</td>
 <td>—</td>
 </tr>
 <tr class="odd">
@@ -364,6 +375,314 @@ window.Quarto = {
 </div>
 
 
+</section>
+<section id="mexicos-procurement-system" class="level2">
+<h2 class="anchored" data-anchor-id="mexicos-procurement-system">Mexico’s Procurement System</h2>
+<p>Mexico’s <strong>Law of Public Works and Related Services</strong> (Ley de Obras Públicas y Servicios Relacionados con las Mismas) establishes that government contracts must be allocated through the mechanism that minimizes construction costs. In practice, this translates into three procedures with different levels of competition:</p>
+<div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.2em; margin:1.5em 0;">
+
+  <div style="border-top:4px solid #2E75B6; background:white; padding:1.2em 1.4em; border-radius:0 0 6px 6px; box-shadow:0 2px 6px rgba(0,0,0,0.07);">
+    <div style="font-size:0.72em;font-weight:700;text-transform:uppercase;color:#888;margin-bottom:0.4em;">Mechanism 1</div>
+    <div style="font-weight:700;color:#012169;font-size:1.05em;margin-bottom:0.5em;">Public Auction <em>(Licitación Pública)</em></div>
+    <p style="font-size:0.88em;color:#555;margin:0;">Open to all qualified firms. First-price sealed-bid. The law <em>favors</em> this procedure as the default. <strong>617 contracts</strong> in 2011–2018.</p>
+  </div>
+
+  <div style="border-top:4px solid #F2A900; background:white; padding:1.2em 1.4em; border-radius:0 0 6px 6px; box-shadow:0 2px 6px rgba(0,0,0,0.07);">
+    <div style="font-size:0.72em;font-weight:700;text-transform:uppercase;color:#888;margin-bottom:0.4em;">Mechanism 2</div>
+    <div style="font-weight:700;color:#012169;font-size:1.05em;margin-bottom:0.5em;">Invitation <em>(I3P — Invitación a Tres Personas)</em></div>
+    <p style="font-size:0.88em;color:#555;margin:0;">Government invites at least 3 pre-selected firms. Allowed when the project is small (under a value threshold) or urgent. <strong>2,633 contracts</strong> in 2011–2018.</p>
+  </div>
+
+  <div style="border-top:4px solid #012169; background:white; padding:1.2em 1.4em; border-radius:0 0 6px 6px; box-shadow:0 2px 6px rgba(0,0,0,0.07);">
+    <div style="font-size:0.72em;font-weight:700;text-transform:uppercase;color:#888;margin-bottom:0.4em;">Mechanism 3</div>
+    <div style="font-weight:700;color:#012169;font-size:1.05em;margin-bottom:0.5em;">Direct Allocation <em>(Adjudicación Directa)</em></div>
+    <p style="font-size:0.88em;color:#555;margin:0;">Government selects one firm without competition. Allowed under specific legal exceptions. <strong>448 contracts</strong> in 2011–2018.</p>
+  </div>
+
+</div>
+<p>The law establishes explicit exceptions permitting departure from the public auction default: projects that are small in value, urgent in nature, involve proprietary technology, or face risks of “significant losses” or “force majeure.” These exceptions are deliberately broad, and the vague language gives local officials substantial discretion in classifying contracts.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>The discretion problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The three mechanisms represent a tradeoff between <strong>competition</strong> (public auction) and <strong>government discretion</strong> (invitation or direct). The law’s intent is that discretion should be used only when genuine technical or logistical reasons justify bypassing competition. The concern is that broad exceptions allow discretion to be used for political or relational reasons, awarding contracts to preferred firms rather than the most cost-efficient ones.</p>
+<p>As shown in <a href="./politics.html">Political Factors</a>, the probability of bypassing a public auction rises significantly in election years and varies systematically with the governing party — consistent with discretionary allocation being driven partly by political rather than technical factors.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="scope-mexico-20112018" class="level2">
+<h2 class="anchored" data-anchor-id="scope-mexico-20112018">Scope: Mexico, 2011–2018</h2>
+<p>The analysis focuses on <strong>street pavement contracts</strong> (pavimentación de calles) across Mexico, covering all contracts recorded in Mexico’s national procurement registry (CompraNet) from 2011 to 2018. The data spans municipalities in multiple states, providing variation in economic conditions, local governments, contractor markets, and political environments.</p>
+<p>Pavement contracts are particularly well-suited for structural analysis because:</p>
+<ul>
+<li><strong>Homogeneity:</strong> Projects are measured in cubic meters of hydraulic concrete. This homogeneity reduces unobserved quality heterogeneity that would complicate the comparison of costs across contracts.</li>
+<li><strong>Frequency:</strong> The large number of contracts in a single state means we can estimate bid distributions nonparametrically with reasonable precision.</li>
+<li><strong>Common value unlikely:</strong> Unlike complex infrastructure (dams, tunnels, bridges), simple pavement work has well-understood costs. Each firm knows its own labor rates, equipment costs, and material prices. There is little information a rival’s bid could reveal about a firm’s own cost, supporting the IPV assumption.</li>
+</ul>
+<hr>
+</section>
+<section id="the-two-types-of-firms" class="level2">
+<h2 class="anchored" data-anchor-id="the-two-types-of-firms">The Two Types of Firms</h2>
+<p>The central distinction in this study is between firms based on their <strong>complete history</strong> across all three procurement mechanisms:</p>
+<div class="cards-grid" style="grid-template-columns: repeat(2,1fr);">
+  <div class="finding-card neutral-card">
+    <div class="finding-label">Type 1 — "Government-selected"</div>
+    <div class="finding-headline">Firms with prior direct or I3P experience</div>
+    <p class="finding-body">Has received at least one contract by direct allocation or been invited to at least one I3P auction. More experienced in total: average <strong>6.6 total contracts</strong> (all mechanisms) over the sample period. These firms have some form of prior relationship with the government, whether based on competence, connections, or both.</p>
+  </div>
+  <div class="finding-card neutral-card">
+    <div class="finding-label">Type 0 — "Public-auction-only"</div>
+    <div class="finding-headline">Firms with only public auction experience</div>
+    <p class="finding-body">Has only ever participated in open public auctions — no direct contracts, no I3P invitations. Average <strong>3.4 total contracts</strong> (all mechanisms) over the sample period. These firms are less experienced on average and have no special relationship with the government.</p>
+  </div>
+</div>
+<p>This classification is <strong>retrospective</strong>: a firm’s type is determined by its history across all contracts in the 2011–2018 sample, then applied to its bids in public auctions. The structural model uses this type assignment to separate the bid distributions <span class="math inline">\(G_0(\cdot)\)</span> and <span class="math inline">\(G_1(\cdot)\)</span> and estimate type-specific pseudo-costs.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Why this classification?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The type classification aims to capture a latent characteristic that is correlated with both cost efficiency (experience, scale) and government favoritism (relationships, political connections). The identifying assumption is that Type 1 and Type 0 are meaningfully different in ways that affect their cost distributions, which is verified empirically through the Kolmogorov-Smirnov test below.</p>
+<p>An alternative classification — based solely on the current auction or recent history — would be noisier and more endogenous to current conditions. Using the full-sample history makes the assignment more stable and less likely to reflect temporary changes in firm strategy.</p>
+</div>
+</div>
+<p><strong>The central question:</strong> Are Type 1 firms selected because they are genuinely more cost-efficient, or are they selected because they have better political connections, regardless of efficiency?</p>
+<hr>
+</section>
+<section id="bid-data-public-procurement-auctions" class="level2">
+<h2 class="anchored" data-anchor-id="bid-data-public-procurement-auctions">Bid Data: Public Procurement Auctions</h2>
+<p>The structural model is estimated using <strong>only public auction data</strong>, where full bid-level information is available. Invitation (I3P) and direct allocation contracts are excluded from the structural estimation because bids from invited or selected firms are not comparable, as the competitive environment is fundamentally different.</p>
+<p>After excluding contracts missing project characteristics (concrete volume, sewage dummy), the estimation sample contains:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Statistic</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Public auction contracts</td>
+<td>617</td>
+</tr>
+<tr class="even">
+<td>Individual bids (all types)</td>
+<td>2,784</td>
+</tr>
+<tr class="odd">
+<td>Average bid (thousands MXN/m³, 2018 prices)</td>
+<td>9.01</td>
+</tr>
+<tr class="even">
+<td>Average winning bid</td>
+<td>9.40</td>
+</tr>
+<tr class="odd">
+<td>Std. deviation of bids</td>
+<td>7.57</td>
+</tr>
+<tr class="even">
+<td>Average number of bidders per auction</td>
+<td>6.9</td>
+</tr>
+<tr class="odd">
+<td>— of which Type 1 (government-selected)</td>
+<td>2.0</td>
+</tr>
+<tr class="even">
+<td>— of which Type 0 (public-auction-only)</td>
+<td>4.9</td>
+</tr>
+<tr class="odd">
+<td>Average concrete volume per contract (m³)</td>
+<td>730.8</td>
+</tr>
+<tr class="even">
+<td>Share of contracts with sewage work</td>
+<td>38%</td>
+</tr>
+<tr class="odd">
+<td>Average project duration (months)</td>
+<td>3.4</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p><strong>Note on project size:</strong> The average project involves approximately 8–9 blocks (roughly 50 meters each), paved with hydraulic concrete. This is a small, well-defined construction task. Homogeneity is intentional: it reduces the unobserved heterogeneity that would contaminate the structural model’s cost recovery.</p>
+</blockquote>
+<hr>
+</section>
+<section id="preliminary-evidence-of-asymmetry-between-firm-types" class="level2">
+<h2 class="anchored" data-anchor-id="preliminary-evidence-of-asymmetry-between-firm-types">Preliminary Evidence of Asymmetry Between Firm Types</h2>
+<p>Before the structural estimation, simple reduced-form evidence reveals important differences between firm types. This motivates the asymmetric model specification.</p>
+<section id="bid-distributions" class="level3">
+<h3 class="anchored" data-anchor-id="bid-distributions">Bid Distributions</h3>
+<p>The chart below shows the <strong>conditional bid CDF</strong> <span class="math inline">\(F(b \mid Z = z)\)</span> for each firm type, evaluated at the 25th, 50th, and 75th percentiles of the project size distribution <span class="math inline">\(Z\)</span> (cubic meters of concrete). Conditioning on project size is essential: larger projects mechanically attract higher bids, so unconditional comparisons conflate cost differences with scale effects. The toggle lets you examine whether the gap between firm types varies across project sizes.</p>
+<pre class="{python}"><code>import pandas as pd
+import numpy as np
+import plotly.graph_objects as go
+
+DATA_PATH = "../../code_jmp/Exploratory R/"
+
+# Use the same file as the paper (data_G_conditional_diri3p.csv)
+df = pd.read_csv(DATA_PATH + "data_G_conditional_diri3p.csv")
+df = df.dropna(subset=["bid", "G_cond25", "G_cond50", "G_cond75", "typeb"])
+
+colors = {0: "#2E75B6", 1: "#F2A900"}
+labels = {0: "Type 0, Public-auction-only", 1: "Type 1, Government-selected"}
+dashes  = {0: "solid", 1: "dot"}
+
+cols       = ["G_cond25", "G_cond50", "G_cond75"]
+pct_labels = ["25th percentile", "50th percentile", "75th percentile"]
+pct_subs   = ["small projects", "median projects", "large projects"]
+
+fig = go.Figure()
+
+# Persistent dummy traces so the legend stays visible across toggles
+for t in [0, 1]:
+    fig.add_trace(go.Scatter(
+        x=[None], y=[None],
+        mode="lines",
+        name=labels[t],
+        line=dict(color=colors[t], width=2.5, dash=dashes[t]),
+        showlegend=True,
+        visible=True
+    ))
+
+# Real data traces: 3 percentiles × 2 types (indices 2–7)
+# No interpolation needed — the pre-computed Julia kernel estimates are already dense
+for i, col in enumerate(cols):
+    for t in [0, 1]:
+        sub = df[df["typeb"] == t].sort_values("bid")
+        fig.add_trace(go.Scatter(
+            x=sub["bid"],
+            y=sub[col],
+            mode="lines",
+            name=labels[t],
+            line=dict(color=colors[t], width=2.5, dash=dashes[t]),
+            visible=(i == 1),   # default: 50th percentile
+            showlegend=False
+        ))
+
+def vis(active):
+    v = [True, True]   # dummy legend traces always on
+    for i in range(3):
+        for t in range(2):
+            v.append(i == active)
+    return v
+
+buttons = [
+    dict(
+        label=pct_labels[i],
+        method="update",
+        args=[
+            {"visible": vis(i)},
+            {"title.text": f"Bid CDF by Firm Type — Project Size: {pct_labels[i]} ({pct_subs[i]})"}
+        ]
+    )
+    for i in range(3)
+]
+
+x_max = df["bid"].quantile(0.995)
+
+fig.update_layout(
+    title=dict(
+        text="Bid CDF by Firm Type — Project Size: 50th percentile (median projects)",
+        font=dict(size=14, color="#012169"),
+        x=0, xanchor="left"
+    ),
+    xaxis=dict(
+        title="Bid (MXN per m³ of concrete, 2018 prices)",
+        tickfont=dict(size=12), gridcolor="#eee",
+        range=[0, x_max]
+    ),
+    yaxis=dict(
+        title="F(b | Z = z)",
+        tickfont=dict(size=12), gridcolor="#eee",
+        range=[0, 1.02]
+    ),
+    legend=dict(orientation="h", x=0, y=-0.2, font=dict(size=12)),
+    plot_bgcolor="white", paper_bgcolor="white",
+    height=430,
+    margin=dict(l=60, r=20, t=90, b=90),
+    updatemenus=[dict(
+        type="buttons",
+        direction="right",
+        x=0.0, y=1.13,
+        xanchor="left", yanchor="top",
+        showactive=True,
+        bgcolor="white",
+        bordercolor="#ccc",
+        buttons=buttons,
+        font=dict(size=12)
+    )]
+)
+
+fig.show()</code></pre>
+<p>Type 1 firms bid on average <strong>8.5% higher</strong> than Type 0 firms in the same auctions, controlling for project characteristics. A Kolmogorov-Smirnov test rejects equality of the two bid distributions at conventional significance levels. Notably, the separation between the two types is <strong>more pronounced for larger projects</strong> (75th percentile) than for smaller ones (25th percentile), where the CDFs are nearly indistinguishable. This justifies the asymmetric model specification, since pooling the two types would be inconsistent with the data.</p>
+<hr>
+</section>
+</section>
+<section id="choice-of-allocation-mechanism" class="level2">
+<h2 class="anchored" data-anchor-id="choice-of-allocation-mechanism">Choice of Allocation Mechanism</h2>
+<p>To understand when governments choose to bypass public auctions, a probit model regresses the mechanism choice (1 = I3P or direct, 0 = public auction) on project and political characteristics.</p>
+<section id="probit-specification" class="level3">
+<h3 class="anchored" data-anchor-id="probit-specification">Probit Specification</h3>
+<p><span class="math display">\[\Pr(D_i = 1) = \Phi\!\left(\gamma_0 + \gamma_1 \ln z_i + \gamma_2 \text{sewage}_i + \gamma_3 \text{election}_i + \gamma_4 \text{PAN}_i + \mathbf{x}_i' \boldsymbol{\delta}\right)\]</span></p>
+<p>where <span class="math inline">\(D_i = 1\)</span> if contract <span class="math inline">\(i\)</span> is allocated by I3P or direct method, <span class="math inline">\(z_i\)</span> is concrete volume, <span class="math inline">\(\text{election}_i\)</span> is an indicator for the year before a municipal election, and <span class="math inline">\(\text{PAN}_i\)</span> indicates PAN-governed municipality. Additional controls <span class="math inline">\(\mathbf{x}_i\)</span> include state fixed effects.</p>
+</section>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">Results</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 22%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th style="text-align: center;">Effect</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Concrete volume (1 SD increase)</td>
+<td style="text-align: center;">−11.4 pp</td>
+<td>Larger projects are more likely to go to public auction (consistent with the law’s value thresholds)</td>
+</tr>
+<tr class="even">
+<td>Sewage work dummy</td>
+<td style="text-align: center;">−9.3 pp</td>
+<td>More complex projects are more likely to go to public auction</td>
+</tr>
+<tr class="odd">
+<td>Election year</td>
+<td style="text-align: center;"><strong>+6.2 pp</strong></td>
+<td>In pre-election years, governments bypass public auctions more often</td>
+</tr>
+<tr class="even">
+<td>PAN municipality (vs.&nbsp;PRI)</td>
+<td style="text-align: center;"><strong>−18.9 pp</strong></td>
+<td>Municipalities governed by the opposition party (PAN) use significantly less discretion</td>
+</tr>
+</tbody>
+</table>
+<p>The strong negative effect of project size is consistent with the law’s intent: the value thresholds that allow I3P and direct methods are designed for small contracts. The election-year and party effects (discussed in detail in <a href="./politics.html">Political Factors</a>) suggest that political incentives also shape the allocation decision.</p>
+</section>
 </section>
 
 </main> <!-- /main -->

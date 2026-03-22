@@ -64,7 +64,6 @@ This is a very large effect. One standard deviation in the party alignment varia
 
 Several interpretations are possible: (1) PAN municipalities face stronger internal party discipline or external accountability that discourages discretionary contracting; (2) PAN municipalities have less-developed networks of politically connected contractors; (3) PAN municipalities are more likely to be in urban areas where the contractor market is thicker and public auctions are more feasible; (4) PAN governments face greater scrutiny from civil society and media.
 
-The data cannot fully distinguish between these explanations.
 :::
 
 ### Party Alignment and Efficiency
@@ -74,7 +73,6 @@ Beyond the mechanism choice, party alignment also affects efficiency outcomes wi
 - When the **municipal and state government share a party**, firm excess costs in public auctions fall by approximately **9.8%**
 - When party alignment coincides with an election year, the two effects partially offset each other: alignment reduces costs, but the election-year effect increases them
 
-Taking both firm type and political factors together, the weighted average efficiency index is **0.68 for Type 0 firms** and **0.62 for Type 1 firms** — meaning that on average, the minimum cost is 68% and 62% of actual cost respectively. A possible explanation for the alignment effect is better coordination between the municipal and state administration when the parties are the same, which in turn may decrease delays due to bureaucracy.
 
 ---
 
@@ -103,7 +101,7 @@ This specification directly tests whether the mean inefficiency level varies wit
 | Variable | Mechanism Choice (Probit) | Excess Cost in Public Auctions (SFA) |
 |----------|--------------------------|--------------------------------------|
 | Concrete volume (1 SD) | −11.4 pp | — |
-| Sewage work | −9.8 pp | — |
+| Sewage work | −9.3 pp | — |
 | Election year | **+6.2 pp** | **+13.8%** excess cost |
 | PAN municipality | **−18.9 pp** | — |
 | Municipal–state alignment | — | **−9.8%** excess cost |

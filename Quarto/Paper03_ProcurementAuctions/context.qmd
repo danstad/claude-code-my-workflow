@@ -242,7 +242,7 @@ where $D_i = 1$ if contract $i$ is allocated by I3P or direct method, $z_i$ is c
 | Predictor | Effect | Interpretation |
 |-----------|:------:|----------------|
 | Concrete volume (1 SD increase) | −11.4 pp | Larger projects are more likely to go to public auction (consistent with the law's value thresholds) |
-| Sewage work dummy | −9.8 pp | More complex projects are more likely to go to public auction |
+| Sewage work dummy | −9.3 pp | More complex projects are more likely to go to public auction |
 | Election year | **+6.2 pp** | In pre-election years, governments bypass public auctions more often |
 | PAN municipality (vs. PRI) | **−18.9 pp** | Municipalities governed by the opposition party (PAN) use significantly less discretion |
 
