@@ -99,11 +99,11 @@ Here $G_j(\cdot|n_1,n_0)$ and $g_j(\cdot|n_1,n_0)$ are the **bid** CDF and PDF o
 ::: {.callout-note}
 ## Intuition for the inversion formula
 
-The left-hand side $b - c$ is the **markup**, i.e., the profit a firm earns per unit if it wins. The right-hand side is an inverse hazard rate of the bid distribution, adjusted for the presence of rivals of each type.
+Equations (3) and (4) say: **cost = bid minus markup**. The markup is the term being subtracted — the reciprocal of the denominator. A firm bids above its cost, and the formula tells us exactly how much above, so we can back out the cost.
 
-The denominator captures the **competitive pressure** on firm $i$ at bid $b$: it is the probability-weighted density of rivals' bids at $b$, given that they are bidding above $b$. A higher hazard rate means rivals are bunching near $b$, so a small increase in $b$ sharply reduces the probability of winning — forcing the firm to keep its markup small. A lower hazard rate means the firm has more pricing power and can charge a larger markup.
+The denominator measures **how many rivals are bidding just above your bid level**. More precisely, each term $g_j(b)/(1-G_j(b))$ is the hazard rate of type $j$ rivals' bids at $b$: the conditional density of a type $j$ rival bidding at $b$, given that they bid at least $b$. Multiplied by the number of rivals of that type and summed across both types, the denominator gives the total rate at which rivals are clustered just above $b$. When that rate is high, raising your bid even slightly risks losing the contract, so the optimal markup is small. When rivals are sparse near $b$, you can afford a larger markup. The optimal markup is the reciprocal of this competitive pressure.
 
-This formula allows us to go from the **shape** of the bid distribution directly to the **level** of underlying costs, which is why it is sometimes called "identification without parametric structure."
+Since the bid $b_{ji}$ is directly observed, and $G_j(\cdot)$ and $g_j(\cdot)$ are estimated from the observed bids of all firms in the sample, every term on the right-hand side is either observable or estimable — which is why we can compute a cost estimate $\hat{c}_{ji}$ for every bidder $i$ of every type $j$.
 :::
 
 ### Nonparametric Estimation
