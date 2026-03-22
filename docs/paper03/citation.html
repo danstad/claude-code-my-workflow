@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Replication – Productivity in Procurement Auctions</title>
+<title>Citation – Productivity in Procurement Auctions</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -152,8 +152,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Discussion</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./replication.html" aria-current="page"> 
-<span class="menu-text">Replication</span></a>
+    <a class="nav-link active" href="./citation.html" aria-current="page"> 
+<span class="menu-text">Citation</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -172,12 +172,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#citation" id="toc-citation" class="nav-link active" data-scroll-target="#citation">Citation</a></li>
   <li><a href="#bibtex-entry" id="toc-bibtex-entry" class="nav-link" data-scroll-target="#bibtex-entry">BibTeX Entry</a></li>
-  <li><a href="#data-and-code" id="toc-data-and-code" class="nav-link" data-scroll-target="#data-and-code">Data and Code</a>
-  <ul class="collapse">
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">Data Sources</a></li>
   <li><a href="#methodological-code" id="toc-methodological-code" class="nav-link" data-scroll-target="#methodological-code">Methodological Code</a></li>
   <li><a href="#about-this-website" id="toc-about-this-website" class="nav-link" data-scroll-target="#about-this-website">About This Website</a></li>
-  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -190,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Replication</h1>
+<h1 class="title">Citation</h1>
 </div>
 
 
@@ -226,78 +222,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
-<section id="data-and-code" class="level2">
-<h2 class="anchored" data-anchor-id="data-and-code">Data and Code</h2>
-<section id="data-sources" class="level3">
-<h3 class="anchored" data-anchor-id="data-sources">Data Sources</h3>
-<p>The analysis uses administrative procurement data from Mexico’s <strong>CompraNet</strong> platform (Mexico’s public procurement registry), covering pavement contracts across municipalities in Mexico from 2011 to 2018.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Dataset</th>
-<th>Description</th>
-<th>Use</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>bids_asym.csv</code></td>
-<td>Bid-level data with bid per m³ concrete (<code>fallo_concrete</code>) and firm type (<code>anydir_pav</code>)</td>
-<td>Bid distribution chart in <a href="./context.html">Context &amp; Data</a></td>
-</tr>
-<tr class="even">
-<td><code>data_xi.csv</code></td>
-<td>Pseudo-costs (<code>c_hat</code>) recovered from the structural model, by firm type (<code>typeb2</code>)</td>
-<td>Pseudo-cost distribution chart in <a href="./context.html">Context &amp; Data</a></td>
-</tr>
-<tr class="odd">
-<td><code>data_densities.csv</code></td>
-<td>CDF of pseudo-costs at project size quantiles, simple contracts</td>
-<td>Cost CDF chart in <a href="./results.html">Results</a></td>
-</tr>
-<tr class="even">
-<td><code>data_densities_drenaje.csv</code></td>
-<td>CDF of pseudo-costs at project size quantiles, complex contracts</td>
-<td>Cost CDF chart in <a href="./results.html">Results</a></td>
-</tr>
-<tr class="odd">
-<td><code>efficiency_index_comparison_drenaje_sfa.csv</code></td>
-<td>Firm-level BC efficiency index (<code>bc_h</code>) by type</td>
-<td>Efficiency density chart in <a href="./results.html">Results</a></td>
-</tr>
-<tr class="even">
-<td><code>efficiency_index_sfa_drenaje.csv</code></td>
-<td>Firm-level BC index with state and municipality identifiers</td>
-<td>State and municipality maps in <a href="./results.html">Results</a></td>
-</tr>
-<tr class="odd">
-<td><code>panel_variables.csv</code></td>
-<td>Contract-level panel with municipality names and INEGI codes</td>
-<td>Municipality–name lookup for maps</td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-<section id="methodological-code" class="level3">
-<h3 class="anchored" data-anchor-id="methodological-code">Methodological Code</h3>
+<section id="methodological-code" class="level2">
+<h2 class="anchored" data-anchor-id="methodological-code">Methodological Code</h2>
 <p>The paper uses three separate computational environments, each for a different stage of the analysis:</p>
 <p><strong>Stage 1: Structural auction model (Julia)</strong></p>
-<p>The nonparametric GPV estimation, including kernel density estimation of bid distributions and recovery of pseudo-costs via the inversion formula, is implemented in <strong>Julia</strong>. Julia’s performance is well-suited to the computationally intensive kernel bandwidth selection and cross-validation steps. The output is the pseudo-cost dataset (<code>data_xi.csv</code>, <code>data_densities.csv</code>, <code>data_densities_drenaje.csv</code>).</p>
-<p><strong>Stage 2: Stochastic frontier analysis (Julia/Stata)</strong></p>
-<p>The SFA models (half-normal and truncated-normal) are estimated via maximum likelihood. The efficiency index datasets (<code>efficiency_index_*.csv</code>) are the output of this stage.</p>
+<p>The nonparametric GPV estimation, including kernel density estimation of bid distributions and recovery of pseudo-costs via the inversion formula, is implemented in <strong>Julia</strong>. Julia’s performance is well-suited to the computationally intensive kernel bandwidth selection and cross-validation steps.</p>
+<p><strong>Stage 2: Stochastic frontier analysis (Stata)</strong></p>
+<p>The SFA models (half-normal and truncated-normal) are estimated via maximum likelihood in <strong>Stata</strong>.</p>
 <p><strong>Stage 3: Figures in the paper (R)</strong></p>
-<p>All figures published in the <em>Journal of Productivity Analysis</em> article were produced in <strong>R</strong> using <code>ggplot2</code>. The R scripts that generate the published figures are available in the project’s <code>code_jmp/Exploratory R/</code> directory.</p>
-<p><strong>This website (Python)</strong></p>
-<p>The interactive charts on this website are independent reproductions of the paper’s figures using <strong>Python</strong> (<code>plotly</code>, <code>scipy</code>, <code>pandas</code>). They draw on the same CSV output files as the R scripts, so the underlying data is identical, only the rendering tool differs.</p>
+<p>All figures published in the <em>Journal of Productivity Analysis</em> article were produced in <strong>R</strong> using <code>ggplot2</code>.</p>
 <hr>
 </section>
-<section id="about-this-website" class="level3">
-<h3 class="anchored" data-anchor-id="about-this-website">About This Website</h3>
-<p>This interactive summary was built with <a href="https://quarto.org">Quarto</a>, a scientific publishing system that renders Markdown and Python code into HTML. The source files for this website are available in the same GitHub repository as the paper’s replication code.</p>
+<section id="about-this-website" class="level2">
+<h2 class="anchored" data-anchor-id="about-this-website">About This Website</h2>
+<p>This interactive summary was built with <a href="https://quarto.org">Quarto</a>, a scientific publishing system that renders Markdown and code into HTML. The charts on this website are reproductions of the paper’s figures, generated using <strong>Python</strong> and <strong>R</strong>, drawing on the same underlying data as the published analysis.</p>
+<p>The source files for this website are available at <a href="https://github.com/danstad/claude-code-my-workflow">github.com/danstad/claude-code-my-workflow</a>.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

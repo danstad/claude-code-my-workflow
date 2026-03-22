@@ -20,8 +20,8 @@ website:
         text: Political Factors
       - href: discussion.qmd
         text: Discussion
-      - href: replication.qmd
-        text: Replication
+      - href: citation.qmd
+        text: Citation
   page-footer:
     left: "Daniel Prudencio — *Journal of Productivity Analysis* (2023)"
     right: "Built with [Quarto](https://quarto.org)"

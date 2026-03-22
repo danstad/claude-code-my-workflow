@@ -116,7 +116,7 @@
     "href": "index.html#how-to-navigate-this-site",
     "title": "Productivity in Procurement Auctions of Pavement Contracts in Mexico",
     "section": "How to Navigate This Site",
-    "text": "How to Navigate This Site\n\n\n\nPage\nWhat you will find\n\n\n\n\nContext & Data\nMexico’s procurement law, the three allocation mechanisms, data overview\n\n\nMethods\nThe structural auction model and stochastic frontier analysis\n\n\nResults\nCost distributions and efficiency estimates by firm type\n\n\nPolitical Factors\nElectoral cycle and party alignment effects\n\n\nReplication\nCitation, bibtex, and code"
+    "text": "How to Navigate This Site\n\n\n\nPage\nWhat you will find\n\n\n\n\nContext & Data\nMexico’s procurement law, the three allocation mechanisms, data overview\n\n\nMethods\nThe structural auction model and stochastic frontier analysis\n\n\nResults\nCost distributions and efficiency estimates by firm type\n\n\nPolitical Factors\nElectoral cycle and party alignment effects\n\n\nCitation\nCitation, BibTeX, and methodological code"
   },
   {
     "objectID": "context.html",
@@ -166,6 +166,41 @@
     "title": "Context & Data",
     "section": "Choice of Allocation Mechanism",
     "text": "Choice of Allocation Mechanism\nTo understand when governments choose to bypass public auctions, a probit model regresses the mechanism choice (1 = I3P or direct, 0 = public auction) on project and political characteristics.\n\nProbit Specification\n\\[\\Pr(D_i = 1) = \\Phi\\!\\left(\\gamma_0 + \\gamma_1 \\ln z_i + \\gamma_2 \\text{sewage}_i + \\gamma_3 \\text{election}_i + \\gamma_4 \\text{PAN}_i + \\mathbf{x}_i' \\boldsymbol{\\delta}\\right)\\]\nwhere \\(D_i = 1\\) if contract \\(i\\) is allocated by I3P or direct method, \\(z_i\\) is concrete volume, \\(\\text{election}_i\\) is an indicator for the year before a municipal election, and \\(\\text{PAN}_i\\) indicates PAN-governed municipality. Additional controls \\(\\mathbf{x}_i\\) include state fixed effects.\n\n\nResults\n\n\n\n\n\n\n\n\nPredictor\nEffect\nInterpretation\n\n\n\n\nConcrete volume (1 SD increase)\n−11.4 pp\nLarger projects are more likely to go to public auction (consistent with the law’s value thresholds)\n\n\nSewage work dummy\n−9.3 pp\nMore complex projects are more likely to go to public auction\n\n\nElection year\n+6.2 pp\nIn pre-election years, governments bypass public auctions more often\n\n\nPAN municipality (vs. PRI)\n−18.9 pp\nMunicipalities governed by the opposition party (PAN) use significantly less discretion\n\n\n\nThe strong negative effect of project size is consistent with the law’s intent: the value thresholds that allow I3P and direct methods are designed for small contracts. The election-year and party effects (discussed in detail in Political Factors) suggest that political incentives also shape the allocation decision."
+  },
+  {
+    "objectID": "citation.html",
+    "href": "citation.html",
+    "title": "Citation",
+    "section": "",
+    "text": "Prudencio, D. (2023). Productivity in procurement auctions of pavement contracts in Mexico. Journal of Productivity Analysis. https://doi.org/10.1007/s11123-025-00733-3"
+  },
+  {
+    "objectID": "citation.html#citation",
+    "href": "citation.html#citation",
+    "title": "Citation",
+    "section": "",
+    "text": "Prudencio, D. (2023). Productivity in procurement auctions of pavement contracts in Mexico. Journal of Productivity Analysis. https://doi.org/10.1007/s11123-025-00733-3"
+  },
+  {
+    "objectID": "citation.html#bibtex-entry",
+    "href": "citation.html#bibtex-entry",
+    "title": "Citation",
+    "section": "BibTeX Entry",
+    "text": "BibTeX Entry\n@article{prudencio2023procurement,\n  author    = {Prudencio, Daniel},\n  title     = {Productivity in procurement auctions of pavement contracts in {Mexico}},\n  journal   = {Journal of Productivity Analysis},\n  year      = {2023},\n  publisher = {Springer},\n  doi       = {10.1007/s11123-025-00733-3}\n}"
+  },
+  {
+    "objectID": "citation.html#methodological-code",
+    "href": "citation.html#methodological-code",
+    "title": "Citation",
+    "section": "Methodological Code",
+    "text": "Methodological Code\nThe paper uses three separate computational environments, each for a different stage of the analysis:\nStage 1: Structural auction model (Julia)\nThe nonparametric GPV estimation, including kernel density estimation of bid distributions and recovery of pseudo-costs via the inversion formula, is implemented in Julia. Julia’s performance is well-suited to the computationally intensive kernel bandwidth selection and cross-validation steps.\nStage 2: Stochastic frontier analysis (Stata)\nThe SFA models (half-normal and truncated-normal) are estimated via maximum likelihood in Stata.\nStage 3: Figures in the paper (R)\nAll figures published in the Journal of Productivity Analysis article were produced in R using ggplot2."
+  },
+  {
+    "objectID": "citation.html#about-this-website",
+    "href": "citation.html#about-this-website",
+    "title": "Citation",
+    "section": "About This Website",
+    "text": "About This Website\nThis interactive summary was built with Quarto, a scientific publishing system that renders Markdown and code into HTML. The charts on this website are reproductions of the paper’s figures, generated using Python and R, drawing on the same underlying data as the published analysis.\nThe source files for this website are available at github.com/danstad/claude-code-my-workflow."
   },
   {
     "objectID": "discussion.html",

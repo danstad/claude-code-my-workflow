@@ -158,4 +158,4 @@ $$\hat{c}_i \;=\; b_i \;-\; \frac{1 - \hat{F}(b_i)}{\hat{f}(b_i)}$$
 | [Methods](methods.qmd) | The structural auction model and stochastic frontier analysis |
 | [Results](results.qmd) | Cost distributions and efficiency estimates by firm type |
 | [Political Factors](politics.qmd) | Electoral cycle and party alignment effects |
-| [Replication](replication.qmd) | Citation, bibtex, and code |
+| [Citation](citation.qmd) | Citation, BibTeX, and methodological code |
