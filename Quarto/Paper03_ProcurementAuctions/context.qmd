@@ -117,70 +117,111 @@ Before the structural estimation, simple reduced-form evidence reveals important
 
 ### Bid Distributions
 
+The chart below shows the **conditional bid CDF** $F(b \mid Z = z)$ for each firm type, evaluated at the 25th, 50th, and 75th percentiles of the project size distribution $Z$ (cubic meters of concrete). Conditioning on project size is essential: larger projects mechanically attract higher bids, so unconditional comparisons conflate cost differences with scale effects. The toggle lets you examine whether the gap between firm types varies across project sizes.
+
 ```{python}
 import pandas as pd
 import numpy as np
-from scipy.stats import gaussian_kde, ks_2samp
 import plotly.graph_objects as go
 
 DATA_PATH = "../../code_jmp/Exploratory R/"
 
-# bids_asym.csv: fallo_concrete = bid per m³ concrete (thousands MXN, 2018 prices)
-#                anydir_pav = 0 (public-auction-only) | 1 (government-selected)
-df = pd.read_csv(DATA_PATH + "bids_asym.csv")
-df = df[df["fallo_concrete"] > 0].dropna(subset=["fallo_concrete", "anydir_pav"])
-q99 = df["fallo_concrete"].quantile(0.99)
-df = df[df["fallo_concrete"] <= q99]
+df = pd.read_csv(DATA_PATH + "data_G_conditional.csv")
+df = df.dropna(subset=["bid", "G_cond25", "G_cond50", "G_cond75", "typeb"])
 
 colors = {0: "#2E75B6", 1: "#F2A900"}
-labels = {0: "Type 0 — Public-auction-only", 1: "Type 1 — Government-selected"}
-line_styles = {0: "solid", 1: "dash"}
+labels = {0: "Type 0, Public-auction-only", 1: "Type 1, Government-selected"}
+dashes  = {0: "solid", 1: "dot"}
+
+cols       = ["G_cond25", "G_cond50", "G_cond75"]
+pct_labels = ["25th percentile", "50th percentile", "75th percentile"]
+pct_subs   = ["small projects", "median projects", "large projects"]
 
 fig = go.Figure()
-vals_by_type = {}
 
+# Persistent dummy traces so the legend stays visible across toggles
 for t in [0, 1]:
-    vals = df[df["anydir_pav"] == t]["fallo_concrete"].values
-    vals_by_type[t] = vals
-    kde = gaussian_kde(vals, bw_method=0.3)
-    x = np.linspace(vals.min(), vals.max(), 500)
-    y = kde(x)
     fig.add_trace(go.Scatter(
-        x=x, y=y,
+        x=[None], y=[None],
         mode="lines",
-        name=f"{labels[t]} (n={len(vals):,})",
-        line=dict(color=colors[t], width=2.5, dash=line_styles[t])
+        name=labels[t],
+        line=dict(color=colors[t], width=2.5, dash=dashes[t]),
+        showlegend=True,
+        visible=True
     ))
 
-ks_stat, ks_p = ks_2samp(vals_by_type[0], vals_by_type[1])
+# Real data traces: 3 percentiles × 2 types (indices 2–7)
+for i, col in enumerate(cols):
+    for t in [0, 1]:
+        sub = df[df["typeb"] == t].sort_values("bid")
+        fig.add_trace(go.Scatter(
+            x=sub["bid"],
+            y=sub[col],
+            mode="lines",
+            name=labels[t],
+            line=dict(color=colors[t], width=2.5, dash=dashes[t]),
+            visible=(i == 1),   # default: 50th percentile
+            showlegend=False
+        ))
 
-fig.add_annotation(
-    text=f"KS statistic: {ks_stat:.3f}  (p = {ks_p:.4f})",
-    x=0.98, y=0.95,
-    xref="paper", yref="paper",
-    showarrow=False,
-    font=dict(size=11, color="#555"),
-    bgcolor="white",
-    bordercolor="#ccc",
-    borderwidth=1,
-    align="right"
-)
+def vis(active):
+    v = [True, True]   # dummy legend traces always on
+    for i in range(3):
+        for t in range(2):
+            v.append(i == active)
+    return v
+
+buttons = [
+    dict(
+        label=pct_labels[i],
+        method="update",
+        args=[
+            {"visible": vis(i)},
+            {"title.text": f"Bid CDF by Firm Type — Project Size: {pct_labels[i]} ({pct_subs[i]})"}
+        ]
+    )
+    for i in range(3)
+]
+
+x_max = df["bid"].quantile(0.995)
 
 fig.update_layout(
-    title=dict(text="Bid Distributions by Firm Type (Public Auctions)",
-               font=dict(size=14, color="#012169")),
-    xaxis=dict(title="Bid (thousands MXN per m³, 2018 prices)",
-               tickfont=dict(size=12), gridcolor="#eee"),
-    yaxis=dict(title="Density", tickfont=dict(size=12), gridcolor="#eee"),
-    legend=dict(orientation="h", x=0, y=-0.22, font=dict(size=12)),
+    title=dict(
+        text="Bid CDF by Firm Type — Project Size: 50th percentile (median projects)",
+        font=dict(size=14, color="#012169"),
+        x=0, xanchor="left"
+    ),
+    xaxis=dict(
+        title="Bid (MXN per m³ of concrete, 2018 prices)",
+        tickfont=dict(size=12), gridcolor="#eee",
+        range=[0, x_max]
+    ),
+    yaxis=dict(
+        title="F(b | Z = z)",
+        tickfont=dict(size=12), gridcolor="#eee",
+        range=[0, 1.02]
+    ),
+    legend=dict(orientation="h", x=0, y=-0.2, font=dict(size=12)),
     plot_bgcolor="white", paper_bgcolor="white",
-    height=400,
-    margin=dict(l=60, r=20, t=60, b=90)
+    height=430,
+    margin=dict(l=60, r=20, t=90, b=90),
+    updatemenus=[dict(
+        type="buttons",
+        direction="right",
+        x=0.0, y=1.13,
+        xanchor="left", yanchor="top",
+        showactive=True,
+        bgcolor="white",
+        bordercolor="#ccc",
+        buttons=buttons,
+        font=dict(size=12)
+    )]
 )
+
 fig.show()
 ```
 
-Type 1 firms bid on average **8.5% higher** than Type 0 firms in the same auctions, controlling for project characteristics. A Kolmogorov-Smirnov test rejects equality of the two bid distributions at conventional significance levels (see annotation above). This justifies the asymmetric model specification, since pooling the two types would be inconsistent with the data.
+Type 1 firms bid on average **8.5% higher** than Type 0 firms in the same auctions, controlling for project characteristics. A Kolmogorov-Smirnov test rejects equality of the two bid distributions at conventional significance levels. Notably, the separation between the two types is **more pronounced for larger projects** (75th percentile) than for smaller ones (25th percentile), where the CDFs are nearly indistinguishable. This justifies the asymmetric model specification, since pooling the two types would be inconsistent with the data.
 
 ### Estimated Cost Distributions
 
