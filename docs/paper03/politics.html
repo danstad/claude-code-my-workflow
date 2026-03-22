@@ -210,8 +210,8 @@ window.Quarto = {
 
 <section id="why-politics-matters-for-procurement" class="level2">
 <h2 class="anchored" data-anchor-id="why-politics-matters-for-procurement">Why Politics Matters for Procurement</h2>
-<p>The efficiency comparison in <a href="./results.html">Results</a> shows that Type 1 firms (government-selected) are more cost-efficient for complex contracts, but less efficient for simple ones. This raises a natural follow-up question: <strong>what drives the government’s allocation decisions?</strong> If governments were purely optimizing for cost, we would expect discretionary mechanisms to be used only when selected firms have genuine cost advantages — i.e., mainly for complex contracts. Instead, we observe that the vast majority (~76%) of I3P contracts are for simple projects where Type 1 firms are actually more expensive.</p>
-<p>The political economy literature offers an alternative explanation: <strong>governments use procurement discretion to reward politically connected firms</strong>, especially ahead of elections. This section tests for two specific political mechanisms: the electoral cycle and party alignment.</p>
+<p>The efficiency comparison in <a href="./results.html">Results</a> shows that Type 1 firms (government-selected) are more cost-efficient for complex contracts, but less efficient for simple ones. This raises a natural follow-up question: <strong>what drives the government’s allocation decisions?</strong> If governments were purely optimizing for cost, we would expect discretionary mechanisms to be used only when selected firms have genuine cost advantages — i.e., mainly for complex contracts. Instead, we observe that the majority (~62%) of public auction contracts are for simple projects where Type 1 firms are actually more expensive.</p>
+<p>The political economy literature offers an alternative explanation: <strong>governments use procurement discretion to reward politically connected firms</strong>, especially ahead of elections. This section tests for two specific political mechanisms: the electoral cycle and party alignment. The efficiency comparison is based on ~62% of public contracts (simple projects) and ~38% (complex projects with sewage).</p>
 <hr>
 </section>
 <section id="the-electoral-cycle" class="level2">
@@ -219,7 +219,7 @@ window.Quarto = {
 <section id="mechanism-choice-and-election-timing" class="level3">
 <h3 class="anchored" data-anchor-id="mechanism-choice-and-election-timing">Mechanism Choice and Election Timing</h3>
 <p>In a first-price auction, firms compete on price to win contracts. In a discretionary mechanism (I3P, direct), the government selects which firms are allowed to compete (or simply awards directly). This gives incumbents the ability to direct resources to politically affiliated contractors. The incentive to do so is strongest in the period <strong>just before an election</strong>, when incumbents need resources for campaign activities and when payoffs to connected firms are most politically valuable.</p>
-<p>The probit regression on mechanism choice includes an indicator for <strong>the year before a municipal election</strong>. Municipal elections in Jalisco follow a fixed, staggered schedule, as municipalities do not all vote in the same year, providing variation in the electoral pressure variable across municipalities and over time.</p>
+<p>The probit regression on mechanism choice includes an indicator for <strong>the year before a municipal election</strong>. Municipal elections in Mexico follow a fixed, staggered schedule, as municipalities do not all vote in the same year, providing variation in the electoral pressure variable across municipalities and over time.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -252,7 +252,7 @@ window.Quarto = {
 </section>
 <section id="the-political-business-cycle-in-procurement" class="level3">
 <h3 class="anchored" data-anchor-id="the-political-business-cycle-in-procurement">The Political Business Cycle in Procurement</h3>
-<p>This pattern connects to a broader literature on political business cycles (Nordhaus, 1975; Rogoff and Sibert, 1988) and, more specifically, to evidence from Latin America on election-cycle effects in public works spending (e.g., Drazen and Eslava, 2010, for Colombia; Veiga and Veiga, 2007, for Portugal). The finding here adds a new dimension: the distortion operates not only through the <em>level</em> of spending but also through the <em>efficiency</em> of procurement — the government buys the same roads but at higher cost near elections.</p>
+<p>This pattern connects to a broader literature on political business cycles in procurement. The finding here adds a new dimension: the distortion operates not only through the <em>level</em> of spending but also through the <em>efficiency</em> of procurement — the government buys the same roads but at higher cost near elections.</p>
 <hr>
 </section>
 </section>
@@ -261,7 +261,7 @@ window.Quarto = {
 <section id="the-alignment-mechanism" class="level3">
 <h3 class="anchored" data-anchor-id="the-alignment-mechanism">The Alignment Mechanism</h3>
 <p>Beyond the electoral cycle, political alignment between levels of government may shape procurement choices. When the <strong>municipal and state governments are controlled by the same party</strong>, they may coordinate more effectively on infrastructure priorities, or alternatively, the shared political network facilitates the flow of contracts to affiliated firms.</p>
-<p><strong>PAN vs.&nbsp;PRI municipalities.</strong> The probit model includes an indicator for PAN-governed municipalities (relative to PRI, the dominant party in most of Jalisco). The large partisan difference in mechanism choice is one of the strongest findings in the paper.</p>
+<p><strong>PAN vs.&nbsp;PRI municipalities.</strong> The probit model includes an indicator for PAN-governed municipalities (relative to PRI). The large partisan difference in mechanism choice is one of the strongest findings in the paper.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -283,9 +283,9 @@ window.Quarto = {
 <p>Beyond the mechanism choice, party alignment also affects efficiency outcomes within public auctions:</p>
 <ul>
 <li>When the <strong>municipal and state government share a party</strong>, firm excess costs in public auctions fall by approximately <strong>9.8%</strong></li>
-<li>When party alignment coincides with an election year, the two effects partially offset each other, as the alignment effect reduces costs, but the election-year effect increases them</li>
+<li>When party alignment coincides with an election year, the two effects partially offset each other: alignment reduces costs, but the election-year effect increases them</li>
 </ul>
-<p>This suggests that party alignment may improve coordination in some respects (reducing procurement costs for aligned governments) while simultaneously enabling the use of discretionary allocation for political reasons. The net effect on welfare is ambiguous and depends on how the two mechanisms interact at the contract level.</p>
+<p>Taking both firm type and political factors together, the weighted average efficiency index is <strong>0.68 for Type 0 firms</strong> and <strong>0.62 for Type 1 firms</strong> — meaning that on average, the minimum cost is 68% and 62% of actual cost respectively. A possible explanation for the alignment effect is better coordination between the municipal and state administration when the parties are the same, which in turn may decrease delays due to bureaucracy.</p>
 <hr>
 </section>
 </section>
@@ -300,7 +300,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="efficiency-sfa-with-political-controls">Efficiency SFA with Political Controls</h3>
 <p>The SFA model from <a href="./methods.html">Methods</a> is augmented with political variables:</p>
 <p><span class="math display">\[\ln \hat{c}_{ji} = \ln C^*(w_{ji}, z_{ji}) + \eta_{ji}(\text{election}_i, \text{aligned}_i) + \varepsilon_{ji}\]</span></p>
-<p>where the inefficiency term <span class="math inline">\(\eta\)</span> is modeled as a function of election-year and alignment indicators (following Battese and Coelli, 1995, who allow the mean of the truncated-normal to depend on covariates):</p>
+<p>where the inefficiency term <span class="math inline">\(\eta\)</span> is modeled as a function of election-year and alignment indicators (following Wang, 2002, who allows the mean of the truncated-normal to depend on covariates):</p>
 <p><span class="math display">\[\eta_{ji} \sim \mathcal{N}^+\!\left(\mu_0 + \mu_1 \text{election}_i + \mu_2 \text{aligned}_i,\; \sigma_u^2\right)\]</span></p>
 <p>This specification directly tests whether the mean inefficiency level varies with political conditions, rather than estimating reduced-form correlations.</p>
 </section>

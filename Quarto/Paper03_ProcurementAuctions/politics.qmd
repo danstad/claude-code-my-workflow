@@ -4,9 +4,9 @@ title: "Political Factors"
 
 ## Why Politics Matters for Procurement
 
-The efficiency comparison in [Results](results.qmd) shows that Type 1 firms (government-selected) are more cost-efficient for complex contracts, but less efficient for simple ones. This raises a natural follow-up question: **what drives the government's allocation decisions?** If governments were purely optimizing for cost, we would expect discretionary mechanisms to be used only when selected firms have genuine cost advantages — i.e., mainly for complex contracts. Instead, we observe that the vast majority (~76%) of I3P contracts are for simple projects where Type 1 firms are actually more expensive.
+The efficiency comparison in [Results](results.qmd) shows that Type 1 firms (government-selected) are more cost-efficient for complex contracts, but less efficient for simple ones. This raises a natural follow-up question: **what drives the government's allocation decisions?** If governments were purely optimizing for cost, we would expect discretionary mechanisms to be used only when selected firms have genuine cost advantages — i.e., mainly for complex contracts. Instead, we observe that the majority (~62%) of public auction contracts are for simple projects where Type 1 firms are actually more expensive.
 
-The political economy literature offers an alternative explanation: **governments use procurement discretion to reward politically connected firms**, especially ahead of elections. This section tests for two specific political mechanisms: the electoral cycle and party alignment.
+The political economy literature offers an alternative explanation: **governments use procurement discretion to reward politically connected firms**, especially ahead of elections. This section tests for two specific political mechanisms: the electoral cycle and party alignment. The efficiency comparison is based on ~62% of public contracts (simple projects) and ~38% (complex projects with sewage).
 
 ---
 
@@ -16,7 +16,7 @@ The political economy literature offers an alternative explanation: **government
 
 In a first-price auction, firms compete on price to win contracts. In a discretionary mechanism (I3P, direct), the government selects which firms are allowed to compete (or simply awards directly). This gives incumbents the ability to direct resources to politically affiliated contractors. The incentive to do so is strongest in the period **just before an election**, when incumbents need resources for campaign activities and when payoffs to connected firms are most politically valuable.
 
-The probit regression on mechanism choice includes an indicator for **the year before a municipal election**. Municipal elections in Jalisco follow a fixed, staggered schedule, as municipalities do not all vote in the same year, providing variation in the electoral pressure variable across municipalities and over time.
+The probit regression on mechanism choice includes an indicator for **the year before a municipal election**. Municipal elections in Mexico follow a fixed, staggered schedule, as municipalities do not all vote in the same year, providing variation in the electoral pressure variable across municipalities and over time.
 
 ::: {.callout-important}
 ## Finding: +6.2 percentage point increase in discretionary allocation before elections
@@ -46,7 +46,7 @@ What could explain higher excess costs in competitive auctions during election y
 
 ### The Political Business Cycle in Procurement
 
-This pattern connects to a broader literature on political business cycles (Nordhaus, 1975; Rogoff and Sibert, 1988) and, more specifically, to evidence from Latin America on election-cycle effects in public works spending (e.g., Drazen and Eslava, 2010, for Colombia; Veiga and Veiga, 2007, for Portugal). The finding here adds a new dimension: the distortion operates not only through the *level* of spending but also through the *efficiency* of procurement — the government buys the same roads but at higher cost near elections.
+This pattern connects to a broader literature on political business cycles in procurement. The finding here adds a new dimension: the distortion operates not only through the *level* of spending but also through the *efficiency* of procurement — the government buys the same roads but at higher cost near elections.
 
 ---
 
@@ -56,7 +56,7 @@ This pattern connects to a broader literature on political business cycles (Nord
 
 Beyond the electoral cycle, political alignment between levels of government may shape procurement choices. When the **municipal and state governments are controlled by the same party**, they may coordinate more effectively on infrastructure priorities, or alternatively, the shared political network facilitates the flow of contracts to affiliated firms.
 
-**PAN vs. PRI municipalities.** The probit model includes an indicator for PAN-governed municipalities (relative to PRI, the dominant party in most of Jalisco). The large partisan difference in mechanism choice is one of the strongest findings in the paper.
+**PAN vs. PRI municipalities.** The probit model includes an indicator for PAN-governed municipalities (relative to PRI). The large partisan difference in mechanism choice is one of the strongest findings in the paper.
 
 ::: {.callout-important}
 ## Finding: PAN municipalities are 18.9 pp less likely to use discretionary allocation than PRI municipalities
@@ -73,9 +73,9 @@ The data cannot fully distinguish between these explanations, but the finding is
 Beyond the mechanism choice, party alignment also affects efficiency outcomes within public auctions:
 
 - When the **municipal and state government share a party**, firm excess costs in public auctions fall by approximately **9.8%**
-- When party alignment coincides with an election year, the two effects partially offset each other, as the alignment effect reduces costs, but the election-year effect increases them
+- When party alignment coincides with an election year, the two effects partially offset each other: alignment reduces costs, but the election-year effect increases them
 
-This suggests that party alignment may improve coordination in some respects (reducing procurement costs for aligned governments) while simultaneously enabling the use of discretionary allocation for political reasons. The net effect on welfare is ambiguous and depends on how the two mechanisms interact at the contract level.
+Taking both firm type and political factors together, the weighted average efficiency index is **0.68 for Type 0 firms** and **0.62 for Type 1 firms** — meaning that on average, the minimum cost is 68% and 62% of actual cost respectively. A possible explanation for the alignment effect is better coordination between the municipal and state administration when the parties are the same, which in turn may decrease delays due to bureaucracy.
 
 ---
 
@@ -93,7 +93,7 @@ The SFA model from [Methods](methods.qmd) is augmented with political variables:
 
 $$\ln \hat{c}_{ji} = \ln C^*(w_{ji}, z_{ji}) + \eta_{ji}(\text{election}_i, \text{aligned}_i) + \varepsilon_{ji}$$
 
-where the inefficiency term $\eta$ is modeled as a function of election-year and alignment indicators (following Battese and Coelli, 1995, who allow the mean of the truncated-normal to depend on covariates):
+where the inefficiency term $\eta$ is modeled as a function of election-year and alignment indicators (following Wang, 2002, who allows the mean of the truncated-normal to depend on covariates):
 
 $$\eta_{ji} \sim \mathcal{N}^+\!\left(\mu_0 + \mu_1 \text{election}_i + \mu_2 \text{aligned}_i,\; \sigma_u^2\right)$$
 
