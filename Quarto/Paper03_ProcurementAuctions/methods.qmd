@@ -225,7 +225,7 @@ The **Battese and Coelli efficiency index** is reported as the primary result:
 
 $$BC_i = e^{-\hat{\eta}_i} \in (0, 1]$$
 
-Interpretation: $BC_i = 1$ means the firm is on the cost frontier, with zero excess cost. $BC_i = 0.80$ means the firm uses $1/0.80 = 1.25$ times the inputs of a frontier firm to produce the same output, implying a 25% excess cost. Values closer to 1 indicate less inefficiency.
+Interpretation: $BC_i = 1$ means the firm is on the cost frontier — its actual cost equals the minimum achievable cost. $BC_i = 0.60$ means that the minimum cost is 60% of the firm's actual cost, so the firm could reduce its costs by 40% if it operated at the frontier. Values closer to 1 indicate less inefficiency.
 
 The paper reports mean $BC$ by firm type, testing whether Type 1 (government-selected) and Type 0 (public-auction-only) firms have statistically different efficiency levels.
 
