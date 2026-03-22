@@ -6,7 +6,7 @@ title: "Political Factors"
 
 The efficiency comparison in [Results](results.qmd) shows that Type 1 firms (government-selected) are more cost-efficient for complex contracts, but less efficient for simple ones. This raises a natural follow-up question: **what drives the government's allocation decisions?** If governments were purely optimizing for cost, we would expect discretionary mechanisms to be used only when selected firms have genuine cost advantages — i.e., mainly for complex contracts. Instead, we observe that the majority (~62%) of public auction contracts are for simple projects where Type 1 firms are actually more expensive.
 
-The political economy literature offers an alternative explanation: **governments use procurement discretion to reward politically connected firms**, especially ahead of elections. This section tests for two specific political mechanisms: the electoral cycle and party alignment. The efficiency comparison is based on ~62% of public contracts (simple projects) and ~38% (complex projects with sewage).
+The political economy literature offers an alternative explanation: **governments use procurement discretion to reward politically connected firms**, especially ahead of elections. This section tests for two specific political mechanisms: the electoral cycle and party alignment.
 
 ---
 
@@ -28,10 +28,9 @@ This is a large effect relative to the unconditional probability of discretionar
 
 ### Bidding Behavior Near Elections
 
-The electoral cycle affects not just the *mechanism* choice but also **behavior within public auctions**. Using public auction data only, an SFA regression that includes the election-year indicator finds:
+The electoral cycle affects not just the *mechanism* choice but also **behavior within public auctions**. In the SFA, the mean of the inefficiency term $\mu(W)$ is modeled explicitly as a function of political variables — election-year proximity and municipal–state party alignment. The marginal effect of being in the year before a municipal election on the mean inefficiency term is:
 
-- Firm excess costs in public auctions are **13.8% higher** in the year before elections than in other years
-- This effect holds after controlling for firm fixed effects, project characteristics, and input price variation
+- **+13.8%** increase in the average overuse of inputs, all else equal
 
 What could explain higher excess costs in competitive auctions during election years? One interpretation: firms that are part of a political network bid less aggressively in public auctions, knowing that they may receive direct contracts regardless of their performance in competitive bidding. This reduces competitive pressure even within the public auction mechanism.
 
