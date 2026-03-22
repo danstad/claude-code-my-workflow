@@ -329,13 +329,12 @@ window.Quarto = {
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Bandwidth selection is a critical practical choice in kernel estimation. An overly wide bandwidth produces a smooth but biased estimate; an overly narrow bandwidth produces a noisy but unbiased estimate. The bandwidth is selected using <strong>Silverman’s rule-of-thumb</strong> adapted for each type’s sample size, which provides a good balance in samples of this size.</p>
-<p>A more serious problem is <strong>boundary bias</strong>: near the lower boundary of the bid support (<span class="math inline">\(\underline{b}\)</span>), the kernel function extends below the support, causing the density estimator to underestimate the true density. To address this:</p>
+<p>Bandwidth selection is a critical practical choice in kernel estimation. An overly wide bandwidth produces a smooth but biased estimate; an overly narrow bandwidth produces a noisy but unbiased estimate. The optimal bandwidth is chosen following <strong>Guerre, Perrigne, and Vuong (2000)</strong>, with a correction for the triweight kernel following Härdle (1991).</p>
+<p>A more serious problem is <strong>boundary bias</strong>: near the lower boundary of the bid support (<span class="math inline">\(\underline{b}\)</span>), the kernel function extends below the support, causing the density estimator to underestimate the true density. Two strategies address this:</p>
 <ol type="1">
 <li><p><strong>Log transformation</strong>: bids are log-transformed before kernel estimation. This maps the support from <span class="math inline">\([\underline{b}, \infty)\)</span> to <span class="math inline">\((-\infty, \infty)\)</span>, eliminating the lower boundary problem and also reducing right-skewness.</p></li>
-<li><p><strong>10% boundary trimming</strong>: observations in the bottom and top 10% of the bid distribution are excluded from the inversion step. This removes the region where boundary effects in the density estimator are most severe, at the cost of losing information about the tails.</p></li>
+<li><p><strong>10% boundary trimming</strong>: observations in the bottom and top 10% of the bid distribution are excluded from the inversion step. This removes the region where boundary effects are most severe, at the cost of losing information about the tails. An alternative that avoids trimming altogether is the boundary-corrected kernel estimator proposed by <strong>Hickman and Hubbard (2015)</strong>, which directly adjusts the kernel near the support boundary.</p></li>
 </ol>
-<p>These choices follow the practice in Guerre, Perrigne, and Vuong (2000) and subsequent empirical applications of the GPV approach (e.g., Krasnokutskaya, 2011; Perrigne and Vuong, 2011).</p>
 </div>
 </div>
 </div>

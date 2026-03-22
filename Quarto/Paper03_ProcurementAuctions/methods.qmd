@@ -129,15 +129,13 @@ where $K_G(\cdot)$ and $K_g(\cdot)$ are kernel functions, and $h_{zG}$, $h_{zg}$
 ::: {.callout-note collapse="true"}
 ## Bandwidth selection and the boundary bias problem
 
-Bandwidth selection is a critical practical choice in kernel estimation. An overly wide bandwidth produces a smooth but biased estimate; an overly narrow bandwidth produces a noisy but unbiased estimate. The bandwidth is selected using **Silverman's rule-of-thumb** adapted for each type's sample size, which provides a good balance in samples of this size.
+Bandwidth selection is a critical practical choice in kernel estimation. An overly wide bandwidth produces a smooth but biased estimate; an overly narrow bandwidth produces a noisy but unbiased estimate. The optimal bandwidth is chosen following **Guerre, Perrigne, and Vuong (2000)**, with a correction for the triweight kernel following Härdle (1991).
 
-A more serious problem is **boundary bias**: near the lower boundary of the bid support ($\underline{b}$), the kernel function extends below the support, causing the density estimator to underestimate the true density. To address this:
+A more serious problem is **boundary bias**: near the lower boundary of the bid support ($\underline{b}$), the kernel function extends below the support, causing the density estimator to underestimate the true density. Two strategies address this:
 
 1. **Log transformation**: bids are log-transformed before kernel estimation. This maps the support from $[\underline{b}, \infty)$ to $(-\infty, \infty)$, eliminating the lower boundary problem and also reducing right-skewness.
 
-2. **10% boundary trimming**: observations in the bottom and top 10% of the bid distribution are excluded from the inversion step. This removes the region where boundary effects in the density estimator are most severe, at the cost of losing information about the tails.
-
-These choices follow the practice in Guerre, Perrigne, and Vuong (2000) and subsequent empirical applications of the GPV approach (e.g., Krasnokutskaya, 2011; Perrigne and Vuong, 2011).
+2. **10% boundary trimming**: observations in the bottom and top 10% of the bid distribution are excluded from the inversion step. This removes the region where boundary effects are most severe, at the cost of losing information about the tails. An alternative that avoids trimming altogether is the boundary-corrected kernel estimator proposed by **Hickman and Hubbard (2015)**, which directly adjusts the kernel near the support boundary.
 :::
 
 **Step 2: Recover pseudo-costs.** Plugging the estimated distributions into the type-specific inversion formulas (3) and (4) yields the sample analogues. For each Type 1 bid $b_{1p\ell}$ in auction $\ell$:
