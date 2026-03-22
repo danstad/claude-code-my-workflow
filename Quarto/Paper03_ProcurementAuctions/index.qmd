@@ -1,6 +1,10 @@
 ---
-title-block-style: none
+title: "Productivity in Procurement Auctions of Pavement Contracts in Mexico"
 ---
+
+```{=html}
+<style>#title-block-header { display: none !important; }</style>
+```
 
 ```{=html}
 <div class="paper-title-block">
