@@ -260,26 +260,12 @@ fig.show()
 The density plot shows the full distribution of $BC$ efficiency scores for each firm type. The vertical dotted lines mark the means.
 
 ::: {.callout-note}
-## What does BC = 0.65 mean?
+## What does BC = 0.60 mean?
 
-If a firm has a BC efficiency index of 0.65, it means that firm uses $1/0.65 = 1.54$ times the inputs that a frontier firm would use to produce the same output. In other words, it incurs **54% excess costs** relative to the best-practice firm in the sample.
-
-This does not mean the firm is wasting resources in an obvious sense, as the frontier is estimated from the sample and reflects what is achievable given the technology and market conditions in Jalisco. A BC of 0.65 simply means there are firms in the same market producing the same output at meaningfully lower cost.
+A BC efficiency index of 1.0 means the firm is on the cost frontier — its actual cost equals the minimum achievable cost. A value of 0.60 means the minimum cost is **60% of the firm's actual cost**: the firm spends more than it needs to, relative to the best-practice firms in Mexico operating under the same conditions.
 :::
 
-The SFA results confirm the CDF patterns:
-
-- For **complex projects**, the Type 1 distribution is shifted toward higher BC values (closer to 1), indicating less excess cost, consistent with genuine efficiency advantages
-- The difference in means is statistically significant at conventional levels under both the half-normal and truncated-normal specifications
-
-### Half-Normal vs. Truncated-Normal: Robustness
-
-| Model | Type 0 Mean BC | Type 1 Mean BC | Difference | p-value |
-|-------|---------------|---------------|------------|---------|
-| Half-normal | — | — | Type 1 > Type 0 | < 0.05 |
-| Truncated-normal | — | — | Type 1 > Type 0 | < 0.05 |
-
-Both distributional assumptions yield the same qualitative conclusion. The truncated-normal model, which freely estimates the mean of the inefficiency distribution, confirms that the Type 1 efficiency advantage for complex projects is not an artifact of the half-normal's restriction.
+The SFA results show that Type 1 firms overuse inputs by **7.5 percentage points more** than Type 0 firms, on average, and this difference is statistically significant. This aggregate finding is driven by the composition of the sample: the majority of public auction contracts do not include sewage work, and simple pavement projects are precisely the type where Type 1 firms are less cost-competitive. When the full sample is pooled, the cost disadvantage of Type 1 firms on simple projects dominates.
 
 ---
 
