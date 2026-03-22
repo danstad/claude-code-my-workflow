@@ -60,21 +60,35 @@ colors = {"t0": "#2E75B6", "t1": "#F2A900"}
 
 fig = go.Figure()
 
-# Simple traces (visible by default)
+# Persistent dummy traces so legend stays visible across toggles (indices 0–1)
+fig.add_trace(go.Scatter(
+    x=[None], y=[None], mode="lines",
+    name="Type 0 — Public-auction-only",
+    line=dict(color=colors["t0"], width=2.5),
+    showlegend=True, visible=True
+))
+fig.add_trace(go.Scatter(
+    x=[None], y=[None], mode="lines",
+    name="Type 1 — Government-selected",
+    line=dict(color=colors["t1"], width=2.5, dash="dash"),
+    showlegend=True, visible=True
+))
+
+# Simple traces (visible by default, indices 2–3)
 fig.add_trace(go.Scatter(
     x=simple_t0["c_hat"], y=simple_t0["F50"],
     mode="lines", name="Type 0 — Public-auction-only",
     line=dict(color=colors["t0"], width=2.5),
-    visible=True
+    visible=True, showlegend=False
 ))
 fig.add_trace(go.Scatter(
     x=simple_t1["c_hat"], y=simple_t1["F50"],
     mode="lines", name="Type 1 — Government-selected",
     line=dict(color=colors["t1"], width=2.5, dash="dash"),
-    visible=True
+    visible=True, showlegend=False
 ))
 
-# Complex traces (hidden by default)
+# Complex traces (hidden by default, indices 4–5)
 fig.add_trace(go.Scatter(
     x=complex_t0["c_hat"], y=complex_t0["F50_d1"],
     mode="lines", name="Type 0 — Public-auction-only",
@@ -117,7 +131,7 @@ fig.update_layout(
                 label="Simple (no sewage)",
                 method="update",
                 args=[
-                    {"visible": [True, True, False, False]},
+                    {"visible": [True, True, True, True, False, False]},
                     {"title.text": "Cost CDFs by Firm Type — Simple Pavement Projects (no sewage)"}
                 ]
             ),
@@ -125,7 +139,7 @@ fig.update_layout(
                 label="Complex (with sewage)",
                 method="update",
                 args=[
-                    {"visible": [False, False, True, True]},
+                    {"visible": [True, True, False, False, True, True]},
                     {"title.text": "Cost CDFs by Firm Type — Complex Pavement Projects (with sewage)"}
                 ]
             )
