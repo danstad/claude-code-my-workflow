@@ -162,16 +162,26 @@ window.Quarto = {
   <ul>
   <li><a href="#step-1-structural-procurement-auction-model" id="toc-step-1-structural-procurement-auction-model" class="nav-link active" data-scroll-target="#step-1-structural-procurement-auction-model">Step 1: Structural Procurement Auction Model</a>
   <ul class="collapse">
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#equilibrium-and-identification" id="toc-equilibrium-and-identification" class="nav-link" data-scroll-target="#equilibrium-and-identification">Equilibrium and Identification</a></li>
-  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation">Estimation</a></li>
+  <li><a href="#the-identification-problem" id="toc-the-identification-problem" class="nav-link" data-scroll-target="#the-identification-problem">The Identification Problem</a></li>
+  <li><a href="#setup-and-assumptions" id="toc-setup-and-assumptions" class="nav-link" data-scroll-target="#setup-and-assumptions">Setup and Assumptions</a></li>
+  <li><a href="#equilibrium-characterization" id="toc-equilibrium-characterization" class="nav-link" data-scroll-target="#equilibrium-characterization">Equilibrium Characterization</a></li>
+  <li><a href="#the-gpv-inversion-formula" id="toc-the-gpv-inversion-formula" class="nav-link" data-scroll-target="#the-gpv-inversion-formula">The GPV Inversion Formula</a></li>
+  <li><a href="#nonparametric-estimation" id="toc-nonparametric-estimation" class="nav-link" data-scroll-target="#nonparametric-estimation">Nonparametric Estimation</a></li>
   </ul></li>
   <li><a href="#step-2-stochastic-frontier-analysis" id="toc-step-2-stochastic-frontier-analysis" class="nav-link" data-scroll-target="#step-2-stochastic-frontier-analysis">Step 2: Stochastic Frontier Analysis</a>
   <ul class="collapse">
-  <li><a href="#the-cost-frontier" id="toc-the-cost-frontier" class="nav-link" data-scroll-target="#the-cost-frontier">The Cost Frontier</a></li>
-  <li><a href="#the-sfa-model" id="toc-the-sfa-model" class="nav-link" data-scroll-target="#the-sfa-model">The SFA Model</a></li>
-  <li><a href="#connection-between-steps-1-and-2" id="toc-connection-between-steps-1-and-2" class="nav-link" data-scroll-target="#connection-between-steps-1-and-2">Connection Between Steps 1 and 2</a></li>
+  <li><a href="#efficiency-in-production-the-conceptual-framework" id="toc-efficiency-in-production-the-conceptual-framework" class="nav-link" data-scroll-target="#efficiency-in-production-the-conceptual-framework">Efficiency in Production: The Conceptual Framework</a></li>
+  <li><a href="#the-stochastic-frontier-model" id="toc-the-stochastic-frontier-model" class="nav-link" data-scroll-target="#the-stochastic-frontier-model">The Stochastic Frontier Model</a></li>
+  <li><a href="#distributional-assumptions-on-inefficiency" id="toc-distributional-assumptions-on-inefficiency" class="nav-link" data-scroll-target="#distributional-assumptions-on-inefficiency">Distributional Assumptions on Inefficiency</a></li>
+  <li><a href="#the-efficiency-index" id="toc-the-efficiency-index" class="nav-link" data-scroll-target="#the-efficiency-index">The Efficiency Index</a></li>
   </ul></li>
+  <li><a href="#connecting-the-two-steps" id="toc-connecting-the-two-steps" class="nav-link" data-scroll-target="#connecting-the-two-steps">Connecting the Two Steps</a>
+  <ul class="collapse">
+  <li><a href="#the-methodological-contribution" id="toc-the-methodological-contribution" class="nav-link" data-scroll-target="#the-methodological-contribution">The Methodological Contribution</a></li>
+  <li><a href="#validity-and-potential-concerns" id="toc-validity-and-potential-concerns" class="nav-link" data-scroll-target="#validity-and-potential-concerns">Validity and Potential Concerns</a></li>
+  <li><a href="#why-not-just-compare-bids" id="toc-why-not-just-compare-bids" class="nav-link" data-scroll-target="#why-not-just-compare-bids">Why Not Just Compare Bids?</a></li>
+  </ul></li>
+  <li><a href="#summary-of-modeling-choices" id="toc-summary-of-modeling-choices" class="nav-link" data-scroll-target="#summary-of-modeling-choices">Summary of Modeling Choices</a></li>
   </ul>
 </nav>
 </nav>
@@ -201,112 +211,317 @@ window.Quarto = {
 </header>
 
 
-<p>This paper combines two econometric approaches that are rarely used together: a <strong>structural procurement auction model</strong> to recover firm costs from observed bids, and a <strong>stochastic frontier analysis (SFA)</strong> to measure how efficiently each firm uses inputs. The diagram below summarizes the two-step procedure.</p>
+<p>This paper combines two approaches that are rarely used together: a <strong>structural procurement auction model</strong> to recover unobserved firm costs from observed bids, and <strong>stochastic frontier analysis (SFA)</strong> to measure how efficiently each firm uses its inputs relative to the production frontier. This section explains both approaches in detail, including the assumptions they require and the estimation challenges they pose.</p>
 <div class="diagram-box">
-  <div style="display:grid; grid-template-columns:1fr 60px 1fr; align-items:center; gap:0.5em; font-family:sans-serif;">
-
+  <div style="display:grid; grid-template-columns:1fr 50px 1fr; align-items:center; gap:0.5em; font-family:sans-serif;">
     <div style="background:#E8EDF5; border:2px solid #012169; border-radius:8px; padding:1.2em; text-align:center;">
       <div style="font-weight:700; color:#012169; margin-bottom:0.4em;">Step 1</div>
       <div style="font-weight:600; margin-bottom:0.4em;">Structural Auction Model</div>
       <div style="font-size:0.85em; color:#555;">Observed bids → pseudo-costs<br><em>GPV nonparametric approach,<br>asymmetric bidders</em></div>
     </div>
-
     <div style="text-align:center; font-size:2em; color:#F2A900; font-weight:700;">→</div>
-
     <div style="background:#E8EDF5; border:2px solid #012169; border-radius:8px; padding:1.2em; text-align:center;">
       <div style="font-weight:700; color:#012169; margin-bottom:0.4em;">Step 2</div>
       <div style="font-weight:600; margin-bottom:0.4em;">Stochastic Frontier Analysis</div>
       <div style="font-size:0.85em; color:#555;">Pseudo-costs + input prices → efficiency index<br><em>Half-normal and truncated-normal models</em></div>
     </div>
-
   </div>
-  <div style="margin-top:1em; font-size:0.82em; color:#777;">
-    <strong>Key contribution:</strong> Pseudo-costs from Step 1 serve as the cost variable in Step 2 — circumventing the need for direct observation of firm costs, which is typically unavailable.
+  <div style="margin-top:1em; font-size:0.82em; color:#777; text-align:left;">
+    <strong>Key contribution:</strong> Pseudo-costs from Step 1 serve as the cost variable in Step 2 — circumventing the need for direct observation of firm costs, which is typically unavailable in procurement data.
   </div>
 </div>
 <hr>
 <section id="step-1-structural-procurement-auction-model" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-structural-procurement-auction-model">Step 1: Structural Procurement Auction Model</h2>
-<section id="setup" class="level3">
-<h3 class="anchored" data-anchor-id="setup">Setup</h3>
-<p>The government runs a <strong>first-price sealed-bid procurement auction</strong>. There are <span class="math inline">\(n\)</span> risk-neutral bidders, of two types:</p>
-<ul>
-<li><strong>Type 1</strong> (<span class="math inline">\(n_1\)</span> bidders): firms that have at some point received a direct contract or I3P invitation</li>
-<li><strong>Type 0</strong> (<span class="math inline">\(n_0\)</span> bidders): firms that have only participated in public auctions, with <span class="math inline">\(n_0 + n_1 = n\)</span></li>
-</ul>
-<p>Each firm <span class="math inline">\(i\)</span> of type <span class="math inline">\(j \in \{0, 1\}\)</span> has a private cost <span class="math inline">\(c_{ji}\)</span> drawn independently from <span class="math inline">\(F_j(\cdot)\)</span>, defined on <span class="math inline">\([\underline{c}, \bar{c}]\)</span>. Costs are <strong>independent private values (IPV)</strong> — a natural assumption for small, homogeneous pavement projects where a common value component is unlikely.</p>
+<section id="the-identification-problem" class="level3">
+<h3 class="anchored" data-anchor-id="the-identification-problem">The Identification Problem</h3>
+<p>The fundamental challenge in procurement auction analysis is that <strong>firm costs are unobserved</strong>. We observe the bids that firms submit, but not the actual cost each firm would incur to complete the contract. Without knowing costs, we cannot say whether a winning firm is genuinely efficient or simply lucky in the strategic interaction.</p>
+<p>A reduced-form approach — simply comparing winning bids across firm types — confounds cost differences with strategic behavior. A Type 1 firm that bids higher than a Type 0 firm might be doing so because: (a) it has higher costs, (b) it has lower costs but shades its bid more aggressively knowing it faces less competition, or (c) some combination of both. The structural model separates these two channels by exploiting the equilibrium relationship between bidding strategies and cost distributions.</p>
 </section>
-<section id="equilibrium-and-identification" class="level3">
-<h3 class="anchored" data-anchor-id="equilibrium-and-identification">Equilibrium and Identification</h3>
-<p>At Bayesian Nash Equilibrium, each bidder chooses a bid to maximize expected profit. For a Type 1 firm:</p>
-<p><span class="math display">\[b_{1i} - c_{1i} = \frac{1}{(n_1 - 1)\,\frac{g_1(b_{1i})}{1 - G_1(b_{1i})} + n_0\,\frac{g_0(b_{1i})}{1 - G_0(b_{1i})}}\]</span></p>
-<p>where <span class="math inline">\(G_j(\cdot)\)</span> and <span class="math inline">\(g_j(\cdot)\)</span> are the <strong>bid</strong> CDF and PDF of type <span class="math inline">\(j\)</span> firms. A symmetric equation holds for Type 0. This is the <strong>GPV inversion formula</strong> (Guerre, Perrigne &amp; Vuong 2000), extended to asymmetric bidders by Flambard &amp; Perrigne (2006).</p>
+<section id="setup-and-assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="setup-and-assumptions">Setup and Assumptions</h3>
+<p>The government runs a <strong>first-price sealed-bid procurement auction</strong>. There are <span class="math inline">\(n\)</span> risk-neutral bidders partitioned into two types:</p>
+<ul>
+<li><strong>Type 1</strong> (<span class="math inline">\(n_1\)</span> bidders): firms that have received at least one contract by direct allocation or I3P invitation at some point during the sample period</li>
+<li><strong>Type 0</strong> (<span class="math inline">\(n_0\)</span> bidders): firms that have only ever competed in public auctions, with <span class="math inline">\(n_0 + n_1 = n\)</span></li>
+</ul>
+<p>Each firm <span class="math inline">\(i\)</span> of type <span class="math inline">\(j \in \{0, 1\}\)</span> privately observes its own cost <span class="math inline">\(c_{ji}\)</span>, drawn independently from <span class="math inline">\(F_j(\cdot)\)</span>, a continuous distribution on <span class="math inline">\([\underline{c}, \bar{c}]\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>The key insight
+<span class="screen-reader-only">Note</span>The independent private values (IPV) assumption
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The equilibrium condition directly maps <strong>observed bids</strong> to <strong>unobserved costs</strong> — without needing to know the equilibrium strategies explicitly. The bid distributions <span class="math inline">\(G_0(\cdot)\)</span> and <span class="math inline">\(G_1(\cdot)\)</span> are estimated nonparametrically from the data.</p>
+<p>The model assumes <strong>independent private values</strong>: each firm knows only its own cost, and knowing a rival’s cost would not change its own cost assessment. This is the standard assumption in structural auction models and is particularly well-suited to this setting.</p>
+<p>For small, <strong>homogeneous pavement contracts</strong> — paving 8–9 city blocks with hydraulic concrete — there is little room for a “common value” component. The value of a pavement contract is largely determined by each firm’s own input costs and operational efficiency, not by uncertain qualities of the contract itself. Contrast this with oil lease auctions, where knowing a rival’s seismic estimates would update your own assessment of the reserve value — that is the classic common value case (Wilson, 1969; Milgrom and Weber, 1982). For pavement, each firm’s cost is largely idiosyncratic.</p>
+<p>The IPV assumption also rules out <strong>ex-post regret</strong> about one’s own bid: if you win, you pay what you bid and deliver the project at your private cost. There is no “winner’s curse” in the traditional sense.</p>
 </div>
 </div>
 </section>
-<section id="estimation" class="level3">
-<h3 class="anchored" data-anchor-id="estimation">Estimation</h3>
-<p>The estimation proceeds in three nonparametric steps:</p>
+<section id="equilibrium-characterization" class="level3">
+<h3 class="anchored" data-anchor-id="equilibrium-characterization">Equilibrium Characterization</h3>
+<p>At a Bayesian Nash Equilibrium, each firm chooses a bid <span class="math inline">\(b_{ji}\)</span> to maximize its expected profit:</p>
+<p><span class="math display">\[\pi_{ji} = (b_{ji} - c_{ji}) \cdot \Pr(\text{firm } i \text{ wins} \mid b_{ji})\]</span></p>
+<p>In a first-price procurement auction, the firm submitting the <strong>lowest</strong> bid wins (the government awards to the cheapest supplier). Thus:</p>
+<p><span class="math display">\[\Pr(i \text{ wins} \mid b_{ji}) = \Pr(\text{all rivals bid above } b_{ji})\]</span></p>
+<p>At equilibrium, each firm uses a bidding strategy <span class="math inline">\(\beta_j(\cdot)\)</span> — a function mapping its private cost into a bid — and the equilibrium strategies are mutually best responses. Several properties hold at equilibrium:</p>
 <ol type="1">
-<li><strong>Estimate bid distributions</strong> <span class="math inline">\(\hat{G}_j(\cdot)\)</span> and <span class="math inline">\(\hat{g}_j(\cdot)\)</span> using kernel density estimators, conditioning on project characteristics <span class="math inline">\(\mathbf{z}\)</span> (concrete volume, sewage dummy)</li>
-<li><strong>Recover pseudo-costs</strong> <span class="math inline">\(\hat{c}_{ji}\)</span> by plugging estimated bid densities into the inversion formula above</li>
-<li><strong>Estimate cost distributions</strong> <span class="math inline">\(\hat{f}_j(\cdot)\)</span> from the recovered pseudo-costs</li>
+<li><strong>Bidding above cost:</strong> <span class="math inline">\(b_{ji} &gt; c_{ji}\)</span> always — firms shade their bids upward to earn a markup</li>
+<li><strong>Monotonicity:</strong> <span class="math inline">\(\beta_j(\cdot)\)</span> is strictly increasing — lower-cost firms bid lower</li>
+<li><strong>Type-specific strategies:</strong> because <span class="math inline">\(F_0 \neq F_1\)</span>, the equilibrium strategies <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> differ</li>
 </ol>
-<p>Practical details: a triweight kernel is used for continuous variables; a smoothed binary kernel for the sewage dummy; 10% boundary trimming is applied; and bids are log-transformed to reduce skewness.</p>
+<p>The existence and uniqueness of such equilibria in asymmetric auctions is non-trivial and was established by Maskin and Riley (2003) under regularity conditions satisfied in this setting.</p>
+</section>
+<section id="the-gpv-inversion-formula" class="level3">
+<h3 class="anchored" data-anchor-id="the-gpv-inversion-formula">The GPV Inversion Formula</h3>
+<p>The core identification result is due to <strong>Guerre, Perrigne, and Vuong (2000)</strong>, who showed that the equilibrium condition — firm <span class="math inline">\(i\)</span> of type <span class="math inline">\(j\)</span> setting its bid optimally — directly maps from the <strong>observable bid distribution</strong> to the <strong>unobservable cost distribution</strong>, without requiring any parametric assumption on <span class="math inline">\(F_j(\cdot)\)</span>.</p>
+<p>The first-order condition of firm <span class="math inline">\(i\)</span>’s profit maximization problem, at an interior optimum, yields:</p>
+<p><span class="math display">\[b_{ji} - c_{ji} = \frac{1}{(n_j - 1)\,\dfrac{g_j(b_{ji})}{1 - G_j(b_{ji})} + \displaystyle\sum_{k \neq j} n_k \,\dfrac{g_k(b_{ji})}{1 - G_k(b_{ji})}}\]</span></p>
+<p>For a <strong>Type 1 firm</strong>, this becomes:</p>
+<p><span class="math display">\[b_{1i} - c_{1i} = \frac{1}{(n_1 - 1)\,\dfrac{g_1(b_{1i})}{1 - G_1(b_{1i})} + n_0\,\dfrac{g_0(b_{1i})}{1 - G_0(b_{1i})}}\]</span></p>
+<p>and symmetrically for a Type 0 firm. Here <span class="math inline">\(G_j(\cdot)\)</span> and <span class="math inline">\(g_j(\cdot)\)</span> are the <strong>bid</strong> CDF and PDF of type <span class="math inline">\(j\)</span> firms (not cost distributions — cost distributions are recovered using this formula).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Intuition for the inversion formula
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The left-hand side <span class="math inline">\(b - c\)</span> is the <strong>markup</strong> — the profit a firm earns per unit if it wins. The right-hand side is an inverse hazard rate of the bid distribution, adjusted for the presence of rivals of each type.</p>
+<p>The denominator captures the <strong>competitive pressure</strong> on firm <span class="math inline">\(i\)</span> at bid <span class="math inline">\(b\)</span>: it is the probability-weighted density of rivals’ bids at <span class="math inline">\(b\)</span>, given that they are bidding above <span class="math inline">\(b\)</span>. A higher hazard rate means rivals are bunching near <span class="math inline">\(b\)</span>, so a small increase in <span class="math inline">\(b\)</span> sharply reduces the probability of winning — forcing the firm to keep its markup small. A lower hazard rate means the firm has more pricing power and can charge a larger markup.</p>
+<p>This formula allows us to go from the <strong>shape</strong> of the bid distribution directly to the <strong>level</strong> of underlying costs — which is why it is sometimes called “identification without parametric structure.”</p>
+</div>
+</div>
+<p>This formula was extended to <strong>two types of asymmetric bidders</strong> by Flambard and Perrigne (2006), which is the specification used here. The extension requires estimating two separate bid distributions <span class="math inline">\(G_0(\cdot)\)</span> and <span class="math inline">\(G_1(\cdot)\)</span> and plugging both into the respective inversion formulas. Asymmetry matters: if we incorrectly pooled both types and estimated a single bid distribution, we would mismeasure the competitive pressure each firm faces and obtain biased pseudo-costs.</p>
+</section>
+<section id="nonparametric-estimation" class="level3">
+<h3 class="anchored" data-anchor-id="nonparametric-estimation">Nonparametric Estimation</h3>
+<p>The estimation proceeds in three steps:</p>
+<p><strong>Step 1: Estimate bid distributions.</strong> For each type <span class="math inline">\(j \in \{0,1\}\)</span>, estimate <span class="math inline">\(\hat{G}_j(\cdot)\)</span> and <span class="math inline">\(\hat{g}_j(\cdot)\)</span> using <strong>kernel density estimation</strong> conditional on project characteristics <span class="math inline">\(\mathbf{z}\)</span> (concrete volume in m³, sewage dummy). The estimator is:</p>
+<p><span class="math display">\[\hat{g}_j(b \mid \mathbf{z}) = \frac{1}{n_j h^{d+1}} \sum_{i=1}^{n_j} K\!\left(\frac{b - b_i}{h}\right) \prod_{\ell=1}^d K_\ell\!\left(\frac{z_\ell - z_{i\ell}}{h_\ell}\right)\]</span></p>
+<p>where <span class="math inline">\(K(\cdot)\)</span> is the <strong>triweight kernel</strong> <span class="math inline">\(K(u) = \tfrac{35}{32}(1-u^2)^3 \mathbf{1}(|u| \leq 1)\)</span> for continuous variables, and a smoothed binary kernel is used for the sewage dummy. The triweight kernel is used rather than the more common Gaussian because it has bounded support, which avoids assigning probability mass outside the observed bid range; it is also known to have superior finite-sample properties for second-order density estimation.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Bandwidth selection and the boundary bias problem
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Bandwidth selection is a critical practical choice in kernel estimation. An overly wide bandwidth produces a smooth but biased estimate; an overly narrow bandwidth produces a noisy but unbiased estimate. The bandwidth is selected using <strong>Silverman’s rule-of-thumb</strong> adapted for each type’s sample size, which provides a good balance in samples of this size.</p>
+<p>A more serious problem is <strong>boundary bias</strong>: near the lower boundary of the bid support (<span class="math inline">\(\underline{b}\)</span>), the kernel function extends below the support, causing the density estimator to underestimate the true density. To address this:</p>
+<ol type="1">
+<li><p><strong>Log transformation</strong>: bids are log-transformed before kernel estimation. This maps the support from <span class="math inline">\([\underline{b}, \infty)\)</span> to <span class="math inline">\((-\infty, \infty)\)</span>, eliminating the lower boundary problem and also reducing right-skewness.</p></li>
+<li><p><strong>10% boundary trimming</strong>: observations in the bottom and top 10% of the bid distribution are excluded from the inversion step. This removes the region where boundary effects in the density estimator are most severe, at the cost of losing information about the tails.</p></li>
+</ol>
+<p>These choices follow the practice in Guerre, Perrigne, and Vuong (2000) and subsequent empirical applications of the GPV approach (e.g., Krasnokutskaya, 2011; Perrigne and Vuong, 2011).</p>
+</div>
+</div>
+</div>
+<p><strong>Step 2: Recover pseudo-costs.</strong> For each observed bid <span class="math inline">\(b_{ji}\)</span>, plug the estimated densities into the type-specific inversion formula to recover:</p>
+<p><span class="math display">\[\hat{c}_{ji} = b_{ji} - \frac{1}{(n_j - 1)\,\dfrac{\hat{g}_j(b_{ji})}{1 - \hat{G}_j(b_{ji})} + n_k \,\dfrac{\hat{g}_k(b_{ji})}{1 - \hat{G}_k(b_{ji})}}\]</span></p>
+<p>These <span class="math inline">\(\hat{c}_{ji}\)</span> values are called <strong>pseudo-costs</strong> because they are not directly observed, but rather recovered by inverting the equilibrium condition. Under the model’s assumptions, <span class="math inline">\(\hat{c}_{ji} \to c_{ji}\)</span> as the sample grows.</p>
+<p><strong>Step 3: Estimate cost distributions.</strong> Use kernel density estimation on the recovered pseudo-costs <span class="math inline">\(\{\hat{c}_{ji}\}\)</span> to obtain <span class="math inline">\(\hat{f}_j(\cdot)\)</span>. These cost distributions are the structural objects of interest.</p>
 <hr>
 </section>
 </section>
 <section id="step-2-stochastic-frontier-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="step-2-stochastic-frontier-analysis">Step 2: Stochastic Frontier Analysis</h2>
-<section id="the-cost-frontier" class="level3">
-<h3 class="anchored" data-anchor-id="the-cost-frontier">The Cost Frontier</h3>
-<p>Given a level of output <span class="math inline">\(z\)</span> (cubic meters of concrete) and input prices <span class="math inline">\(w\)</span> (concrete price, construction wages, machinery rental), each firm minimizes cost subject to a production constraint. Allowing for <strong>technical inefficiency</strong> <span class="math inline">\(\eta \geq 0\)</span>, the firm’s actual cost relates to the optimal (frontier) cost by:</p>
-<p><span class="math display">\[C^a = C^*(w, z) \cdot e^\eta\]</span></p>
-<p>where <span class="math inline">\(\eta\)</span> is the <strong>excess cost</strong> — the proportional amount by which the firm overuses all inputs relative to the efficient frontier. A firm with <span class="math inline">\(\eta = 0\)</span> is fully efficient; <span class="math inline">\(\eta &gt; 0\)</span> means it could produce the same output with fewer inputs.</p>
+<section id="efficiency-in-production-the-conceptual-framework" class="level3">
+<h3 class="anchored" data-anchor-id="efficiency-in-production-the-conceptual-framework">Efficiency in Production: The Conceptual Framework</h3>
+<p>Even if we could observe a firm’s actual cost directly, that cost tells us little about whether the firm is using its inputs efficiently. A firm may face high costs simply because wages or materials are expensive in its region — that is not inefficiency. <strong>Technical inefficiency</strong> refers to excess input use given the firm’s output and the prices it faces: a firm is technically inefficient if it uses more inputs than necessary to produce a given output.</p>
+<p>The concept of a <strong>production frontier</strong> dates to Farrell (1957): the frontier is the minimum cost achievable by the best-practice firm given its output level and input prices. The distance between a firm’s actual cost and the frontier cost is a measure of inefficiency. The challenge is that the frontier is unobserved and must be estimated from the data.</p>
+<p>Ordinary least squares (OLS) on a cost function:</p>
+<p><span class="math display">\[\ln C_i = \alpha + \boldsymbol{\beta}' \mathbf{x}_i + \varepsilon_i\]</span></p>
+<p>estimates the <strong>average</strong> relationship between inputs and costs, not the frontier. The intercept <span class="math inline">\(\alpha\)</span> absorbs both the frontier and the average inefficiency level, making it impossible to recover firm-level efficiency from residuals.</p>
 </section>
-<section id="the-sfa-model" class="level3">
-<h3 class="anchored" data-anchor-id="the-sfa-model">The SFA Model</h3>
-<p>Taking logs and adding a noise term <span class="math inline">\(\varepsilon \sim \mathcal{N}(0, \sigma_\varepsilon^2)\)</span>:</p>
-<p><span class="math display">\[\ln C^a = \ln C^*(w, z) + \eta + \varepsilon\]</span></p>
-<p>The inefficiency term <span class="math inline">\(\eta \geq 0\)</span> is estimated under two distributional assumptions (for robustness):</p>
+<section id="the-stochastic-frontier-model" class="level3">
+<h3 class="anchored" data-anchor-id="the-stochastic-frontier-model">The Stochastic Frontier Model</h3>
+<p>The SFA approach, introduced by Aigner, Lovell, and Schmidt (1977) and Meeusen and van den Broeck (1977), decomposes the cost deviation from the frontier into two components:</p>
+<p><span class="math display">\[\ln C^a_i = \underbrace{\ln C^*(w_i, z_i)}_{\text{frontier cost}} + \underbrace{\eta_i}_{\substack{\text{technical} \\ \text{inefficiency}}} + \underbrace{\varepsilon_i}_{\substack{\text{noise}}}\]</span></p>
+<p>where: - <span class="math inline">\(C^*(w_i, z_i)\)</span> is the <strong>minimum achievable cost</strong> for a firm with output <span class="math inline">\(z_i\)</span> (cubic meters of concrete) and input prices <span class="math inline">\(w_i\)</span> (concrete, wages, machinery rental) - <span class="math inline">\(\eta_i \geq 0\)</span> is the <strong>inefficiency term</strong> — the proportional excess cost due to overuse of inputs; <span class="math inline">\(e^{\eta_i}\)</span> is the factor by which costs exceed the frontier - <span class="math inline">\(\varepsilon_i \sim \mathcal{N}(0, \sigma_\varepsilon^2)\)</span> captures <strong>random noise</strong> — idiosyncratic shocks, measurement error, and other factors outside the firm’s control</p>
+<p>The inequality <span class="math inline">\(\eta_i \geq 0\)</span> is what distinguishes SFA from standard regression: costs can only be at or above the frontier, never below. The key insight is that <span class="math inline">\(\eta_i\)</span> and <span class="math inline">\(\varepsilon_i\)</span> have different distributions and are therefore separately identified (in principle) from the skewness of the composite error <span class="math inline">\(\varepsilon_i + \eta_i\)</span>.</p>
+</section>
+<section id="distributional-assumptions-on-inefficiency" class="level3">
+<h3 class="anchored" data-anchor-id="distributional-assumptions-on-inefficiency">Distributional Assumptions on Inefficiency</h3>
+<p>The model is estimated under two alternative specifications for <span class="math inline">\(\eta_i\)</span>:</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 44%">
+<col style="width: 20%">
+<col style="width: 22%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Model</th>
-<th>Distribution of <span class="math inline">\(\eta\)</span></th>
+<th>Distribution of <span class="math inline">\(\eta_i\)</span></th>
+<th>Parameters</th>
+<th>Flexibility</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Half-normal</td>
-<td><span class="math inline">\(\eta \sim \lvert \mathcal{N}(0, \sigma_u^2) \rvert\)</span></td>
+<td><span class="math inline">\(\eta_i \sim \lvert \mathcal{N}(0, \sigma_u^2) \rvert\)</span></td>
+<td><span class="math inline">\(\sigma_u\)</span></td>
+<td>Restricted: mean inefficiency is <span class="math inline">\(\sigma_u \sqrt{2/\pi}\)</span>, a fixed function of spread</td>
 </tr>
 <tr class="even">
 <td>Truncated-normal</td>
-<td><span class="math inline">\(\eta \sim \mathcal{N}^+(\mu, \sigma_u^2)\)</span></td>
+<td><span class="math inline">\(\eta_i \sim \mathcal{N}^+(\mu, \sigma_u^2)\)</span></td>
+<td><span class="math inline">\(\mu, \sigma_u\)</span></td>
+<td>More general: <span class="math inline">\(\mu\)</span> freely estimated; half-normal is the <span class="math inline">\(\mu = 0\)</span> special case</td>
 </tr>
 </tbody>
 </table>
-<p>The <strong>efficiency index</strong> reported in <a href="./results.html">Results</a> is <span class="math inline">\(BC = e^{-\eta}\)</span>, bounded between 0 and 1. A value close to 1 means the firm is near the cost frontier (low excess cost); values further from 1 indicate greater inefficiency.</p>
+<p>The <strong>half-normal</strong> model (Aigner et al., 1977) is simpler and more commonly used. The <strong>truncated-normal</strong> model (Stevenson, 1980) allows the modal inefficiency to differ from zero — important if most firms in the sample are systematically far from the frontier. Both are estimated and compared for robustness.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Maximum likelihood estimation and the JLMS decomposition
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The model is estimated by <strong>maximum likelihood</strong>. Under the half-normal specification, the log-likelihood for observation <span class="math inline">\(i\)</span> is:</p>
+<p><span class="math display">\[\ell_i = \text{const} - \ln \sigma - \ln \Phi\!\left(\frac{\mu^*_i}{\sigma^*}\right) + \ln \phi\!\left(\frac{u_i}{\sigma}\right)\]</span></p>
+<p>where <span class="math inline">\(\sigma^2 = \sigma_u^2 + \sigma_\varepsilon^2\)</span>, <span class="math inline">\(\lambda = \sigma_u/\sigma_\varepsilon\)</span> is the signal-to-noise ratio, and <span class="math inline">\(u_i = \ln C^a_i - \ln C^*(w_i, z_i)\)</span> is the composite residual.</p>
+<p>Once the frontier parameters are estimated, firm-level efficiency is recovered using the <strong>Jondrow, Lovell, Materov, and Schmidt (1982)</strong> conditional mean:</p>
+<p><span class="math display">\[\hat{\eta}_i = \mathbb{E}[\eta_i \mid \varepsilon_i + \eta_i = u_i] = \frac{\sigma_u \sigma_\varepsilon}{\sigma} \left[\frac{\phi(\mu^*_i/\sigma^*)}{\Phi(\mu^*_i/\sigma^*)} + \frac{\mu^*_i}{\sigma^*}\right]\]</span></p>
+<p>This is not the true inefficiency but the best prediction of it given the observable composite error. It converges to the true <span class="math inline">\(\eta_i\)</span> only as the time dimension grows (Horrace and Schmidt, 1996) — a limitation shared by all cross-sectional SFA models.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="connection-between-steps-1-and-2" class="level3">
-<h3 class="anchored" data-anchor-id="connection-between-steps-1-and-2">Connection Between Steps 1 and 2</h3>
-<p>The pseudo-costs <span class="math inline">\(\hat{c}_{ji}\)</span> from Step 1 serve as the dependent variable <span class="math inline">\(C^a\)</span> in the SFA. This is the methodological novelty of the paper: <strong>auction methods provide the cost data that SFA requires but typically cannot observe directly</strong>.</p>
-<p>By comparing the efficiency index distributions of Type 1 and Type 0 firms, we can test whether the government’s discretionary selection of firms corresponds to genuine cost advantages.</p>
+<section id="the-efficiency-index" class="level3">
+<h3 class="anchored" data-anchor-id="the-efficiency-index">The Efficiency Index</h3>
+<p>The <strong>Battese and Coelli (1988, 1992) efficiency index</strong> is reported as the primary result:</p>
+<p><span class="math display">\[BC_i = e^{-\hat{\eta}_i} \in (0, 1]\]</span></p>
+<p>Interpretation: <span class="math inline">\(BC_i = 1\)</span> means the firm is on the cost frontier — zero excess cost. <span class="math inline">\(BC_i = 0.80\)</span> means the firm uses <span class="math inline">\(1/0.80 = 1.25\)</span> times the inputs of a frontier firm to produce the same output — a 25% excess cost. Values closer to 1 indicate less inefficiency.</p>
+<p>The paper reports mean <span class="math inline">\(BC\)</span> by firm type, testing whether Type 1 (government-selected) and Type 0 (public-auction-only) firms have statistically different efficiency levels.</p>
+<hr>
+</section>
+</section>
+<section id="connecting-the-two-steps" class="level2">
+<h2 class="anchored" data-anchor-id="connecting-the-two-steps">Connecting the Two Steps</h2>
+<section id="the-methodological-contribution" class="level3">
+<h3 class="anchored" data-anchor-id="the-methodological-contribution">The Methodological Contribution</h3>
+<p>The key innovation is using <strong>pseudo-costs from Step 1 as the dependent variable in Step 2</strong>.</p>
+<p>Normally, SFA requires actual cost data — accounting records or cost reports. In procurement contexts, such data is almost never available: firms do not disclose their project-level costs, and governments typically record only contract values (bids), not actual expenditures. This has historically limited the joint application of auction theory and efficiency analysis.</p>
+<p>By recovering pseudo-costs <span class="math inline">\(\hat{c}_{ji}\)</span> from the structural auction model, we obtain a proxy for <span class="math inline">\(C^a_i\)</span> that can be plugged into the SFA framework. The model then estimates:</p>
+<p><span class="math display">\[\ln \hat{c}_{ji} = \ln C^*(w_{ji}, z_{ji}) + \eta_{ji} + \varepsilon_{ji}\]</span></p>
+<p>treating pseudo-costs as the observable cost measure.</p>
+</section>
+<section id="validity-and-potential-concerns" class="level3">
+<h3 class="anchored" data-anchor-id="validity-and-potential-concerns">Validity and Potential Concerns</h3>
+<p>This approach is valid under two conditions:</p>
+<ol type="1">
+<li><p><strong>Consistency of pseudo-costs:</strong> The GPV inversion formula recovers true costs consistently as the sample size grows. In finite samples, kernel estimation introduces bias, particularly near the boundaries of the bid support. The boundary trimming and log transformation discussed above mitigate — but do not eliminate — this concern.</p></li>
+<li><p><strong>Classical measurement error:</strong> If pseudo-costs differ from true costs by a classical measurement error (mean zero, independent of explanatory variables), the SFA estimates remain consistent. Non-classical measurement error — systematic bias correlated with firm type — would bias the efficiency comparison.</p></li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>What could go wrong
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The most important potential concern is that pseudo-costs may be systematically biased for one firm type. If, for example, Type 1 firms submit bids in a thinner part of the distribution where kernel estimation is less precise, their pseudo-costs would have larger measurement error than Type 0. This would artificially inflate the variance of their efficiency distribution. The robustness checks using both half-normal and truncated-normal specifications, and the trimming of extreme observations, are partly designed to address this concern.</p>
+<p>Another concern is <strong>model misspecification</strong> at the auction level: if firms do not play Bayesian Nash Equilibrium — perhaps due to collusion or bounded rationality — the inversion formula does not recover true costs. The paper addresses this indirectly by examining the KS tests for distributional equality and the reduced-form bid regressions as consistency checks.</p>
+</div>
+</div>
+</section>
+<section id="why-not-just-compare-bids" class="level3">
+<h3 class="anchored" data-anchor-id="why-not-just-compare-bids">Why Not Just Compare Bids?</h3>
+<p>A natural question is: why not simply compare <strong>bids</strong> between Type 0 and Type 1 firms rather than going through the two-step procedure?</p>
+<p>The answer is that bids confound <strong>costs</strong> and <strong>strategy</strong>. Type 1 firms bid 8.5% higher on average in the same auctions — but this could reflect: (a) higher costs, (b) lower competitive pressure (fewer rivals of their type), or (c) anticipation of future contract awards that reduces their incentive to bid aggressively. Only by recovering pseudo-costs can we separate the cost component from the strategic markup. And only by applying SFA to pseudo-costs can we further separate genuine cost efficiency from random cost variation.</p>
+<hr>
+</section>
+</section>
+<section id="summary-of-modeling-choices" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-modeling-choices">Summary of Modeling Choices</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 34%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Choice</th>
+<th>Decision</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Value model</td>
+<td>Independent private values</td>
+<td>Homogeneous projects; no common uncertainty</td>
+</tr>
+<tr class="even">
+<td>Bidder types</td>
+<td>Two (government-selected vs.&nbsp;public-only)</td>
+<td>Justified by KS test and institutional analysis</td>
+</tr>
+<tr class="odd">
+<td>Identification</td>
+<td>GPV nonparametric inversion</td>
+<td>No parametric assumption on cost distribution</td>
+</tr>
+<tr class="even">
+<td>Asymmetry</td>
+<td>Flambard-Perrigne extension</td>
+<td>Type-specific bid distributions differ (KS test)</td>
+</tr>
+<tr class="odd">
+<td>Kernel</td>
+<td>Triweight, log-transformed bids</td>
+<td>Bounded support; reduces boundary bias</td>
+</tr>
+<tr class="even">
+<td>Trimming</td>
+<td>10% at each boundary</td>
+<td>Reduces kernel boundary effects</td>
+</tr>
+<tr class="odd">
+<td>Cost frontier</td>
+<td>Translog log-cost function</td>
+<td>Standard flexible form for cost functions</td>
+</tr>
+<tr class="even">
+<td>Inefficiency distribution</td>
+<td>Half-normal + truncated-normal</td>
+<td>Robustness check; half-normal is baseline</td>
+</tr>
+<tr class="odd">
+<td>Efficiency index</td>
+<td>Battese-Coelli <span class="math inline">\(BC = e^{-\hat{\eta}}\)</span></td>
+<td>Standard in SFA literature</td>
+</tr>
+</tbody>
+</table>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

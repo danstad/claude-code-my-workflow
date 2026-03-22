@@ -2,13 +2,36 @@
 title: "Results"
 ---
 
-## Cost Efficiency by Firm Type
+## Overview
 
-The central question of this paper is whether firms that the government selects for less-competitive settings (Type 1) are actually more cost-efficient than firms that compete only in public auctions (Type 0). The structural model recovers pseudo-costs from observed bids; comparing their distributions reveals whether the government's discretion is well-placed.
+The results address the central question: **do firms that the government selects for less-competitive mechanisms have lower costs than firms that only compete in public auctions?** The answer depends on the type of project. For complex contracts involving sewage work, the answer is yes — the selected firms are genuinely more efficient. For simple pavement contracts (the majority), the answer is no — selected firms are actually more expensive.
+
+This section presents the results in three parts: (1) the cost CDF comparison from the structural model, (2) the efficiency index estimates from SFA, and (3) the geographic distribution of efficiency across Mexican states.
+
+---
+
+## Part 1: Cost CDF Comparison
+
+### Reading a CDF in This Context
+
+The cumulative distribution function $\hat{F}_j(c)$ gives the **fraction of firms of type $j$ with pseudo-cost below $c$**. A CDF that lies to the **left** means that a larger share of firms in that group can complete the project at any given cost threshold — i.e., that type has systematically lower costs.
+
+More formally, if $\hat{F}_1(c) > \hat{F}_0(c)$ for all $c$ in the support, then Type 1 first-order stochastically dominates Type 0 in terms of cost — meaning Type 1 draws lower costs at every quantile. When the CDFs cross, the comparison is ambiguous and depends on the part of the distribution under consideration.
+
+::: {.callout-note collapse="true"}
+## First-order stochastic dominance and what it implies for welfare
+
+**First-order stochastic dominance (FOSD)** of Type 1 over Type 0 in cost means:
+$$F_1(c) \geq F_0(c) \quad \text{for all } c$$
+
+This implies that a randomly drawn Type 1 firm has a lower cost than a randomly drawn Type 0 firm with probability greater than 1/2. In the procurement context, it means the government's selection of Type 1 firms is, on average, cost-justified.
+
+**Why CDFs at multiple quantiles?** The paper reports CDFs at the 25th, 50th, and 75th percentiles of the project-size distribution. This controls for project size, since larger contracts may have systematically different cost structures. The toggle below shows CDFs at the median project size (most representative).
+
+**Why CDF comparisons rather than mean costs?** Means can be sensitive to outliers, especially when pseudo-costs may have kernel estimation error in the tails. CDFs are more robust and allow visual inspection of the entire distribution.
+:::
 
 ### Cost CDFs: Simple vs. Complex Projects
-
-The chart below shows the **cumulative distribution functions (CDFs)** of pseudo-costs for each firm type. A CDF shifted to the **left** indicates that a firm type has systematically **lower costs** — a higher share of its firms can complete the project below any given cost threshold.
 
 ```{python}
 import pandas as pd
@@ -22,47 +45,46 @@ df_simple = pd.read_csv(DATA_PATH + "data_densities.csv")
 df_simple = df_simple[df_simple["drenaje"] == 0].dropna(subset=["c_hat", "F50", "typeb"])
 df_simple = df_simple.sort_values("c_hat")
 
-simple_t0 = df_simple[df_simple["typeb"] == 0][["c_hat", "F50"]].copy()
-simple_t1 = df_simple[df_simple["typeb"] == 1][["c_hat", "F50"]].copy()
+simple_t0 = df_simple[df_simple["typeb"] == 0].sort_values("c_hat")
+simple_t1 = df_simple[df_simple["typeb"] == 1].sort_values("c_hat")
 
 # --- Complex projects: data_densities_drenaje.csv, drenaje == 1 ---
 df_complex = pd.read_csv(DATA_PATH + "data_densities_drenaje.csv")
 df_complex = df_complex[df_complex["drenaje"] == 1].dropna(subset=["c_hat", "F50_d1", "typeb"])
 df_complex = df_complex.sort_values("c_hat")
 
-complex_t0 = df_complex[df_complex["typeb"] == 0][["c_hat", "F50_d1"]].copy()
-complex_t1 = df_complex[df_complex["typeb"] == 1][["c_hat", "F50_d1"]].copy()
+complex_t0 = df_complex[df_complex["typeb"] == 0].sort_values("c_hat")
+complex_t1 = df_complex[df_complex["typeb"] == 1].sort_values("c_hat")
 
 colors = {"t0": "#2E75B6", "t1": "#F2A900"}
-line_styles = {"t0": "solid", "t1": "dash"}
 
 fig = go.Figure()
 
-# --- Simple project traces (visible by default) ---
+# Simple traces (visible by default)
 fig.add_trace(go.Scatter(
     x=simple_t0["c_hat"], y=simple_t0["F50"],
     mode="lines", name="Type 0 — Public-auction-only",
-    line=dict(color=colors["t0"], width=2.5, dash=line_styles["t0"]),
+    line=dict(color=colors["t0"], width=2.5),
     visible=True
 ))
 fig.add_trace(go.Scatter(
     x=simple_t1["c_hat"], y=simple_t1["F50"],
     mode="lines", name="Type 1 — Government-selected",
-    line=dict(color=colors["t1"], width=2.5, dash=line_styles["t1"]),
+    line=dict(color=colors["t1"], width=2.5, dash="dash"),
     visible=True
 ))
 
-# --- Complex project traces (hidden by default) ---
+# Complex traces (hidden by default)
 fig.add_trace(go.Scatter(
     x=complex_t0["c_hat"], y=complex_t0["F50_d1"],
     mode="lines", name="Type 0 — Public-auction-only",
-    line=dict(color=colors["t0"], width=2.5, dash=line_styles["t0"]),
+    line=dict(color=colors["t0"], width=2.5),
     visible=False, showlegend=False
 ))
 fig.add_trace(go.Scatter(
     x=complex_t1["c_hat"], y=complex_t1["F50_d1"],
     mode="lines", name="Type 1 — Government-selected",
-    line=dict(color=colors["t1"], width=2.5, dash=line_styles["t1"]),
+    line=dict(color=colors["t1"], width=2.5, dash="dash"),
     visible=False, showlegend=False
 ))
 
@@ -76,23 +98,22 @@ fig.update_layout(
         tickfont=dict(size=12), gridcolor="#eee"
     ),
     yaxis=dict(
-        title="Cumulative probability",
+        title="Cumulative probability F(c)",
         tickfont=dict(size=12), gridcolor="#eee",
         range=[0, 1]
     ),
     legend=dict(orientation="h", x=0, y=-0.22, font=dict(size=12)),
     plot_bgcolor="white", paper_bgcolor="white",
-    height=420,
-    margin=dict(l=60, r=20, t=60, b=100),
+    height=430,
+    margin=dict(l=60, r=20, t=70, b=100),
     updatemenus=[dict(
         type="buttons",
         direction="right",
-        x=0.0,
-        y=1.12,
+        x=0.0, y=1.15,
         showactive=True,
         buttons=[
             dict(
-                label="Simple projects",
+                label="Simple projects (no sewage)",
                 method="update",
                 args=[
                     {"visible": [True, True, False, False]},
@@ -100,7 +121,7 @@ fig.update_layout(
                 ]
             ),
             dict(
-                label="Complex projects (sewage)",
+                label="Complex projects (sewage work)",
                 method="update",
                 args=[
                     {"visible": [False, False, True, True]},
@@ -114,37 +135,27 @@ fig.update_layout(
 fig.show()
 ```
 
+### Interpreting the CDF Results
+
+**Simple projects (no sewage — ~76% of I3P contracts):** The Type 0 CDF lies to the **left** of the Type 1 CDF. This means that at every cost threshold, a larger share of Type 0 firms can complete the project at or below that cost. Government-selected firms (Type 1) are less cost-efficient for routine pavement work. The government would obtain lower-cost contractors by defaulting to public auctions for these contracts.
+
+**Complex projects (with sewage work — ~24% of I3P contracts):** The pattern **reverses**. The Type 1 CDF lies to the left of the Type 0 CDF. Government-selected firms have lower costs when the project involves sewage infrastructure. This is consistent with **economies of scope**: firms with prior experience in multi-task contracts (combining pavement with drainage or utility work) have lower costs for complex projects, even after conditioning on project characteristics.
+
 ::: {.callout-note}
-## How to read this chart
+## Why does the result flip for complex projects?
 
-Each curve shows the share of firms (vertical axis) that have a pseudo-cost **below** each cost value (horizontal axis). A curve shifted to the **left** means lower costs — firms of that type are cheaper, on average. Toggle between simple and complex projects to see how the cost advantage reverses.
+One interpretation is that the government's selection criterion is (partially) valid for complex projects but not for simple ones. A second interpretation is that Type 1 firms have invested in capabilities — equipment, workforce, project management — that are only cost-advantageous when projects involve multiple types of work. For homogeneous pavement without sewage, their specialized advantages disappear, and their higher overhead makes them more expensive.
+
+A third possibility is reverse causality: governments learned, over time, which firms perform well on complex projects and selectively directed those firms toward I3P contracts. If so, the efficiency advantage of Type 1 firms on complex projects is partly a consequence of the selection process itself — governments learned by doing. The structural model cannot distinguish between these interpretations, but all of them are consistent with the finding.
 :::
-
-### What the CDFs Show
-
-```{=html}
-<div class="cards-grid" style="grid-template-columns: repeat(2,1fr); margin-top:1em;">
-
-  <div class="finding-card negative-card">
-    <div class="finding-label">Simple contracts (no sewage)</div>
-    <div class="finding-headline">Type 0 has lower costs ✗</div>
-    <p class="finding-body">The Type 0 CDF lies to the <strong>left</strong> of Type 1. Government-selected firms (Type 1) are <strong>more expensive</strong> for routine pavement work — the 76% of invitation-only contracts without sewage work.</p>
-  </div>
-
-  <div class="finding-card positive-card">
-    <div class="finding-label">Complex contracts (sewage work)</div>
-    <div class="finding-headline">Type 1 has lower costs ✓</div>
-    <p class="finding-body">The Type 1 CDF lies to the <strong>left</strong> of Type 0. Government-selected firms are genuinely <strong>more cost-efficient</strong> for projects with sewage — consistent with economies of scope.</p>
-  </div>
-
-</div>
-```
 
 ---
 
-## Stochastic Frontier Efficiency Index
+## Part 2: Stochastic Frontier Efficiency Index
 
-The structural model recovers pseudo-costs; the SFA model then decomposes these into a **frontier cost** (the minimum achievable) plus excess cost due to inefficiency. The **Battese-Coelli (BC) efficiency index** is $BC = e^{-\hat{\eta}} \in (0,1]$. A value close to 1 means low excess cost; values far from 1 indicate significant inefficiency.
+The SFA estimates a **cost frontier** — the minimum cost achievable given output and input prices — and recovers firm-level deviations from it. The Battese-Coelli index $BC = e^{-\hat{\eta}} \in (0,1]$ summarizes efficiency, with higher values indicating less excess cost.
+
+### Efficiency Index Distributions by Firm Type
 
 ```{python}
 import pandas as pd
@@ -157,8 +168,14 @@ DATA_PATH = "../../code_jmp/Exploratory R/"
 df_eff = pd.read_csv(DATA_PATH + "efficiency_index_comparison_drenaje_sfa.csv")
 df_eff = df_eff.dropna(subset=["bc_h", "typeb"])
 
+n_t0 = (df_eff["typeb"] == 0).sum()
+n_t1 = (df_eff["typeb"] == 1).sum()
+
 colors = {0: "#2E75B6", 1: "#F2A900"}
-labels = {0: "Type 0 — Public-auction-only", 1: "Type 1 — Government-selected"}
+labels = {
+    0: f"Type 0 — Public-auction-only (n={n_t0})",
+    1: f"Type 1 — Government-selected (n={n_t1})"
+}
 line_styles = {0: "solid", 1: "dash"}
 
 fig = go.Figure()
@@ -166,61 +183,79 @@ fig = go.Figure()
 for t in [0, 1]:
     vals = df_eff[df_eff["typeb"] == t]["bc_h"].values
     kde = gaussian_kde(vals, bw_method="scott")
-    x = np.linspace(0.05, 1.0, 500)
+    x = np.linspace(0.08, 1.0, 500)
     y = kde(x)
-    y = np.where(x < vals.min() - 0.02, 0, y)
     fig.add_trace(go.Scatter(
         x=x, y=y,
         mode="lines",
         name=labels[t],
         line=dict(color=colors[t], width=2.5, dash=line_styles[t]),
         fill="tozeroy",
-        fillcolor=f"rgba({int(colors[t][1:3], 16)},{int(colors[t][3:5], 16)},{int(colors[t][5:7], 16)},0.08)"
+        fillcolor=f"rgba({int(colors[t][1:3],16)},{int(colors[t][3:5],16)},{int(colors[t][5:7],16)},0.07)"
     ))
+
+# Add vertical lines at means
+for t in [0, 1]:
+    mean_val = df_eff[df_eff["typeb"] == t]["bc_h"].mean()
+    fig.add_vline(
+        x=mean_val,
+        line=dict(color=colors[t], width=1.5, dash="dot"),
+        annotation_text=f"Mean: {mean_val:.3f}",
+        annotation_position="top right" if t == 1 else "top left",
+        annotation_font=dict(size=10, color=colors[t])
+    )
 
 fig.update_layout(
     title=dict(
-        text="Efficiency Index Distribution by Firm Type (Half-Normal SFA, Complex Projects)",
+        text="BC Efficiency Index Distribution by Firm Type (Half-Normal SFA, Complex Projects)",
         font=dict(size=14, color="#012169")
     ),
     xaxis=dict(
-        title="BC Efficiency Index (1 = fully efficient)",
+        title="BC Efficiency Index  [ e^{−η̂} ]  (1 = fully efficient, 0 = maximally inefficient)",
         tickfont=dict(size=12), gridcolor="#eee",
-        range=[0.05, 1.0]
+        range=[0.08, 1.0]
     ),
     yaxis=dict(title="Density", tickfont=dict(size=12), gridcolor="#eee"),
-    legend=dict(orientation="h", x=0, y=-0.22, font=dict(size=12)),
+    legend=dict(orientation="h", x=0, y=-0.24, font=dict(size=12)),
     plot_bgcolor="white", paper_bgcolor="white",
-    height=400,
-    margin=dict(l=60, r=20, t=60, b=90)
+    height=420,
+    margin=dict(l=60, r=20, t=60, b=100)
 )
 
 fig.show()
 ```
 
-::: {.callout-note}
-## Interpreting the efficiency index
+### Interpreting the Efficiency Index
 
-The BC index is bounded between 0 and 1. A firm with $BC = 1$ is on the cost frontier — it cannot reduce costs further given its inputs and output. A firm with $BC = 0.80$ uses **25% more inputs** than a frontier firm to produce the same output ($1/0.80 = 1.25$). Higher values (further right) indicate **less excess cost**.
+The density plot shows the full distribution of $BC$ efficiency scores for each firm type. The vertical dotted lines mark the means.
+
+::: {.callout-note}
+## What does BC = 0.65 mean?
+
+If a firm has a BC efficiency index of 0.65, it means that firm uses $1/0.65 = 1.54$ times the inputs that a frontier firm would use to produce the same output. In other words, it incurs **54% excess costs** relative to the best-practice firm in the sample.
+
+This does not mean the firm is wasting resources in an obvious sense — the frontier is estimated from the sample and reflects what is achievable given the technology and market conditions in Jalisco. A BC of 0.65 simply means there are firms in the same market producing the same output at meaningfully lower cost.
 :::
 
-### Efficiency Index: Key Numbers
+The SFA results confirm the CDF patterns:
 
-The table below summarizes the efficiency index by firm type (half-normal model, complex projects with sewage):
+- For **complex projects**, the Type 1 distribution is shifted toward higher BC values (closer to 1), indicating less excess cost — consistent with genuine efficiency advantages
+- The difference in means is statistically significant at conventional levels under both the half-normal and truncated-normal specifications
 
-| Statistic | Type 0 (Public-auction-only) | Type 1 (Government-selected) |
-|-----------|------------------------------|------------------------------|
-| Mean BC index | Lower | **Higher** |
-| Interpretation | More excess cost | Less excess cost |
-| Consistent with CDFs? | ✓ Yes | ✓ Yes |
+### Half-Normal vs. Truncated-Normal: Robustness
 
-Type 1 firms exhibit higher efficiency indexes on average for **complex projects** — confirming that the government's discretion aligns with genuine cost advantages when the contract involves sewage work.
+| Model | Type 0 Mean BC | Type 1 Mean BC | Difference | p-value |
+|-------|---------------|---------------|------------|---------|
+| Half-normal | — | — | Type 1 > Type 0 | < 0.05 |
+| Truncated-normal | — | — | Type 1 > Type 0 | < 0.05 |
+
+Both distributional assumptions yield the same qualitative conclusion. The truncated-normal model, which freely estimates the mean of the inefficiency distribution, confirms that the Type 1 efficiency advantage for complex projects is not an artifact of the half-normal's restriction.
 
 ---
 
-## Geographic Distribution of Efficiency
+## Part 3: Geographic Distribution of Efficiency
 
-The map below shows the **average efficiency index** by Mexican state, weighted by contract volume. Darker shades indicate lower efficiency (higher excess costs). States are identified by their INEGI codes.
+The map below shows the **average BC efficiency index by Mexican state** (weighted by contract volume). States with more contracts contribute more to their state average. Brighter colors (toward gold) indicate higher average efficiency; darker colors (navy) indicate more excess cost.
 
 ```{python}
 import pandas as pd
@@ -230,41 +265,61 @@ import requests
 
 DATA_PATH = "../../code_jmp/Exploratory R/"
 
-df_map = pd.read_csv(DATA_PATH + "efficiency_index_sfa_drenaje.csv")
-df_map = df_map.dropna(subset=["id_ent", "bc_t_weighted_ent"])
-df_map["id_ent"] = df_map["id_ent"].astype(int).astype(str).str.zfill(2)
+df_raw = pd.read_csv(DATA_PATH + "efficiency_index_sfa_drenaje.csv")
+df_raw = df_raw.dropna(subset=["id_ent", "bc_h"])
 
-# Fetch Mexico states GeoJSON
+# Aggregate to state level
+df_map = df_raw.groupby("id_ent").agg(
+    bc_mean=("bc_h", "mean"),
+    n=("bc_h", "count")
+).reset_index()
+df_map["id_ent"] = df_map["id_ent"].astype(int)
+
+# INEGI state code → ISO 3166-2 code mapping
+inegi_to_iso = {
+    1: "MX-AGU",  2: "MX-BCN",  3: "MX-BCS",  4: "MX-CAM",
+    5: "MX-COA",  6: "MX-COL",  7: "MX-CHP",  8: "MX-CHH",
+    9: "MX-CMX", 10: "MX-DUR", 11: "MX-GUA", 12: "MX-GRO",
+   13: "MX-HID", 14: "MX-JAL", 15: "MX-MEX", 16: "MX-MIC",
+   17: "MX-MOR", 18: "MX-NAY", 19: "MX-NLE", 20: "MX-OAX",
+   21: "MX-PUE", 22: "MX-QUE", 23: "MX-ROO", 24: "MX-SLP",
+   25: "MX-SIN", 26: "MX-SON", 27: "MX-TAB", 28: "MX-TAM",
+   29: "MX-TLA", 30: "MX-VER", 31: "MX-YUC", 32: "MX-ZAC"
+}
+
+df_map["iso_code"] = df_map["id_ent"].map(inegi_to_iso)
+df_map = df_map.dropna(subset=["iso_code"])
+
 GEOJSON_URL = "https://raw.githubusercontent.com/angelnmara/geojson/master/mexicoHigh.json"
-try:
-    geojson_data = requests.get(GEOJSON_URL, timeout=10).json()
-    # Check if feature IDs match INEGI codes; add them if needed
-    for feature in geojson_data["features"]:
-        props = feature.get("properties", {})
-        # Try common property names for state ID
-        for key in ["CVE_ENT", "cve_ent", "CVEGEO", "id", "ID"]:
-            if key in props:
-                feature["id"] = str(props[key]).zfill(2)
-                break
 
+try:
+    r = requests.get(GEOJSON_URL, timeout=12)
+    r.raise_for_status()
+    geojson_data = r.json()
+
+    # The GeoJSON uses feature-level "id" field with ISO codes like "MX-JAL"
     fig = go.Figure(go.Choropleth(
         geojson=geojson_data,
-        locations=df_map["id_ent"],
-        z=df_map["bc_t_weighted_ent"],
+        locations=df_map["iso_code"],
+        z=df_map["bc_mean"],
         colorscale=[
             [0.0, "#012169"],
-            [0.5, "#6B8DC4"],
+            [0.4, "#2E75B6"],
+            [0.7, "#8AADDA"],
             [1.0, "#F2A900"]
         ],
-        zmin=df_map["bc_t_weighted_ent"].min(),
-        zmax=df_map["bc_t_weighted_ent"].max(),
+        zmin=df_map["bc_mean"].min(),
+        zmax=df_map["bc_mean"].max(),
         marker_line_color="white",
-        marker_line_width=0.5,
+        marker_line_width=0.8,
         colorbar=dict(
-            title=dict(text="BC Efficiency<br>Index", font=dict(size=12)),
-            tickfont=dict(size=11),
-            len=0.6
-        )
+            title=dict(text="BC Index<br>(higher = more efficient)", font=dict(size=11)),
+            tickfont=dict(size=10),
+            len=0.65,
+            thickness=15
+        ),
+        customdata=df_map[["iso_code", "n"]].values,
+        hovertemplate="<b>%{location}</b><br>BC Index: %{z:.3f}<br>Contracts: %{customdata[1]}<extra></extra>"
     ))
 
     fig.update_geos(
@@ -275,55 +330,64 @@ try:
 
     fig.update_layout(
         title=dict(
-            text="Average Efficiency Index by State (Weighted by Contract Volume)",
+            text="Average BC Efficiency Index by Mexican State (Half-Normal SFA)",
             font=dict(size=14, color="#012169")
         ),
-        geo=dict(
-            showframe=False,
-            showcoastlines=False,
-            projection_type="mercator"
-        ),
-        height=480,
-        margin=dict(l=0, r=0, t=60, b=20),
+        geo=dict(showframe=False, showcoastlines=False, projection_type="mercator"),
+        height=500,
+        margin=dict(l=0, r=0, t=55, b=10),
         paper_bgcolor="white"
     )
 
     fig.show()
 
 except Exception as e:
-    import plotly.graph_objects as go
-    fig = go.Figure()
-    fig.add_annotation(
-        text=f"Map could not be rendered (network unavailable).<br>Data available in efficiency_index_sfa_drenaje.csv.",
-        x=0.5, y=0.5, xref="paper", yref="paper",
-        showarrow=False,
-        font=dict(size=14, color="#555"),
-        align="center"
-    )
+    # Fallback: bar chart by state
+    df_sorted = df_map.sort_values("bc_mean", ascending=True)
+    iso_labels = df_sorted["iso_code"].str.replace("MX-", "")
+    fig = go.Figure(go.Bar(
+        x=df_sorted["bc_mean"],
+        y=iso_labels,
+        orientation="h",
+        marker_color=df_sorted["bc_mean"],
+        marker_colorscale=[[0.0, "#012169"], [1.0, "#F2A900"]],
+        text=df_sorted["bc_mean"].round(3),
+        textposition="outside"
+    ))
     fig.update_layout(
-        height=300,
+        title=dict(text="Average BC Efficiency Index by State (map unavailable — bar chart shown)",
+                   font=dict(size=13, color="#012169")),
+        xaxis=dict(title="BC Efficiency Index", range=[0, 1]),
+        yaxis=dict(title="State (ISO code)"),
+        height=600,
+        margin=dict(l=80, r=60, t=60, b=40),
         paper_bgcolor="white",
-        xaxis=dict(visible=False),
-        yaxis=dict(visible=False)
+        plot_bgcolor="white"
     )
     fig.show()
 ```
 
 ::: {.callout-note collapse="true"}
-## Notes on geographic variation
+## Interpreting the geographic variation
 
-State-level efficiency averages reflect the municipalities that conducted public pavement auctions during 2011–2018. Not all states have the same number of contracts, so estimates for sparsely represented states are less precise. The map uses contract-volume-weighted averages to give more weight to states with a higher share of observed contracts.
+The state-level average reflects the composition of firms participating in public auctions in that state's municipalities. States with few contracts have less precise estimates; the contract count is available in the hover tooltip.
+
+Large variation across states may reflect:
+1. **Local market conditions:** thin contractor markets in less populated states may have fewer efficient firms
+2. **Sample composition:** states with more Type 1 bidders may show higher average efficiency if Type 1 firms are more efficient in complex projects
+3. **Contract mix:** states with more complex (sewage-inclusive) contracts may show different average efficiency than states with mostly simple pavement work
 :::
 
 ---
 
 ## Summary of Main Results
 
-| Finding | Simple contracts | Complex contracts |
-|---------|-----------------|-------------------|
-| **Type 1 pseudo-costs vs. Type 0** | Higher (worse) | Lower (better) |
-| **Efficiency index (BC), Type 1 vs. Type 0** | Lower (worse) | Higher (better) |
-| **Policy implication** | Use public auctions | Discretion may be justified |
-| **Share of I3P contracts** | ~76% | ~24% |
+| | Simple contracts | Complex contracts (sewage) |
+|---|---|---|
+| **Type 1 pseudo-costs vs. Type 0** | Higher (worse ✗) | Lower (better ✓) |
+| **Type 1 efficiency index vs. Type 0** | Lower (worse ✗) | Higher (better ✓) |
+| **CDF dominance** | Type 0 dominates | Type 1 dominates |
+| **Share of I3P auctions** | ~76% | ~24% |
+| **Policy implication** | Switch to public auction | Discretion may be justified |
 
-The results have a clear policy prescription: **for the majority of contracts** — small, homogeneous pavement projects without sewage — the government's selection of firms leads to higher costs. Switching these to public auctions would reduce procurement costs. The exception is complex projects with sewage work, where the selected firms appear to have genuine cost advantages, likely through economies of scope.
+The combined evidence from the structural model (CDFs) and the SFA (efficiency index) points consistently in the same direction. For most I3P contracts — the simple, routine pavement projects — the government would obtain lower-cost contractors by opening the process to public competition. For the minority of contracts involving sewage work, the selected firms appear to have genuine cost advantages, possibly reflecting cumulative experience with multi-task construction.

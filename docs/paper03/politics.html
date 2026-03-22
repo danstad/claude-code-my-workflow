@@ -72,6 +72,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -131,14 +160,25 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#politics-and-procurement-discretion" id="toc-politics-and-procurement-discretion" class="nav-link active" data-scroll-target="#politics-and-procurement-discretion">Politics and Procurement Discretion</a></li>
-  <li><a href="#electoral-cycle" id="toc-electoral-cycle" class="nav-link" data-scroll-target="#electoral-cycle">Electoral Cycle</a>
+  <li><a href="#why-politics-matters-for-procurement" id="toc-why-politics-matters-for-procurement" class="nav-link active" data-scroll-target="#why-politics-matters-for-procurement">Why Politics Matters for Procurement</a></li>
+  <li><a href="#the-electoral-cycle" id="toc-the-electoral-cycle" class="nav-link" data-scroll-target="#the-electoral-cycle">The Electoral Cycle</a>
   <ul class="collapse">
-  <li><a href="#excess-costs-rise-near-elections" id="toc-excess-costs-rise-near-elections" class="nav-link" data-scroll-target="#excess-costs-rise-near-elections">Excess Costs Rise Near Elections</a></li>
+  <li><a href="#mechanism-choice-and-election-timing" id="toc-mechanism-choice-and-election-timing" class="nav-link" data-scroll-target="#mechanism-choice-and-election-timing">Mechanism Choice and Election Timing</a></li>
+  <li><a href="#bidding-behavior-near-elections" id="toc-bidding-behavior-near-elections" class="nav-link" data-scroll-target="#bidding-behavior-near-elections">Bidding Behavior Near Elections</a></li>
+  <li><a href="#the-political-business-cycle-in-procurement" id="toc-the-political-business-cycle-in-procurement" class="nav-link" data-scroll-target="#the-political-business-cycle-in-procurement">The Political Business Cycle in Procurement</a></li>
   </ul></li>
-  <li><a href="#party-alignment" id="toc-party-alignment" class="nav-link" data-scroll-target="#party-alignment">Party Alignment</a></li>
-  <li><a href="#probit-results-mechanism-choice" id="toc-probit-results-mechanism-choice" class="nav-link" data-scroll-target="#probit-results-mechanism-choice">Probit Results: Mechanism Choice</a></li>
-  <li><a href="#what-this-means" id="toc-what-this-means" class="nav-link" data-scroll-target="#what-this-means">What This Means</a></li>
+  <li><a href="#party-alignment" id="toc-party-alignment" class="nav-link" data-scroll-target="#party-alignment">Party Alignment</a>
+  <ul class="collapse">
+  <li><a href="#the-alignment-mechanism" id="toc-the-alignment-mechanism" class="nav-link" data-scroll-target="#the-alignment-mechanism">The Alignment Mechanism</a></li>
+  <li><a href="#party-alignment-and-efficiency" id="toc-party-alignment-and-efficiency" class="nav-link" data-scroll-target="#party-alignment-and-efficiency">Party Alignment and Efficiency</a></li>
+  </ul></li>
+  <li><a href="#regression-specifications" id="toc-regression-specifications" class="nav-link" data-scroll-target="#regression-specifications">Regression Specifications</a>
+  <ul class="collapse">
+  <li><a href="#mechanism-choice-probit" id="toc-mechanism-choice-probit" class="nav-link" data-scroll-target="#mechanism-choice-probit">Mechanism Choice Probit</a></li>
+  <li><a href="#efficiency-sfa-with-political-controls" id="toc-efficiency-sfa-with-political-controls" class="nav-link" data-scroll-target="#efficiency-sfa-with-political-controls">Efficiency SFA with Political Controls</a></li>
+  <li><a href="#full-results-summary" id="toc-full-results-summary" class="nav-link" data-scroll-target="#full-results-summary">Full Results Summary</a></li>
+  </ul></li>
+  <li><a href="#policy-implications" id="toc-policy-implications" class="nav-link" data-scroll-target="#policy-implications">Policy Implications</a></li>
   </ul>
 </nav>
 </nav>
@@ -168,122 +208,160 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="politics-and-procurement-discretion" class="level2">
-<h2 class="anchored" data-anchor-id="politics-and-procurement-discretion">Politics and Procurement Discretion</h2>
-<p>The choice of allocation mechanism is not purely technical — it is also shaped by political incentives. This section documents two political patterns in the data: the <strong>electoral cycle</strong> and <strong>party alignment</strong>.</p>
+<section id="why-politics-matters-for-procurement" class="level2">
+<h2 class="anchored" data-anchor-id="why-politics-matters-for-procurement">Why Politics Matters for Procurement</h2>
+<p>The efficiency comparison in <a href="./results.html">Results</a> shows that Type 1 firms (government-selected) are more cost-efficient for complex contracts, but less efficient for simple ones. This raises a natural follow-up question: <strong>what drives the government’s allocation decisions?</strong> If governments were purely optimizing for cost, we would expect discretionary mechanisms to be used only when selected firms have genuine cost advantages — i.e., mainly for complex contracts. Instead, we observe that the vast majority (~76%) of I3P contracts are for simple projects where Type 1 firms are actually more expensive.</p>
+<p>The political economy literature offers an alternative explanation: <strong>governments use procurement discretion to reward politically connected firms</strong>, especially ahead of elections. This section tests for two specific political mechanisms: the electoral cycle and party alignment.</p>
 <hr>
 </section>
-<section id="electoral-cycle" class="level2">
-<h2 class="anchored" data-anchor-id="electoral-cycle">Electoral Cycle</h2>
-<p>Local governments are more likely to bypass public auctions in the year <strong>before municipal elections</strong>. The probit model on mechanism choice (public auction = 0, I3P or direct = 1) shows:</p>
+<section id="the-electoral-cycle" class="level2">
+<h2 class="anchored" data-anchor-id="the-electoral-cycle">The Electoral Cycle</h2>
+<section id="mechanism-choice-and-election-timing" class="level3">
+<h3 class="anchored" data-anchor-id="mechanism-choice-and-election-timing">Mechanism Choice and Election Timing</h3>
+<p>In a first-price auction, firms compete on price to win contracts. In a discretionary mechanism (I3P, direct), the government selects which firms are allowed to compete (or simply awards directly). This gives incumbents the ability to direct resources to politically affiliated contractors. The incentive to do so is strongest in the period <strong>just before an election</strong>, when incumbents need resources for campaign activities and when payoffs to connected firms are most politically valuable.</p>
+<p>The probit regression on mechanism choice includes an indicator for <strong>the year before a municipal election</strong>. Municipal elections in Jalisco follow a fixed, staggered schedule — municipalities do not all vote in the same year — providing variation in the electoral pressure variable across municipalities and over time.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Electoral cycle finding
+<span class="screen-reader-only">Important</span>Finding: +6.2 percentage point increase in discretionary allocation before elections
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Being in the year before municipal elections increases the probability of using a discretionary allocation mechanism by <strong>6.2 percentage points</strong>, controlling for project size, complexity, and state fixed effects.</p>
+<p>Being in the year before a municipal election increases the probability that a contract is allocated through I3P or direct award (rather than public auction) by <strong>6.2 percentage points</strong>, controlling for project size, complexity, state fixed effects, and year fixed effects.</p>
+<p>This is a large effect relative to the unconditional probability of discretionary allocation. It is consistent with the hypothesis that governments direct contracts to connected firms ahead of elections, using the broad exceptions allowed under Mexico’s procurement law.</p>
 </div>
 </div>
-<p>This pattern is consistent with <strong>electoral-motivated contracting</strong>: governments distribute contracts to politically connected firms ahead of elections. The effect is especially pronounced in municipalities governed by the PRI.</p>
-<section id="excess-costs-rise-near-elections" class="level3">
-<h3 class="anchored" data-anchor-id="excess-costs-rise-near-elections">Excess Costs Rise Near Elections</h3>
-<p>The electoral cycle also affects cost efficiency in <strong>public</strong> auctions — even when the mechanism itself is competitive:</p>
+</section>
+<section id="bidding-behavior-near-elections" class="level3">
+<h3 class="anchored" data-anchor-id="bidding-behavior-near-elections">Bidding Behavior Near Elections</h3>
+<p>The electoral cycle affects not just the <em>mechanism</em> choice but also <strong>behavior within public auctions</strong>. Using public auction data only, an SFA regression that includes the election-year indicator finds:</p>
 <ul>
-<li>Firm excess costs in public auctions are <strong>13.8% higher</strong> in the year before elections</li>
-<li>This suggests political pressure distorts bidding behavior even within competitive auctions</li>
-<li>One interpretation: connected firms bid less aggressively, expecting future rewards regardless of auction outcomes</li>
+<li>Firm excess costs in public auctions are <strong>13.8% higher</strong> in the year before elections than in other years</li>
+<li>This effect holds after controlling for firm fixed effects, project characteristics, and input price variation</li>
 </ul>
+<p>What could explain higher excess costs in competitive auctions during election years? One interpretation: firms that are part of a political network bid less aggressively in public auctions, knowing that they may receive direct contracts regardless of their performance in competitive bidding. This reduces competitive pressure even within the public auction mechanism.</p>
 <div style="background:#E8EDF5; border-left:4px solid #F2A900; border-radius:0 6px 6px 0; padding:1.2em 1.5em; margin:1.5em 0;">
-  <strong style="color:#012169;">Mechanism:</strong>
-  <p style="margin:0.5em 0 0; color:#444; font-size:0.93em;">
-    In election years, firms that expect future direct contracts may shade their bids upward in public auctions — reducing competitive pressure and raising the government's procurement costs. The structural model captures this as higher markup over cost.
+  <strong style="color:#012169;">Interpretation:</strong>
+  <p style="margin:0.6em 0 0; color:#444; font-size:0.93em;">
+    If connected firms expect to receive I3P invitations or direct awards in the future, their opportunity cost of not winning a public auction is lower. This weakens their incentive to submit aggressive bids, which is observationally consistent with higher excess costs near election time. The structural model cannot distinguish this channel from a simple behavioral response to political uncertainty, but both interpretations imply that public auction outcomes deteriorate near elections.
   </p>
 </div>
+</section>
+<section id="the-political-business-cycle-in-procurement" class="level3">
+<h3 class="anchored" data-anchor-id="the-political-business-cycle-in-procurement">The Political Business Cycle in Procurement</h3>
+<p>This pattern connects to a broader literature on political business cycles (Nordhaus, 1975; Rogoff and Sibert, 1988) and, more specifically, to evidence from Latin America on election-cycle effects in public works spending (e.g., Drazen and Eslava, 2010, for Colombia; Veiga and Veiga, 2007, for Portugal). The finding here adds a new dimension: the distortion operates not only through the <em>level</em> of spending but also through the <em>efficiency</em> of procurement — the government buys the same roads but at higher cost near elections.</p>
 <hr>
 </section>
 </section>
 <section id="party-alignment" class="level2">
 <h2 class="anchored" data-anchor-id="party-alignment">Party Alignment</h2>
-<p>Municipal governments that share a party affiliation with the state government face different incentive structures when allocating contracts.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<section id="the-alignment-mechanism" class="level3">
+<h3 class="anchored" data-anchor-id="the-alignment-mechanism">The Alignment Mechanism</h3>
+<p>Beyond the electoral cycle, political alignment between levels of government may shape procurement choices. When the <strong>municipal and state governments are controlled by the same party</strong>, they may coordinate more effectively on infrastructure priorities, or alternatively, the shared political network facilitates the flow of contracts to affiliated firms.</p>
+<p><strong>PAN vs.&nbsp;PRI municipalities.</strong> The probit model includes an indicator for PAN-governed municipalities (relative to PRI, the dominant party in most of Jalisco). The large partisan difference in mechanism choice is one of the strongest findings in the paper.</p>
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Party alignment result
+<span class="screen-reader-only">Important</span>Finding: PAN municipalities are 18.9 pp less likely to use discretionary allocation than PRI municipalities
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Municipalities governed by <strong>PAN</strong> are <strong>18.9 percentage points less likely</strong> to use discretionary allocation mechanisms than PRI-governed municipalities, all else equal.</p>
+<p>This is a very large effect. One standard deviation in the party alignment variable corresponds to nearly twice the effect of a one-standard-deviation increase in project size.</p>
+<p>Several interpretations are possible: (1) PAN municipalities face stronger internal party discipline or external accountability that discourages discretionary contracting; (2) PAN municipalities have less-developed networks of politically connected contractors; (3) PAN municipalities are more likely to be in urban areas where the contractor market is thicker and public auctions are more feasible; (4) PAN governments face greater scrutiny from civil society and media.</p>
+<p>The data cannot fully distinguish between these explanations, but the finding is robust to controlling for municipality size, urbanization, and state fixed effects.</p>
 </div>
 </div>
-<p>This finding is consistent with institutional explanations: PAN municipalities, at least during 2011–2018, faced stronger internal party pressure toward procedural compliance, or had less access to the political networks that facilitated direct contracting.</p>
-<p>Additionally:</p>
+</section>
+<section id="party-alignment-and-efficiency" class="level3">
+<h3 class="anchored" data-anchor-id="party-alignment-and-efficiency">Party Alignment and Efficiency</h3>
+<p>Beyond the mechanism choice, party alignment also affects efficiency outcomes within public auctions:</p>
 <ul>
-<li>When the <strong>municipal and state government share a party</strong>, firm excess costs fall by approximately <strong>9.8%</strong> in public auctions — suggesting that aligned governments may coordinate more efficiently, or face less political pressure to protect connected contractors</li>
+<li>When the <strong>municipal and state government share a party</strong>, firm excess costs in public auctions fall by approximately <strong>9.8%</strong></li>
+<li>When party alignment coincides with an election year, the two effects partially offset each other — the alignment effect reduces costs, but the election-year effect increases them</li>
 </ul>
+<p>This suggests that party alignment may improve coordination in some respects (reducing procurement costs for aligned governments) while simultaneously enabling the use of discretionary allocation for political reasons. The net effect on welfare is ambiguous and depends on how the two mechanisms interact at the contract level.</p>
 <hr>
 </section>
-<section id="probit-results-mechanism-choice" class="level2">
-<h2 class="anchored" data-anchor-id="probit-results-mechanism-choice">Probit Results: Mechanism Choice</h2>
-<p>The table below summarizes the marginal effects from the probit model predicting whether a contract bypasses a public auction (I3P or direct allocation = 1).</p>
+</section>
+<section id="regression-specifications" class="level2">
+<h2 class="anchored" data-anchor-id="regression-specifications">Regression Specifications</h2>
+<section id="mechanism-choice-probit" class="level3">
+<h3 class="anchored" data-anchor-id="mechanism-choice-probit">Mechanism Choice Probit</h3>
+<p><span class="math display">\[\Pr(D_i = 1) = \Phi\!\left(\gamma_0 + \gamma_1 \ln z_i + \gamma_2 \text{sewage}_i + \gamma_3 \text{election}_i + \gamma_4 \text{PAN}_i + \gamma_5 \text{aligned}_i + \boldsymbol{\delta}' \mathbf{x}_i + \alpha_s\right)\]</span></p>
+<p>where <span class="math inline">\(D_i = 1\)</span> for I3P or direct allocation; <span class="math inline">\(z_i\)</span> is cubic meters of concrete; <span class="math inline">\(\text{election}_i\)</span> is the year before municipal elections; <span class="math inline">\(\text{PAN}_i\)</span> is the governing party indicator; <span class="math inline">\(\text{aligned}_i\)</span> indicates municipal–state party alignment; <span class="math inline">\(\mathbf{x}_i\)</span> includes contract-level controls; and <span class="math inline">\(\alpha_s\)</span> are state fixed effects.</p>
+</section>
+<section id="efficiency-sfa-with-political-controls" class="level3">
+<h3 class="anchored" data-anchor-id="efficiency-sfa-with-political-controls">Efficiency SFA with Political Controls</h3>
+<p>The SFA model from <a href="./methods.html">Methods</a> is augmented with political variables:</p>
+<p><span class="math display">\[\ln \hat{c}_{ji} = \ln C^*(w_{ji}, z_{ji}) + \eta_{ji}(\text{election}_i, \text{aligned}_i) + \varepsilon_{ji}\]</span></p>
+<p>where the inefficiency term <span class="math inline">\(\eta\)</span> is modeled as a function of election-year and alignment indicators (following Battese and Coelli, 1995, who allow the mean of the truncated-normal to depend on covariates):</p>
+<p><span class="math display">\[\eta_{ji} \sim \mathcal{N}^+\!\left(\mu_0 + \mu_1 \text{election}_i + \mu_2 \text{aligned}_i,\; \sigma_u^2\right)\]</span></p>
+<p>This specification directly tests whether the mean inefficiency level varies with political conditions, rather than estimating reduced-form correlations.</p>
+</section>
+<section id="full-results-summary" class="level3">
+<h3 class="anchored" data-anchor-id="full-results-summary">Full Results Summary</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 37%">
-<col style="width: 37%">
+<col style="width: 13%">
+<col style="width: 35%">
+<col style="width: 51%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Predictor</th>
-<th>Marginal Effect</th>
-<th>Interpretation</th>
+<th>Variable</th>
+<th>Mechanism Choice (Probit)</th>
+<th>Excess Cost in Public Auctions (SFA)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Concrete volume (1 SD increase)</td>
+<td>Concrete volume (1 SD)</td>
 <td>−11.4 pp</td>
-<td>Larger projects → more likely to use public auction</td>
+<td>—</td>
 </tr>
 <tr class="even">
-<td>Sewage work dummy</td>
+<td>Sewage work</td>
 <td>−9.8 pp</td>
-<td>Complex projects → more likely to use public auction</td>
+<td>—</td>
 </tr>
 <tr class="odd">
-<td>Election year (year before municipal election)</td>
+<td>Election year</td>
 <td><strong>+6.2 pp</strong></td>
-<td>Election pressure → more discretionary allocation</td>
+<td><strong>+13.8%</strong> excess cost</td>
 </tr>
 <tr class="even">
-<td>PAN municipality (vs.&nbsp;PRI)</td>
+<td>PAN municipality</td>
 <td><strong>−18.9 pp</strong></td>
-<td>PAN → more likely to use public auction</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>Municipal–state alignment</td>
+<td>—</td>
+<td><strong>−9.8%</strong> excess cost</td>
 </tr>
 </tbody>
 </table>
-<p>All effects are evaluated at the sample mean. Standard errors clustered at the municipality level.</p>
 <hr>
 </section>
-<section id="what-this-means" class="level2">
-<h2 class="anchored" data-anchor-id="what-this-means">What This Means</h2>
-<p>The political economy findings complement the cost-efficiency results:</p>
+</section>
+<section id="policy-implications" class="level2">
+<h2 class="anchored" data-anchor-id="policy-implications">Policy Implications</h2>
+<p>The political economy results reinforce the efficiency findings:</p>
 <ol type="1">
-<li><p><strong>Discretion is selectively misused.</strong> Governments bypass auctions more often near elections, when political motivations are strongest. This is precisely when cost-efficiency is least likely to drive the selection.</p></li>
-<li><p><strong>Even competitive auctions are affected.</strong> Higher excess costs in public auctions during election years suggest that the distortions reach beyond the choice of mechanism — they affect competitive behavior within auctions.</p></li>
-<li><p><strong>Party institutions matter.</strong> The large PAN–PRI difference suggests that reducing discretionary contracting may require institutional reforms at the party level, not just legal restrictions on procurement mechanisms.</p></li>
+<li><p><strong>The majority of discretionary contracts are misallocated.</strong> Simple pavement projects — where Type 1 firms are less efficient — account for most discretionary allocations, and their frequency is amplified near elections.</p></li>
+<li><p><strong>Institutional reform should target the exceptions.</strong> The broad language in Mexico’s procurement law allows governments to bypass public auctions on vague grounds. A tighter legal standard — requiring genuine technical justification for I3P contracts — could reduce political discretion without preventing legitimate use.</p></li>
+<li><p><strong>Monitoring during election years is especially important.</strong> The election-year spike in both discretionary allocations and excess costs within public auctions suggests that standard monitoring frameworks that treat all periods equally will miss the highest-risk interval in the political calendar.</p></li>
 </ol>
 <div class="finding-card neutral-card" style="margin-top:1.5em;">
-  <div class="finding-label">Policy Implication</div>
-  <div class="finding-headline">Procurement reform should target election-period contracting</div>
-  <p class="finding-body">The results suggest that a targeted rule — requiring public auctions for simple pavement contracts in the year before elections — could substantially reduce procurement costs without restricting legitimate use of discretion for complex projects.</p>
+  <div class="finding-label">Bottom line</div>
+  <div class="finding-headline">Political incentives distort procurement beyond the mechanism choice</div>
+  <p class="finding-body">The results show that political factors affect not only <em>which mechanism</em> is used, but also <em>how firms behave within</em> competitive auctions. A reform that mandates public auctions without addressing the underlying political incentives would reduce discretion mechanically but might not fully restore competitive intensity.</p>
 </div>
 
 
