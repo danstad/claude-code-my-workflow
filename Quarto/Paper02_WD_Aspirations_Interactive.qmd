@@ -528,7 +528,7 @@ svg_left <- paste0(
 
 img_right <- paste0(
   '<div style="text-align:center;">',
-  '<img src="', img_src, '" style="width:72%; display:inline-block; border-radius:4px;" ',
+  '<img src="', img_src, '" style="width:85%; display:inline-block; border-radius:4px;" ',
   'alt="Regression discontinuity in sponsorship take-up at age-eligibility cutoff" />',
   '<p style="font-size:0.95em; color:#666; text-align:center; margin-top:0.35em; font-style:italic;">',
   'Figure 1. Discontinuity in program take-up at the age-eligibility cutoff (Ross et al., 2021).</p>',
