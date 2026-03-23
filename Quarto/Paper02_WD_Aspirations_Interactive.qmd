@@ -16,6 +16,14 @@ format:
           grid-column: screen-start-inset / screen-end-inset !important;
           max-width: none !important;
         }
+        /* Constrain content width for PC monitors */
+        .column-screen-inset {
+          max-width: 1100px !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
         </style>
 execute:
   echo: false
@@ -172,8 +180,8 @@ fig <- fig |> layout(
   ),
   plot_bgcolor  = "white",
   paper_bgcolor = "white",
-  height        = 310,
-  margin        = list(l = 150, r = 20, t = 25, b = 55),
+  height        = 260,
+  margin        = list(l = 130, r = 20, t = 25, b = 50),
   font          = list(family = "sans-serif", color = "#444")
 )
 
@@ -454,30 +462,30 @@ fig_med <- plot_ly() |>
 
   <!-- Research question card (B&W) -->
   <div style="border:1px solid #d0d5de; border-left:5px solid #444; border-radius:0 6px 6px 0; padding:1.2em 1.8em; margin-bottom:1.2em; background:white;">
-    <div style="font-size:0.72em; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; color:#999; margin-bottom:0.55em;">Research Question</div>
-    <p style="margin:0 0 0.45em; font-size:1.08em; line-height:1.55; color:#1a1a1a; font-weight:600;">Can child sponsorship change how children see themselves &mdash; and their future?</p>
-    <p style="margin:0; font-size:0.88em; color:#555; line-height:1.5;">Compassion International's program in Kenya, Indonesia, and Mexico — 2,022 children, causal identification, three psychological outcomes, and schooling attainment.</p>
+    <div style="font-size:0.82em; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; color:#999; margin-bottom:0.55em;">Research Question</div>
+    <p style="margin:0 0 0.45em; font-size:1.22em; line-height:1.55; color:#1a1a1a; font-weight:600;">Can child sponsorship change how children see themselves &mdash; and their future?</p>
+    <p style="margin:0; font-size:1.0em; color:#555; line-height:1.5;">Compassion International's program in Kenya, Indonesia, and Mexico — 2,022 children, causal identification, three psychological outcomes, and schooling attainment.</p>
   </div>
 
   <!-- Three story cards -->
   <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1em; margin-bottom:1.2em;">
 
     <div style="border-top:4px solid #012169; background:#f4f6f9; border-radius:0 0 6px 6px; padding:1.15em 1.3em;">
-      <div style="font-size:0.73em; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#012169; margin-bottom:0.45em;">The Question</div>
-      <p style="margin:0 0 0.5em; font-size:0.93em; line-height:1.6; color:#1a1a1a; font-weight:500;">Does international child sponsorship change how children see themselves &mdash; and their future?</p>
-      <p style="margin:0; font-size:0.85em; color:#555; line-height:1.5;"><strong>Compassion International</strong> — the world's largest child sponsorship organization, reaching over 2 million children across 29 countries — pairs material inputs (school fees, meals, uniforms, healthcare) with personal mentoring and regular letters from sponsors. We test whether this psycho-social investment drives outcomes independently from the material support.</p>
+      <div style="font-size:0.82em; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#012169; margin-bottom:0.45em;">The Question</div>
+      <p style="margin:0 0 0.5em; font-size:1.05em; line-height:1.6; color:#1a1a1a; font-weight:500;">Does international child sponsorship change how children see themselves &mdash; and their future?</p>
+      <p style="margin:0; font-size:0.97em; color:#555; line-height:1.5;"><strong>Compassion International</strong> — the world's largest child sponsorship organization, reaching over 2 million children across 29 countries — pairs material inputs (school fees, meals, uniforms, healthcare) with personal mentoring and regular letters from sponsors. We test whether this psycho-social investment drives outcomes independently from the material support.</p>
     </div>
 
     <div style="border-top:4px solid #F2A900; background:#f4f6f9; border-radius:0 0 6px 6px; padding:1.15em 1.3em;">
-      <div style="font-size:0.73em; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#c88a00; margin-bottom:0.45em;">Why It Matters</div>
-      <p style="margin:0 0 0.5em; font-size:0.93em; line-height:1.6; color:#1a1a1a; font-weight:500;">Poverty constrains not just resources &mdash; it constrains <em>aspirations</em>.</p>
-      <p style="margin:0; font-size:0.85em; color:#555; line-height:1.5;">If low self-esteem and low aspirations cause children to under-invest in education, then programs that raise aspirations can break the poverty trap in ways material aid alone cannot. This is the <em>poverty-of-mind</em> hypothesis &mdash; and it is testable.</p>
+      <div style="font-size:0.82em; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#c88a00; margin-bottom:0.45em;">Why It Matters</div>
+      <p style="margin:0 0 0.5em; font-size:1.05em; line-height:1.6; color:#1a1a1a; font-weight:500;">Poverty constrains not just resources &mdash; it constrains <em>aspirations</em>.</p>
+      <p style="margin:0; font-size:0.97em; color:#555; line-height:1.5;">If low self-esteem and low aspirations cause children to under-invest in education, then programs that raise aspirations can break the poverty trap in ways material aid alone cannot. This is the <em>poverty-of-mind</em> hypothesis &mdash; and it is testable.</p>
     </div>
 
     <div style="border-top:4px solid #2E75B6; background:#f4f6f9; border-radius:0 0 6px 6px; padding:1.15em 1.3em;">
-      <div style="font-size:0.73em; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#2E75B6; margin-bottom:0.45em;">How We Know</div>
-      <p style="margin:0 0 0.5em; font-size:0.93em; line-height:1.6; color:#1a1a1a; font-weight:500;">A natural experiment using Compassion International's age-eligibility rule.</p>
-      <p style="margin:0; font-size:0.85em; color:#555; line-height:1.5;">Children <em>just old enough</em> to be ineligible serve as the comparison for children <em>just young enough</em> to enroll. The age cutoff is our instrument &mdash; it predicts sponsorship without directly causing outcomes.</p>
+      <div style="font-size:0.82em; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#2E75B6; margin-bottom:0.45em;">How We Know</div>
+      <p style="margin:0 0 0.5em; font-size:1.05em; line-height:1.6; color:#1a1a1a; font-weight:500;">A natural experiment using Compassion International's age-eligibility rule.</p>
+      <p style="margin:0; font-size:0.97em; color:#555; line-height:1.5;">Children <em>just old enough</em> to be ineligible serve as the comparison for children <em>just young enough</em> to enroll. The age cutoff is our instrument &mdash; it predicts sponsorship without directly causing outcomes.</p>
     </div>
 
   </div>
@@ -515,7 +523,7 @@ svg_left <- paste0(
 
 img_right <- paste0(
   '<div style="text-align:center;">',
-  '<img src="', img_src, '" style="width:62%; display:inline-block; border-radius:4px;" ',
+  '<img src="', img_src, '" style="width:48%; display:inline-block; border-radius:4px;" ',
   'alt="Regression discontinuity in sponsorship take-up at age-eligibility cutoff" />',
   '<p style="font-size:0.82em; color:#666; text-align:center; margin-top:0.35em; font-style:italic;">',
   'Figure 1. Discontinuity in program take-up at the age-eligibility cutoff (Ross et al., 2021).</p>',
