@@ -11,10 +11,15 @@ format:
     include-in-header:
       text: |
         <style>
-        /* Make title span the same grid column as .column-screen-inset content */
+        /* Constrain title to same width as content */
         .page-columns #title-block-header {
           grid-column: screen-start-inset / screen-end-inset !important;
-          max-width: none !important;
+          max-width: 1100px !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+          padding-left: 2rem;
+          padding-right: 2rem;
+          box-sizing: border-box;
         }
         /* Constrain content width for PC monitors */
         .column-screen-inset {
@@ -502,30 +507,30 @@ img_src  <- paste0("data:image/png;base64,",
 
 svg_left <- paste0(
   '<div style="text-align:center; font-family:-apple-system,BlinkMacSystemFont,sans-serif;">',
-  '<div style="font-size:0.84em; font-weight:600; color:#555; letter-spacing:0.03em; margin-bottom:0.7em;">',
+  '<div style="font-size:0.97em; font-weight:600; color:#555; letter-spacing:0.03em; margin-bottom:0.7em;">',
   'Study Design: Age-Eligibility Instrument</div>',
   '<svg viewBox="0 0 600 92" style="display:block; margin:0 auto; width:100%;" ',
   'aria-label="Age cutoff instrument diagram">',
   '<line x1="30" y1="48" x2="570" y2="48" stroke="#ccc" stroke-width="2.5"/>',
   '<line x1="300" y1="8" x2="300" y2="76" stroke="#444" stroke-width="2" stroke-dasharray="5,3"/>',
-  '<text x="162" y="28" text-anchor="middle" font-size="16" fill="#333" font-weight="700" font-family="sans-serif">Sponsored (eligible)</text>',
-  '<text x="162" y="66" text-anchor="middle" font-size="13" fill="#666" font-family="sans-serif">age \u2264 cutoff at enrollment</text>',
-  '<text x="438" y="28" text-anchor="middle" font-size="16" fill="#555" font-weight="700" font-family="sans-serif">Comparison group</text>',
-  '<text x="438" y="66" text-anchor="middle" font-size="13" fill="#666" font-family="sans-serif">age &gt; cutoff at enrollment</text>',
-  '<text x="300" y="88" text-anchor="middle" font-size="13" fill="#444" font-weight="600" font-family="sans-serif">\u25b2 Age cutoff (instrument)</text>',
+  '<text x="162" y="28" text-anchor="middle" font-size="18" fill="#333" font-weight="700" font-family="sans-serif">Sponsored (eligible)</text>',
+  '<text x="162" y="66" text-anchor="middle" font-size="15" fill="#666" font-family="sans-serif">age \u2264 cutoff at enrollment</text>',
+  '<text x="438" y="28" text-anchor="middle" font-size="18" fill="#555" font-weight="700" font-family="sans-serif">Comparison group</text>',
+  '<text x="438" y="66" text-anchor="middle" font-size="15" fill="#666" font-family="sans-serif">age &gt; cutoff at enrollment</text>',
+  '<text x="300" y="88" text-anchor="middle" font-size="15" fill="#444" font-weight="600" font-family="sans-serif">\u25b2 Age cutoff (instrument)</text>',
   '<polygon points="30,48 47,39 47,57" fill="#444"/>',
   '<polygon points="570,48 553,39 553,57" fill="#aaa"/>',
   '</svg>',
-  '<div style="font-size:0.8em; color:#777; margin-top:0.45em;">',
+  '<div style="font-size:0.95em; color:#777; margin-top:0.45em;">',
   'Outcomes: self-esteem \u00b7 optimism \u00b7 aspirations \u00b7 years of schooling</div>',
   '</div>'
 )
 
 img_right <- paste0(
   '<div style="text-align:center;">',
-  '<img src="', img_src, '" style="width:48%; display:inline-block; border-radius:4px;" ',
+  '<img src="', img_src, '" style="width:72%; display:inline-block; border-radius:4px;" ',
   'alt="Regression discontinuity in sponsorship take-up at age-eligibility cutoff" />',
-  '<p style="font-size:0.82em; color:#666; text-align:center; margin-top:0.35em; font-style:italic;">',
+  '<p style="font-size:0.95em; color:#666; text-align:center; margin-top:0.35em; font-style:italic;">',
   'Figure 1. Discontinuity in program take-up at the age-eligibility cutoff (Ross et al., 2021).</p>',
   '</div>'
 )
