@@ -138,6 +138,6 @@ As a robustness check, the same expectations were estimated assuming a **uniform
 
 The figure below (Figure 1 in the paper) shows the distribution of expected income by sponsorship status for high school and university. Both distributions are right-skewed, consistent with log-normal income, and the distribution modes are closely aligned with census medians.
 
-![Expected income distribution for high school and university, by sponsorship status](../../Figures/Figure1_IncomeDist.png){width=80%}
+![Expected income distribution for high school and university, by sponsorship status](Figure1_IncomeDist.png){width=80%}
 
 **Takeaway:** Children's subjective income beliefs are realistic on average, even at ages 12--15. However, as Model 2 shows, these beliefs do not significantly predict aspirations — suggesting that at this age, other factors (internal constraints, social norms, short-term thinking) dominate the decision.

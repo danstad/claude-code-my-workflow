@@ -94,7 +94,7 @@ Anecdotal evidence and conversations with local CI staff suggest that school att
 
 The figure below (Figure 2 in the paper) plots the MTE curve for Model 1 as a function of the selection resistance $u_S$, along with a 95% confidence interval.
 
-![Marginal Treatment Effect curve for Model 1](../../Figures/Figure2_MTE.png){width=80%}
+![Marginal Treatment Effect curve for Model 1](Figure2_MTE.png){width=80%}
 
 **Reading the curve:**
 
