@@ -1,0 +1,197 @@
+/*-- scss:defaults --*/
+$primary:   #012169;
+$link-color: #012169;
+$font-size-base: 1rem;
+
+/*-- scss:rules --*/
+
+/* ── General layout ─────────────────────────────────────── */
+.page-columns .content {
+  max-width: 860px !important;
+}
+
+body {
+  font-size: 1.0rem;
+  line-height: 1.7;
+}
+
+/* ── Title hero box ─────────────────────────────────────── */
+.paper-hero {
+  background: #012169;
+  color: white;
+  padding: 2.2rem 2.4rem 1.8rem;
+  border-radius: 6px;
+  margin-bottom: 1.8rem;
+}
+.paper-hero h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.7rem;
+  color: white;
+}
+.paper-hero .hero-meta {
+  font-size: 1.0rem;
+  opacity: 0.88;
+  color: #F2A900;
+}
+
+/* ── Section headings ───────────────────────────────────── */
+h2 { color: #012169; border-bottom: 2px solid #F2A900; padding-bottom: 0.3rem; }
+h3 { color: #012169; }
+
+/* ── Key/Method/Result boxes ────────────────────────────── */
+.keybox {
+  background: #fffbe6;
+  border-left: 4px solid #F2A900;
+  padding: 0.9rem 1.1rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+.methodbox {
+  background: #eef2f9;
+  border-left: 4px solid #012169;
+  padding: 0.9rem 1.1rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+.resultbox {
+  border: 2px solid #F2A900;
+  padding: 0.9rem 1.1rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+/* ── Comparison cards ───────────────────────────────────── */
+.compare-grid {
+  display: flex;
+  gap: 1rem;
+  margin: 1.2rem 0;
+  flex-wrap: wrap;
+}
+.compare-card {
+  flex: 1;
+  min-width: 180px;
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+  font-size: 0.92rem;
+}
+.compare-card.ols  { background:#fdf2f2; border-top: 4px solid #c0392b; }
+.compare-card.iv   { background:#fdf8ec; border-top: 4px solid #e67e22; }
+.compare-card.roy  { background:#eef2f9; border-top: 4px solid #012169; }
+.compare-card h4   { margin: 0 0 0.5rem; font-size: 0.95rem; }
+.compare-card ul   { margin: 0; padding-left: 1.2rem; }
+.compare-card li   { margin-bottom: 0.3rem; }
+.check  { color: #27ae60; font-weight: 700; }
+.cross  { color: #c0392b; font-weight: 700; }
+
+/* ── Selection diagram ──────────────────────────────────── */
+.sel-diagram {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  margin: 1.4rem 0;
+  flex-wrap: wrap;
+}
+.sel-box {
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  font-size: 0.87rem;
+  line-height: 1.45;
+  min-width: 150px;
+  max-width: 190px;
+  text-align: center;
+}
+.sel-box.pop   { background:#eef2f9; border:2px solid #012169; }
+.sel-box.spons { background:#fffbe6; border:2px solid #F2A900; }
+.sel-box.ctrl  { background:#f8f8f8; border:2px solid #888; }
+.sel-arrow {
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  font-size: 1.5rem;
+  color: #888;
+  align-self: center;
+}
+.sel-branch {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-self: center;
+}
+.id-tag {
+  display: inline-block;
+  border-radius: 3px;
+  padding: 0.18rem 0.55rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0.2rem 0;
+}
+.id-tag.yes { background:#d4edda; color:#155724; }
+.id-tag.no  { background:#f8d7da; color:#721c24; }
+
+/* ── Roy model equations display ────────────────────────── */
+.eq-block {
+  background: #f7f9fc;
+  border-left: 3px solid #012169;
+  padding: 0.9rem 1.2rem;
+  border-radius: 0 4px 4px 0;
+  margin: 0.8rem 0;
+  font-size: 0.97rem;
+}
+.eq-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #012169;
+  margin-bottom: 0.3rem;
+}
+
+/* ── Step pills for methodology ─────────────────────────── */
+.step-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0.7rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+.step-pill {
+  flex: 1;
+  min-width: 140px;
+  background: #eef2f9;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  font-size: 0.87rem;
+  position: relative;
+}
+.step-pill .step-num {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #F2A900;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.step-pill.highlight { background: #012169; color: white; }
+.step-pill.highlight .step-num { color: #F2A900; }
+
+/* ── Glance table ───────────────────────────────────────── */
+.glance-table td, .glance-table th {
+  padding: 0.45rem 0.8rem;
+  font-size: 0.93rem;
+}
+
+/* ── Quadrature visual ──────────────────────────────────── */
+.quad-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #f7f9fc;
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+.quad-row .quad-math { flex: 2; min-width: 200px; }
+.quad-row .quad-note { flex: 1; min-width: 140px; font-size: 0.87rem; color: #555; }

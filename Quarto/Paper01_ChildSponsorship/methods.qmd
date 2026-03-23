@@ -1,0 +1,282 @@
+---
+title: "Methods"
+---
+
+This page walks through the full model in the order it is estimated, explaining both the **intuition** behind each choice and the **computational methods** used. The model follows Aakvik, Heckman, and Vytlacil (2005).
+
+---
+
+## Step 1 — Why a Roy Model?
+
+Before describing the model, it helps to understand why simpler approaches fail.
+
+::: {.compare-grid}
+::: {.compare-card ols}
+#### OLS / Probit
+Regress aspiration on a sponsored dummy and controls.
+
+<span class="cross">✗</span> Selection bias: sponsored children are younger, poorer, more Protestant<br>
+<span class="cross">✗</span> Compares children who are not comparable<br>
+<span class="cross">✗</span> Cannot separate program effect from pre-existing differences
+:::
+::: {.compare-card iv}
+#### Standard IV (LATE)
+Use age-at-arrival dummies as instruments for selection.
+
+<span class="check">✓</span> Corrects for observable selection<br>
+<span class="cross">✗</span> Assumes the treatment effect is the same for everyone ($\alpha_1 = \alpha_0$)<br>
+<span class="cross">✗</span> Only identifies the effect for "compliers" (LATE)<br>
+<span class="cross">✗</span> Misses selection on unobserved gains
+:::
+::: {.compare-card roy}
+#### Binary Roy Model
+Model selection and outcomes jointly with a one-factor error structure.
+
+<span class="check">✓</span> Corrects for observable and unobservable selection<br>
+<span class="check">✓</span> Allows children who gain more to also be more likely to be selected<br>
+<span class="check">✓</span> Identifies ATE, ATT, and MTE<br>
+<span class="check">✓</span> Natural for binary outcomes (aspiration is a target, not a scale)
+:::
+:::
+
+The key additional insight of the Roy model over IV: children who are **most likely to be selected** into CI may also be those who **benefit most** from it. A motivated family that actively seeks sponsorship for their child may be exactly the type for whom the program works best. Standard IV treats this as a nuisance; the Roy model explicitly estimates it via the correlation between the selection error and the outcome errors.
+
+---
+
+## Step 2 — The Three-Equation System
+
+The model has three latent variable equations.
+
+### (1) Selection Equation
+
+::: {.eq-block}
+::: {.eq-label}
+Equation (1) — Selection equation
+:::
+$$S^*_i = \gamma_0 + \gamma_1\,\text{Age6}_i + \gamma_2\,\text{Age7}_i + \gamma_3\,\text{Age8}_i + \gamma_4\,\text{AssetIndex}_i + \gamma_5\,\text{Protestant}_i + \gamma_6\,\text{SiteCI}_i - U_{Si}$$
+$$S_i = \mathbf{1}[S^*_i > 0]$$
+:::
+
+$S^*_i$ is the latent "propensity to be sponsored." When it exceeds zero, the child is sponsored ($S_i = 1$). The vector $Z_i$ contains all the covariates above; $U_{Si}$ is an unobserved factor (motivation, family circumstances) that also drives selection.
+
+**Variables:**
+
+| Regressor | Role |
+|-----------|------|
+| Age6, Age7, Age8 | Dummy = 1 if child was that age when CI arrived. **Exclusion restrictions** (see Step 3) |
+| Asset index | First principal component of household assets. Proxies for income. |
+| Protestant | Church attendance is positively correlated with CI access. |
+| SiteCI | Dummy = 1 if child lives in a community with a CI project. |
+
+### (2) Outcome Equations
+
+::: {.eq-block}
+::: {.eq-label}
+Equations (2)–(3) — Potential outcome equations
+:::
+$$Y^*_{1i} = \beta^1_0 + \rho_{HE,i}\,\beta^1_2 + \text{Dist}_i\,\beta^1_3 + \tilde{X}_i\,\beta^1_4 - U_{1i} \qquad (\text{sponsored})$$
+$$Y^*_{0i} = \beta^0_0 + \rho_{HE,i}\,\beta^0_2 + \text{Dist}_i\,\beta^0_3 + \tilde{X}_i\,\beta^0_4 - U_{0i} \qquad (\text{non-sponsored})$$
+$$Y_{ji} = \mathbf{1}[Y^*_{ji} > 0], \quad j \in \{0, 1\}$$
+:::
+
+Each child has two **potential outcomes**: $Y_{1i}$ (aspiration if sponsored) and $Y_{0i}$ (aspiration if not). We only observe one of them — the one corresponding to actual sponsorship status:
+
+$$Y_i = S_i \cdot Y_{1i} + (1 - S_i) \cdot Y_{0i}$$
+
+**Regressors in the outcome equations:**
+
+| Variable | Description |
+|----------|-------------|
+| $\rho_{HE,i}$ | Perceived return to higher education (from subjective expectations). Only in Model 2. |
+| $\text{Dist}_i$ | Distance in km to nearest university. Proxy for access constraints. |
+| $\tilde{X}_i$ | Gender, asset index, parental education, Prospera participation dummy. |
+
+::: {.callout-note}
+Model 1 does not include $\rho_{HE}$. Model 2 adds it, reducing the sample to 271 children who correctly interpreted the probability questions. Comparing the two lets us test whether subjective beliefs about returns shift aspirations.
+:::
+
+---
+
+## Step 3 — Identification: Exclusion Restrictions
+
+For the Roy model to identify the causal effect of sponsorship, we need variables that affect **whether a child is sponsored** but do not directly affect their **aspiration level**. These are called exclusion restrictions.
+
+::: {.methodbox}
+**The instrument:** Age-at-arrival dummies (Age6, Age7, Age8).
+
+A child who was 6, 7, or 8 years old when CI arrived in their village is significantly more likely to be sponsored than one who was 9 or older (the eligibility cutoff). The omitted category is age ≥ 9 — too old to meet the eligibility criterion comfortably.
+
+**Validity argument:** Current aspirations at ages 12--15 depend on current characteristics (income, parental education, access to schools, social environment) — not on how old a child happened to be when a program arrived several years ago. Age-at-arrival shifts selection probability without having a direct channel into current aspiration.
+:::
+
+The first-stage results confirm the instruments are strong: children who were 6, 7, or 8 years old at CI arrival are approximately **21--26 percentage points** more likely to be sponsored than older children, all else equal.
+
+---
+
+## Step 4 — One-Factor Error Structure
+
+The three error terms $U_{Si}$, $U_{1i}$, $U_{0i}$ share a common **latent factor** $\theta_i$:
+
+::: {.eq-block}
+::: {.eq-label}
+One-factor error structure
+:::
+$$U_{Si} = -\theta_i + \varepsilon_{Si}, \qquad U_{1i} = -\alpha_1\theta_i + \varepsilon_{1i}, \qquad U_{0i} = -\alpha_0\theta_i + \varepsilon_{0i}$$
+:::
+
+Think of $\theta_i$ as an unobserved characteristic of the child or family: motivation, perseverance, or the family's belief in education. It affects all three equations.
+
+**What the factor loadings $\alpha_1$ and $\alpha_0$ capture:**
+
+- $\alpha_1 > 0$ means children with high $\theta$ (high motivation) are both more likely to be selected **and** benefit more from CI when sponsored
+- $\alpha_0 > 0$ means children with high $\theta$ are also more ambitious even without CI
+- The difference $\alpha_1 - \alpha_0$ measures **selection on gains**: whether those selected into CI are those who gain most from it
+
+::: {.keybox}
+Under standard IV, we implicitly assume $\alpha_1 = \alpha_0$ — the treatment effect does not depend on unobserved characteristics. The Roy model relaxes this. If $\alpha_1 \neq \alpha_0$, IV gives a biased estimate of ATT, and can even have the wrong sign.
+:::
+
+**Normalization:** $\text{Var}(\theta_i) = \text{Var}(\varepsilon_{Si}) = \text{Var}(\varepsilon_{1i}) = \text{Var}(\varepsilon_{0i}) = 1$. This pins down the scale and allows identification.
+
+The covariances implied by the factor structure are:
+$$\text{Cov}(U_S, U_1) = \alpha_1, \qquad \text{Cov}(U_S, U_0) = \alpha_0, \qquad \text{Cov}(U_1, U_0) = \alpha_0\alpha_1$$
+
+---
+
+## Step 5 — Maximum Likelihood Estimation
+
+Because $\theta_i$ is unobserved, we cannot condition on it directly. Instead, we **integrate it out** when forming the likelihood.
+
+### The Likelihood Function
+
+::: {.eq-block}
+::: {.eq-label}
+Conditional probabilities given $\theta_i$
+:::
+$$\Pr(Y_i = 1 \mid S_i = 1, X_i, \theta_i) = \Phi(X_i\hat\beta_1 + \hat\alpha_1\theta_i)$$
+$$\Pr(Y_i = 1 \mid S_i = 0, X_i, \theta_i) = \Phi(X_i\hat\beta_0 + \hat\alpha_0\theta_i)$$
+$$\Pr(S_i = 1 \mid Z_i, \theta_i) = \Phi(Z_i\hat\gamma + \theta_i)$$
+:::
+
+Multiplying across equations (conditional independence given $\theta_i$) and integrating over $\theta_i \sim N(0,1)$:
+
+::: {.eq-block}
+::: {.eq-label}
+Marginal likelihood
+:::
+$$L = \prod_{i=1}^N \int \Pr(S_i, Y_i \mid X_i, Z_i, \theta_i)\,\phi(\theta_i)\,d\theta_i$$
+:::
+
+This integral does not have a closed form — because $\Phi(\cdot)$ is a nonlinear function of $\theta_i$, we cannot analytically multiply out the normal density and integrate. We need a numerical method.
+
+### Gauss-Hermite Quadrature
+
+Gauss-Hermite quadrature approximates integrals of the form $\int f(\theta)\,\phi(\theta)\,d\theta$ with a weighted sum:
+
+::: {.quad-row}
+::: {.quad-math}
+$$\int f(\theta)\,\phi(\theta)\,d\theta \;\approx\; \sum_{k=1}^{K} w_k \cdot f(\theta_k)$$
+:::
+::: {.quad-note}
+$\theta_1,\ldots,\theta_K$ are **quadrature nodes** (roots of Hermite polynomials), chosen to span the support of the normal distribution efficiently.
+$w_1,\ldots,w_K$ are **weights** that give each node its appropriate importance.
+:::
+:::
+
+**Intuition:** Instead of integrating over infinitely many possible values of $\theta$, we evaluate the likelihood at $K = 10$ carefully selected points that together provide an excellent approximation to the normal distribution. With 10 nodes, the approximation is accurate to many decimal places for smooth integrands like ours.
+
+The practical computation is:
+
+$$L_i \approx \sum_{k=1}^{10} w_k \cdot \Pr(S_i, Y_i \mid X_i, Z_i, \theta_k)$$
+
+Parameters $(\gamma, \beta_0, \beta_1, \alpha_0, \alpha_1)$ are estimated by maximizing $\sum_i \ln L_i$.
+
+::: {.callout-note collapse="true"}
+## Why not simulation-based integration (MSL)?
+
+An alternative is to draw random values of $\theta$ from $N(0,1)$ and average over them (Monte Carlo). Gauss-Hermite quadrature is preferred here because it is **deterministic** (no simulation noise), **faster** (10 nodes vs. hundreds of draws for equivalent accuracy), and **reproducible**. For a single factor with normal distribution, quadrature is essentially exact.
+:::
+
+### Standard Errors
+
+Standard errors are computed by **bootstrap** (resampling with replacement at the child level). Analytical standard errors from the Hessian of the log-likelihood tend to be unreliable in models with this many parameters and a small sample. Bootstrapping provides valid inference without distributional assumptions.
+
+---
+
+## Step 6 — From Estimates to Treatment Effects
+
+Once $(\hat\gamma, \hat\beta_0, \hat\beta_1, \hat\alpha_0, \hat\alpha_1)$ are in hand, three treatment parameters are computed.
+
+### Average Treatment Effect (ATE)
+
+The expected effect of sponsorship for a **randomly chosen child** with characteristics $x$:
+
+::: {.eq-block}
+::: {.eq-label}
+Equation (4) — Average Treatment Effect
+:::
+$$ATE(x) = \Pr(Y_1 = 1 \mid X = x) - \Pr(Y_0 = 1 \mid X = x) = \Phi\!\left(\frac{x\hat\beta_1}{\sqrt{1 + \hat\alpha_1^2}}\right) - \Phi\!\left(\frac{x\hat\beta_0}{\sqrt{1 + \hat\alpha_0^2}}\right)$$
+:::
+
+**Why the $\sqrt{1+\alpha^2}$ correction?** When we integrate $\theta_i$ out of $\Phi(x\beta_j + \alpha_j\theta_i)$ under $\theta_i \sim N(0,1)$, we get a normal CDF with a larger variance — the factor $\alpha_j^2$ adds to the variance. The correction restores the probability to the right scale.
+
+### Average Treatment Effect on the Treated (ATT)
+
+The expected effect for **actually sponsored children**:
+
+::: {.eq-block}
+::: {.eq-label}
+Equation (5) — Average Treatment Effect on the Treated
+:::
+$$ATT(x, S=1) = \frac{1}{F_{U_S}(z\hat\gamma)}\left[F_{U_S,U_1}(\cdot) - F_{U_S,U_0}(\cdot)\right]$$
+:::
+
+This conditions on $S_i = 1$, so it averages only over the sponsored group. The bivariate normal distributions $F_{U_S,U_1}$ and $F_{U_S,U_0}$ are recoverable from the factor structure (the covariances $\alpha_1$ and $\alpha_0$ pin them down).
+
+### Marginal Treatment Effect (MTE)
+
+The effect for children at the **margin of selection** — those who are just indifferent between being sponsored and not:
+
+::: {.eq-block}
+::: {.eq-label}
+Equation (6) — Marginal Treatment Effect
+:::
+$$MTE(x, u_S) = \Pr(Y_1 = 1 \mid X = x,\, U_S = u_S) - \Pr(Y_0 = 1 \mid X = x,\, U_S = u_S)$$
+:::
+
+$u_S$ is the value of the selection error at the margin. For small values of $u_S$ (the children most likely to be selected), the MTE gives the effect for children who would always be sponsored regardless of the instrument. For large $u_S$, the MTE gives the effect for children who are very unlikely to be selected.
+
+::: {.keybox}
+**The MTE as a building block:** Both ATE and ATT are weighted averages of the MTE curve. ATE uses equal weights across the $u_S$ distribution; ATT over-weights low-$u_S$ children (those who are likely to be selected). This is why ATE ≠ ATT when the MTE curve is not flat — i.e., when there is selection on gains.
+:::
+
+### Practical computation of the MTE
+
+$$MTE(x, u_S) = \frac{\int \left[\Phi(x\hat\beta_1 + \hat\alpha_1\theta) - \Phi(x\hat\beta_0 + \hat\alpha_0\theta)\right] \phi(u_S + \theta)\,\phi(\theta)\,d\theta}{\phi(u_S)/\sqrt{2}}$$
+
+Again evaluated numerically using Gauss-Hermite quadrature.
+
+---
+
+## Summary of Modeling Choices
+
+| Choice | What it is | Why it matters |
+|--------|-----------|----------------|
+| Binary Roy model | Jointly models selection and two potential outcomes | Corrects for selection on both observables and unobservable gains |
+| One-factor error structure | Errors share a common latent factor $\theta_i$ | Parsimonious way to allow correlation across equations |
+| Exclusion restriction | Age-at-arrival dummies (Age6/7/8) | Instrument that shifts P(sponsored) without directly affecting aspirations |
+| MLE with Gauss-Hermite quadrature | Numerically integrates out $\theta$ | Handles the non-closed-form integral efficiently and accurately |
+| Bootstrap standard errors | Resampling at the child level | Robust to model complexity and small sample |
+| Binary outcome | Aspiration modeled as 0/1 | Children have aspiration targets, not continuous ambition scales |
+
+::: {.callout-note collapse="true"}
+## Robustness checks in the paper
+
+The paper reports three additional robustness checks:
+
+1. **Continuous Roy model** using the same instruments — conclusions unchanged
+2. **IV approach** — conclusions unchanged (sponsorship effect not significant)
+3. **Prospera subsample** — restricts to children who benefit from Prospera in both groups; findings are stable
+
+All three confirm that the main results are not driven by the binary specification, the specific exclusion restrictions, or the overlap with the Prospera program.
+:::
