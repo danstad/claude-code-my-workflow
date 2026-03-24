@@ -184,7 +184,7 @@ An alternative is to draw random values of $\theta$ from $N(0,1)$ and average ov
 
 ### Standard Errors
 
-Standard errors are computed by **bootstrap** (resampling with replacement at the child level). Analytical standard errors from the Hessian of the log-likelihood tend to be unreliable in models with this many parameters and a small sample. Bootstrapping provides valid inference without distributional assumptions.
+Standard errors are computed by **bootstrap** (resampling with replacement at the child level).
 
 ---
 
