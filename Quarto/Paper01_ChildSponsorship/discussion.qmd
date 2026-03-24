@@ -4,11 +4,11 @@ title: "Discussion"
 
 ## What This Paper Adds
 
-The CI literature is large, but most of it relies on reduced-form methods — comparing sponsored and non-sponsored children with observed controls or simple instruments, without modeling the selection process. This paper contributes in three ways:
+The CI literature is large, but most of it relies on reduced-form methods, comparing sponsored and non-sponsored children with observed controls or simple instruments, without modeling the selection process. This paper contributes in three ways:
 
 **1. Explicit selection modeling.** By using a binary Roy-type model, the paper accounts for the fact that CI does not select children randomly, and that the families most likely to be chosen may also be those whose children benefit most. This distinction matters: a naive or IV estimate of the sponsorship effect conflates "who gets sponsored" with "what sponsorship does." The Roy model separates these.
 
-**2. Subjective income expectations in a developing-country context.** Collecting individual-level beliefs about future earnings and using them to estimate perceived returns to education is uncommon in the CI literature and rare in developing-country education research. The finding — that these beliefs are realistic on average but do not predict aspirations — is itself informative: it suggests that other constraints bind first.
+**2. Subjective income expectations in a developing-country context.** Collecting individual-level beliefs about future earnings and using them to estimate perceived returns to education is uncommon in the CI literature and rare in developing-country education research. The finding, that these beliefs are realistic on average but do not predict aspirations, is itself informative: it suggests that other constraints bind first.
 
 **3. The MTE as a diagnostic tool.** The marginal treatment effect curve provides information that ATE and ATT do not: it tells us whether the *right* children are being reached. The finding that the MTE is positive and declining means CI's targeting is, in this sense, well-designed.
 
@@ -22,9 +22,9 @@ The CI literature is large, but most of it relies on reduced-form methods — co
 
 The ATT of 17--20 percentage points is substantively meaningful but imprecisely estimated. There are two complementary explanations:
 
-**Statistical.** The sample is small (403 children total, 163 sponsored), and the model is complex: five parameters governing the error structure alone, estimated by numerical integration with bootstrap standard errors. Each of these choices adds uncertainty. This is not a flaw in the design — it is the cost of using a more credible identification strategy.
+**Statistical.** The sample is small (403 children total, 163 sponsored), and the model is complex: five parameters governing the error structure alone, estimated by numerical integration with bootstrap standard errors. Each of these choices adds uncertainty. This is not a flaw in the design, it is the cost of using a more credible identification strategy.
 
-**Substantive.** The paper's results, combined with Ross et al. (2021), suggest that CI in Mexico does not strongly shift self-esteem or optimism in the short run. If the mechanism through which CI raises aspirations runs through psychological channels — feeling capable, imagining new futures — then finding a precise effect on stated aspirations in a cross-section at ages 12--15 is a high bar. Aspirations may be more malleable in the long run than in the short run.
+**Substantive.** The paper's results, combined with Ross et al. (2021), suggest that CI in Mexico does not strongly shift self-esteem or optimism in the short run. If the mechanism through which CI raises aspirations runs through psychological channels, feeling capable, imagining new futures, then finding a precise effect on stated aspirations in a cross-section at ages 12--15 is a high bar. Aspirations may be more malleable in the long run than in the short run.
 
 ---
 
@@ -37,7 +37,7 @@ The outcome is a **stated aspiration**, not an enrollment decision. Children may
 
 ::: {.callout-note}
 #### Cross-sectional data
-The survey is a **single cross-section**. We cannot observe the same child before and after sponsorship, which means we cannot rule out pre-existing differences not captured by the model. The identification relies on the exclusion restrictions being valid — a credible but ultimately untestable assumption.
+The survey is a **single cross-section**. We cannot observe the same child before and after sponsorship, which means we cannot rule out pre-existing differences not captured by the model. The identification relies on the exclusion restrictions being valid, a credible but ultimately untestable assumption.
 :::
 
 ::: {.callout-note}
@@ -60,7 +60,7 @@ Despite the imprecision, the findings have a clear message for CI and similar or
 **CI does not face an efficiency-equity trade-off in the context of Mexico.** The children most in need, who are the most likely to be selected, also appear to gain the most from the program. This is not guaranteed — many targeting rules select the most vulnerable but also the least likely to respond. The MTE result is reassuring.
 :::
 
-For policymakers more broadly, the finding that perceived returns to education are not significant predictors of aspiration at ages 12--15 has implications for information-based interventions. Providing information about returns to schooling — popular in development economics since Jensen (2010) — may not be effective at this age in this context. Interventions that work directly on internal constraints (self-efficacy, role models, attainable short-term goals) may be more productive.
+For policymakers more broadly, the finding that perceived returns to education are not significant predictors of aspiration at ages 12--15 has implications for information-based interventions. Providing information about returns to schooling, popular in development economics since Jensen (2010), may not be effective at this age in this context. Interventions that work directly on internal constraints (self-efficacy, role models, attainable short-term goals) may be more productive.
 
 ---
 

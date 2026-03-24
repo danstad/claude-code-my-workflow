@@ -9,7 +9,7 @@
 
 In Oaxaca and Chiapas, two of Mexico's poorest states, the average adult has barely more than a primary school education: 7.5 and 7.2 years of schooling, respectively. This is striking, because the returns to higher education are positive and significant even for rural populations.
 
-The standard explanation points to **external constraints**: low income, distance to schools, poor health. These are real, but a growing literature argues they are not the whole story. **Internal constraints** — aspirations, self-efficacy, self-esteem, grit — also hold children back, and may be at least as important in early development.
+The standard explanation points to **external constraints**: low income, distance to schools, poor health. These are real, but a growing literature argues they are not the whole story. **Internal constraints**, aspirations, self-efficacy, self-esteem, grit, also hold children back, and may be at least as important in early development.
 
 This paper investigates whether [Compassion International (CI)](https://www.compassion.com/), a large holistic child sponsorship program, raises rural Mexican children's aspiration to pursue a higher education degree. CI is unusual in that it combines material support (school supplies, healthcare, food) with an intensive socio-emotional program (~5--6 hours/week), including letter exchanges with international sponsors that broaden children's sense of what futures are possible.
 
@@ -56,7 +56,7 @@ Answering this question is harder than it looks. Sponsored children are not rand
 </div>
 ```
 
-But observable differences are only part of the problem. More motivated families may seek out sponsorship; CI's own targeting may select children with particular unobserved traits. This is **selection on unobservables** — and it means that even a standard instrumental variables approach is insufficient, because IV assumes the treatment effect is the same for everyone. If the children most likely to be sponsored are also those who benefit most from it (selection on gains), IV will give the wrong answer.
+But observable differences are only part of the problem. More motivated families may seek out sponsorship; CI's own targeting may select children with particular unobserved traits. This is **selection on unobservables**, and it means that even a standard instrumental variables approach is insufficient, because IV assumes the treatment effect is the same for everyone. If the children most likely to be sponsored are also those who benefit most from it (selection on gains), IV will give the wrong answer.
 
 This paper uses a **binary Roy-type model** (Aakvik, Heckman, and Vytlacil, 2005) that explicitly models both the selection process and the potential for heterogeneous treatment effects, identifying three distinct treatment parameters: the Average Treatment Effect (ATE), the Average Treatment on the Treated (ATT), and the Marginal Treatment Effect (MTE).
 
@@ -67,11 +67,11 @@ This paper uses a **binary Roy-type model** (Aakvik, Heckman, and Vytlacil, 2005
 :::
 
 ::: {.methodbox}
-**No efficiency-equity trade-off.** The MTE curve declines with the selection index — children most likely to be sponsored are also those who benefit most. CI does not face the typical dilemma between targeting the most vulnerable and targeting those with the highest gains.
+**No efficiency-equity trade-off.** The MTE curve declines with the selection index, children most likely to be sponsored are also those who benefit most. CI does not face the typical dilemma between targeting the most vulnerable and targeting those with the highest gains.
 :::
 
 ::: {.resultbox}
-**Subjective income expectations are realistic but not predictive.** Children aged 12--15 report income expectations that broadly align with census data, but perceived returns to education do not significantly predict aspirations. Other factors — internal constraints, social context, short-term thinking — may dominate at this age.
+**Subjective income expectations are realistic but not predictive.** Children aged 12--15 report income expectations that broadly align with census data, but perceived returns to education do not significantly predict aspirations. Other factors, internal constraints, social context, short-term thinking, may dominate at this age.
 :::
 
 ## Study at a Glance

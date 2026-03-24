@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-3f230b53dc93e4a04bf4a3505d77a42a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-fd06ac79457f8a07b417cd60bc342394.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c403afe5b55118a3daa9ff829df660ab.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -160,21 +160,21 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#step-1-why-a-roy-model" id="toc-step-1-why-a-roy-model" class="nav-link active" data-scroll-target="#step-1-why-a-roy-model">Step 1 — Why a Roy Model?</a></li>
-  <li><a href="#step-2-the-three-equation-system" id="toc-step-2-the-three-equation-system" class="nav-link" data-scroll-target="#step-2-the-three-equation-system">Step 2 — The Three-Equation System</a>
+  <li><a href="#step-1-why-a-roy-model" id="toc-step-1-why-a-roy-model" class="nav-link active" data-scroll-target="#step-1-why-a-roy-model">Step 1: Why a Roy Model?</a></li>
+  <li><a href="#step-2-the-three-equation-system" id="toc-step-2-the-three-equation-system" class="nav-link" data-scroll-target="#step-2-the-three-equation-system">Step 2: The Three-Equation System</a>
   <ul class="collapse">
   <li><a href="#selection-equation" id="toc-selection-equation" class="nav-link" data-scroll-target="#selection-equation">(1) Selection Equation</a></li>
   <li><a href="#outcome-equations" id="toc-outcome-equations" class="nav-link" data-scroll-target="#outcome-equations">(2) Outcome Equations</a></li>
   </ul></li>
-  <li><a href="#step-3-identification-exclusion-restrictions" id="toc-step-3-identification-exclusion-restrictions" class="nav-link" data-scroll-target="#step-3-identification-exclusion-restrictions">Step 3 — Identification: Exclusion Restrictions</a></li>
-  <li><a href="#step-4-one-factor-error-structure" id="toc-step-4-one-factor-error-structure" class="nav-link" data-scroll-target="#step-4-one-factor-error-structure">Step 4 — One-Factor Error Structure</a></li>
-  <li><a href="#step-5-maximum-likelihood-estimation" id="toc-step-5-maximum-likelihood-estimation" class="nav-link" data-scroll-target="#step-5-maximum-likelihood-estimation">Step 5 — Maximum Likelihood Estimation</a>
+  <li><a href="#step-3-identification-exclusion-restrictions" id="toc-step-3-identification-exclusion-restrictions" class="nav-link" data-scroll-target="#step-3-identification-exclusion-restrictions">Step 3: Identification: Exclusion Restrictions</a></li>
+  <li><a href="#step-4-one-factor-error-structure" id="toc-step-4-one-factor-error-structure" class="nav-link" data-scroll-target="#step-4-one-factor-error-structure">Step 4: One-Factor Error Structure</a></li>
+  <li><a href="#step-5-maximum-likelihood-estimation" id="toc-step-5-maximum-likelihood-estimation" class="nav-link" data-scroll-target="#step-5-maximum-likelihood-estimation">Step 5: Maximum Likelihood Estimation</a>
   <ul class="collapse">
   <li><a href="#the-likelihood-function" id="toc-the-likelihood-function" class="nav-link" data-scroll-target="#the-likelihood-function">The Likelihood Function</a></li>
   <li><a href="#gauss-hermite-quadrature" id="toc-gauss-hermite-quadrature" class="nav-link" data-scroll-target="#gauss-hermite-quadrature">Gauss-Hermite Quadrature</a></li>
   <li><a href="#standard-errors" id="toc-standard-errors" class="nav-link" data-scroll-target="#standard-errors">Standard Errors</a></li>
   </ul></li>
-  <li><a href="#step-6-from-estimates-to-treatment-effects" id="toc-step-6-from-estimates-to-treatment-effects" class="nav-link" data-scroll-target="#step-6-from-estimates-to-treatment-effects">Step 6 — From Estimates to Treatment Effects</a>
+  <li><a href="#step-6-from-estimates-to-treatment-effects" id="toc-step-6-from-estimates-to-treatment-effects" class="nav-link" data-scroll-target="#step-6-from-estimates-to-treatment-effects">Step 6: From Estimates to Treatment Effects</a>
   <ul class="collapse">
   <li><a href="#average-treatment-effect-ate" id="toc-average-treatment-effect-ate" class="nav-link" data-scroll-target="#average-treatment-effect-ate">Average Treatment Effect (ATE)</a></li>
   <li><a href="#average-treatment-effect-on-the-treated-att" id="toc-average-treatment-effect-on-the-treated-att" class="nav-link" data-scroll-target="#average-treatment-effect-on-the-treated-att">Average Treatment Effect on the Treated (ATT)</a></li>
@@ -214,7 +214,7 @@ window.Quarto = {
 <p>This page walks through the full model in the order it is estimated, explaining both the <strong>intuition</strong> behind each choice and the <strong>computational methods</strong> used. The model follows Aakvik, Heckman, and Vytlacil (2005).</p>
 <hr>
 <section id="step-1-why-a-roy-model" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-why-a-roy-model">Step 1 — Why a Roy Model?</h2>
+<h2 class="anchored" data-anchor-id="step-1-why-a-roy-model">Step 1: Why a Roy Model?</h2>
 <p>Before describing the model, it helps to understand why simpler approaches fail.</p>
 <div class="compare-grid">
 <p>::: {.compare-card ols} #### OLS / Probit Regress aspiration on a sponsored dummy and controls.</p>
@@ -227,13 +227,13 @@ window.Quarto = {
 <hr>
 </section>
 <section id="step-2-the-three-equation-system" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-the-three-equation-system">Step 2 — The Three-Equation System</h2>
+<h2 class="anchored" data-anchor-id="step-2-the-three-equation-system">Step 2: The Three-Equation System</h2>
 <p>The model has three latent variable equations.</p>
 <section id="selection-equation" class="level3">
 <h3 class="anchored" data-anchor-id="selection-equation">(1) Selection Equation</h3>
 <div class="eq-block">
 <div class="eq-label">
-<p>Equation (1) — Selection equation</p>
+<p>Equation (1): Selection equation</p>
 </div>
 <p><span class="math display">\[S^*_i = \gamma_0 + \gamma_1\,\text{Age6}_i + \gamma_2\,\text{Age7}_i + \gamma_3\,\text{Age8}_i + \gamma_4\,\text{AssetIndex}_i + \gamma_5\,\text{Protestant}_i + \gamma_6\,\text{SiteCI}_i - U_{Si}\]</span> <span class="math display">\[S_i = \mathbf{1}[S^*_i &gt; 0]\]</span></p>
 </div>
@@ -274,11 +274,11 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="outcome-equations">(2) Outcome Equations</h3>
 <div class="eq-block">
 <div class="eq-label">
-<p>Equations (2)–(3) — Potential outcome equations</p>
+<p>Equations (2)–(3): Potential outcome equations</p>
 </div>
 <p><span class="math display">\[Y^*_{1i} = \beta^1_0 + \rho_{HE,i}\,\beta^1_2 + \text{Dist}_i\,\beta^1_3 + \tilde{X}_i\,\beta^1_4 - U_{1i} \qquad (\text{sponsored})\]</span> <span class="math display">\[Y^*_{0i} = \beta^0_0 + \rho_{HE,i}\,\beta^0_2 + \text{Dist}_i\,\beta^0_3 + \tilde{X}_i\,\beta^0_4 - U_{0i} \qquad (\text{non-sponsored})\]</span> <span class="math display">\[Y_{ji} = \mathbf{1}[Y^*_{ji} &gt; 0], \quad j \in \{0, 1\}\]</span></p>
 </div>
-<p>Each child has two <strong>potential outcomes</strong>: <span class="math inline">\(Y_{1i}\)</span> (aspiration if sponsored) and <span class="math inline">\(Y_{0i}\)</span> (aspiration if not). We only observe one of them — the one corresponding to actual sponsorship status:</p>
+<p>Each child has two <strong>potential outcomes</strong>: <span class="math inline">\(Y_{1i}\)</span> (aspiration if sponsored) and <span class="math inline">\(Y_{0i}\)</span> (aspiration if not). We only observe one of them, the one corresponding to actual sponsorship status:</p>
 <p><span class="math display">\[Y_i = S_i \cdot Y_{1i} + (1 - S_i) \cdot Y_{0i}\]</span></p>
 <p><strong>Regressors in the outcome equations:</strong></p>
 <table class="caption-top table">
@@ -324,18 +324,18 @@ Note
 </section>
 </section>
 <section id="step-3-identification-exclusion-restrictions" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-identification-exclusion-restrictions">Step 3 — Identification: Exclusion Restrictions</h2>
+<h2 class="anchored" data-anchor-id="step-3-identification-exclusion-restrictions">Step 3: Identification: Exclusion Restrictions</h2>
 <p>For the Roy model to identify the causal effect of sponsorship, we need variables that affect <strong>whether a child is sponsored</strong> but do not directly affect their <strong>aspiration level</strong>. These are called exclusion restrictions.</p>
 <div class="methodbox">
 <p><strong>The instrument:</strong> Age-at-arrival dummies (Age6, Age7, Age8).</p>
-<p>A child who was 6, 7, or 8 years old when CI arrived in their village is significantly more likely to be sponsored than one who was 9 or older (the eligibility cutoff). The omitted category is age ≥ 9 — too old to meet the eligibility criterion comfortably.</p>
-<p><strong>Validity argument:</strong> Current aspirations at ages 12–15 depend on current characteristics (income, parental education, access to schools, social environment) — not on how old a child happened to be when a program arrived several years ago. Age-at-arrival shifts selection probability without having a direct channel into current aspiration.</p>
+<p>A child who was 6, 7, or 8 years old when CI arrived in their village is significantly more likely to be sponsored than one who was 9 or older (the eligibility cutoff). The omitted category is age ≥ 9, too old to meet the eligibility criterion comfortably.</p>
+<p><strong>Validity argument:</strong> Current aspirations at ages 12–15 depend on current characteristics (income, parental education, access to schools, social environment, not on how old a child happened to be when a program arrived several years ago. Age-at-arrival shifts selection probability without having a direct channel into current aspiration.</p>
 </div>
 <p>The first-stage results confirm the instruments are strong: children who were 6, 7, or 8 years old at CI arrival are approximately <strong>21–26 percentage points</strong> more likely to be sponsored than older children, all else equal.</p>
 <hr>
 </section>
 <section id="step-4-one-factor-error-structure" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-one-factor-error-structure">Step 4 — One-Factor Error Structure</h2>
+<h2 class="anchored" data-anchor-id="step-4-one-factor-error-structure">Step 4: One-Factor Error Structure</h2>
 <p>The three error terms <span class="math inline">\(U_{Si}\)</span>, <span class="math inline">\(U_{1i}\)</span>, <span class="math inline">\(U_{0i}\)</span> share a common <strong>latent factor</strong> <span class="math inline">\(\theta_i\)</span>:</p>
 <div class="eq-block">
 <div class="eq-label">
@@ -351,14 +351,14 @@ Note
 <li>The difference <span class="math inline">\(\alpha_1 - \alpha_0\)</span> measures <strong>selection on gains</strong>: whether those selected into CI are those who gain most from it</li>
 </ul>
 <div class="keybox">
-<p>Under standard IV, we implicitly assume <span class="math inline">\(\alpha_1 = \alpha_0\)</span> — the treatment effect does not depend on unobserved characteristics. The Roy model relaxes this. If <span class="math inline">\(\alpha_1 \neq \alpha_0\)</span>, IV gives a biased estimate of ATT, and can even have the wrong sign.</p>
+<p>Under standard IV, we implicitly assume <span class="math inline">\(\alpha_1 = \alpha_0\)</span>, the treatment effect does not depend on unobserved characteristics. The Roy model relaxes this. If <span class="math inline">\(\alpha_1 \neq \alpha_0\)</span>, IV gives a biased estimate of ATT, and can even have the wrong sign.</p>
 </div>
 <p><strong>Normalization:</strong> <span class="math inline">\(\text{Var}(\theta_i) = \text{Var}(\varepsilon_{Si}) = \text{Var}(\varepsilon_{1i}) = \text{Var}(\varepsilon_{0i}) = 1\)</span>. This pins down the scale and allows identification.</p>
 <p>The covariances implied by the factor structure are: <span class="math display">\[\text{Cov}(U_S, U_1) = \alpha_1, \qquad \text{Cov}(U_S, U_0) = \alpha_0, \qquad \text{Cov}(U_1, U_0) = \alpha_0\alpha_1\]</span></p>
 <hr>
 </section>
 <section id="step-5-maximum-likelihood-estimation" class="level2">
-<h2 class="anchored" data-anchor-id="step-5-maximum-likelihood-estimation">Step 5 — Maximum Likelihood Estimation</h2>
+<h2 class="anchored" data-anchor-id="step-5-maximum-likelihood-estimation">Step 5: Maximum Likelihood Estimation</h2>
 <p>Because <span class="math inline">\(\theta_i\)</span> is unobserved, we cannot condition on it directly. Instead, we <strong>integrate it out</strong> when forming the likelihood.</p>
 <section id="the-likelihood-function" class="level3">
 <h3 class="anchored" data-anchor-id="the-likelihood-function">The Likelihood Function</h3>
@@ -375,7 +375,7 @@ Note
 </div>
 <p><span class="math display">\[L = \prod_{i=1}^N \int \Pr(S_i, Y_i \mid X_i, Z_i, \theta_i)\,\phi(\theta_i)\,d\theta_i\]</span></p>
 </div>
-<p>This integral does not have a closed form — because <span class="math inline">\(\Phi(\cdot)\)</span> is a nonlinear function of <span class="math inline">\(\theta_i\)</span>, we cannot analytically multiply out the normal density and integrate. We need a numerical method.</p>
+<p>This integral does not have a closed form, because <span class="math inline">\(\Phi(\cdot)\)</span> is a nonlinear function of <span class="math inline">\(\theta_i\)</span>, we cannot analytically multiply out the normal density and integrate. We need a numerical method.</p>
 </section>
 <section id="gauss-hermite-quadrature" class="level3">
 <h3 class="anchored" data-anchor-id="gauss-hermite-quadrature">Gauss-Hermite Quadrature</h3>
@@ -416,25 +416,25 @@ Note
 </section>
 </section>
 <section id="step-6-from-estimates-to-treatment-effects" class="level2">
-<h2 class="anchored" data-anchor-id="step-6-from-estimates-to-treatment-effects">Step 6 — From Estimates to Treatment Effects</h2>
+<h2 class="anchored" data-anchor-id="step-6-from-estimates-to-treatment-effects">Step 6: From Estimates to Treatment Effects</h2>
 <p>Once <span class="math inline">\((\hat\gamma, \hat\beta_0, \hat\beta_1, \hat\alpha_0, \hat\alpha_1)\)</span> are in hand, three treatment parameters are computed.</p>
 <section id="average-treatment-effect-ate" class="level3">
 <h3 class="anchored" data-anchor-id="average-treatment-effect-ate">Average Treatment Effect (ATE)</h3>
 <p>The expected effect of sponsorship for a <strong>randomly chosen child</strong> with characteristics <span class="math inline">\(x\)</span>:</p>
 <div class="eq-block">
 <div class="eq-label">
-<p>Equation (4) — Average Treatment Effect</p>
+<p>Equation (4): Average Treatment Effect</p>
 </div>
 <p><span class="math display">\[ATE(x) = \Pr(Y_1 = 1 \mid X = x) - \Pr(Y_0 = 1 \mid X = x) = \Phi\!\left(\frac{x\hat\beta_1}{\sqrt{1 + \hat\alpha_1^2}}\right) - \Phi\!\left(\frac{x\hat\beta_0}{\sqrt{1 + \hat\alpha_0^2}}\right)\]</span></p>
 </div>
-<p><strong>Why the <span class="math inline">\(\sqrt{1+\alpha^2}\)</span> correction?</strong> When we integrate <span class="math inline">\(\theta_i\)</span> out of <span class="math inline">\(\Phi(x\beta_j + \alpha_j\theta_i)\)</span> under <span class="math inline">\(\theta_i \sim N(0,1)\)</span>, we get a normal CDF with a larger variance — the factor <span class="math inline">\(\alpha_j^2\)</span> adds to the variance. The correction restores the probability to the right scale.</p>
+<p><strong>Why the <span class="math inline">\(\sqrt{1+\alpha^2}\)</span> correction?</strong> When we integrate <span class="math inline">\(\theta_i\)</span> out of <span class="math inline">\(\Phi(x\beta_j + \alpha_j\theta_i)\)</span> under <span class="math inline">\(\theta_i \sim N(0,1)\)</span>, we get a normal CDF with a larger variance, the factor <span class="math inline">\(\alpha_j^2\)</span> adds to the variance. The correction restores the probability to the right scale.</p>
 </section>
 <section id="average-treatment-effect-on-the-treated-att" class="level3">
 <h3 class="anchored" data-anchor-id="average-treatment-effect-on-the-treated-att">Average Treatment Effect on the Treated (ATT)</h3>
 <p>The expected effect for <strong>actually sponsored children</strong>:</p>
 <div class="eq-block">
 <div class="eq-label">
-<p>Equation (5) — Average Treatment Effect on the Treated</p>
+<p>Equation (5): Average Treatment Effect on the Treated</p>
 </div>
 <p><span class="math display">\[ATT(x, S=1) = \frac{1}{F_{U_S}(z\hat\gamma)}\left[F_{U_S,U_1}(\cdot) - F_{U_S,U_0}(\cdot)\right]\]</span></p>
 </div>
@@ -442,16 +442,16 @@ Note
 </section>
 <section id="marginal-treatment-effect-mte" class="level3">
 <h3 class="anchored" data-anchor-id="marginal-treatment-effect-mte">Marginal Treatment Effect (MTE)</h3>
-<p>The effect for children at the <strong>margin of selection</strong> — those who are just indifferent between being sponsored and not:</p>
+<p>The effect for children at the <strong>margin of selection</strong>, those who are just indifferent between being sponsored and not:</p>
 <div class="eq-block">
 <div class="eq-label">
-<p>Equation (6) — Marginal Treatment Effect</p>
+<p>Equation (6): Marginal Treatment Effect</p>
 </div>
 <p><span class="math display">\[MTE(x, u_S) = \Pr(Y_1 = 1 \mid X = x,\, U_S = u_S) - \Pr(Y_0 = 1 \mid X = x,\, U_S = u_S)\]</span></p>
 </div>
 <p><span class="math inline">\(u_S\)</span> is the value of the selection error at the margin. For small values of <span class="math inline">\(u_S\)</span> (the children most likely to be selected), the MTE gives the effect for children who would always be sponsored regardless of the instrument. For large <span class="math inline">\(u_S\)</span>, the MTE gives the effect for children who are very unlikely to be selected.</p>
 <div class="keybox">
-<p><strong>The MTE as a building block:</strong> Both ATE and ATT are weighted averages of the MTE curve. ATE uses equal weights across the <span class="math inline">\(u_S\)</span> distribution; ATT over-weights low-<span class="math inline">\(u_S\)</span> children (those who are likely to be selected). This is why ATE ≠ ATT when the MTE curve is not flat — i.e., when there is selection on gains.</p>
+<p><strong>The MTE as a building block:</strong> Both ATE and ATT are weighted averages of the MTE curve. ATE uses equal weights across the <span class="math inline">\(u_S\)</span> distribution; ATT over-weights low-<span class="math inline">\(u_S\)</span> children (those who are likely to be selected). This is why ATE ≠ ATT when the MTE curve is not flat, i.e., when there is selection on gains.</p>
 </div>
 </section>
 <section id="practical-computation-of-the-mte" class="level3">

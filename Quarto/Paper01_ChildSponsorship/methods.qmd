@@ -6,7 +6,7 @@ This page walks through the full model in the order it is estimated, explaining 
 
 ---
 
-## Step 1 — Why a Roy Model?
+## Step 1: Why a Roy Model?
 
 Before describing the model, it helps to understand why simpler approaches fail.
 
@@ -43,7 +43,7 @@ The key additional insight of the Roy model over IV: children who are **most lik
 
 ---
 
-## Step 2 — The Three-Equation System
+## Step 2: The Three-Equation System
 
 The model has three latent variable equations.
 
@@ -51,7 +51,7 @@ The model has three latent variable equations.
 
 ::: {.eq-block}
 ::: {.eq-label}
-Equation (1) — Selection equation
+Equation (1): Selection equation
 :::
 $$S^*_i = \gamma_0 + \gamma_1\,\text{Age6}_i + \gamma_2\,\text{Age7}_i + \gamma_3\,\text{Age8}_i + \gamma_4\,\text{AssetIndex}_i + \gamma_5\,\text{Protestant}_i + \gamma_6\,\text{SiteCI}_i - U_{Si}$$
 $$S_i = \mathbf{1}[S^*_i > 0]$$
@@ -72,14 +72,14 @@ $S^*_i$ is the latent "propensity to be sponsored." When it exceeds zero, the ch
 
 ::: {.eq-block}
 ::: {.eq-label}
-Equations (2)–(3) — Potential outcome equations
+Equations (2)–(3): Potential outcome equations
 :::
 $$Y^*_{1i} = \beta^1_0 + \rho_{HE,i}\,\beta^1_2 + \text{Dist}_i\,\beta^1_3 + \tilde{X}_i\,\beta^1_4 - U_{1i} \qquad (\text{sponsored})$$
 $$Y^*_{0i} = \beta^0_0 + \rho_{HE,i}\,\beta^0_2 + \text{Dist}_i\,\beta^0_3 + \tilde{X}_i\,\beta^0_4 - U_{0i} \qquad (\text{non-sponsored})$$
 $$Y_{ji} = \mathbf{1}[Y^*_{ji} > 0], \quad j \in \{0, 1\}$$
 :::
 
-Each child has two **potential outcomes**: $Y_{1i}$ (aspiration if sponsored) and $Y_{0i}$ (aspiration if not). We only observe one of them — the one corresponding to actual sponsorship status:
+Each child has two **potential outcomes**: $Y_{1i}$ (aspiration if sponsored) and $Y_{0i}$ (aspiration if not). We only observe one of them, the one corresponding to actual sponsorship status:
 
 $$Y_i = S_i \cdot Y_{1i} + (1 - S_i) \cdot Y_{0i}$$
 
@@ -97,23 +97,23 @@ Model 1 does not include $\rho_{HE}$. Model 2 adds it, reducing the sample to 27
 
 ---
 
-## Step 3 — Identification: Exclusion Restrictions
+## Step 3: Identification: Exclusion Restrictions
 
 For the Roy model to identify the causal effect of sponsorship, we need variables that affect **whether a child is sponsored** but do not directly affect their **aspiration level**. These are called exclusion restrictions.
 
 ::: {.methodbox}
 **The instrument:** Age-at-arrival dummies (Age6, Age7, Age8).
 
-A child who was 6, 7, or 8 years old when CI arrived in their village is significantly more likely to be sponsored than one who was 9 or older (the eligibility cutoff). The omitted category is age ≥ 9 — too old to meet the eligibility criterion comfortably.
+A child who was 6, 7, or 8 years old when CI arrived in their village is significantly more likely to be sponsored than one who was 9 or older (the eligibility cutoff). The omitted category is age ≥ 9, too old to meet the eligibility criterion comfortably.
 
-**Validity argument:** Current aspirations at ages 12--15 depend on current characteristics (income, parental education, access to schools, social environment) — not on how old a child happened to be when a program arrived several years ago. Age-at-arrival shifts selection probability without having a direct channel into current aspiration.
+**Validity argument:** Current aspirations at ages 12--15 depend on current characteristics (income, parental education, access to schools, social environment, not on how old a child happened to be when a program arrived several years ago. Age-at-arrival shifts selection probability without having a direct channel into current aspiration.
 :::
 
 The first-stage results confirm the instruments are strong: children who were 6, 7, or 8 years old at CI arrival are approximately **21--26 percentage points** more likely to be sponsored than older children, all else equal.
 
 ---
 
-## Step 4 — One-Factor Error Structure
+## Step 4: One-Factor Error Structure
 
 The three error terms $U_{Si}$, $U_{1i}$, $U_{0i}$ share a common **latent factor** $\theta_i$:
 
@@ -133,7 +133,7 @@ Think of $\theta_i$ as an unobserved characteristic of the child or family: moti
 - The difference $\alpha_1 - \alpha_0$ measures **selection on gains**: whether those selected into CI are those who gain most from it
 
 ::: {.keybox}
-Under standard IV, we implicitly assume $\alpha_1 = \alpha_0$ — the treatment effect does not depend on unobserved characteristics. The Roy model relaxes this. If $\alpha_1 \neq \alpha_0$, IV gives a biased estimate of ATT, and can even have the wrong sign.
+Under standard IV, we implicitly assume $\alpha_1 = \alpha_0$, the treatment effect does not depend on unobserved characteristics. The Roy model relaxes this. If $\alpha_1 \neq \alpha_0$, IV gives a biased estimate of ATT, and can even have the wrong sign.
 :::
 
 **Normalization:** $\text{Var}(\theta_i) = \text{Var}(\varepsilon_{Si}) = \text{Var}(\varepsilon_{1i}) = \text{Var}(\varepsilon_{0i}) = 1$. This pins down the scale and allows identification.
@@ -143,7 +143,7 @@ $$\text{Cov}(U_S, U_1) = \alpha_1, \qquad \text{Cov}(U_S, U_0) = \alpha_0, \qqua
 
 ---
 
-## Step 5 — Maximum Likelihood Estimation
+## Step 5: Maximum Likelihood Estimation
 
 Because $\theta_i$ is unobserved, we cannot condition on it directly. Instead, we **integrate it out** when forming the likelihood.
 
@@ -167,7 +167,7 @@ Marginal likelihood
 $$L = \prod_{i=1}^N \int \Pr(S_i, Y_i \mid X_i, Z_i, \theta_i)\,\phi(\theta_i)\,d\theta_i$$
 :::
 
-This integral does not have a closed form — because $\Phi(\cdot)$ is a nonlinear function of $\theta_i$, we cannot analytically multiply out the normal density and integrate. We need a numerical method.
+This integral does not have a closed form, because $\Phi(\cdot)$ is a nonlinear function of $\theta_i$, we cannot analytically multiply out the normal density and integrate. We need a numerical method.
 
 ### Gauss-Hermite Quadrature
 
@@ -203,7 +203,7 @@ Standard errors are computed by **bootstrap** (resampling with replacement at th
 
 ---
 
-## Step 6 — From Estimates to Treatment Effects
+## Step 6: From Estimates to Treatment Effects
 
 Once $(\hat\gamma, \hat\beta_0, \hat\beta_1, \hat\alpha_0, \hat\alpha_1)$ are in hand, three treatment parameters are computed.
 
@@ -213,12 +213,12 @@ The expected effect of sponsorship for a **randomly chosen child** with characte
 
 ::: {.eq-block}
 ::: {.eq-label}
-Equation (4) — Average Treatment Effect
+Equation (4): Average Treatment Effect
 :::
 $$ATE(x) = \Pr(Y_1 = 1 \mid X = x) - \Pr(Y_0 = 1 \mid X = x) = \Phi\!\left(\frac{x\hat\beta_1}{\sqrt{1 + \hat\alpha_1^2}}\right) - \Phi\!\left(\frac{x\hat\beta_0}{\sqrt{1 + \hat\alpha_0^2}}\right)$$
 :::
 
-**Why the $\sqrt{1+\alpha^2}$ correction?** When we integrate $\theta_i$ out of $\Phi(x\beta_j + \alpha_j\theta_i)$ under $\theta_i \sim N(0,1)$, we get a normal CDF with a larger variance — the factor $\alpha_j^2$ adds to the variance. The correction restores the probability to the right scale.
+**Why the $\sqrt{1+\alpha^2}$ correction?** When we integrate $\theta_i$ out of $\Phi(x\beta_j + \alpha_j\theta_i)$ under $\theta_i \sim N(0,1)$, we get a normal CDF with a larger variance, the factor $\alpha_j^2$ adds to the variance. The correction restores the probability to the right scale.
 
 ### Average Treatment Effect on the Treated (ATT)
 
@@ -226,7 +226,7 @@ The expected effect for **actually sponsored children**:
 
 ::: {.eq-block}
 ::: {.eq-label}
-Equation (5) — Average Treatment Effect on the Treated
+Equation (5): Average Treatment Effect on the Treated
 :::
 $$ATT(x, S=1) = \frac{1}{F_{U_S}(z\hat\gamma)}\left[F_{U_S,U_1}(\cdot) - F_{U_S,U_0}(\cdot)\right]$$
 :::
@@ -235,11 +235,11 @@ This conditions on $S_i = 1$, so it averages only over the sponsored group. The 
 
 ### Marginal Treatment Effect (MTE)
 
-The effect for children at the **margin of selection** — those who are just indifferent between being sponsored and not:
+The effect for children at the **margin of selection**, those who are just indifferent between being sponsored and not:
 
 ::: {.eq-block}
 ::: {.eq-label}
-Equation (6) — Marginal Treatment Effect
+Equation (6): Marginal Treatment Effect
 :::
 $$MTE(x, u_S) = \Pr(Y_1 = 1 \mid X = x,\, U_S = u_S) - \Pr(Y_0 = 1 \mid X = x,\, U_S = u_S)$$
 :::
@@ -247,7 +247,7 @@ $$MTE(x, u_S) = \Pr(Y_1 = 1 \mid X = x,\, U_S = u_S) - \Pr(Y_0 = 1 \mid X = x,\,
 $u_S$ is the value of the selection error at the margin. For small values of $u_S$ (the children most likely to be selected), the MTE gives the effect for children who would always be sponsored regardless of the instrument. For large $u_S$, the MTE gives the effect for children who are very unlikely to be selected.
 
 ::: {.keybox}
-**The MTE as a building block:** Both ATE and ATT are weighted averages of the MTE curve. ATE uses equal weights across the $u_S$ distribution; ATT over-weights low-$u_S$ children (those who are likely to be selected). This is why ATE ≠ ATT when the MTE curve is not flat — i.e., when there is selection on gains.
+**The MTE as a building block:** Both ATE and ATT are weighted averages of the MTE curve. ATE uses equal weights across the $u_S$ distribution; ATT over-weights low-$u_S$ children (those who are likely to be selected). This is why ATE ≠ ATT when the MTE curve is not flat, i.e., when there is selection on gains.
 :::
 
 ### Practical computation of the MTE

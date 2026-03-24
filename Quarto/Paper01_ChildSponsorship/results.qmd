@@ -75,14 +75,14 @@ Bootstrap standard errors in parentheses. \*\*\* p<0.01, \*\* p<0.05, \* p<0.1.
 
 **Model 2:** E[ATT] ≈ **20 percentage points** (not statistically significant)
 
-The direction is consistent with the broader CI literature. Wydick, Glewwe, and Rutledge (2013) found 1.03--1.46 additional years of schooling in adult outcomes. If a 20 pp increase in aspiration translates proportionally into behavior, this implies approximately **8 more months of schooling** — in the same ballpark.
+The direction is consistent with the broader CI literature. Wydick, Glewwe, and Rutledge (2013) found 1.03--1.46 additional years of schooling in adult outcomes. If a 20 pp increase in aspiration translates proportionally into behavior, this implies approximately **8 more months of schooling**, in the same ballpark.
 :::
 
 **Why is the effect not statistically significant?** Two explanations are complementary:
 
 1. **Statistical:** The sample is small (N = 163 sponsored), the model has many parameters, MLE with numerical integration amplifies uncertainty, and bootstrapped standard errors add further conservatism.
 
-2. **Substantive:** Aspirations at ages 12--15 may be driven by factors CI does not directly address. Ross et al. (2021) found that CI in Mexico did not affect self-esteem or optimism — and these psychological channels may matter more than material support for aspiration formation at this stage. In rural contexts where higher education is perceived as unrealistically ambitious, short-term attainable goals may be more motivating than long-term aspirations.
+2. **Substantive:** Aspirations at ages 12--15 may be driven by factors CI does not directly address. Ross et al. (2021) found that CI in Mexico did not affect self-esteem or optimism, and these psychological channels may matter more than material support for aspiration formation at this stage. In rural contexts where higher education is perceived as unrealistically ambitious, short-term attainable goals may be more motivating than long-term aspirations.
 
 ::: {.callout-note}
 Anecdotal evidence and conversations with local CI staff suggest that school attendance is *de facto* required for continued sponsorship. This informal requirement may be the actual mechanism: more time in school → stronger educational identity → higher aspiration. This would explain why the effect in the literature concentrates in schooling attainment rather than stated aspirations.
@@ -114,6 +114,6 @@ This finding is reassuring for CI from an organizational standpoint: their targe
 
 The perceived return to higher education ($\rho_{HE}$) is not a significant predictor of aspirations in either model. Three possible interpretations:
 
-1. At ages 12--15, children may not yet use income expectations as a primary input into educational decisions — social norms, parental pressure, and role models may dominate.
+1. At ages 12--15, children may not yet use income expectations as a primary input into educational decisions, social norms, parental pressure, and role models may dominate.
 2. The income expectations may be noisy measures of the underlying beliefs that actually shape decisions.
 3. In very poor contexts, the perceived probability of *accessing* higher education (not just the return) may be the binding constraint. Even children who believe returns are high may not aspire to university if they think it is unattainable for someone in their situation.

@@ -43,7 +43,7 @@ Sponsorship is not random. CI follows a systematic procedure:
    - **Child was aged 9 or younger when CI arrived** (lower priority given to those closer to 9)
 
 ::: {.keybox}
-**Key implication for identification:** Younger and more economically disadvantaged children are systematically more likely to be selected. This means sponsored and non-sponsored children are not comparable on observables — and likely not on unobservables either.
+**Key implication for identification:** Younger and more economically disadvantaged children are systematically more likely to be selected. This means sponsored and non-sponsored children are not comparable on observables, and likely not on unobservables either.
 :::
 
 ---
@@ -99,7 +99,7 @@ In Model 2 (which adds subjective income expectations), the sample is further re
 
 ## Subjective Income Expectations
 
-A distinctive feature of this paper is the collection of **subjective income expectations** — what children themselves believe they would earn at age 25 under each educational scenario. This is adapted from the methodology used in Mexico's Prospera evaluation (Attanasio and Kaufmann, 2014).
+A distinctive feature of this paper is the collection of **subjective income expectations**, what children themselves believe they would earn at age 25 under each educational scenario. This is adapted from the methodology used in Mexico's Prospera evaluation (Attanasio and Kaufmann, 2014).
 
 ### How Expectations Were Elicited
 
@@ -132,7 +132,7 @@ As a robustness check, the same expectations were estimated assuming a **uniform
 
 **Table 2** compares children's median stated income expectations with 2015 census data at 2017 prices, broken down by gender and region. Key patterns:
 
-- Median expectations broadly **align with census** data — children have realistic beliefs on average
+- Median expectations broadly **align with census** data, children have realistic beliefs on average
 - A clear **gender gap** exists: female children expect roughly 50% lower income at the high school level than males
 - Sponsored children show **higher variance** in expectations, suggesting more heterogeneous beliefs
 
@@ -140,4 +140,4 @@ The figure below (Figure 1 in the paper) shows the distribution of expected inco
 
 ![Expected income distribution for high school and university, by sponsorship status](Figure1_IncomeDist.png){width=80%}
 
-**Takeaway:** Children's subjective income beliefs are realistic on average, even at ages 12--15. However, as Model 2 shows, these beliefs do not significantly predict aspirations — suggesting that at this age, other factors (internal constraints, social norms, short-term thinking) dominate the decision.
+**Takeaway:** Children's subjective income beliefs are realistic on average, even at ages 12--15. However, as Model 2 shows, these beliefs do not significantly predict aspirations, suggesting that at this age, other factors (internal constraints, social norms, short-term thinking) dominate the decision.
