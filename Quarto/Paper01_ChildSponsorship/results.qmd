@@ -76,8 +76,8 @@ The selection equation is estimated jointly with the outcome equations via MLE. 
 **Notable patterns:**
 
 - **Parental education** consistently predicts aspirations in both groups, with slightly larger effects for sponsored children in Model 2.
-- **Asset index** is strongly predictive for non-sponsored children, but not for the sponsored group, possibly because CI's material support partially offsets wealth effects.
-- **Males aspire less** to higher education than females among non-sponsored children, consistent with gender norms in rural Mexico.
+- **Asset index** is strongly predictive for non-sponsored children, but not for the sponsored group.
+- **Males aspire less** to higher education than females among non-sponsored children.
 - **Perceived returns ($\rho_{HE}$)** are not significant in either group, suggesting beliefs about income do not strongly drive aspirations at ages 12--15.
 
 ---
