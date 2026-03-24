@@ -117,7 +117,7 @@ The figure below (Figure 2 in the paper) plots the MTE curve for Model 1 as a fu
 - **Declining pattern:** The MTE starts positive and declines with $u_S$. This means the children most likely to be selected benefit more from sponsorship than those least likely to be selected.
 
 ::: {.keybox}
-**The no-trade-off result.** The positive correlation between selection and treatment effect ($\alpha_1 > 0$) means that CI's targeting does not create the typical efficiency-equity dilemma. The children most in need, who are also the ones most likely to be selected, appear to gain the most from the program. CI does not face the dilemma of choosing between the most vulnerable and the highest-impact recipients.
+**The no-trade-off result.** The positive correlation between selection and treatment effect means that CI's targeting does not create the typical efficiency-equity dilemma. The children most in need, who are also the ones most likely to be selected, appear to gain the most from the program. CI does not face the dilemma of choosing between the most vulnerable and the highest-impact recipients.
 :::
 
 This finding is reassuring for CI from an organizational standpoint: their targeting procedure is not undermined by the possibility that the most vulnerable gain the least.
