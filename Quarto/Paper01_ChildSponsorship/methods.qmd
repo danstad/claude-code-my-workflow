@@ -212,7 +212,7 @@ The expected effect for **actually sponsored children**:
 ::: {.eq-label}
 Equation (5): Average Treatment Effect on the Treated
 :::
-$$ATT(x, S=1) = \frac{1}{F_{U_S}(z\hat\gamma)}\left[F_{U_S,U_1}(\cdot) - F_{U_S,U_0}(\cdot)\right]$$
+$$ATT(x,z) = \frac{1}{F_{U_S}(z\hat{\gamma})}\Bigl(F_{U_1,U_S}(x\hat{\beta}_1,\, z\hat{\gamma}) - F_{U_0,U_S}(x\hat{\beta}_0,\, z\hat{\gamma})\Bigr)$$
 :::
 
 This conditions on $S_i = 1$, so it averages only over the sponsored group. The bivariate normal distributions $F_{U_S,U_1}$ and $F_{U_S,U_0}$ are recoverable from the factor structure.
