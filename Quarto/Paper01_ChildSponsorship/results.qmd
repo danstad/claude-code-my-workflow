@@ -129,5 +129,5 @@ This finding is reassuring for CI from an organizational standpoint: their targe
 The perceived return to higher education ($\rho_{HE}$) is not a significant predictor of aspirations in either model. Three possible interpretations:
 
 1. At ages 12--15, children may not yet use income expectations as a primary input into educational decisions, social norms, parental pressure, and role models may dominate.
-2. The income expectations may be noisy measures of the underlying beliefs that actually shape decisions.
+2. The income expectations may be a noisy measures of the underlying beliefs that actually shape decisions.
 3. In very poor contexts, the perceived probability of *accessing* higher education (not just the return) may be the binding constraint. Even children who believe returns are high may not aspire to university if they think it is unattainable for someone in their situation.
