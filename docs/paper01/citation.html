@@ -168,12 +168,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#how-to-cite" id="toc-how-to-cite" class="nav-link active" data-scroll-target="#how-to-cite">How to Cite</a></li>
   <li><a href="#key-reference" id="toc-key-reference" class="nav-link" data-scroll-target="#key-reference">Key Reference</a></li>
-  <li><a href="#methodology-code" id="toc-methodology-code" class="nav-link" data-scroll-target="#methodology-code">Methodology Code</a>
-  <ul class="collapse">
-  <li><a href="#core-estimation-loop-simplified" id="toc-core-estimation-loop-simplified" class="nav-link" data-scroll-target="#core-estimation-loop-simplified">Core estimation loop (simplified)</a></li>
-  <li><a href="#treatment-effect-computation" id="toc-treatment-effect-computation" class="nav-link" data-scroll-target="#treatment-effect-computation">Treatment effect computation</a></li>
-  <li><a href="#bootstrap-standard-errors" id="toc-bootstrap-standard-errors" class="nav-link" data-scroll-target="#bootstrap-standard-errors">Bootstrap standard errors</a></li>
-  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -229,82 +223,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Attanasio, O. P., &amp; Kaufmann, K. M. (2014). Education choices and returns to schooling: Mothers’ and youths’ subjective expectations and their role in education decisions. <em>Journal of Development Economics</em>, 109, 203–216.</p>
 </blockquote>
 <hr>
-</section>
-<section id="methodology-code" class="level2">
-<h2 class="anchored" data-anchor-id="methodology-code">Methodology Code</h2>
-<p>The model was estimated in <strong>R</strong> using maximum likelihood with Gauss-Hermite quadrature.</p>
-<section id="core-estimation-loop-simplified" class="level3">
-<h3 class="anchored" data-anchor-id="core-estimation-loop-simplified">Core estimation loop (simplified)</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fastGHQuad)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Gauss-Hermite quadrature nodes and weights (K = 10)</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>gh   <span class="ot">&lt;-</span> <span class="fu">gaussHermiteData</span>(<span class="dv">10</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>nodes   <span class="ot">&lt;-</span> gh<span class="sc">$</span>x <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">2</span>)   <span class="co"># rescale for N(0,1)</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>weights <span class="ot">&lt;-</span> gh<span class="sc">$</span>w <span class="sc">/</span> <span class="fu">sqrt</span>(pi)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Log-likelihood for one observation</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ll_i <span class="ot">&lt;-</span> <span class="cf">function</span>(pars, S, Y, X, Z) {</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  gamma <span class="ot">&lt;-</span> pars[<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(Z)]</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  beta1 <span class="ot">&lt;-</span> pars[(<span class="fu">ncol</span>(Z)<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(<span class="fu">ncol</span>(Z)<span class="sc">+</span><span class="fu">ncol</span>(X))]</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  beta0 <span class="ot">&lt;-</span> pars[(<span class="fu">ncol</span>(Z)<span class="sc">+</span><span class="fu">ncol</span>(X)<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(<span class="fu">ncol</span>(Z)<span class="sc">+</span><span class="dv">2</span><span class="sc">*</span><span class="fu">ncol</span>(X))]</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  a1    <span class="ot">&lt;-</span> pars[<span class="fu">length</span>(pars)<span class="sc">-</span><span class="dv">1</span>]</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  a0    <span class="ot">&lt;-</span> pars[<span class="fu">length</span>(pars)]</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Integrate over theta using Gauss-Hermite quadrature</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  integrand <span class="ot">&lt;-</span> <span class="cf">function</span>(theta) {</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    pS <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(Z <span class="sc">%*%</span> gamma <span class="sc">+</span> theta)</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    pY1 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(X <span class="sc">%*%</span> beta1 <span class="sc">+</span> a1 <span class="sc">*</span> theta)</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    pY0 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(X <span class="sc">%*%</span> beta0 <span class="sc">+</span> a0 <span class="sc">*</span> theta)</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    pS<span class="sc">^</span>S <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pS)<span class="sc">^</span>(<span class="dv">1</span> <span class="sc">-</span> S) <span class="sc">*</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>      (pY1<span class="sc">^</span>Y <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pY1)<span class="sc">^</span>(<span class="dv">1</span> <span class="sc">-</span> Y))<span class="sc">^</span>S <span class="sc">*</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      (pY0<span class="sc">^</span>Y <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pY0)<span class="sc">^</span>(<span class="dv">1</span> <span class="sc">-</span> Y))<span class="sc">^</span>(<span class="dv">1</span> <span class="sc">-</span> S)</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(<span class="fu">sum</span>(weights <span class="sc">*</span> <span class="fu">integrand</span>(nodes)))</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Full log-likelihood</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>ll <span class="ot">&lt;-</span> <span class="cf">function</span>(pars) <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">mapply</span>(ll_i, <span class="at">S=</span>S, <span class="at">Y=</span>Y,</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">MoreArgs=</span><span class="fu">list</span>(<span class="at">pars=</span>pars, <span class="at">X=</span>X, <span class="at">Z=</span>Z)))</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimise</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par=</span><span class="fu">rep</span>(<span class="dv">0</span>, npars), <span class="at">fn=</span>ll, <span class="at">method=</span><span class="st">"BFGS"</span>,</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>             <span class="at">control=</span><span class="fu">list</span>(<span class="at">maxit=</span><span class="dv">2000</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="treatment-effect-computation" class="level3">
-<h3 class="anchored" data-anchor-id="treatment-effect-computation">Treatment effect computation</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ATE(x) at the sample mean of X</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ate_x <span class="ot">&lt;-</span> <span class="cf">function</span>(beta1, beta0, a1, a0, x) {</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pnorm</span>(x <span class="sc">%*%</span> beta1 <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">+</span> a1<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">-</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pnorm</span>(x <span class="sc">%*%</span> beta0 <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">+</span> a0<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># MTE(x, u_S) — numerically via quadrature</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>mte_x <span class="ot">&lt;-</span> <span class="cf">function</span>(beta1, beta0, a1, a0, x, uS) {</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  integrand <span class="ot">&lt;-</span> <span class="cf">function</span>(theta) {</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    (<span class="fu">pnorm</span>(x <span class="sc">%*%</span> beta1 <span class="sc">+</span> a1<span class="sc">*</span>theta) <span class="sc">-</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>     <span class="fu">pnorm</span>(x <span class="sc">%*%</span> beta0 <span class="sc">+</span> a0<span class="sc">*</span>theta)) <span class="sc">*</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>     <span class="fu">dnorm</span>(uS <span class="sc">+</span> theta)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(weights <span class="sc">*</span> <span class="fu">integrand</span>(nodes)) <span class="sc">/</span> (<span class="fu">dnorm</span>(uS) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">2</span>))</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="bootstrap-standard-errors" class="level3">
-<h3 class="anchored" data-anchor-id="bootstrap-standard-errors">Bootstrap standard errors</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">500</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>boot_ate <span class="ot">&lt;-</span> <span class="fu">numeric</span>(B)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (b <span class="cf">in</span> <span class="fu">seq_len</span>(B)) {</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  idx    <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">nrow</span>(data), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  d_boot <span class="ot">&lt;-</span> data[idx, ]</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  fit_b  <span class="ot">&lt;-</span> <span class="fu">optim</span>(fit<span class="sc">$</span>par, <span class="at">fn =</span> <span class="cf">function</span>(p) <span class="fu">ll</span>(p, d_boot), ...)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  boot_ate[b] <span class="ot">&lt;-</span> <span class="fu">ate_x</span>(fit_b<span class="sc">$</span>par, x_bar)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>se_ate <span class="ot">&lt;-</span> <span class="fu">sd</span>(boot_ate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
