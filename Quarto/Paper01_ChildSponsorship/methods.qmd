@@ -8,17 +8,14 @@ This page walks through the full model in the order it is estimated, explaining 
 
 ## Step 1: Why a Roy Model?
 
-Before describing the model, it helps to understand why simpler approaches fail.
-
-::: {.compare-card roy}
-#### Binary Roy Model
-Model selection and outcomes jointly with a one-factor error structure.
-
+<div class="compare-card roy">
+<h4>Binary Roy Model</h4>
+<p>Model selection and outcomes jointly with a one-factor error structure.</p>
 <span class="check">✓</span> Corrects for observable and unobservable selection<br>
 <span class="check">✓</span> Allows children who gain more to also be more likely to be selected<br>
 <span class="check">✓</span> Identifies ATE, ATT, and MTE<br>
 <span class="check">✓</span> Natural for binary outcomes (aspiration is a target, not a scale)
-:::
+</div>
 
 The key additional insight of the Roy model over IV: children who are **most likely to be selected** into CI may also be those who **benefit most** from it. A motivated family that actively seeks sponsorship for their child may be exactly the type for whom the program works best. Standard IV treats this as a nuisance; the Roy model explicitly estimates it via the correlation between the selection error and the outcome errors.
 
