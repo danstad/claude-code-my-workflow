@@ -431,7 +431,6 @@ Note
 </div>
 <p><span class="math display">\[ATE(x) = \Pr(Y_1 = 1 \mid X = x) - \Pr(Y_0 = 1 \mid X = x) = \Phi\!\left(\frac{x\hat\beta_1}{\sqrt{1 + \hat\alpha_1^2}}\right) - \Phi\!\left(\frac{x\hat\beta_0}{\sqrt{1 + \hat\alpha_0^2}}\right)\]</span></p>
 </div>
-<p><strong>Why the <span class="math inline">\(\sqrt{1+\alpha^2}\)</span> correction?</strong> When we integrate <span class="math inline">\(\theta_i\)</span> out of <span class="math inline">\(\Phi(x\beta_j + \alpha_j\theta_i)\)</span> under <span class="math inline">\(\theta_i \sim N(0,1)\)</span>, we get a normal CDF with a larger variance, the factor <span class="math inline">\(\alpha_j^2\)</span> adds to the variance. The correction restores the probability to the right scale.</p>
 </section>
 <section id="average-treatment-effect-on-the-treated-att" class="level3">
 <h3 class="anchored" data-anchor-id="average-treatment-effect-on-the-treated-att">Average Treatment Effect on the Treated (ATT)</h3>
@@ -442,7 +441,7 @@ Note
 </div>
 <p><span class="math display">\[ATT(x, S=1) = \frac{1}{F_{U_S}(z\hat\gamma)}\left[F_{U_S,U_1}(\cdot) - F_{U_S,U_0}(\cdot)\right]\]</span></p>
 </div>
-<p>This conditions on <span class="math inline">\(S_i = 1\)</span>, so it averages only over the sponsored group. The bivariate normal distributions <span class="math inline">\(F_{U_S,U_1}\)</span> and <span class="math inline">\(F_{U_S,U_0}\)</span> are recoverable from the factor structure (the covariances <span class="math inline">\(\alpha_1\)</span> and <span class="math inline">\(\alpha_0\)</span> pin them down).</p>
+<p>This conditions on <span class="math inline">\(S_i = 1\)</span>, so it averages only over the sponsored group. The bivariate normal distributions <span class="math inline">\(F_{U_S,U_1}\)</span> and <span class="math inline">\(F_{U_S,U_0}\)</span> are recoverable from the factor structure.</p>
 </section>
 <section id="marginal-treatment-effect-mte" class="level3">
 <h3 class="anchored" data-anchor-id="marginal-treatment-effect-mte">Marginal Treatment Effect (MTE)</h3>
@@ -455,7 +454,7 @@ Note
 </div>
 <p><span class="math inline">\(u_S\)</span> is the value of the selection error at the margin. For small values of <span class="math inline">\(u_S\)</span> (the children most likely to be selected), the MTE gives the effect for children who would always be sponsored regardless of the instrument. For large <span class="math inline">\(u_S\)</span>, the MTE gives the effect for children who are very unlikely to be selected.</p>
 <div class="keybox">
-<p><strong>The MTE as a building block:</strong> Both ATE and ATT are weighted averages of the MTE curve. ATE uses equal weights across the <span class="math inline">\(u_S\)</span> distribution; ATT over-weights low-<span class="math inline">\(u_S\)</span> children (those who are likely to be selected). This is why ATE ≠ ATT when the MTE curve is not flat, i.e., when there is selection on gains.</p>
+<p><strong>The MTE as a building block:</strong> Both ATE and ATT are weighted averages of the MTE curve. ATE uses equal weights across the <span class="math inline">\(u_S\)</span> distribution; ATT over-weights low-<span class="math inline">\(u_S\)</span> children (those who are likely to be selected). This is why ATE ≠ ATT when the MTE curve is not flat.</p>
 </div>
 </section>
 <section id="practical-computation-of-the-mte" class="level3">
