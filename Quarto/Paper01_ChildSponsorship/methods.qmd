@@ -12,7 +12,7 @@ Before describing the model, it helps to understand why simpler approaches fail.
 
 ::: {.compare-grid}
 ::: {.compare-card ols}
-#### OLS / Probit
+#### Probit
 Regress aspiration on a sponsored dummy and controls.
 
 <span class="cross">✗</span> Selection bias: sponsored children are younger, poorer, more Protestant<br>
@@ -20,12 +20,12 @@ Regress aspiration on a sponsored dummy and controls.
 <span class="cross">✗</span> Cannot separate program effect from pre-existing differences
 :::
 ::: {.compare-card iv}
-#### Standard IV (LATE)
+#### Instrumental Variables (2SLS)
 Use age-at-arrival dummies as instruments for selection.
 
 <span class="check">✓</span> Corrects for observable selection<br>
-<span class="cross">✗</span> Assumes the treatment effect is the same for everyone ($\alpha_1 = \alpha_0$)<br>
-<span class="cross">✗</span> Only identifies the effect for "compliers" (LATE)<br>
+<span class="cross">✗</span> Assumes the treatment effect is the same for every child<br>
+<span class="cross">✗</span> Only identifies the effect for compliers (LATE)<br>
 <span class="cross">✗</span> Misses selection on unobserved gains
 :::
 ::: {.compare-card roy}
@@ -53,7 +53,10 @@ The model has three latent variable equations.
 ::: {.eq-label}
 Equation (1): Selection equation
 :::
-$$S^*_i = \gamma_0 + \gamma_1\,\text{Age6}_i + \gamma_2\,\text{Age7}_i + \gamma_3\,\text{Age8}_i + \gamma_4\,\text{AssetIndex}_i + \gamma_5\,\text{Protestant}_i + \gamma_6\,\text{SiteCI}_i - U_{Si}$$
+$$\begin{aligned}
+S^*_i = \; &\gamma_0 + \gamma_1\,\text{Age6}_i + \gamma_2\,\text{Age7}_i + \gamma_3\,\text{Age8}_i \\
+           &+ \gamma_4\,\text{AssetIndex}_i + \gamma_5\,\text{Protestant}_i + \gamma_6\,\text{SiteCI}_i - U_{Si}
+\end{aligned}$$
 $$S_i = \mathbf{1}[S^*_i > 0]$$
 :::
 
@@ -62,11 +65,13 @@ $S^*_i$ is the latent "propensity to be sponsored." When it exceeds zero, the ch
 **Variables:**
 
 | Regressor | Role |
-|-----------|------|
+|:----------|:-----|
 | Age6, Age7, Age8 | Dummy = 1 if child was that age when CI arrived. **Exclusion restrictions** (see Step 3) |
 | Asset index | First principal component of household assets. Proxies for income. |
 | Protestant | Church attendance is positively correlated with CI access. |
 | SiteCI | Dummy = 1 if child lives in a community with a CI project. |
+
+: {tbl-colwidths="[25,75]"}
 
 ### (2) Outcome Equations
 
@@ -86,10 +91,12 @@ $$Y_i = S_i \cdot Y_{1i} + (1 - S_i) \cdot Y_{0i}$$
 **Regressors in the outcome equations:**
 
 | Variable | Description |
-|----------|-------------|
+|:---------|:------------|
 | $\rho_{HE,i}$ | Perceived return to higher education (from subjective expectations). Only in Model 2. |
 | $\text{Dist}_i$ | Distance in km to nearest university. Proxy for access constraints. |
 | $\tilde{X}_i$ | Gender, asset index, parental education, Prospera participation dummy. |
+
+: {tbl-colwidths="[20,80]"}
 
 ::: {.callout-note}
 Model 1 does not include $\rho_{HE}$. Model 2 adds it, reducing the sample to 271 children who correctly interpreted the probability questions. Comparing the two lets us test whether subjective beliefs about returns shift aspirations.
@@ -106,7 +113,7 @@ For the Roy model to identify the causal effect of sponsorship, we need variable
 
 A child who was 6, 7, or 8 years old when CI arrived in their village is significantly more likely to be sponsored than one who was 9 or older (the eligibility cutoff). The omitted category is age ≥ 9, too old to meet the eligibility criterion comfortably.
 
-**Validity argument:** Current aspirations at ages 12--15 depend on current characteristics (income, parental education, access to schools, social environment, not on how old a child happened to be when a program arrived several years ago. Age-at-arrival shifts selection probability without having a direct channel into current aspiration.
+**Validity argument:** Current aspirations at ages 12--15 depend on current characteristics (income, parental education, access to schools, social environment), not on how old a child happened to be when a program arrived several years ago. Age-at-arrival shifts selection probability without having a direct channel into current aspiration.
 :::
 
 The first-stage results confirm the instruments are strong: children who were 6, 7, or 8 years old at CI arrival are approximately **21--26 percentage points** more likely to be sponsored than older children, all else equal.

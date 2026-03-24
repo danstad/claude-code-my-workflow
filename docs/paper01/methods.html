@@ -217,11 +217,11 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="step-1-why-a-roy-model">Step 1: Why a Roy Model?</h2>
 <p>Before describing the model, it helps to understand why simpler approaches fail.</p>
 <div class="compare-grid">
-<p>::: {.compare-card ols} #### OLS / Probit Regress aspiration on a sponsored dummy and controls.</p>
+<p>::: {.compare-card ols} #### Probit Regress aspiration on a sponsored dummy and controls.</p>
 <p><span class="cross">✗</span> Selection bias: sponsored children are younger, poorer, more Protestant<br> <span class="cross">✗</span> Compares children who are not comparable<br> <span class="cross">✗</span> Cannot separate program effect from pre-existing differences</p>
 </div>
-<p>::: {.compare-card iv} #### Standard IV (LATE) Use age-at-arrival dummies as instruments for selection.</p>
-<p><span class="check">✓</span> Corrects for observable selection<br> <span class="cross">✗</span> Assumes the treatment effect is the same for everyone (<span class="math inline">\(\alpha_1 = \alpha_0\)</span>)<br> <span class="cross">✗</span> Only identifies the effect for “compliers” (LATE)<br> <span class="cross">✗</span> Misses selection on unobserved gains ::: ::: {.compare-card roy} #### Binary Roy Model Model selection and outcomes jointly with a one-factor error structure.</p>
+<p>::: {.compare-card iv} #### Instrumental Variables (2SLS) Use age-at-arrival dummies as instruments for selection.</p>
+<p><span class="check">✓</span> Corrects for observable selection<br> <span class="cross">✗</span> Assumes the treatment effect is the same for every child<br> <span class="cross">✗</span> Only identifies the effect for compliers (LATE)<br> <span class="cross">✗</span> Misses selection on unobserved gains ::: ::: {.compare-card roy} #### Binary Roy Model Model selection and outcomes jointly with a one-factor error structure.</p>
 <p><span class="check">✓</span> Corrects for observable and unobservable selection<br> <span class="check">✓</span> Allows children who gain more to also be more likely to be selected<br> <span class="check">✓</span> Identifies ATE, ATT, and MTE<br> <span class="check">✓</span> Natural for binary outcomes (aspiration is a target, not a scale) ::: :::</p>
 <p>The key additional insight of the Roy model over IV: children who are <strong>most likely to be selected</strong> into CI may also be those who <strong>benefit most</strong> from it. A motivated family that actively seeks sponsorship for their child may be exactly the type for whom the program works best. Standard IV treats this as a nuisance; the Roy model explicitly estimates it via the correlation between the selection error and the outcome errors.</p>
 <hr>
@@ -235,37 +235,40 @@ window.Quarto = {
 <div class="eq-label">
 <p>Equation (1): Selection equation</p>
 </div>
-<p><span class="math display">\[S^*_i = \gamma_0 + \gamma_1\,\text{Age6}_i + \gamma_2\,\text{Age7}_i + \gamma_3\,\text{Age8}_i + \gamma_4\,\text{AssetIndex}_i + \gamma_5\,\text{Protestant}_i + \gamma_6\,\text{SiteCI}_i - U_{Si}\]</span> <span class="math display">\[S_i = \mathbf{1}[S^*_i &gt; 0]\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+S^*_i = \; &amp;\gamma_0 + \gamma_1\,\text{Age6}_i + \gamma_2\,\text{Age7}_i + \gamma_3\,\text{Age8}_i \\
+           &amp;+ \gamma_4\,\text{AssetIndex}_i + \gamma_5\,\text{Protestant}_i + \gamma_6\,\text{SiteCI}_i - U_{Si}
+\end{aligned}\]</span> <span class="math display">\[S_i = \mathbf{1}[S^*_i &gt; 0]\]</span></p>
 </div>
 <p><span class="math inline">\(S^*_i\)</span> is the latent “propensity to be sponsored.” When it exceeds zero, the child is sponsored (<span class="math inline">\(S_i = 1\)</span>). The vector <span class="math inline">\(Z_i\)</span> contains all the covariates above; <span class="math inline">\(U_{Si}\)</span> is an unobserved factor (motivation, family circumstances) that also drives selection.</p>
 <p><strong>Variables:</strong></p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 64%">
-<col style="width: 35%">
+<col style="width: 25%">
+<col style="width: 75%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Regressor</th>
-<th>Role</th>
+<th style="text-align: left;">Regressor</th>
+<th style="text-align: left;">Role</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Age6, Age7, Age8</td>
-<td>Dummy = 1 if child was that age when CI arrived. <strong>Exclusion restrictions</strong> (see Step 3)</td>
+<td style="text-align: left;">Age6, Age7, Age8</td>
+<td style="text-align: left;">Dummy = 1 if child was that age when CI arrived. <strong>Exclusion restrictions</strong> (see Step 3)</td>
 </tr>
 <tr class="even">
-<td>Asset index</td>
-<td>First principal component of household assets. Proxies for income.</td>
+<td style="text-align: left;">Asset index</td>
+<td style="text-align: left;">First principal component of household assets. Proxies for income.</td>
 </tr>
 <tr class="odd">
-<td>Protestant</td>
-<td>Church attendance is positively correlated with CI access.</td>
+<td style="text-align: left;">Protestant</td>
+<td style="text-align: left;">Church attendance is positively correlated with CI access.</td>
 </tr>
 <tr class="even">
-<td>SiteCI</td>
-<td>Dummy = 1 if child lives in a community with a CI project.</td>
+<td style="text-align: left;">SiteCI</td>
+<td style="text-align: left;">Dummy = 1 if child lives in a community with a CI project.</td>
 </tr>
 </tbody>
 </table>
@@ -283,27 +286,27 @@ window.Quarto = {
 <p><strong>Regressors in the outcome equations:</strong></p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 43%">
-<col style="width: 56%">
+<col style="width: 20%">
+<col style="width: 80%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><span class="math inline">\(\rho_{HE,i}\)</span></td>
-<td>Perceived return to higher education (from subjective expectations). Only in Model 2.</td>
+<td style="text-align: left;"><span class="math inline">\(\rho_{HE,i}\)</span></td>
+<td style="text-align: left;">Perceived return to higher education (from subjective expectations). Only in Model 2.</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(\text{Dist}_i\)</span></td>
-<td>Distance in km to nearest university. Proxy for access constraints.</td>
+<td style="text-align: left;"><span class="math inline">\(\text{Dist}_i\)</span></td>
+<td style="text-align: left;">Distance in km to nearest university. Proxy for access constraints.</td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(\tilde{X}_i\)</span></td>
-<td>Gender, asset index, parental education, Prospera participation dummy.</td>
+<td style="text-align: left;"><span class="math inline">\(\tilde{X}_i\)</span></td>
+<td style="text-align: left;">Gender, asset index, parental education, Prospera participation dummy.</td>
 </tr>
 </tbody>
 </table>
@@ -329,7 +332,7 @@ Note
 <div class="methodbox">
 <p><strong>The instrument:</strong> Age-at-arrival dummies (Age6, Age7, Age8).</p>
 <p>A child who was 6, 7, or 8 years old when CI arrived in their village is significantly more likely to be sponsored than one who was 9 or older (the eligibility cutoff). The omitted category is age ≥ 9, too old to meet the eligibility criterion comfortably.</p>
-<p><strong>Validity argument:</strong> Current aspirations at ages 12–15 depend on current characteristics (income, parental education, access to schools, social environment, not on how old a child happened to be when a program arrived several years ago. Age-at-arrival shifts selection probability without having a direct channel into current aspiration.</p>
+<p><strong>Validity argument:</strong> Current aspirations at ages 12–15 depend on current characteristics (income, parental education, access to schools, social environment), not on how old a child happened to be when a program arrived several years ago. Age-at-arrival shifts selection probability without having a direct channel into current aspiration.</p>
 </div>
 <p>The first-stage results confirm the instruments are strong: children who were 6, 7, or 8 years old at CI arrival are approximately <strong>21–26 percentage points</strong> more likely to be sponsored than older children, all else equal.</p>
 <hr>
