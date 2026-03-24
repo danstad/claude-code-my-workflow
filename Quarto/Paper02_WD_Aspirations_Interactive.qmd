@@ -604,7 +604,7 @@ fig_med
 ::: {style="color:#555; margin-top:2em; border-top:1px solid #dee2e8; padding-top:1em;"}
 **Citation:** Ross, P.H., Glewwe, P., Prudencio, D., & Wydick, B. (2021). Developing educational and vocational aspirations through international child sponsorship: Evidence from Kenya, Indonesia, and Mexico. *World Development*, 140, 105336.
 
-**Methodology note:** Effects estimated by 2SLS using an age-eligibility rule as an instrument. OLS shown for comparison in the first chart. Standard deviations (σ) use the pooled comparison-group distribution. Confidence intervals are 95% (±1.96 SE). All standard errors are exact: pooled SEs from Table 8 Panel D; country-specific SEs from Table 6 Panels A–C.
+**Methodology note:** Effects estimated by 2SLS using an age-eligibility rule as an instrument. OLS shown for comparison in the first chart. Standard deviations (σ) use the pooled comparison-group distribution. Confidence intervals are 95% (±1.96 SE).
 :::
 
 :::
