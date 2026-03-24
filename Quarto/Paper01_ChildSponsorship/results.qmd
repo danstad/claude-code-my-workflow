@@ -8,17 +8,31 @@ The selection equation is estimated jointly with the outcome equations via MLE. 
 
 **Table 3.** Selection equation results (coefficients and marginal effects).
 
-| Variable | Model 1 Coeff. | Model 1 Marg. Effect | Model 2 Coeff. | Model 2 Marg. Effect |
-|----------|:--------------:|:-------------------:|:--------------:|:-------------------:|
-| Dummy(Age 6) | 1.19*** | 0.215*** | 1.69*** | 0.257*** |
-| Dummy(Age 7) | 1.63*** | 0.210*** | 1.85*** | 0.285*** |
-| Dummy(Age 8) | 1.43*** | 0.259*** | 1.67*** | 0.271*** |
-| Protestant | 1.31*** | 0.236*** | 1.92*** | 0.338*** |
-| Asset index | −0.165** | −0.029** | −0.27*** | −0.043*** |
-| Treated site | 3.313 | 0.599*** | 3.149 | 0.432*** |
-| N | 403 | 403 | 271 | 271 |
-
-\*\*\* p<0.01, \*\* p<0.05, \* p<0.1. Standard errors in parentheses.
+<table style="width:100%; border-collapse:collapse; font-size:0.93em;">
+  <thead>
+    <tr>
+      <th rowspan="2" style="border-bottom:2px solid #012169; padding:6px 10px; text-align:left;">Variable</th>
+      <th colspan="2" style="border-bottom:1px solid #012169; padding:6px 10px; text-align:center; border-left:1px solid #ddd;">Model 1</th>
+      <th colspan="2" style="border-bottom:1px solid #012169; padding:6px 10px; text-align:center; border-left:1px solid #ddd;">Model 2</th>
+    </tr>
+    <tr>
+      <th style="border-bottom:2px solid #012169; padding:6px 10px; text-align:center; border-left:1px solid #ddd;">Coeff.</th>
+      <th style="border-bottom:2px solid #012169; padding:6px 10px; text-align:center;">Marg. Effect</th>
+      <th style="border-bottom:2px solid #012169; padding:6px 10px; text-align:center; border-left:1px solid #ddd;">Coeff.</th>
+      <th style="border-bottom:2px solid #012169; padding:6px 10px; text-align:center;">Marg. Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:5px 10px;">Dummy(Age 6)</td><td style="text-align:center;">1.19***</td><td style="text-align:center;">0.215***</td><td style="text-align:center; border-left:1px solid #ddd;">1.69***</td><td style="text-align:center;">0.257***</td></tr>
+    <tr style="background:#f7f7f7;"><td style="padding:5px 10px;">Dummy(Age 7)</td><td style="text-align:center;">1.63***</td><td style="text-align:center;">0.210***</td><td style="text-align:center; border-left:1px solid #ddd;">1.85***</td><td style="text-align:center;">0.285***</td></tr>
+    <tr><td style="padding:5px 10px;">Dummy(Age 8)</td><td style="text-align:center;">1.43***</td><td style="text-align:center;">0.259***</td><td style="text-align:center; border-left:1px solid #ddd;">1.67***</td><td style="text-align:center;">0.271***</td></tr>
+    <tr style="background:#f7f7f7;"><td style="padding:5px 10px;">Protestant</td><td style="text-align:center;">1.31***</td><td style="text-align:center;">0.236***</td><td style="text-align:center; border-left:1px solid #ddd;">1.92***</td><td style="text-align:center;">0.338***</td></tr>
+    <tr><td style="padding:5px 10px;">Asset index</td><td style="text-align:center;">−0.165**</td><td style="text-align:center;">−0.029**</td><td style="text-align:center; border-left:1px solid #ddd;">−0.27***</td><td style="text-align:center;">−0.043***</td></tr>
+    <tr style="background:#f7f7f7;"><td style="padding:5px 10px;">Treated site</td><td style="text-align:center;">3.313</td><td style="text-align:center;">0.599***</td><td style="text-align:center; border-left:1px solid #ddd;">3.149</td><td style="text-align:center;">0.432***</td></tr>
+    <tr style="border-top:2px solid #012169;"><td style="padding:5px 10px; font-style:italic;">N</td><td style="text-align:center;">403</td><td style="text-align:center;">403</td><td style="text-align:center; border-left:1px solid #ddd;">271</td><td style="text-align:center;">271</td></tr>
+  </tbody>
+</table>
+<p style="font-size:0.85em; margin-top:4px;">*** p&lt;0.01, ** p&lt;0.05, * p&lt;0.1. Standard errors in parentheses.</p>
 
 **Key patterns:**
 
