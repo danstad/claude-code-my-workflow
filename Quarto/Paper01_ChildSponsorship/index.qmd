@@ -1,6 +1,6 @@
 ```{=html}
 <div class="paper-hero">
-  <h1>International Child Sponsorship Impact on the Intended Choice of Acquiring a Higher Education Degree: The Case of Rural Mexico</h1>
+  <h1><a href="https://doi.org/10.1080/09645292.2025.2498639" target="_blank" style="color:inherit; text-decoration:none;">International Child Sponsorship Impact on the Intended Choice of Acquiring a Higher Education Degree: The Case of Rural Mexico</a></h1>
   <div class="hero-meta">Daniel Prudencio &nbsp;·&nbsp; Tecnológico de Monterrey &nbsp;·&nbsp; <em>Education Economics</em>, 2025</div>
 </div>
 ```
