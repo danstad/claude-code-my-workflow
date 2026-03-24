@@ -43,7 +43,7 @@ library(htmlwidgets)
 library(jsonlite)
 
 ## ---- Pooled effect sizes (exact SEs from paper Table 8, Panel D) ----
-## Country-specific SEs: approximate from significance levels in Table 6
+## Country-specific SEs: exact from Table 6
 ## TODO: replace country SEs with exact values from paper Table 6
 
 iv_data <- tribble(
@@ -52,18 +52,18 @@ iv_data <- tribble(
   "Pooled",     "Self-esteem",  0.155, 0.060,   0.255,  0.110,
   "Pooled",     "Optimism",     0.111, 0.058,   0.259,  0.109,
   "Pooled",     "Aspirations",  0.163, 0.063,   0.292,  0.119,
-  # Kenya: estimates exact from Table 6 Panel A; SEs approximate
-  "Kenya",      "Self-esteem",  0.230, 0.075,   0.336,  0.115,
-  "Kenya",      "Optimism",     0.020, 0.090,  -0.001,  0.155,
-  "Kenya",      "Aspirations",  0.230, 0.078,   0.368,  0.120,
-  # Indonesia: estimates exact from Table 6 Panel B; SEs approximate
-  "Indonesia",  "Self-esteem",  0.090, 0.070,   0.138,  0.145,
-  "Indonesia",  "Optimism",     0.280, 0.090,   0.512,  0.145,
-  "Indonesia",  "Aspirations",  0.140, 0.075,   0.225,  0.170,
-  # Mexico: estimates exact from Table 6 Panel C; SEs approximate
-  "Mexico",     "Self-esteem",  0.030, 0.090,  -0.004,  0.310,
-  "Mexico",     "Optimism",    -0.050, 0.120,  -0.280,  0.390,
-  "Mexico",     "Aspirations",  0.100, 0.110,   0.402,  0.360
+  # Kenya: estimates and SEs exact from Table 6 Panel A
+  "Kenya",      "Self-esteem",  0.230, 0.075,   0.336,  0.105,
+  "Kenya",      "Optimism",     0.020, 0.090,  -0.001,  0.120,
+  "Kenya",      "Aspirations",  0.230, 0.078,   0.368,  0.122,
+  # Indonesia: estimates and SEs exact from Table 6 Panel B
+  "Indonesia",  "Self-esteem",  0.090, 0.070,   0.138,  0.205,
+  "Indonesia",  "Optimism",     0.280, 0.090,   0.512,  0.196,
+  "Indonesia",  "Aspirations",  0.140, 0.075,   0.225,  0.214,
+  # Mexico: estimates and SEs exact from Table 6 Panel C
+  "Mexico",     "Self-esteem",  0.030, 0.090,  -0.004,  0.381,
+  "Mexico",     "Optimism",    -0.050, 0.120,  -0.280,  0.387,
+  "Mexico",     "Aspirations",  0.100, 0.110,   0.402,  0.413
 )
 
 ## ---- Combo list for dropdown ----------------------------------------
@@ -234,17 +234,17 @@ function(el, data) {
 ## ---- Country comparison data (2SLS only) ----------------------------
 cmp <- tribble(
   ~country,    ~outcome,       ~est,    ~se,
-  "Kenya",     "Self-esteem",  0.336,   0.115,
-  "Indonesia", "Self-esteem",  0.138,   0.145,
-  "Mexico",    "Self-esteem", -0.004,   0.310,
+  "Kenya",     "Self-esteem",  0.336,   0.105,
+  "Indonesia", "Self-esteem",  0.138,   0.205,
+  "Mexico",    "Self-esteem", -0.004,   0.381,
   "Pooled",    "Self-esteem",  0.255,   0.110,
-  "Kenya",     "Optimism",    -0.001,   0.155,
-  "Indonesia", "Optimism",     0.512,   0.145,
-  "Mexico",    "Optimism",    -0.280,   0.390,
+  "Kenya",     "Optimism",    -0.001,   0.120,
+  "Indonesia", "Optimism",     0.512,   0.196,
+  "Mexico",    "Optimism",    -0.280,   0.387,
   "Pooled",    "Optimism",     0.259,   0.109,
-  "Kenya",     "Aspirations",  0.368,   0.120,
-  "Indonesia", "Aspirations",  0.225,   0.170,
-  "Mexico",    "Aspirations",  0.402,   0.360,
+  "Kenya",     "Aspirations",  0.368,   0.122,
+  "Indonesia", "Aspirations",  0.225,   0.214,
+  "Mexico",    "Aspirations",  0.402,   0.413,
   "Pooled",    "Aspirations",  0.292,   0.119
 ) |>
   mutate(
@@ -604,7 +604,7 @@ fig_med
 ::: {style="color:#555; margin-top:2em; border-top:1px solid #dee2e8; padding-top:1em;"}
 **Citation:** Ross, P.H., Glewwe, P., Prudencio, D., & Wydick, B. (2021). Developing educational and vocational aspirations through international child sponsorship: Evidence from Kenya, Indonesia, and Mexico. *World Development*, 140, 105336.
 
-**Methodology note:** Effects estimated by 2SLS using an age-eligibility rule as an instrument. OLS shown for comparison in the first chart. Standard deviations (σ) use the pooled comparison-group distribution. Confidence intervals are 95% (±1.96 SE). Pooled standard errors are exact from Table 8, Panel D. Country-specific standard errors are approximate, supply exact values from Table 6 to finalize.
+**Methodology note:** Effects estimated by 2SLS using an age-eligibility rule as an instrument. OLS shown for comparison in the first chart. Standard deviations (σ) use the pooled comparison-group distribution. Confidence intervals are 95% (±1.96 SE). All standard errors are exact: pooled SEs from Table 8 Panel D; country-specific SEs from Table 6 Panels A–C.
 :::
 
 :::
