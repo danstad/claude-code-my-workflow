@@ -190,7 +190,7 @@ Standard errors are computed by **bootstrap** (resampling with replacement at th
 
 ## Step 6: From Estimates to Treatment Effects
 
-Once $(\hat\gamma, \hat\beta_0, \hat\beta_1, \hat\alpha_0, \hat\alpha_1)$ are in hand, three treatment parameters are computed.
+Once $(\hat\gamma, \hat\beta_0, \hat\beta_1, \hat\alpha_0, \hat\alpha_1)$ are estimated, three treatment parameters are computed.
 
 ### Average Treatment Effect (ATE)
 
