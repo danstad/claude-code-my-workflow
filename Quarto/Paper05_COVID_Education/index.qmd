@@ -5,7 +5,7 @@ format:
 ---
 
 <div class="paper-hero">
-<h1>Examining COVID-19's Disruptive Effect on Education in Mexican Universities</h1>
+<h1><a href="https://doi.org/10.1016/j.ijedudev.2024.103144" target="_blank" style="color:inherit; text-decoration:none;">Examining COVID-19's Disruptive Effect on Education in Mexican Universities</a></h1>
 <div class="paper-meta">
 Daniel Prudencio &nbsp;·&nbsp; Jose Roberto Balmori de la Miyar &nbsp;·&nbsp; Adan Silverio-Murillo &nbsp;·&nbsp; Fernanda Sobrino<br>
 <em>International Journal of Educational Development</em>, 2024 &nbsp;·&nbsp;
