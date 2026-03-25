@@ -292,7 +292,7 @@ window.Quarto = {
 <section id="robustness-suite" class="level2">
 <h2 class="anchored" data-anchor-id="robustness-suite">Robustness Suite</h2>
 <p>The paper validates the main DiD estimates with four robustness checks:</p>
-<p><strong>1. Placebo test (pre-parallel trends).</strong> Shifts the treatment window two years earlier. Finding null effects supports the parallel trends assumption.</p>
+<p><strong>1. Placebo test (pre-parallel trends).</strong> Shifts the treatment window one year earlier. Finding null effects supports the parallel trends assumption.</p>
 <p><strong>2. False Discovery Rate correction.</strong> Because three outcomes are tested simultaneously, the paper applies the FDR q-value correction of Anderson (2008). No significant result becomes insignificant after this correction.</p>
 <p><strong>3. Oster (2019) bounds for omitted variable bias.</strong> Simulates bounds around <span class="math inline">\(\beta\)</span> based on an expected R². When bounds exclude zero, the estimate is robust to omitted variable bias. All main bounds exclude zero.</p>
 <p><strong>4. Leave-one-major-out sensitivity.</strong> Re-estimates the DiD specification ten times, each time excluding one area of study. Estimates remain stable across all exclusions, confirming the results are not driven by any single field.</p>

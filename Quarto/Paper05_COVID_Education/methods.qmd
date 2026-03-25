@@ -78,7 +78,7 @@ The parameter $\beta_7$ captures the **differential** pandemic effect for the su
 
 The paper validates the main DiD estimates with four robustness checks:
 
-**1. Placebo test (pre-parallel trends).** Shifts the treatment window two years earlier. Finding null effects supports the parallel trends assumption.
+**1. Placebo test (pre-parallel trends).** Shifts the treatment window one year earlier. Finding null effects supports the parallel trends assumption.
 
 **2. False Discovery Rate correction.** Because three outcomes are tested simultaneously, the paper applies the FDR q-value correction of Anderson (2008). No significant result becomes insignificant after this correction.
 
