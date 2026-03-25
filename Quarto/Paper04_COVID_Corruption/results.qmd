@@ -147,6 +147,36 @@ The event study plot above (Figure 1 in the paper) shows the monthly path of the
 
 ---
 
+## Robustness
+
+The paper implements four robustness checks:
+
+::: {.callout-note collapse="true"}
+## 1. Multiple hypothesis testing (FDR q-values)
+
+Because three outcome columns are tested simultaneously (overall, health, non-health), there is a risk of false discovery. The paper applies the False Discovery Rate correction of Anderson (2008), replacing p-values with q-values. The main results survive.
+:::
+
+::: {.callout-note collapse="true"}
+## 2. Oster (2019) bounds for omitted variable bias
+
+This methodology simulates a bound around the parameter of interest based on an expected value of the R². When the bounds exclude zero, it indicates that the parameter of interest remains robust to omitted variable bias. The Oster bounds exclude zero for the DiD results on overall DCVB and non-healthcare DCVB, confirming that those results are not sensitive to the problem of omitted variables. No significant result is found for healthcare DCVB.
+:::
+
+::: {.callout-note collapse="true"}
+## 3. Outlier exclusion
+
+Results are reproduced after removing the top 1% and top 5% of contracts by value. The coefficients remain stable and statistically significant for overall and non-health DCVB.
+:::
+
+::: {.callout-note collapse="true"}
+## 4. Excluding SEDENA (the Mexican Army)
+
+The Mexican Army expanded its role across government sectors during the pandemic. The paper checks whether the non-health result is driven by SEDENA alone. Excluding SEDENA does not change the conclusion.
+:::
+
+---
+
 ## Mechanisms
 
 Beyond the main DiD result, the paper investigates two potential mechanisms linking the pandemic to higher non-healthcare DCVB.
@@ -171,14 +201,3 @@ The paper also tests whether the pandemic changed the proportion of contracts fo
 **Putting the mechanisms together:** Non-healthcare institutions simultaneously became more discretionary (higher DCVB), more concentrated in their supplier base (higher HHI), and less transparent in their disclosure practices (more late publications). These three patterns are consistent with an increase in corruption risk. The effect is not driven by any single institution, as the leave-one-out robustness check confirms.
 </div>
 
----
-
-## Robustness
-
-The main results are robust to:
-
-- **Multiple hypothesis testing** (FDR q-values): overall and non-health DCVB remain significant.
-- **Oster bounds**: bounds exclude zero for overall and non-health DCVB, ruling out simple omitted variable explanations.
-- **Outlier exclusion** (top 1% and 5% of contracts): coefficients increase slightly (0.127 and 0.141 overall; 0.175 and 0.182 non-health), remaining highly significant.
-- **Excluding SEDENA**: the non-health result holds even without the Mexican Army.
-- **Rambachan and Roth (2023) sensitivity**: the parallel trends assumption can be violated by up to 15% of the worst pre-treatment deviation before the main results lose significance.
