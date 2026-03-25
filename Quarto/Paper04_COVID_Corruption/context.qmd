@@ -89,7 +89,5 @@ The paper covers the period March to December 2020 as the treatment window. Key 
 | March 2020 | COVID-19 declared a national health emergency. Lockdown begins. |
 | April 2020 | Economic activity falls sharply. Stay-at-home orders in effect. |
 | May 2020 | Stay-at-home order lifted. Economic activity partially resumes. |
-| March to December 2020 | Treatment period ($\text{COVID19}_{imy} = 1$) |
-| January to February 2020 | Pre-pandemic 2020 months ($\text{COVID19}_{imy} = 0$) |
 
 The stay-at-home order ending in May 2020 corresponds to the moment when the event study shows the sharpest increase in the DCVB ratio.
