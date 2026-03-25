@@ -100,7 +100,7 @@ Because three outcome columns are tested simultaneously (overall, health, non-he
 ::: {.callout-note collapse="true"}
 ## 2. Oster (2019) bounds for omitted variable bias
 
-Oster's method simulates how large unobserved confounders would need to be, relative to observed ones, to explain away the estimated coefficient. The bounds for overall DCVB and non-health DCVB exclude zero, suggesting the results are not driven by omitted variables.
+This methodology simulates a bound around the parameter of interest based on an expected value of the R². When the bounds exclude zero, it indicates that the parameter of interest remains robust to omitted variable bias. The Oster bounds exclude zero for the DiD results on overall DCVB and non-healthcare DCVB, confirming that those results are not sensitive to the problem of omitted variables. No significant result is found for healthcare DCVB.
 :::
 
 ::: {.callout-note collapse="true"}
