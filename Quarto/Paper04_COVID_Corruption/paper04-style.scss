@@ -18,6 +18,8 @@ $green-bg: #F0FDF4;
 /* ---------- Layout ---------- */
 .page-columns .content {
   max-width: 860px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 body {
