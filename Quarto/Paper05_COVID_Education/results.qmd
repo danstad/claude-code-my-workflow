@@ -168,7 +168,7 @@ Sciences experienced the most severe graduation collapse (37.5%), followed by ag
 ::: {.callout-note collapse="true"}
 ## 1. Placebo test (pre-parallel trends)
 
-The treatment window is shifted one year earlier: treatment = academic years 2018-2019 and 2019-2020, control = 2016-2017 and 2017-2018. If the parallel trends assumption holds, we should find null effects. Panel A of Table 3 confirms this: all placebo estimates are statistically insignificant.
+The treatment window is shifted one year earlier: treatment = academic years 2018-2019 and 2019-2020, control = 2016-2017 and 2017-2018. If the parallel trends assumption holds, we should find null effects. As expected, the DD effects were generally insignificant, except for enrollment effects in education, agronomy, and arts and humanities-related majors and new entry effects in engineering, arts and humanities, and services majors, which showed significant differences.
 
 | | New Entry | Enrollment | Graduation |
 |:--|:--:|:--:|:--:|
