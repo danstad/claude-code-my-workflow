@@ -25,7 +25,7 @@ Higher education in Mexico encompasses a large and diverse set of institutions, 
 
 ## The Three Outcomes
 
-The paper tracks three distinct stages of the student pipeline:
+The paper tracks three distinct stages of the academic journey:
 
 - **New entry:** the number of students newly enrolling in a specific program at a university in a given academic year. This measures the pandemic's impact on the *beginning* of students' university paths.
 - **Enrollment:** the total number of students currently registered in a program at a university. This captures effects on students already in the system.
