@@ -47,4 +47,3 @@ The finding that online delivery format did not protect institutions from new-en
 - Will the new-entry declines in education and social sciences reverse, or do they reflect permanent shifts in students' field preferences induced by the pandemic?
 - Did the students who did not graduate during 2019-2021 eventually complete their degrees in subsequent years, or are these permanent dropouts?
 - How did the pandemic affect learning quality among enrolled students, a channel not captured by administrative enrollment and graduation counts?
-- Do the results generalize to subnational universities and technical institutes, which the ANUIES dataset does not fully capture?
