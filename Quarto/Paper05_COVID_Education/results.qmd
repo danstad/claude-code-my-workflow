@@ -94,19 +94,19 @@ Table 5 presents the DiD estimates separately for men and women, overall and by 
 
 | | New Entry | Enrollment | Graduation |
 |:--|:--:|:--:|:--:|
-| **Men (overall)** | −17.18% | −3.52% | −21.03% |
-| **Women (overall)** | −14.88% | −1.58% | −22.08% |
-| **Men — STEM** | −13.94% | −2.68% | −23.02% |
-| **Women — STEM** | −10.55% | −1.04% | −24.02% |
-| **Men — Non-STEM** | −20.20% | −4.39% | −19.01% |
-| **Women — Non-STEM** | −17.00% | −1.85% | −20.92% |
+| **Men (overall)** | −17.18%\*\*\* | −3.52%\*\*\* | −21.03%\*\*\* |
+| **Women (overall)** | −14.88%\*\*\* | −1.58% | −22.08%\*\*\* |
+| **Men — STEM** | −13.94%\*\*\* | −2.68%\*\*\* | −23.02%\*\*\* |
+| **Women — STEM** | −10.55%\*\*\* | −1.04% | −24.02%\*\*\* |
+| **Men — Non-STEM** | −20.20%\*\*\* | −4.39%\*\*\* | −19.01%\*\*\* |
+| **Women — Non-STEM** | −17.00%\*\*\* | −1.85% | −20.92%\*\*\* |
 
 : {tbl-colwidths="[34,22,22,22]"}
 
-*All estimates as % of pre-COVID mean. Source: ANUIES.*
+*All estimates as % of pre-COVID mean. \*\*\* p<0.01. Enrollment effects for women are not statistically significant in any specification. Source: ANUIES, Table 5.*
 
 <div class="methodbox">
-**Key gender patterns.** Men were more adversely affected than women in new entry and enrollment. Women were slightly more affected on graduation, consistent with evidence that older female students were less likely to return to complete their degrees after the pandemic. Within STEM fields, graduation declines are larger for both genders (~23-24%) than the overall average, suggesting STEM programs were disproportionately disrupted at the completion stage.
+**Key gender patterns.** New entry and graduation declines are statistically significant for both men and women across all specifications. The enrollment decline is significant for men but not for women in any category — overall, STEM, or non-STEM — suggesting women remained formally registered at similar rates to the pre-pandemic period even as their new entry and graduation were disrupted. Men experienced larger new entry and enrollment declines; women experienced a slightly larger graduation decline, consistent with evidence that female students faced greater difficulty completing their degrees once the pandemic hit. Within STEM fields, graduation declines reach approximately 23-24% for both genders, above the overall average.
 </div>
 
 ---
@@ -168,7 +168,7 @@ Sciences experienced the most severe graduation collapse (37.5%), followed by ag
 ::: {.callout-note collapse="true"}
 ## 1. Placebo test (pre-parallel trends)
 
-The treatment window is shifted two years earlier: treatment = academic years 2018-2019 and 2019-2020, control = 2016-2017 and 2017-2018. If the parallel trends assumption holds, we should find null effects. Panel A of Table 3 confirms this: all placebo estimates are statistically insignificant.
+The treatment window is shifted one year earlier: treatment = academic years 2018-2019 and 2019-2020, control = 2016-2017 and 2017-2018. If the parallel trends assumption holds, we should find null effects. Panel A of Table 3 confirms this: all placebo estimates are statistically insignificant.
 
 | | New Entry | Enrollment | Graduation |
 |:--|:--:|:--:|:--:|
