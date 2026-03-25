@@ -1,0 +1,95 @@
+---
+title: "Context & Data"
+---
+
+## Mexico's Procurement System
+
+Public contracts in Mexico are allocated through three mechanisms, governed by federal procurement law:
+
+<div class="did-grid">
+<div class="did-cell overall">
+<div class="did-cell-label">Public Auction</div>
+<div style="font-size:0.9rem; margin-top:0.4rem;">Open, competitive bidding. The law's preferred mechanism. All eligible suppliers may participate.</div>
+</div>
+<div class="did-cell health">
+<div class="did-cell-label">Invitation Auction</div>
+<div style="font-size:0.9rem; margin-top:0.4rem;">Restricted to a selected group of suppliers. Government invites specific firms to bid.</div>
+</div>
+<div class="did-cell nonhealth">
+<div class="did-cell-label">Direct Allocation</div>
+<div style="font-size:0.9rem; margin-top:0.4rem;">No competitive process. Government assigns the contract directly to a chosen provider.</div>
+</div>
+</div>
+
+The law allows exceptions that permit invitation and direct allocation for contracts below certain value thresholds or during emergencies. In practice, **approximately 70% of contract value** was already being allocated through discretionary mechanisms before the pandemic, a baseline that suggests these exceptions are widely used.
+
+---
+
+## The DCVB Measure
+
+The paper's main outcome is the **Discrete-Contracts-Value-to-Budget (DCVB) ratio**: the share of total contract value assigned through invitation auctions or direct allocation in a given institution-month.
+
+<div class="methodbox">
+**DCVB is a risk measure, not a corruption measure.** A high DCVB does not prove fraud or bribery. It indicates that a large share of public money bypassed competitive processes, which is consistent with legitimate emergency procurement but also with favoritism. The paper is explicit that it measures *risk*, and the limitations section discusses this distinction in detail.
+</div>
+
+---
+
+## Data
+
+The data come from **CompraNet**, Mexico's public procurement information system, systematized by the **Instituto Mexicano para la Competitividad (IMCO)**. The dataset includes all types of public contracts: acquisitions, leases, public works, and services.
+
+**Sample construction:** To obtain a balanced panel, only institutions that allocated at least one contract every month from January 2018 through December 2020 are retained. This yields:
+
+- **64 federal institutions**, covering approximately 75% of all federal public acquisition allocations
+- **378,000 public acquisitions**
+- **2,304 observations** at the institution-month level (64 institutions × 12 months × 3 years)
+
+---
+
+## Descriptive Statistics
+
+The table below (Table 1 in the paper) shows summary statistics at the institution-month level.
+
+| Variable | Overall | Health Institutions | Non-Health Institutions |
+|:---------|:-------:|:-------------------:|:-----------------------:|
+| Average contract value (millions MXN) | 5.06 | 2.01 | 5.84 |
+| Number of contracts per month | 164.46 | 402.48 | 103.79 |
+| DCVB ratio | 0.700 | 0.665 | 0.709 |
+| Observations | 2,304 | 468 | 1,836 |
+
+: {tbl-colwidths="[35,15,20,20]"}
+
+*Source: IMCO. Data are aggregated at the institution-month level.*
+
+<div class="keybox">
+**Key baseline fact:** Even before the pandemic, 70% of contract value was assigned through discretionary mechanisms. Healthcare institutions were slightly *less* discretionary than non-healthcare ones (66.5% vs 70.9%), which already hints at the pattern the paper will find post-pandemic.
+</div>
+
+---
+
+## The Healthcare vs. Non-Healthcare Split
+
+The paper distinguishes two groups of institutions:
+
+<span class="badge-health">Health institutions</span> — 14 institutions, including federal hospitals, the social security institute (IMSS), and health secretariats. These institutions were under intense public scrutiny during the pandemic.
+
+<span class="badge-nonhealth">Non-health institutions</span> — 50 institutions spanning defense, education, infrastructure, energy, and other sectors. These received comparatively less media attention during the pandemic.
+
+This distinction is central to the paper's main finding: while the public debate focused on healthcare procurement, the data tells a different story.
+
+---
+
+## The COVID-19 Timeline in Mexico
+
+The paper covers the period March to December 2020 as the treatment window. Key dates:
+
+| Date | Event |
+|:-----|:------|
+| March 2020 | COVID-19 declared a national health emergency. Lockdown begins. |
+| April 2020 | Economic activity falls sharply. Stay-at-home orders in effect. |
+| May 2020 | Stay-at-home order lifted. Economic activity partially resumes. |
+| March to December 2020 | Treatment period ($\text{COVID19}_{imy} = 1$) |
+| January to February 2020 | Pre-pandemic 2020 months ($\text{COVID19}_{imy} = 0$) |
+
+The stay-at-home order ending in May 2020 corresponds to the moment when the event study shows the sharpest increase in the DCVB ratio.

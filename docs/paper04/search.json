@@ -1,0 +1,240 @@
+[
+  {
+    "objectID": "results.html",
+    "href": "results.html",
+    "title": "Results",
+    "section": "",
+    "text": "Note: Point estimates are approximate, reconstructed from Figure 1 of the paper. The underlying data are available at https://doi.org/10.7910/DVN/7Z2S30. Source: IMCO."
+  },
+  {
+    "objectID": "results.html#difference-in-differences-results",
+    "href": "results.html#difference-in-differences-results",
+    "title": "Results",
+    "section": "Difference-in-Differences Results",
+    "text": "Difference-in-Differences Results\nTable 2 in the paper presents the main DiD estimates. The three columns correspond to all institutions (overall), healthcare institutions, and non-healthcare institutions.\n\n\n\nOverall\n\n\n+0.120***\n\n\n+17% relative to baseline(SE = 0.034)\n\n\n\n\nHealth\n\n\n−0.060\n\n\nNot significant(SE = 0.043)\n\n\n\n\nNon-Health\n\n\n+0.166***\n\n\n+23% relative to baseline(SE = 0.039)\n\n\n\nSignificance: *** p &lt; 0.01. All regressions include institution, month, and year fixed effects. Standard errors clustered at the institution level. Source: IMCO.\n\nThe headline result: The pandemic increased discretionary contracting by 17% on average, but this effect is entirely driven by non-healthcare institutions. For healthcare institutions the estimate is negative and statistically insignificant. The non-healthcare coefficient (+0.166) represents a 23% increase relative to the pre-pandemic baseline of 0.715."
+  },
+  {
+    "objectID": "results.html#dynamic-effects-event-study",
+    "href": "results.html#dynamic-effects-event-study",
+    "title": "Results",
+    "section": "Dynamic Effects: Event Study",
+    "text": "Dynamic Effects: Event Study\nThe event study plot above (Figure 1 in the paper) shows the monthly path of the DCVB ratio before and after the lockdown. Three patterns stand out:\n1. Parallel trends hold pre-pandemic. For all three panels, the pre-pandemic coefficients (\\(q = -9\\) through \\(q = -2\\)) cluster near zero and are statistically insignificant. This supports the identifying assumption.\n2. The effect peaks and fades. For overall and non-health DCVB, the sharpest increase occurs at \\(q = 2\\) (May 2020), the month the stay-at-home order was lifted. The effect persists for approximately four months before returning to pre-pandemic levels, consistent with the resilience of crime theory (Frailing & Harper, 2017) rather than theories that predict a permanent increase.\n3. Healthcare is flat throughout. The health DCVB panel shows no meaningful increase at any point during the pandemic. The coefficients are small and statistically indistinguishable from zero post-lockdown."
+  },
+  {
+    "objectID": "results.html#mechanisms",
+    "href": "results.html#mechanisms",
+    "title": "Results",
+    "section": "Mechanisms",
+    "text": "Mechanisms\nBeyond the main DiD result, the paper investigates two potential mechanisms linking the pandemic to higher non-healthcare DCVB.\n\nMarket Concentration\nA Herfindahl-Hirschman Index (HHI) is constructed for each institution-month, measuring how concentrated the supplier market is for each institution:\n\\[\\text{HHI}_{iyt} = \\sum_{j=1}^{n_{iyt}} s_{jiyt}^2\\]\nwhere \\(s_{jiyt}\\) is the share of contracts given to provider \\(j\\) in institution \\(i\\), year \\(y\\), month \\(t\\).\nThe pandemic increased HHI for non-healthcare institutions by approximately 462 points (statistically significant at 10%). The pre-pandemic baseline HHI for non-health institutions was 2,819, already above the U.S. Department of Justice threshold of 2,500 for highly concentrated markets. A 462-point increase in an already concentrated market represents a meaningful further reduction in competition.\nHealthcare institutions show no significant change in market concentration.\n\n\nLate Disclosure of Contract Information\nThe paper also tests whether the pandemic changed the proportion of contracts for which procedural information was published after the contract’s starting date (a proxy for opacity). For non-healthcare institutions, the proportion of late-disclosed contracts increased by approximately 10% (coefficient 0.062, significant at 5%). No significant change is found for healthcare institutions.\n\nPutting the mechanisms together: Non-healthcare institutions simultaneously became more discretionary (higher DCVB), more concentrated in their supplier base (higher HHI), and less transparent in their disclosure practices (more late publications). These three patterns are consistent with an increase in corruption risk. The effect is not driven by any single institution, as the leave-one-out robustness check confirms."
+  },
+  {
+    "objectID": "results.html#robustness",
+    "href": "results.html#robustness",
+    "title": "Results",
+    "section": "Robustness",
+    "text": "Robustness\nThe main results are robust to:\n\nMultiple hypothesis testing (FDR q-values): overall and non-health DCVB remain significant.\nOster bounds: bounds exclude zero for overall and non-health DCVB, ruling out simple omitted variable explanations.\nOutlier exclusion (top 1% and 5% of contracts): coefficients increase slightly (0.127 and 0.141 overall; 0.175 and 0.182 non-health), remaining highly significant.\nExcluding SEDENA: the non-health result holds even without the Mexican Army.\nRambachan and Roth (2023) sensitivity: the parallel trends assumption can be violated by up to 15% of the worst pre-treatment deviation before the main results lose significance."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "\nThe Effect of the COVID-19 Pandemic on Risk of Corruption\n",
+    "section": "",
+    "text": "Adan Silverio-Murillo  ·  Daniel Prudencio  ·  Jose Roberto Balmori-de-la-Miyar Public Organization Review, 2024  ·  https://doi.org/10.1007/s11115-024-00765-1"
+  },
+  {
+    "objectID": "index.html#motivation",
+    "href": "index.html#motivation",
+    "title": "\nThe Effect of the COVID-19 Pandemic on Risk of Corruption\n",
+    "section": "Motivation",
+    "text": "Motivation\nGovernments around the world responded to the COVID-19 pandemic by sharply increasing public spending and, at the same time, relaxing accountability standards to accelerate procurement. This created a natural opportunity for corruption: larger budgets, faster decisions, and less scrutiny.\nThe standard expectation, reflected in policy debates and media coverage, was that healthcare institutions would be at the center of pandemic corruption. And there were reasons to believe this: healthcare was the fastest-growing expenditure category, procurement rules were explicitly relaxed for medical supplies, and high-profile cases of overpriced equipment surfaced quickly.\nThis paper asks a more precise question: did the pandemic measurably increase the risk of corruption in Mexican federal procurement, and if so, where?\nUsing monthly administrative data on 378,000 public contracts from 64 federal institutions over 2018 to 2020, the paper answers with a surprising finding: the increase in corruption risk was driven almost entirely by non-healthcare institutions, not healthcare ones."
+  },
+  {
+    "objectID": "index.html#key-findings",
+    "href": "index.html#key-findings",
+    "title": "\nThe Effect of the COVID-19 Pandemic on Risk of Corruption\n",
+    "section": "Key Findings",
+    "text": "Key Findings\n\n\n\nOverall effect\n\n\n+17%\n\n\nThe pandemic increased the share of contract value assigned through discretionary mechanisms by 17% relative to the pre-pandemic baseline.\n\n\n\n\nWho drove it?\n\n\nNon-health\n\n\nThe effect is fully driven by non-healthcare institutions (+23%). Healthcare institutions show no significant change, despite being at the center of the public debate.\n\n\n\n\nHow long did it last?\n\n\n~4 months\n\n\nThe increase was temporary. Discretionary contracting peaked two months after the lockdown lifted and returned to pre-pandemic levels within six months."
+  },
+  {
+    "objectID": "index.html#the-measure-dcvb",
+    "href": "index.html#the-measure-dcvb",
+    "title": "\nThe Effect of the COVID-19 Pandemic on Risk of Corruption\n",
+    "section": "The Measure: DCVB",
+    "text": "The Measure: DCVB\nThe outcome variable is the Discrete-Contracts-Value-to-Budget (DCVB) ratio, defined for each institution in each month as:\n\\[\\text{DCVB}_{im} = \\frac{\\text{Value of contracts assigned by discretion}}{\\text{Total contract value}}\\]\nA higher DCVB means a greater share of public money bypassed competitive bidding. The paper uses DCVB as a proxy for corruption risk, not as direct evidence of fraud.\n\nWhy DCVB? In Mexico, public contracts can be assigned through three mechanisms: open public auctions, invitation-only auctions, and direct allocation. The law favors open auctions, but allows exceptions. A rising DCVB ratio means institutions are increasingly using their legal discretion to bypass competition, which opens the door to favoritism and rent-seeking."
+  },
+  {
+    "objectID": "index.html#the-counterintuitive-result",
+    "href": "index.html#the-counterintuitive-result",
+    "title": "\nThe Effect of the COVID-19 Pandemic on Risk of Corruption\n",
+    "section": "The Counterintuitive Result",
+    "text": "The Counterintuitive Result\n\nThe rise in corruption risk is concentrated in non-healthcare institutions, institutions that received relatively less public attention and media scrutiny during the pandemic. Healthcare institutions, despite rapid spending increases and relaxed procurement rules, show no statistically significant change in their DCVB ratio.\nThis suggests that public scrutiny itself may be a corruption deterrent: the intense media and civil society monitoring of healthcare procurement during the pandemic may have constrained discretionary behavior precisely where it was most expected."
+  },
+  {
+    "objectID": "index.html#study-at-a-glance",
+    "href": "index.html#study-at-a-glance",
+    "title": "\nThe Effect of the COVID-19 Pandemic on Risk of Corruption\n",
+    "section": "Study at a Glance",
+    "text": "Study at a Glance\n\n\n\n\n\n\n\nFeature\nDetail\n\n\n\n\nCountry\nMexico\n\n\nPeriod\nJanuary 2018 to December 2020\n\n\nInstitutions\n64 federal institutions (75% of federal procurement)\n\n\nContracts\n378,000 public acquisitions\n\n\nData source\nCompraNet, systematized by IMCO\n\n\nOutcome\nDCVB ratio (institution-month level)\n\n\nMethods\nDifference-in-differences, event study\n\n\nPre-pandemic DCVB baseline\n0.70 (70% of contract value assigned with discretion)"
+  },
+  {
+    "objectID": "index.html#how-to-navigate-this-site",
+    "href": "index.html#how-to-navigate-this-site",
+    "title": "\nThe Effect of the COVID-19 Pandemic on Risk of Corruption\n",
+    "section": "How to Navigate This Site",
+    "text": "How to Navigate This Site\n\n\nContext & DataMexico’s procurement system, the DCVB measure, and descriptive statistics.\n\n\nMethodsDifference-in-differences and event study specifications, with intuition for each choice.\n\n\nResultsDiD estimates, dynamic event study plots, and the mechanism analysis.\n\n\nDiscussionWhat this paper contributes, its limitations, and policy implications for audit design."
+  },
+  {
+    "objectID": "context.html",
+    "href": "context.html",
+    "title": "Context & Data",
+    "section": "",
+    "text": "Public contracts in Mexico are allocated through three mechanisms, governed by federal procurement law:\n\n\n\nPublic Auction\n\n\nOpen, competitive bidding. The law’s preferred mechanism. All eligible suppliers may participate.\n\n\n\n\nInvitation Auction\n\n\nRestricted to a selected group of suppliers. Government invites specific firms to bid.\n\n\n\n\nDirect Allocation\n\n\nNo competitive process. Government assigns the contract directly to a chosen provider.\n\n\n\nThe law allows exceptions that permit invitation and direct allocation for contracts below certain value thresholds or during emergencies. In practice, approximately 70% of contract value was already being allocated through discretionary mechanisms before the pandemic, a baseline that suggests these exceptions are widely used."
+  },
+  {
+    "objectID": "context.html#mexicos-procurement-system",
+    "href": "context.html#mexicos-procurement-system",
+    "title": "Context & Data",
+    "section": "",
+    "text": "Public contracts in Mexico are allocated through three mechanisms, governed by federal procurement law:\n\n\n\nPublic Auction\n\n\nOpen, competitive bidding. The law’s preferred mechanism. All eligible suppliers may participate.\n\n\n\n\nInvitation Auction\n\n\nRestricted to a selected group of suppliers. Government invites specific firms to bid.\n\n\n\n\nDirect Allocation\n\n\nNo competitive process. Government assigns the contract directly to a chosen provider.\n\n\n\nThe law allows exceptions that permit invitation and direct allocation for contracts below certain value thresholds or during emergencies. In practice, approximately 70% of contract value was already being allocated through discretionary mechanisms before the pandemic, a baseline that suggests these exceptions are widely used."
+  },
+  {
+    "objectID": "context.html#the-dcvb-measure",
+    "href": "context.html#the-dcvb-measure",
+    "title": "Context & Data",
+    "section": "The DCVB Measure",
+    "text": "The DCVB Measure\nThe paper’s main outcome is the Discrete-Contracts-Value-to-Budget (DCVB) ratio: the share of total contract value assigned through invitation auctions or direct allocation in a given institution-month.\n\nDCVB is a risk measure, not a corruption measure. A high DCVB does not prove fraud or bribery. It indicates that a large share of public money bypassed competitive processes, which is consistent with legitimate emergency procurement but also with favoritism. The paper is explicit that it measures risk, and the limitations section discusses this distinction in detail."
+  },
+  {
+    "objectID": "context.html#data",
+    "href": "context.html#data",
+    "title": "Context & Data",
+    "section": "Data",
+    "text": "Data\nThe data come from CompraNet, Mexico’s public procurement information system, systematized by the Instituto Mexicano para la Competitividad (IMCO). The dataset includes all types of public contracts: acquisitions, leases, public works, and services.\nSample construction: To obtain a balanced panel, only institutions that allocated at least one contract every month from January 2018 through December 2020 are retained. This yields:\n\n64 federal institutions, covering approximately 75% of all federal public acquisition allocations\n378,000 public acquisitions\n2,304 observations at the institution-month level (64 institutions × 12 months × 3 years)"
+  },
+  {
+    "objectID": "context.html#descriptive-statistics",
+    "href": "context.html#descriptive-statistics",
+    "title": "Context & Data",
+    "section": "Descriptive Statistics",
+    "text": "Descriptive Statistics\nThe table below (Table 1 in the paper) shows summary statistics at the institution-month level.\n\n\n\n\n\n\n\n\n\nVariable\nOverall\nHealth Institutions\nNon-Health Institutions\n\n\n\n\nAverage contract value (millions MXN)\n5.06\n2.01\n5.84\n\n\nNumber of contracts per month\n164.46\n402.48\n103.79\n\n\nDCVB ratio\n0.700\n0.665\n0.709\n\n\nObservations\n2,304\n468\n1,836\n\n\n\nSource: IMCO. Data are aggregated at the institution-month level.\n\nKey baseline fact: Even before the pandemic, 70% of contract value was assigned through discretionary mechanisms. Healthcare institutions were slightly less discretionary than non-healthcare ones (66.5% vs 70.9%), which already hints at the pattern the paper will find post-pandemic."
+  },
+  {
+    "objectID": "context.html#the-healthcare-vs.-non-healthcare-split",
+    "href": "context.html#the-healthcare-vs.-non-healthcare-split",
+    "title": "Context & Data",
+    "section": "The Healthcare vs. Non-Healthcare Split",
+    "text": "The Healthcare vs. Non-Healthcare Split\nThe paper distinguishes two groups of institutions:\nHealth institutions — 14 institutions, including federal hospitals, the social security institute (IMSS), and health secretariats. These institutions were under intense public scrutiny during the pandemic.\nNon-health institutions — 50 institutions spanning defense, education, infrastructure, energy, and other sectors. These received comparatively less media attention during the pandemic.\nThis distinction is central to the paper’s main finding: while the public debate focused on healthcare procurement, the data tells a different story."
+  },
+  {
+    "objectID": "context.html#the-covid-19-timeline-in-mexico",
+    "href": "context.html#the-covid-19-timeline-in-mexico",
+    "title": "Context & Data",
+    "section": "The COVID-19 Timeline in Mexico",
+    "text": "The COVID-19 Timeline in Mexico\nThe paper covers the period March to December 2020 as the treatment window. Key dates:\n\n\n\n\n\n\n\nDate\nEvent\n\n\n\n\nMarch 2020\nCOVID-19 declared a national health emergency. Lockdown begins.\n\n\nApril 2020\nEconomic activity falls sharply. Stay-at-home orders in effect.\n\n\nMay 2020\nStay-at-home order lifted. Economic activity partially resumes.\n\n\nMarch to December 2020\nTreatment period (\\(\\text{COVID19}_{imy} = 1\\))\n\n\nJanuary to February 2020\nPre-pandemic 2020 months (\\(\\text{COVID19}_{imy} = 0\\))\n\n\n\nThe stay-at-home order ending in May 2020 corresponds to the moment when the event study shows the sharpest increase in the DCVB ratio."
+  },
+  {
+    "objectID": "citation.html",
+    "href": "citation.html",
+    "title": "Citation",
+    "section": "",
+    "text": "Silverio-Murillo, A., Prudencio, D., & Balmori-de-la-Miyar, J. R. (2024). The effect of the COVID-19 pandemic on risk of corruption. Public Organization Review, 24, 1293–1313. https://doi.org/10.1007/s11115-024-00765-1"
+  },
+  {
+    "objectID": "citation.html#how-to-cite",
+    "href": "citation.html#how-to-cite",
+    "title": "Citation",
+    "section": "",
+    "text": "Silverio-Murillo, A., Prudencio, D., & Balmori-de-la-Miyar, J. R. (2024). The effect of the COVID-19 pandemic on risk of corruption. Public Organization Review, 24, 1293–1313. https://doi.org/10.1007/s11115-024-00765-1"
+  },
+  {
+    "objectID": "citation.html#bibtex",
+    "href": "citation.html#bibtex",
+    "title": "Citation",
+    "section": "BibTeX",
+    "text": "BibTeX\n@article{silverio2024covid,\n  author  = {Silverio-Murillo, Adan and Prudencio, Daniel and\n             Balmori-de-la-Miyar, Jose Roberto},\n  title   = {The Effect of the {COVID}-19 Pandemic on Risk of Corruption},\n  journal = {Public Organization Review},\n  year    = {2024},\n  volume  = {24},\n  pages   = {1293--1313},\n  doi     = {10.1007/s11115-024-00765-1}\n}"
+  },
+  {
+    "objectID": "citation.html#data-availability",
+    "href": "citation.html#data-availability",
+    "title": "Citation",
+    "section": "Data Availability",
+    "text": "Data Availability\nThe data that support the findings are publicly available at:\nhttps://doi.org/10.7910/DVN/7Z2S30\nThe underlying procurement data are sourced from CompraNet, systematized by the Instituto Mexicano para la Competitividad (IMCO)."
+  },
+  {
+    "objectID": "citation.html#about-this-website",
+    "href": "citation.html#about-this-website",
+    "title": "Citation",
+    "section": "About This Website",
+    "text": "About This Website\nThis summary was built with Quarto and hosted on GitHub Pages. The paper is published Open Access under a Creative Commons Attribution 4.0 International License."
+  },
+  {
+    "objectID": "discussion.html",
+    "href": "discussion.html",
+    "title": "Discussion",
+    "section": "",
+    "text": "This paper contributes to a growing literature on COVID-19 and corruption, with three specific additions.\nFirst, a counterintuitive empirical finding with direct policy relevance. The public debate in Mexico, as in many countries, centered on healthcare corruption during the pandemic. High-profile cases of overpriced medical equipment fueled this perception. The data tell a different story: it was non-healthcare institutions, operating with less scrutiny, that drove the measurable increase in discretionary contracting. This finding does not exonerate healthcare institutions, but it redirects attention to where the problem actually materialized in the data.\nSecond, evidence on temporal dynamics that informs theory. The event study shows an inverted U-shape: the DCVB ratio rose sharply, peaked two months after the stay-at-home order was lifted, then returned to pre-pandemic levels within six months. This pattern supports the resilience of crime theory (Frailing & Harper, 2017), which predicts a temporary increase as institutions exploit the window of reduced oversight before accountability mechanisms recover. It is inconsistent with rational choice and routine activity theories, which would predict a more persistent effect.\nThird, a mechanism analysis that goes beyond the headline result. The paper links the DCVB increase to two observable correlates: higher provider market concentration (HHI +462 points in non-health institutions) and more frequent late disclosure of contract procedural information (+10%). These are consistent with a corruption risk story but, as the paper acknowledges, are suggestive rather than causal."
+  },
+  {
+    "objectID": "discussion.html#what-this-paper-contributes",
+    "href": "discussion.html#what-this-paper-contributes",
+    "title": "Discussion",
+    "section": "",
+    "text": "This paper contributes to a growing literature on COVID-19 and corruption, with three specific additions.\nFirst, a counterintuitive empirical finding with direct policy relevance. The public debate in Mexico, as in many countries, centered on healthcare corruption during the pandemic. High-profile cases of overpriced medical equipment fueled this perception. The data tell a different story: it was non-healthcare institutions, operating with less scrutiny, that drove the measurable increase in discretionary contracting. This finding does not exonerate healthcare institutions, but it redirects attention to where the problem actually materialized in the data.\nSecond, evidence on temporal dynamics that informs theory. The event study shows an inverted U-shape: the DCVB ratio rose sharply, peaked two months after the stay-at-home order was lifted, then returned to pre-pandemic levels within six months. This pattern supports the resilience of crime theory (Frailing & Harper, 2017), which predicts a temporary increase as institutions exploit the window of reduced oversight before accountability mechanisms recover. It is inconsistent with rational choice and routine activity theories, which would predict a more persistent effect.\nThird, a mechanism analysis that goes beyond the headline result. The paper links the DCVB increase to two observable correlates: higher provider market concentration (HHI +462 points in non-health institutions) and more frequent late disclosure of contract procedural information (+10%). These are consistent with a corruption risk story but, as the paper acknowledges, are suggestive rather than causal."
+  },
+  {
+    "objectID": "discussion.html#policy-implications",
+    "href": "discussion.html#policy-implications",
+    "title": "Discussion",
+    "section": "Policy Implications",
+    "text": "Policy Implications\n\nFor Mexico’s Government Accountability Office (Auditoría Superior de la Federación): The results suggest that audit efforts targeting pandemic-era procurement should focus on non-healthcare institutions, even though the political debate has centered on healthcare. The concentration of scrutiny on healthcare may itself explain why corruption risk did not materialize there: public monitoring is a deterrent.\n\nThe finding also has implications for future emergency procurement design. Accountability mechanisms that relax procurement rules during crises should include enhanced monitoring for the sectors that receive less public attention, not only those at the center of the emergency."
+  },
+  {
+    "objectID": "discussion.html#limitations-and-caveats",
+    "href": "discussion.html#limitations-and-caveats",
+    "title": "Discussion",
+    "section": "Limitations and Caveats",
+    "text": "Limitations and Caveats\n\nDCVB measures risk, not corruption. The paper is explicit about this. A rising share of discretionary contracts is consistent with both legitimate emergency procurement and corrupt favoritism. The available data do not allow distinguishing between these two explanations for any individual contract. The paper identifies a pattern at the aggregate level, not individual wrongdoing.\n\nMechanism channels are correlational. The HHI and late-disclosure results are estimated using the same DiD framework as the main result. They are consistent with the corruption risk story, but they are not experimentally identified as causes of the DCVB increase.\nThe 2020 window is short. The treatment period covers only nine post-pandemic months (March to December 2020). The return to pre-pandemic levels by late 2020 is encouraging, but a longer panel would allow more precise characterization of the recovery path.\nHealthcare and non-healthcare is a coarse split. The paper’s classification is binary. Within the non-healthcare group, there is likely substantial heterogeneity in institutional quality, oversight capacity, and vulnerability to discretionary practices that this analysis cannot fully capture."
+  },
+  {
+    "objectID": "discussion.html#open-questions",
+    "href": "discussion.html#open-questions",
+    "title": "Discussion",
+    "section": "Open Questions",
+    "text": "Open Questions\n\nDoes the pattern generalize to subnational governments in Mexico, which handle a large share of infrastructure procurement?\nWould a finer institutional taxonomy (by sector, budget size, or prior audit history) reveal further heterogeneity within the non-healthcare group?\nIs the deterrence mechanism credible? If media scrutiny of healthcare procurement did constrain corruption risk there, what is the marginal deterrence effect of an audit announcement versus sustained coverage?"
+  },
+  {
+    "objectID": "methods.html",
+    "href": "methods.html",
+    "title": "Methods",
+    "section": "",
+    "text": "The paper uses two complementary econometric strategies: a difference-in-differences (DiD) model that estimates the average effect of the pandemic, and an event study that traces the dynamic path of that effect month by month."
+  },
+  {
+    "objectID": "methods.html#strategy-1-difference-in-differences",
+    "href": "methods.html#strategy-1-difference-in-differences",
+    "title": "Methods",
+    "section": "Strategy 1: Difference-in-Differences",
+    "text": "Strategy 1: Difference-in-Differences\n\nIntuition\nThe DiD approach compares how much the DCVB ratio changed after the pandemic began for institutions affected by the treatment (2020) relative to a counterfactual trend estimated from pre-pandemic data (2018 and 2019). The key assumption is that, absent the pandemic, all institutions would have followed the same trend.\nThe treatment variable is not a subset of institutions: all institutions are treated by the pandemic. Instead, the variation comes from the time dimension: months after March 2020 are “treated” months, while all months in 2018 and 2019 (and January to February 2020) are “control” months.\n\n\nSpecification\n\n\nDifference-in-Differences Equation\n\n\\[\\text{Corruption}_{imy} = \\alpha + \\beta^{DD}\\,\\text{COVID19}_{imy} + a_i + \\gamma_m + \\nu_y + e_{imy}\\]\n\nwhere:\n\n\n\n\n\n\n\nTerm\nDefinition\n\n\n\n\n\\(\\text{Corruption}_{imy}\\)\nDCVB ratio for institution \\(i\\), month \\(m\\), year \\(y\\)\n\n\n\\(\\text{COVID19}_{imy}\\)\nDummy = 1 for March through December 2020, 0 otherwise\n\n\n\\(a_i\\)\nInstitution fixed effects (absorb time-invariant differences across institutions)\n\n\n\\(\\gamma_m\\)\nMonth fixed effects (absorb seasonality common to all institutions)\n\n\n\\(\\nu_y\\)\nYear fixed effects\n\n\n\\(\\beta^{DD}\\)\nThe DiD estimator: average effect of the pandemic months on DCVB\n\n\n\nStandard errors are clustered at the institution level to account for within-institution serial correlation.\n\nWhat \\(\\beta^{DD}\\) estimates: The average change in DCVB attributable to the pandemic, pooled across all ten treatment months (March to December 2020). It does not distinguish whether the effect was immediate, delayed, or fading."
+  },
+  {
+    "objectID": "methods.html#strategy-2-event-study",
+    "href": "methods.html#strategy-2-event-study",
+    "title": "Methods",
+    "section": "Strategy 2: Event Study",
+    "text": "Strategy 2: Event Study\n\nIntuition\nThe DiD gives one number: the average effect. The event study gives a picture: how did the effect evolve, month by month, before and after the pandemic began? This serves two purposes:\n\nParallel trends validation: if the pre-pandemic coefficients are close to zero and statistically insignificant, this supports the assumption that treatment and control periods were on the same trend before the shock.\nDynamic effects: the post-pandemic coefficients reveal whether the effect was immediate or delayed, temporary or persistent.\n\n\n\nSpecification\n\n\nEvent Study Equation\n\n\\[\\text{Corruption}_{imy} = \\alpha + \\sum_{\\substack{q=-9 \\\\ q \\neq -1}}^{9} \\beta_q\\,\\text{COVID19}_{iqy} + a_i + \\gamma_m + \\nu_y + e_{imy}\\]\n\nwhere \\(\\text{COVID19}_{iqy}\\) is a dummy equal to 1 for the period \\(q\\) months relative to the lockdown (March 2020 = \\(q=0\\)). The period \\(q = -1\\) (February 2020) is excluded as the reference category to avoid multicollinearity.\n\n\\(q = -9\\) corresponds to June 2019 (nine months before the lockdown)\n\\(q = 9\\) corresponds to December 2020 (nine months after the lockdown)\nEach \\(\\beta_q\\) traces the effect of being \\(q\\) months away from the lockdown start\n\n\nWhy \\(q = -1\\) as the reference? This is standard in the event-study literature (Balmori de la Miyar et al., 2021; Brodeur et al., 2021; Leslie & Wilson, 2020). It ensures the pre-pandemic coefficients are interpretable as deviations from February 2020, the last pre-treatment month."
+  },
+  {
+    "objectID": "methods.html#parallel-trends-assumption",
+    "href": "methods.html#parallel-trends-assumption",
+    "title": "Methods",
+    "section": "Parallel Trends Assumption",
+    "text": "Parallel Trends Assumption\nThe key identifying assumption for both strategies is parallel trends: absent the pandemic, treated and control periods would have followed the same path in the DCVB ratio.\nThis assumption cannot be directly tested, but two forms of evidence support it:\n\nPre-pandemic event study coefficients (\\(q = -9\\) through \\(q = -2\\)): if these are statistically indistinguishable from zero, it means no pre-existing divergence exists between the trend before and after the reference period.\nRambachan and Roth (2023) sensitivity analysis: this approach asks how much the parallel trends assumption would need to be violated post-treatment for the main results to disappear. The paper finds the results are robust to violations up to 15% of the worst pre-treatment deviation."
+  },
+  {
+    "objectID": "methods.html#robustness-suite",
+    "href": "methods.html#robustness-suite",
+    "title": "Methods",
+    "section": "Robustness Suite",
+    "text": "Robustness Suite\nThe paper implements four robustness checks:\n\n\n\n\n\n\nNote1. Multiple hypothesis testing (FDR q-values)\n\n\n\n\n\nBecause three outcome columns are tested simultaneously (overall, health, non-health), there is a risk of false discovery. The paper applies the False Discovery Rate correction of Anderson (2008), replacing p-values with q-values. The main results survive.\n\n\n\n\n\n\n\n\n\nNote2. Oster (2019) bounds for omitted variable bias\n\n\n\n\n\nOster’s method simulates how large unobserved confounders would need to be, relative to observed ones, to explain away the estimated coefficient. The bounds for overall DCVB and non-health DCVB exclude zero, suggesting the results are not driven by omitted variables.\n\n\n\n\n\n\n\n\n\nNote3. Outlier exclusion\n\n\n\n\n\nResults are reproduced after removing the top 1% and top 5% of contracts by value. The coefficients remain stable and statistically significant for overall and non-health DCVB.\n\n\n\n\n\n\n\n\n\nNote4. Excluding SEDENA (the Mexican Army)\n\n\n\n\n\nThe Mexican Army expanded its role across government sectors during the pandemic. The paper checks whether the non-health result is driven by SEDENA alone. Excluding SEDENA does not change the conclusion."
+  }
+]

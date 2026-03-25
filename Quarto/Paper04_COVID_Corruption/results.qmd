@@ -1,0 +1,184 @@
+---
+title: "Results"
+---
+
+```{python}
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+import numpy as np
+
+# Event study approximate coefficients from Figure 1 (paper)
+# q = months since lockdown (March 2020 = 0); q=-1 is excluded (reference)
+q_pre  = [-9, -8, -7, -6, -5, -4, -3, -2]
+q_post = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+q_all  = q_pre + q_post
+
+# Overall DCVB
+b_pre_all  = [-0.04, 0.02, -0.03, 0.05, -0.04, 0.01, -0.03, 0.02]
+b_post_all = [0.05, 0.10, 0.20, 0.19, 0.16, 0.14, 0.11, 0.10, 0.09, 0.09]
+b_all = b_pre_all + b_post_all
+ci_all = [0.14]*8 + [0.12]*10
+
+# Health DCVB
+b_pre_h   = [-0.03, 0.02, -0.05, 0.04, -0.06, 0.03, -0.02, 0.01]
+b_post_h  = [-0.04, -0.08, -0.10, -0.13, -0.14, -0.10, -0.09, -0.08, -0.06, -0.09]
+b_h = b_pre_h + b_post_h
+ci_h = [0.16]*8 + [0.14]*10
+
+# Non-health DCVB
+b_pre_nh  = [-0.04, 0.02, -0.02, 0.05, -0.03, 0.01, -0.03, 0.02]
+b_post_nh = [0.06, 0.13, 0.25, 0.24, 0.21, 0.18, 0.13, 0.12, 0.11, 0.10]
+b_nh = b_pre_nh + b_post_nh
+ci_nh = [0.15]*8 + [0.12]*10
+
+navy      = "#012169"
+navy_fill = "rgba(1,33,105,0.13)"
+red       = "#B91C1C"
+red_fill  = "rgba(185,28,28,0.13)"
+green     = "#15803d"
+green_fill= "rgba(21,128,61,0.13)"
+
+def make_panel(q, b, ci, color, fill, title):
+    upper = [bi + ci[i] for i, bi in enumerate(b)]
+    lower = [bi - ci[i] for i, bi in enumerate(b)]
+    traces = [
+        go.Scatter(x=q, y=upper, mode='lines',
+                   line=dict(color=color, width=0),
+                   showlegend=False, hoverinfo='skip'),
+        go.Scatter(x=q, y=lower, mode='lines',
+                   line=dict(color=color, width=0),
+                   fill='tonexty', fillcolor=fill,
+                   showlegend=False, hoverinfo='skip'),
+        go.Scatter(x=[-1], y=[0], mode='markers',
+                   marker=dict(color=color, size=8, symbol='diamond'),
+                   name='Reference (q=−1)', showlegend=False),
+        go.Scatter(x=q, y=b, mode='markers+lines',
+                   marker=dict(color=color, size=7),
+                   line=dict(color=color, width=1.5),
+                   name='Point estimate',
+                   showlegend=False,
+                   hovertemplate='q=%{x}<br>β=%{y:.3f}<extra></extra>'),
+    ]
+    return traces
+
+fig = make_subplots(rows=3, cols=1,
+                    subplot_titles=["DCVB (Overall)", "DCVB (Health)", "DCVB (Non-Health)"],
+                    vertical_spacing=0.09,
+                    shared_xaxes=True)
+
+for t in make_panel(q_all, b_all, ci_all, navy, navy_fill, "Overall"):
+    fig.add_trace(t, row=1, col=1)
+for t in make_panel(q_all, b_h, ci_h, green, green_fill, "Health"):
+    fig.add_trace(t, row=2, col=1)
+for t in make_panel(q_all, b_nh, ci_nh, red, red_fill, "Non-Health"):
+    fig.add_trace(t, row=3, col=1)
+
+# Reference lines
+for row in [1, 2, 3]:
+    fig.add_hline(y=0, line_dash="solid", line_color="red",
+                  line_width=1.2, row=row, col=1)
+    fig.add_vrect(x0=-0.5, x1=1.5, fillcolor="gray", opacity=0.08,
+                  layer="below", line_width=0, row=row, col=1)
+
+fig.update_layout(
+    height=650,
+    plot_bgcolor="white",
+    paper_bgcolor="white",
+    margin=dict(l=50, r=20, t=60, b=60),
+    annotations=[
+        dict(x=0.5, y=0.74, xref="paper", yref="paper",
+             text="Stay-at-home order", showarrow=False,
+             font=dict(size=9, color="#555"), xanchor="left"),
+    ]
+)
+
+fig.update_xaxes(title_text="Months since lockdown (March 2020 = 0)",
+                 row=3, col=1, tickvals=list(range(-9, 10)))
+for row in [1, 2, 3]:
+    fig.update_yaxes(zeroline=False, gridcolor="#eee", row=row, col=1,
+                     range=[-0.45, 0.50])
+
+fig.show()
+```
+
+*Note: Point estimates are approximate, reconstructed from Figure 1 of the paper. The underlying data are available at [https://doi.org/10.7910/DVN/7Z2S30](https://doi.org/10.7910/DVN/7Z2S30). Source: IMCO.*
+
+---
+
+## Difference-in-Differences Results
+
+Table 2 in the paper presents the main DiD estimates. The three columns correspond to all institutions (overall), healthcare institutions, and non-healthcare institutions.
+
+<div class="did-grid">
+<div class="did-cell overall">
+<div class="did-cell-label">Overall</div>
+<div class="did-cell-coef">+0.120***</div>
+<div class="did-cell-pct">+17% relative to baseline<br><small>(SE = 0.034)</small></div>
+</div>
+<div class="did-cell health">
+<div class="did-cell-label"><span class="badge-health">Health</span></div>
+<div class="did-cell-coef" style="color:#15803d;">−0.060</div>
+<div class="did-cell-pct">Not significant<br><small>(SE = 0.043)</small></div>
+</div>
+<div class="did-cell nonhealth">
+<div class="did-cell-label"><span class="badge-nonhealth">Non-Health</span></div>
+<div class="did-cell-coef" style="color:#B91C1C;">+0.166***</div>
+<div class="did-cell-pct">+23% relative to baseline<br><small>(SE = 0.039)</small></div>
+</div>
+</div>
+
+*Significance: \*\*\* p < 0.01. All regressions include institution, month, and year fixed effects. Standard errors clustered at the institution level. Source: IMCO.*
+
+<div class="resultbox">
+**The headline result:** The pandemic increased discretionary contracting by 17% on average, but this effect is entirely driven by non-healthcare institutions. For healthcare institutions the estimate is negative and statistically insignificant. The non-healthcare coefficient (+0.166) represents a 23% increase relative to the pre-pandemic baseline of 0.715.
+</div>
+
+---
+
+## Dynamic Effects: Event Study
+
+The event study plot above (Figure 1 in the paper) shows the monthly path of the DCVB ratio before and after the lockdown. Three patterns stand out:
+
+**1. Parallel trends hold pre-pandemic.** For all three panels, the pre-pandemic coefficients ($q = -9$ through $q = -2$) cluster near zero and are statistically insignificant. This supports the identifying assumption.
+
+**2. The effect peaks and fades.** For overall and non-health DCVB, the sharpest increase occurs at $q = 2$ (May 2020), the month the stay-at-home order was lifted. The effect persists for approximately four months before returning to pre-pandemic levels, consistent with the **resilience of crime theory** (Frailing & Harper, 2017) rather than theories that predict a permanent increase.
+
+**3. Healthcare is flat throughout.** The health DCVB panel shows no meaningful increase at any point during the pandemic. The coefficients are small and statistically indistinguishable from zero post-lockdown.
+
+---
+
+## Mechanisms
+
+Beyond the main DiD result, the paper investigates two potential mechanisms linking the pandemic to higher non-healthcare DCVB.
+
+### Market Concentration
+
+A Herfindahl-Hirschman Index (HHI) is constructed for each institution-month, measuring how concentrated the supplier market is for each institution:
+
+$$\text{HHI}_{iyt} = \sum_{j=1}^{n_{iyt}} s_{jiyt}^2$$
+
+where $s_{jiyt}$ is the share of contracts given to provider $j$ in institution $i$, year $y$, month $t$.
+
+The pandemic increased HHI for non-healthcare institutions by approximately **462 points** (statistically significant at 10%). The pre-pandemic baseline HHI for non-health institutions was 2,819, already above the U.S. Department of Justice threshold of 2,500 for highly concentrated markets. A 462-point increase in an already concentrated market represents a meaningful further reduction in competition.
+
+Healthcare institutions show no significant change in market concentration.
+
+### Late Disclosure of Contract Information
+
+The paper also tests whether the pandemic changed the proportion of contracts for which procedural information was published *after* the contract's starting date (a proxy for opacity). For non-healthcare institutions, the proportion of late-disclosed contracts increased by approximately **10%** (coefficient 0.062, significant at 5%). No significant change is found for healthcare institutions.
+
+<div class="keybox">
+**Putting the mechanisms together:** Non-healthcare institutions simultaneously became more discretionary (higher DCVB), more concentrated in their supplier base (higher HHI), and less transparent in their disclosure practices (more late publications). These three patterns are consistent with an increase in corruption risk. The effect is not driven by any single institution, as the leave-one-out robustness check confirms.
+</div>
+
+---
+
+## Robustness
+
+The main results are robust to:
+
+- **Multiple hypothesis testing** (FDR q-values): overall and non-health DCVB remain significant.
+- **Oster bounds**: bounds exclude zero for overall and non-health DCVB, ruling out simple omitted variable explanations.
+- **Outlier exclusion** (top 1% and 5% of contracts): coefficients increase slightly (0.127 and 0.141 overall; 0.175 and 0.182 non-health), remaining highly significant.
+- **Excluding SEDENA**: the non-health result holds even without the Mexican Army.
+- **Rambachan and Roth (2023) sensitivity**: the parallel trends assumption can be violated by up to 15% of the worst pre-treatment deviation before the main results lose significance.

@@ -1,0 +1,34 @@
+---
+title: "Citation"
+---
+
+## How to Cite
+
+Silverio-Murillo, A., Prudencio, D., & Balmori-de-la-Miyar, J. R. (2024). The effect of the COVID-19 pandemic on risk of corruption. *Public Organization Review*, 24, 1293–1313. https://doi.org/10.1007/s11115-024-00765-1
+
+## BibTeX
+
+```bibtex
+@article{silverio2024covid,
+  author  = {Silverio-Murillo, Adan and Prudencio, Daniel and
+             Balmori-de-la-Miyar, Jose Roberto},
+  title   = {The Effect of the {COVID}-19 Pandemic on Risk of Corruption},
+  journal = {Public Organization Review},
+  year    = {2024},
+  volume  = {24},
+  pages   = {1293--1313},
+  doi     = {10.1007/s11115-024-00765-1}
+}
+```
+
+## Data Availability
+
+The data that support the findings are publicly available at:
+
+[https://doi.org/10.7910/DVN/7Z2S30](https://doi.org/10.7910/DVN/7Z2S30)
+
+The underlying procurement data are sourced from **CompraNet**, systematized by the **Instituto Mexicano para la Competitividad (IMCO)**.
+
+## About This Website
+
+This summary was built with [Quarto](https://quarto.org) and hosted on GitHub Pages. The paper is published Open Access under a Creative Commons Attribution 4.0 International License.

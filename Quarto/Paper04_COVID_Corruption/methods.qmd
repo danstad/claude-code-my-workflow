@@ -1,0 +1,114 @@
+---
+title: "Methods"
+---
+
+The paper uses two complementary econometric strategies: a **difference-in-differences (DiD)** model that estimates the average effect of the pandemic, and an **event study** that traces the dynamic path of that effect month by month.
+
+---
+
+## Strategy 1: Difference-in-Differences
+
+### Intuition
+
+The DiD approach compares how much the DCVB ratio changed after the pandemic began for institutions affected by the treatment (2020) relative to a counterfactual trend estimated from pre-pandemic data (2018 and 2019). The key assumption is that, absent the pandemic, all institutions would have followed the same trend.
+
+The treatment variable is not a subset of institutions: **all institutions are treated** by the pandemic. Instead, the variation comes from the time dimension: months after March 2020 are "treated" months, while all months in 2018 and 2019 (and January to February 2020) are "control" months.
+
+### Specification
+
+::: {.eq-block}
+::: {.eq-label}
+Difference-in-Differences Equation
+:::
+$$\text{Corruption}_{imy} = \alpha + \beta^{DD}\,\text{COVID19}_{imy} + a_i + \gamma_m + \nu_y + e_{imy}$$
+:::
+
+where:
+
+| Term | Definition |
+|:-----|:-----------|
+| $\text{Corruption}_{imy}$ | DCVB ratio for institution $i$, month $m$, year $y$ |
+| $\text{COVID19}_{imy}$ | Dummy = 1 for March through December 2020, 0 otherwise |
+| $a_i$ | Institution fixed effects (absorb time-invariant differences across institutions) |
+| $\gamma_m$ | Month fixed effects (absorb seasonality common to all institutions) |
+| $\nu_y$ | Year fixed effects |
+| $\beta^{DD}$ | The DiD estimator: average effect of the pandemic months on DCVB |
+
+: {tbl-colwidths="[15,85]"}
+
+Standard errors are clustered at the institution level to account for within-institution serial correlation.
+
+<div class="keybox">
+**What $\beta^{DD}$ estimates:** The average change in DCVB attributable to the pandemic, pooled across all ten treatment months (March to December 2020). It does not distinguish whether the effect was immediate, delayed, or fading.
+</div>
+
+---
+
+## Strategy 2: Event Study
+
+### Intuition
+
+The DiD gives one number: the average effect. The event study gives a picture: how did the effect evolve, month by month, before and after the pandemic began? This serves two purposes:
+
+1. **Parallel trends validation**: if the pre-pandemic coefficients are close to zero and statistically insignificant, this supports the assumption that treatment and control periods were on the same trend before the shock.
+2. **Dynamic effects**: the post-pandemic coefficients reveal whether the effect was immediate or delayed, temporary or persistent.
+
+### Specification
+
+::: {.eq-block}
+::: {.eq-label}
+Event Study Equation
+:::
+$$\text{Corruption}_{imy} = \alpha + \sum_{\substack{q=-9 \\ q \neq -1}}^{9} \beta_q\,\text{COVID19}_{iqy} + a_i + \gamma_m + \nu_y + e_{imy}$$
+:::
+
+where $\text{COVID19}_{iqy}$ is a dummy equal to 1 for the period $q$ months relative to the lockdown (March 2020 = $q=0$). The period $q = -1$ (February 2020) is excluded as the reference category to avoid multicollinearity.
+
+- $q = -9$ corresponds to June 2019 (nine months before the lockdown)
+- $q = 9$ corresponds to December 2020 (nine months after the lockdown)
+- Each $\beta_q$ traces the effect of being $q$ months away from the lockdown start
+
+<div class="methodbox">
+**Why $q = -1$ as the reference?** This is standard in the event-study literature (Balmori de la Miyar et al., 2021; Brodeur et al., 2021; Leslie & Wilson, 2020). It ensures the pre-pandemic coefficients are interpretable as deviations from February 2020, the last pre-treatment month.
+</div>
+
+---
+
+## Parallel Trends Assumption
+
+The key identifying assumption for both strategies is **parallel trends**: absent the pandemic, treated and control periods would have followed the same path in the DCVB ratio.
+
+This assumption cannot be directly tested, but two forms of evidence support it:
+
+1. **Pre-pandemic event study coefficients** ($q = -9$ through $q = -2$): if these are statistically indistinguishable from zero, it means no pre-existing divergence exists between the trend before and after the reference period.
+2. **Rambachan and Roth (2023) sensitivity analysis**: this approach asks how much the parallel trends assumption would need to be violated post-treatment for the main results to disappear. The paper finds the results are robust to violations up to 15% of the worst pre-treatment deviation.
+
+---
+
+## Robustness Suite
+
+The paper implements four robustness checks:
+
+::: {.callout-note collapse="true"}
+## 1. Multiple hypothesis testing (FDR q-values)
+
+Because three outcome columns are tested simultaneously (overall, health, non-health), there is a risk of false discovery. The paper applies the False Discovery Rate correction of Anderson (2008), replacing p-values with q-values. The main results survive.
+:::
+
+::: {.callout-note collapse="true"}
+## 2. Oster (2019) bounds for omitted variable bias
+
+Oster's method simulates how large unobserved confounders would need to be, relative to observed ones, to explain away the estimated coefficient. The bounds for overall DCVB and non-health DCVB exclude zero, suggesting the results are not driven by omitted variables.
+:::
+
+::: {.callout-note collapse="true"}
+## 3. Outlier exclusion
+
+Results are reproduced after removing the top 1% and top 5% of contracts by value. The coefficients remain stable and statistically significant for overall and non-health DCVB.
+:::
+
+::: {.callout-note collapse="true"}
+## 4. Excluding SEDENA (the Mexican Army)
+
+The Mexican Army expanded its role across government sectors during the pandemic. The paper checks whether the non-health result is driven by SEDENA alone. Excluding SEDENA does not change the conclusion.
+:::

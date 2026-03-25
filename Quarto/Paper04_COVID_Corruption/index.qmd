@@ -1,0 +1,96 @@
+---
+format:
+  html:
+    toc: false
+---
+
+<div class="paper-hero">
+<h1>The Effect of the COVID-19 Pandemic on Risk of Corruption</h1>
+<div class="paper-meta">
+Adan Silverio-Murillo &nbsp;·&nbsp; Daniel Prudencio &nbsp;·&nbsp; Jose Roberto Balmori-de-la-Miyar<br>
+<em>Public Organization Review</em>, 2024 &nbsp;·&nbsp;
+<a href="https://doi.org/10.1007/s11115-024-00765-1" style="color:rgba(255,255,255,0.8);">https://doi.org/10.1007/s11115-024-00765-1</a>
+</div>
+</div>
+
+## Motivation
+
+Governments around the world responded to the COVID-19 pandemic by sharply increasing public spending and, at the same time, relaxing accountability standards to accelerate procurement. This created a natural opportunity for corruption: larger budgets, faster decisions, and less scrutiny.
+
+The standard expectation, reflected in policy debates and media coverage, was that healthcare institutions would be at the center of pandemic corruption. And there were reasons to believe this: healthcare was the fastest-growing expenditure category, procurement rules were explicitly relaxed for medical supplies, and high-profile cases of overpriced equipment surfaced quickly.
+
+**This paper asks a more precise question:** did the pandemic measurably increase the *risk* of corruption in Mexican federal procurement, and if so, where?
+
+Using monthly administrative data on 378,000 public contracts from 64 federal institutions over 2018 to 2020, the paper answers with a surprising finding: the increase in corruption risk was driven almost entirely by **non-healthcare institutions**, not healthcare ones.
+
+---
+
+## Key Findings
+
+<div class="cards-grid">
+<div class="finding-card red">
+<div class="finding-label">Overall effect</div>
+<div class="finding-value">+17%</div>
+<div class="finding-desc">The pandemic increased the share of contract value assigned through discretionary mechanisms by 17% relative to the pre-pandemic baseline.</div>
+</div>
+<div class="finding-card gold">
+<div class="finding-label">Who drove it?</div>
+<div class="finding-value">Non-health</div>
+<div class="finding-desc">The effect is fully driven by non-healthcare institutions (+23%). Healthcare institutions show no significant change, despite being at the center of the public debate.</div>
+</div>
+<div class="finding-card green">
+<div class="finding-label">How long did it last?</div>
+<div class="finding-value">~4 months</div>
+<div class="finding-desc">The increase was temporary. Discretionary contracting peaked two months after the lockdown lifted and returned to pre-pandemic levels within six months.</div>
+</div>
+</div>
+
+---
+
+## The Measure: DCVB
+
+The outcome variable is the **Discrete-Contracts-Value-to-Budget (DCVB) ratio**, defined for each institution in each month as:
+
+$$\text{DCVB}_{im} = \frac{\text{Value of contracts assigned by discretion}}{\text{Total contract value}}$$
+
+A higher DCVB means a greater share of public money bypassed competitive bidding. The paper uses DCVB as a *proxy* for corruption risk, not as direct evidence of fraud.
+
+<div class="keybox">
+**Why DCVB?** In Mexico, public contracts can be assigned through three mechanisms: open public auctions, invitation-only auctions, and direct allocation. The law favors open auctions, but allows exceptions. A rising DCVB ratio means institutions are increasingly using their legal discretion to bypass competition, which opens the door to favoritism and rent-seeking.
+</div>
+
+---
+
+## The Counterintuitive Result
+
+<div class="resultbox">
+The rise in corruption risk is concentrated in **non-healthcare institutions**, institutions that received relatively less public attention and media scrutiny during the pandemic. Healthcare institutions, despite rapid spending increases and relaxed procurement rules, show no statistically significant change in their DCVB ratio.
+
+This suggests that **public scrutiny itself may be a corruption deterrent**: the intense media and civil society monitoring of healthcare procurement during the pandemic may have constrained discretionary behavior precisely where it was most expected.
+</div>
+
+---
+
+## Study at a Glance
+
+| Feature | Detail |
+|:--------|:-------|
+| Country | Mexico |
+| Period | January 2018 to December 2020 |
+| Institutions | 64 federal institutions (75% of federal procurement) |
+| Contracts | 378,000 public acquisitions |
+| Data source | CompraNet, systematized by IMCO |
+| Outcome | DCVB ratio (institution-month level) |
+| Methods | Difference-in-differences, event study |
+| Pre-pandemic DCVB baseline | 0.70 (70% of contract value assigned with discretion) |
+
+---
+
+## How to Navigate This Site
+
+<div class="nav-guide">
+<div class="nav-card"><strong>Context & Data</strong><br>Mexico's procurement system, the DCVB measure, and descriptive statistics.</div>
+<div class="nav-card"><strong>Methods</strong><br>Difference-in-differences and event study specifications, with intuition for each choice.</div>
+<div class="nav-card"><strong>Results</strong><br>DiD estimates, dynamic event study plots, and the mechanism analysis.</div>
+<div class="nav-card"><strong>Discussion</strong><br>What this paper contributes, its limitations, and policy implications for audit design.</div>
+</div>

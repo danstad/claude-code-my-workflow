@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Results – COVID-19 &amp; Corruption Risk</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3f230b53dc93e4a04bf4a3505d77a42a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6f8a5d4cb78f182596252466301bc020.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script>
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+</script>
+<script type="module">import "https://cdn.plot.ly/plotly-3.4.0.min"</script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">COVID-19 &amp; Corruption Risk</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./context.html"> 
+<span class="menu-text">Context &amp; Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./methods.html"> 
+<span class="menu-text">Methods</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./results.html" aria-current="page"> 
+<span class="menu-text">Results</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./discussion.html"> 
+<span class="menu-text">Discussion</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./citation.html"> 
+<span class="menu-text">Citation</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#difference-in-differences-results" id="toc-difference-in-differences-results" class="nav-link active" data-scroll-target="#difference-in-differences-results">Difference-in-Differences Results</a></li>
+  <li><a href="#dynamic-effects-event-study" id="toc-dynamic-effects-event-study" class="nav-link" data-scroll-target="#dynamic-effects-event-study">Dynamic Effects: Event Study</a></li>
+  <li><a href="#mechanisms" id="toc-mechanisms" class="nav-link" data-scroll-target="#mechanisms">Mechanisms</a>
+  <ul class="collapse">
+  <li><a href="#market-concentration" id="toc-market-concentration" class="nav-link" data-scroll-target="#market-concentration">Market Concentration</a></li>
+  <li><a href="#late-disclosure-of-contract-information" id="toc-late-disclosure-of-contract-information" class="nav-link" data-scroll-target="#late-disclosure-of-contract-information">Late Disclosure of Contract Information</a></li>
+  </ul></li>
+  <li><a href="#robustness" id="toc-robustness" class="nav-link" data-scroll-target="#robustness">Robustness</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Results</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="d10134ef" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.4.0.min.js" integrity="sha256-KEmPoupLpFyGMyGAiOsiNDbKDKAvxXAn/W+oQa0ZAfk=" crossorigin="anonymous"></script>                <div id="e98fcc3f-d32e-46ef-8453-7332a9e8dee8" class="plotly-graph-div" style="height:650px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("e98fcc3f-d32e-46ef-8453-7332a9e8dee8")) {                    Plotly.newPlot(                        "e98fcc3f-d32e-46ef-8453-7332a9e8dee8",                        [{"hoverinfo":"skip","line":{"color":"#012169","width":0},"mode":"lines","showlegend":false,"x":[-9,-8,-7,-6,-5,-4,-3,-2,0,1,2,3,4,5,6,7,8,9],"y":[0.1,0.16,0.11000000000000001,0.19,0.1,0.15000000000000002,0.11000000000000001,0.16,0.16999999999999998,0.22,0.32,0.31,0.28,0.26,0.22999999999999998,0.22,0.21,0.21],"type":"scatter","xaxis":"x","yaxis":"y"},{"fill":"tonexty","fillcolor":"rgba(1,33,105,0.13)","hoverinfo":"skip","line":{"color":"#012169","width":0},"mode":"lines","showlegend":false,"x":[-9,-8,-7,-6,-5,-4,-3,-2,0,1,2,3,4,5,6,7,8,9],"y":[-0.18000000000000002,-0.12000000000000001,-0.17,-0.09000000000000001,-0.18000000000000002,-0.13,-0.17,-0.12000000000000001,-0.06999999999999999,-0.01999999999999999,0.08000000000000002,0.07,0.04000000000000001,0.020000000000000018,-0.009999999999999995,-0.01999999999999999,-0.03,-0.03],"type":"scatter","xaxis":"x","yaxis":"y"},{"marker":{"color":"#012169","size":8,"symbol":"diamond"},"mode":"markers","name":"Reference (q=\u22121)","showlegend":false,"x":[-1],"y":[0],"type":"scatter","xaxis":"x","yaxis":"y"},{"hovertemplate":"q=%{x}\u003cbr\u003e\u03b2=%{y:.3f}\u003cextra\u003e\u003c\u002fextra\u003e","line":{"color":"#012169","width":1.5},"marker":{"color":"#012169","size":7},"mode":"markers+lines","name":"Point estimate","showlegend":false,"x":[-9,-8,-7,-6,-5,-4,-3,-2,0,1,2,3,4,5,6,7,8,9],"y":[-0.04,0.02,-0.03,0.05,-0.04,0.01,-0.03,0.02,0.05,0.1,0.2,0.19,0.16,0.14,0.11,0.1,0.09,0.09],"type":"scatter","xaxis":"x","yaxis":"y"},{"hoverinfo":"skip","line":{"color":"#15803d","width":0},"mode":"lines","showlegend":false,"x":[-9,-8,-7,-6,-5,-4,-3,-2,0,1,2,3,4,5,6,7,8,9],"y":[0.13,0.18,0.11,0.2,0.1,0.19,0.14,0.17,0.1,0.06000000000000001,0.04000000000000001,0.010000000000000009,0.0,0.04000000000000001,0.05000000000000002,0.06000000000000001,0.08000000000000002,0.05000000000000002],"type":"scatter","xaxis":"x2","yaxis":"y2"},{"fill":"tonexty","fillcolor":"rgba(21,128,61,0.13)","hoverinfo":"skip","line":{"color":"#15803d","width":0},"mode":"lines","showlegend":false,"x":[-9,-8,-7,-6,-5,-4,-3,-2,0,1,2,3,4,5,6,7,8,9],"y":[-0.19,-0.14,-0.21000000000000002,-0.12,-0.22,-0.13,-0.18,-0.15,-0.18000000000000002,-0.22000000000000003,-0.24000000000000002,-0.27,-0.28,-0.24000000000000002,-0.23,-0.22000000000000003,-0.2,-0.23],"type":"scatter","xaxis":"x2","yaxis":"y2"},{"marker":{"color":"#15803d","size":8,"symbol":"diamond"},"mode":"markers","name":"Reference (q=\u22121)","showlegend":false,"x":[-1],"y":[0],"type":"scatter","xaxis":"x2","yaxis":"y2"},{"hovertemplate":"q=%{x}\u003cbr\u003e\u03b2=%{y:.3f}\u003cextra\u003e\u003c\u002fextra\u003e","line":{"color":"#15803d","width":1.5},"marker":{"color":"#15803d","size":7},"mode":"markers+lines","name":"Point estimate","showlegend":false,"x":[-9,-8,-7,-6,-5,-4,-3,-2,0,1,2,3,4,5,6,7,8,9],"y":[-0.03,0.02,-0.05,0.04,-0.06,0.03,-0.02,0.01,-0.04,-0.08,-0.1,-0.13,-0.14,-0.1,-0.09,-0.08,-0.06,-0.09],"type":"scatter","xaxis":"x2","yaxis":"y2"},{"hoverinfo":"skip","line":{"color":"#B91C1C","width":0},"mode":"lines","showlegend":false,"x":[-9,-8,-7,-6,-5,-4,-3,-2,0,1,2,3,4,5,6,7,8,9],"y":[0.10999999999999999,0.16999999999999998,0.13,0.2,0.12,0.16,0.12,0.16999999999999998,0.18,0.25,0.37,0.36,0.32999999999999996,0.3,0.25,0.24,0.22999999999999998,0.22],"type":"scatter","xaxis":"x3","yaxis":"y3"},{"fill":"tonexty","fillcolor":"rgba(185,28,28,0.13)","hoverinfo":"skip","line":{"color":"#B91C1C","width":0},"mode":"lines","showlegend":false,"x":[-9,-8,-7,-6,-5,-4,-3,-2,0,1,2,3,4,5,6,7,8,9],"y":[-0.19,-0.13,-0.16999999999999998,-0.09999999999999999,-0.18,-0.13999999999999999,-0.18,-0.13,-0.06,0.010000000000000009,0.13,0.12,0.09,0.06,0.010000000000000009,0.0,-0.009999999999999995,-0.01999999999999999],"type":"scatter","xaxis":"x3","yaxis":"y3"},{"marker":{"color":"#B91C1C","size":8,"symbol":"diamond"},"mode":"markers","name":"Reference (q=\u22121)","showlegend":false,"x":[-1],"y":[0],"type":"scatter","xaxis":"x3","yaxis":"y3"},{"hovertemplate":"q=%{x}\u003cbr\u003e\u03b2=%{y:.3f}\u003cextra\u003e\u003c\u002fextra\u003e","line":{"color":"#B91C1C","width":1.5},"marker":{"color":"#B91C1C","size":7},"mode":"markers+lines","name":"Point estimate","showlegend":false,"x":[-9,-8,-7,-6,-5,-4,-3,-2,0,1,2,3,4,5,6,7,8,9],"y":[-0.04,0.02,-0.02,0.05,-0.03,0.01,-0.03,0.02,0.06,0.13,0.25,0.24,0.21,0.18,0.13,0.12,0.11,0.1],"type":"scatter","xaxis":"x3","yaxis":"y3"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"matches":"x3","showticklabels":false},"yaxis":{"anchor":"x","domain":[0.7266666666666668,1.0],"zeroline":false,"gridcolor":"#eee","range":[-0.45,0.5]},"xaxis2":{"anchor":"y2","domain":[0.0,1.0],"matches":"x3","showticklabels":false},"yaxis2":{"anchor":"x2","domain":[0.3633333333333334,0.6366666666666667],"zeroline":false,"gridcolor":"#eee","range":[-0.45,0.5]},"xaxis3":{"anchor":"y3","domain":[0.0,1.0],"title":{"text":"Months since lockdown (March 2020 = 0)"},"tickvals":[-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9]},"yaxis3":{"anchor":"x3","domain":[0.0,0.2733333333333334],"zeroline":false,"gridcolor":"#eee","range":[-0.45,0.5]},"annotations":[{"font":{"size":9,"color":"#555"},"showarrow":false,"text":"Stay-at-home order","x":0.5,"xanchor":"left","xref":"paper","y":0.74,"yanchor":"bottom","yref":"paper"},{"font":{"size":9,"color":"#555"},"showarrow":false,"text":"Stay-at-home order","x":0.5,"xanchor":"left","xref":"paper","y":0.74,"yanchor":"bottom","yref":"paper"},{"font":{"size":9,"color":"#555"},"showarrow":false,"text":"Stay-at-home order","x":0.5,"xanchor":"left","xref":"paper","y":0.74,"yanchor":"bottom","yref":"paper"}],"shapes":[{"line":{"color":"red","dash":"solid","width":1.2},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":0,"y1":0,"yref":"y"},{"fillcolor":"gray","layer":"below","line":{"width":0},"opacity":0.08,"type":"rect","x0":-0.5,"x1":1.5,"xref":"x","y0":0,"y1":1,"yref":"y domain"},{"line":{"color":"red","dash":"solid","width":1.2},"type":"line","x0":0,"x1":1,"xref":"x2 domain","y0":0,"y1":0,"yref":"y2"},{"fillcolor":"gray","layer":"below","line":{"width":0},"opacity":0.08,"type":"rect","x0":-0.5,"x1":1.5,"xref":"x2","y0":0,"y1":1,"yref":"y2 domain"},{"line":{"color":"red","dash":"solid","width":1.2},"type":"line","x0":0,"x1":1,"xref":"x3 domain","y0":0,"y1":0,"yref":"y3"},{"fillcolor":"gray","layer":"below","line":{"width":0},"opacity":0.08,"type":"rect","x0":-0.5,"x1":1.5,"xref":"x3","y0":0,"y1":1,"yref":"y3 domain"}],"margin":{"l":50,"r":20,"t":60,"b":60},"height":650,"plot_bgcolor":"white","paper_bgcolor":"white"},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('e98fcc3f-d32e-46ef-8453-7332a9e8dee8');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };            </script>        </div>
+</div>
+</div>
+<p><em>Note: Point estimates are approximate, reconstructed from Figure 1 of the paper. The underlying data are available at <a href="https://doi.org/10.7910/DVN/7Z2S30">https://doi.org/10.7910/DVN/7Z2S30</a>. Source: IMCO.</em></p>
+<hr>
+<section id="difference-in-differences-results" class="level2">
+<h2 class="anchored" data-anchor-id="difference-in-differences-results">Difference-in-Differences Results</h2>
+<p>Table 2 in the paper presents the main DiD estimates. The three columns correspond to all institutions (overall), healthcare institutions, and non-healthcare institutions.</p>
+<div class="did-grid">
+<div class="did-cell overall">
+<div class="did-cell-label">
+Overall
+</div>
+<div class="did-cell-coef">
++0.120***
+</div>
+<div class="did-cell-pct">
++17% relative to baseline<br><small>(SE = 0.034)</small>
+</div>
+</div>
+<div class="did-cell health">
+<div class="did-cell-label">
+<span class="badge-health">Health</span>
+</div>
+<div class="did-cell-coef" style="color:#15803d;">
+−0.060
+</div>
+<div class="did-cell-pct">
+Not significant<br><small>(SE = 0.043)</small>
+</div>
+</div>
+<div class="did-cell nonhealth">
+<div class="did-cell-label">
+<span class="badge-nonhealth">Non-Health</span>
+</div>
+<div class="did-cell-coef" style="color:#B91C1C;">
++0.166***
+</div>
+<div class="did-cell-pct">
++23% relative to baseline<br><small>(SE = 0.039)</small>
+</div>
+</div>
+</div>
+<p><em>Significance: *** p &lt; 0.01. All regressions include institution, month, and year fixed effects. Standard errors clustered at the institution level. Source: IMCO.</em></p>
+<div class="resultbox">
+<p><strong>The headline result:</strong> The pandemic increased discretionary contracting by 17% on average, but this effect is entirely driven by non-healthcare institutions. For healthcare institutions the estimate is negative and statistically insignificant. The non-healthcare coefficient (+0.166) represents a 23% increase relative to the pre-pandemic baseline of 0.715.</p>
+</div>
+<hr>
+</section>
+<section id="dynamic-effects-event-study" class="level2">
+<h2 class="anchored" data-anchor-id="dynamic-effects-event-study">Dynamic Effects: Event Study</h2>
+<p>The event study plot above (Figure 1 in the paper) shows the monthly path of the DCVB ratio before and after the lockdown. Three patterns stand out:</p>
+<p><strong>1. Parallel trends hold pre-pandemic.</strong> For all three panels, the pre-pandemic coefficients (<span class="math inline">\(q = -9\)</span> through <span class="math inline">\(q = -2\)</span>) cluster near zero and are statistically insignificant. This supports the identifying assumption.</p>
+<p><strong>2. The effect peaks and fades.</strong> For overall and non-health DCVB, the sharpest increase occurs at <span class="math inline">\(q = 2\)</span> (May 2020), the month the stay-at-home order was lifted. The effect persists for approximately four months before returning to pre-pandemic levels, consistent with the <strong>resilience of crime theory</strong> (Frailing &amp; Harper, 2017) rather than theories that predict a permanent increase.</p>
+<p><strong>3. Healthcare is flat throughout.</strong> The health DCVB panel shows no meaningful increase at any point during the pandemic. The coefficients are small and statistically indistinguishable from zero post-lockdown.</p>
+<hr>
+</section>
+<section id="mechanisms" class="level2">
+<h2 class="anchored" data-anchor-id="mechanisms">Mechanisms</h2>
+<p>Beyond the main DiD result, the paper investigates two potential mechanisms linking the pandemic to higher non-healthcare DCVB.</p>
+<section id="market-concentration" class="level3">
+<h3 class="anchored" data-anchor-id="market-concentration">Market Concentration</h3>
+<p>A Herfindahl-Hirschman Index (HHI) is constructed for each institution-month, measuring how concentrated the supplier market is for each institution:</p>
+<p><span class="math display">\[\text{HHI}_{iyt} = \sum_{j=1}^{n_{iyt}} s_{jiyt}^2\]</span></p>
+<p>where <span class="math inline">\(s_{jiyt}\)</span> is the share of contracts given to provider <span class="math inline">\(j\)</span> in institution <span class="math inline">\(i\)</span>, year <span class="math inline">\(y\)</span>, month <span class="math inline">\(t\)</span>.</p>
+<p>The pandemic increased HHI for non-healthcare institutions by approximately <strong>462 points</strong> (statistically significant at 10%). The pre-pandemic baseline HHI for non-health institutions was 2,819, already above the U.S. Department of Justice threshold of 2,500 for highly concentrated markets. A 462-point increase in an already concentrated market represents a meaningful further reduction in competition.</p>
+<p>Healthcare institutions show no significant change in market concentration.</p>
+</section>
+<section id="late-disclosure-of-contract-information" class="level3">
+<h3 class="anchored" data-anchor-id="late-disclosure-of-contract-information">Late Disclosure of Contract Information</h3>
+<p>The paper also tests whether the pandemic changed the proportion of contracts for which procedural information was published <em>after</em> the contract’s starting date (a proxy for opacity). For non-healthcare institutions, the proportion of late-disclosed contracts increased by approximately <strong>10%</strong> (coefficient 0.062, significant at 5%). No significant change is found for healthcare institutions.</p>
+<div class="keybox">
+<p><strong>Putting the mechanisms together:</strong> Non-healthcare institutions simultaneously became more discretionary (higher DCVB), more concentrated in their supplier base (higher HHI), and less transparent in their disclosure practices (more late publications). These three patterns are consistent with an increase in corruption risk. The effect is not driven by any single institution, as the leave-one-out robustness check confirms.</p>
+</div>
+<hr>
+</section>
+</section>
+<section id="robustness" class="level2">
+<h2 class="anchored" data-anchor-id="robustness">Robustness</h2>
+<p>The main results are robust to:</p>
+<ul>
+<li><strong>Multiple hypothesis testing</strong> (FDR q-values): overall and non-health DCVB remain significant.</li>
+<li><strong>Oster bounds</strong>: bounds exclude zero for overall and non-health DCVB, ruling out simple omitted variable explanations.</li>
+<li><strong>Outlier exclusion</strong> (top 1% and 5% of contracts): coefficients increase slightly (0.127 and 0.141 overall; 0.175 and 0.182 non-health), remaining highly significant.</li>
+<li><strong>Excluding SEDENA</strong>: the non-health result holds even without the Mexican Army.</li>
+<li><strong>Rambachan and Roth (2023) sensitivity</strong>: the parallel trends assumption can be violated by up to 15% of the worst pre-treatment deviation before the main results lose significance.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Silverio-Murillo, Prudencio &amp; Balmori-de-la-Miyar — <a href="https://doi.org/10.1007/s11115-024-00765-1"><em>Public Organization Review</em> (2024)</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

@@ -1,0 +1,45 @@
+---
+title: "Discussion"
+---
+
+## What This Paper Contributes
+
+This paper contributes to a growing literature on COVID-19 and corruption, with three specific additions.
+
+**First, a counterintuitive empirical finding with direct policy relevance.** The public debate in Mexico, as in many countries, centered on healthcare corruption during the pandemic. High-profile cases of overpriced medical equipment fueled this perception. The data tell a different story: it was non-healthcare institutions, operating with less scrutiny, that drove the measurable increase in discretionary contracting. This finding does not exonerate healthcare institutions, but it redirects attention to where the problem actually materialized in the data.
+
+**Second, evidence on temporal dynamics that informs theory.** The event study shows an inverted U-shape: the DCVB ratio rose sharply, peaked two months after the stay-at-home order was lifted, then returned to pre-pandemic levels within six months. This pattern supports the **resilience of crime theory** (Frailing & Harper, 2017), which predicts a temporary increase as institutions exploit the window of reduced oversight before accountability mechanisms recover. It is inconsistent with rational choice and routine activity theories, which would predict a more persistent effect.
+
+**Third, a mechanism analysis that goes beyond the headline result.** The paper links the DCVB increase to two observable correlates: higher provider market concentration (HHI +462 points in non-health institutions) and more frequent late disclosure of contract procedural information (+10%). These are consistent with a corruption risk story but, as the paper acknowledges, are suggestive rather than causal.
+
+---
+
+## Policy Implications
+
+<div class="resultbox">
+**For Mexico's Government Accountability Office (Auditoría Superior de la Federación):** The results suggest that audit efforts targeting pandemic-era procurement should focus on **non-healthcare institutions**, even though the political debate has centered on healthcare. The concentration of scrutiny on healthcare may itself explain why corruption risk did not materialize there: public monitoring is a deterrent.
+</div>
+
+The finding also has implications for future emergency procurement design. Accountability mechanisms that relax procurement rules during crises should include enhanced monitoring for the sectors that receive *less* public attention, not only those at the center of the emergency.
+
+---
+
+## Limitations and Caveats
+
+<div class="warningbox">
+**DCVB measures risk, not corruption.** The paper is explicit about this. A rising share of discretionary contracts is consistent with both legitimate emergency procurement and corrupt favoritism. The available data do not allow distinguishing between these two explanations for any individual contract. The paper identifies a pattern at the aggregate level, not individual wrongdoing.
+</div>
+
+**Mechanism channels are correlational.** The HHI and late-disclosure results are estimated using the same DiD framework as the main result. They are consistent with the corruption risk story, but they are not experimentally identified as *causes* of the DCVB increase.
+
+**The 2020 window is short.** The treatment period covers only nine post-pandemic months (March to December 2020). The return to pre-pandemic levels by late 2020 is encouraging, but a longer panel would allow more precise characterization of the recovery path.
+
+**Healthcare and non-healthcare is a coarse split.** The paper's classification is binary. Within the non-healthcare group, there is likely substantial heterogeneity in institutional quality, oversight capacity, and vulnerability to discretionary practices that this analysis cannot fully capture.
+
+---
+
+## Open Questions
+
+- Does the pattern generalize to subnational governments in Mexico, which handle a large share of infrastructure procurement?
+- Would a finer institutional taxonomy (by sector, budget size, or prior audit history) reveal further heterogeneity within the non-healthcare group?
+- Is the deterrence mechanism credible? If media scrutiny of healthcare procurement did constrain corruption risk there, what is the marginal deterrence effect of an audit announcement versus sustained coverage?
