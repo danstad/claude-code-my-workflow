@@ -4,7 +4,7 @@ title: "Discussion"
 
 ## What This Paper Contributes
 
-This paper contributes to a growing literature on COVID-19 and corruption, with three specific additions.
+This paper contributes to a growing literature on COVID-19 and corruption, with three specific contributions.
 
 **First, a counterintuitive empirical finding with direct policy relevance.** The public debate in Mexico, as in many countries, centered on healthcare corruption during the pandemic. High-profile cases of overpriced medical equipment fueled this perception. The data tell a different story: it was non-healthcare institutions, operating with less scrutiny, that drove the measurable increase in discretionary contracting. This finding does not exonerate healthcare institutions, but it redirects attention to where the problem actually materialized in the data.
 
