@@ -1,0 +1,260 @@
+---
+title: "The Effect of the COVID-19 Pandemic on Risk of Corruption"
+subtitle: "Evidence from Mexico's Federal Procurement System"
+author: "Adan Silverio-Murillo, Daniel Prudencio & Jose Roberto Balmori-de-la-Miyar"
+institute: "Published in <em>Public Organization Review</em>, 2024"
+format:
+  revealjs:
+    theme: [default, emory-clean.scss]
+    slide-number: true
+    transition: fade
+    transition-speed: fast
+    incremental: false
+    toc: false
+    embed-resources: true
+    width: 1280
+    height: 720
+    fig-align: center
+---
+
+## The Puzzle: Did COVID-19 Increase Corruption Risk?
+
+::: {.columns}
+::: {.column width="57%"}
+**The concern:** Emergency spending + relaxed oversight = [corruption opportunity]{.negative}
+
+- Governments worldwide rapidly increased procurement budgets
+- Accountability standards were explicitly relaxed
+- High-profile cases of overpriced medical equipment surfaced quickly
+
+**The natural expectation:** [Healthcare institutions]{.negative} would be at the center of pandemic corruption, most money, most relaxed rules, most pressure
+
+**The research question:** Did COVID-19 measurably increase corruption risk in Mexico's federal procurement, and if so, [where?]{.hi-gold}
+:::
+
+::: {.column width="40%"}
+::: {.methodbox}
+**The setting:**
+
+Mexico's public contracts can be allocated through:
+
+1. [Open public auction]{.hi} (law's preferred method)
+2. [Invitation auction]{.hi-gold} (selected suppliers only)
+3. [Direct allocation]{.hi-gold} (no competition)
+
+Mechanisms 2 and 3 are legally allowed but discretionary, opening the door to favoritism
+:::
+
+::: {.keybox}
+**Outcome:** DCVB ratio, the share of total contract value assigned without competitive bidding
+:::
+:::
+:::
+
+## The Data: Mexico's Federal Procurement System
+
+::: {.columns}
+::: {.column width="52%"}
+**Data source:** CompraNet, Mexico's public procurement system, systematized by IMCO
+
+**Sample:** Balanced panel of institutions, January 2018 to December 2020
+
+| Feature | Value |
+|:--------|------:|
+| Federal institutions | 64 |
+| Public acquisitions | 378,000 |
+| Institution-month obs. | 2,304 |
+| Pre-COVID DCVB (Overall) | 0.705 |
+| Pre-COVID DCVB (Health) | 0.667 |
+| Pre-COVID DCVB (Non-Health) | 0.715 |
+
+*Source: IMCO*
+
+::: {.smallest}
+The 64 institutions cover approximately 75% of all federal public acquisition allocations
+:::
+:::
+
+::: {.column width="45%"}
+::: {.keybox}
+**Key baseline fact:**
+
+Before the pandemic, [70% of contract value]{.hi-gold} was already assigned through discretionary mechanisms. This is the status quo the pandemic disrupted.
+:::
+
+::: {.methodbox}
+**Two groups of institutions:**
+
+[Healthcare:]{.hi-gold} federal hospitals, IMSS, health secretariats. Intense public scrutiny during the pandemic.
+
+[Non-healthcare:]{.hi-gold} defense, education, infrastructure, energy, and other sectors. Comparatively less media attention.
+:::
+:::
+:::
+
+## How Do We Identify the Effect of the Pandemic?
+
+::: {.columns}
+::: {.column width="53%"}
+**Difference-in-Differences:**
+
+The pandemic is a universal shock, all institutions were affected. Variation comes from the time dimension:
+
+- [Treatment indicator:]{.hi-gold} 1 if year = 2020, 0 for 2018–2019
+- [Time indicator:]{.hi-gold} 1 for March–December, 0 for January–February
+- [COVID-19 variable:]{.hi-gold} interaction = 1 for March–December 2020
+
+$$\text{DCVB}_{imy} = \alpha + \beta^{DD}\,\text{COVID19}_{imy} + a_i + \gamma_m + \nu_y + e_{imy}$$
+
+$\beta^{DD}$ captures the average effect of the pandemic months on the DCVB ratio
+
+**Event study:** Traces the dynamic effect month by month, and validates the parallel trends assumption
+:::
+
+::: {.column width="44%"}
+
+<svg viewBox="0 0 460 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:240px;">
+  <!-- Grid -->
+  <line x1="80" y1="40" x2="80" y2="230" stroke="#ccc" stroke-width="1"/>
+  <line x1="270" y1="40" x2="270" y2="230" stroke="#012169" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <line x1="80" y1="230" x2="440" y2="230" stroke="#ccc" stroke-width="1"/>
+  <!-- X axis labels -->
+  <text x="175" y="248" text-anchor="middle" font-size="11" fill="#555" font-family="sans-serif">Jan–Feb 2020</text>
+  <text x="355" y="248" text-anchor="middle" font-size="11" fill="#555" font-family="sans-serif">Mar–Dec 2020</text>
+  <!-- Lockdown label -->
+  <text x="270" y="30" text-anchor="middle" font-size="10" font-weight="bold" fill="#012169" font-family="sans-serif">Lockdown</text>
+  <!-- Pre period label -->
+  <text x="175" y="55" text-anchor="middle" font-size="10" fill="#555" font-family="sans-serif">Pre-period</text>
+  <!-- Post period label -->
+  <text x="355" y="55" text-anchor="middle" font-size="10" fill="#012169" font-family="sans-serif" font-weight="bold">Post-period</text>
+  <!-- Counterfactual line (dashed) -->
+  <line x1="90" y1="160" x2="430" y2="160" stroke="#999" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="435" y="163" font-size="9" fill="#999" font-family="sans-serif">CF</text>
+  <!-- Observed line -->
+  <line x1="90" y1="160" x2="270" y2="160" stroke="#012169" stroke-width="2"/>
+  <line x1="270" y1="160" x2="355" y2="115" stroke="#B91C1C" stroke-width="2.5"/>
+  <line x1="355" y1="115" x2="430" y2="145" stroke="#B91C1C" stroke-width="2"/>
+  <!-- Arrow showing beta -->
+  <line x1="355" y1="118" x2="355" y2="157" stroke="#B91C1C" stroke-width="1.5" marker-end="url(#arr)"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#B91C1C"/>
+    </marker>
+  </defs>
+  <text x="365" y="142" font-size="12" font-weight="bold" fill="#B91C1C" font-family="sans-serif">β</text>
+  <!-- Peak label -->
+  <text x="355" y="108" text-anchor="middle" font-size="9" fill="#B91C1C" font-family="sans-serif">Peak (q=2)</text>
+  <!-- Y axis label -->
+  <text x="30" y="150" text-anchor="middle" font-size="10" fill="#555" font-family="sans-serif" transform="rotate(-90,30,150)">DCVB ratio</text>
+  <!-- Y axis ticks -->
+  <line x1="76" y1="160" x2="84" y2="160" stroke="#999" stroke-width="1"/>
+  <text x="72" y="163" text-anchor="end" font-size="9" fill="#999" font-family="sans-serif">0.705</text>
+</svg>
+
+::: {.smallest}
+Institution ($a_i$), month ($\gamma_m$), and year ($\nu_y$) fixed effects absorb all time-invariant differences. Standard errors clustered at the institution level.
+:::
+:::
+:::
+
+## Main Result: It Was Not Healthcare
+
+::: {.columns}
+::: {.column width="54%"}
+**Difference-in-Differences results (Table 2):**
+
+|  | Overall | Health | Non-Health |
+|:--|:--:|:--:|:--:|
+| 1(COVID-19) | 0.120\*\*\* | −0.060 | 0.166\*\*\* |
+|  | (0.034) | (0.043) | (0.039) |
+| N | 2,304 | 468 | 1,836 |
+| R² | 0.32 | 0.19 | 0.35 |
+| Pre-COVID mean | 0.705 | 0.667 | 0.715 |
+| % change | +17.02% | −9.09% | +23.21% |
+
+*\*\*\* p<0.01. Source: IMCO.*
+
+::: {.smallest}
+Baseline fixed effects at the institution, month, and year level
+:::
+:::
+
+::: {.column width="43%"}
+::: {.resultbox}
+**The counterintuitive result:**
+
+The pandemic increased discretionary contracting by [+17%]{.hi-gold} overall.
+
+This is [entirely driven by non-healthcare institutions (+23%)]{.hi-gold}.
+
+Healthcare institutions show [no significant change]{.negative}, despite being at the center of the public debate.
+:::
+
+::: {.keybox}
+A possible explanation: intense media and civil society scrutiny of healthcare procurement may have [constrained discretionary behavior]{.hi} precisely where it was most expected.
+:::
+:::
+:::
+
+## Dynamic Effects and Mechanisms
+
+::: {.columns}
+::: {.column width="48%"}
+**Event study (Figure 1):** Inverted U-shape for non-health
+
+- Pre-pandemic coefficients are [not statistically significant]{.hi-gold}, supporting parallel trends
+- Effect [peaks at q=2]{.hi-gold} (May 2020, when stay-at-home order was lifted)
+- Non-healthcare DCVB rises by [20%]{.hi-gold} by the second month
+- Effect persists for [four subsequent months]{.hi-gold}, then returns to pre-pandemic levels
+- Healthcare DCVB: [flat throughout]{.negative}
+
+Consistent with the [resilience of crime theory]{.hi}: a temporary window of reduced oversight, not a permanent shift
+:::
+
+::: {.column width="48%"}
+**Two mechanisms investigated:**
+
+::: {.methodbox}
+**Market concentration (HHI)**
+
+A Herfindahl-Hirschman Index is constructed for each institution-month. Non-healthcare institutions saw their supplier market become significantly more concentrated during the pandemic.
+:::
+
+::: {.methodbox}
+**Late disclosure of contract information**
+
+The proportion of contracts with procedural information published after the contract start date increased for non-healthcare institutions, consistent with reduced transparency.
+:::
+
+::: {.smallest}
+The leave-one-out analysis confirms results are not driven by any single institution, including SEDENA (the Mexican Army)
+:::
+:::
+:::
+
+## Conclusions and Policy Implications
+
+::: {.columns}
+::: {.column width="50%"}
+**What we found:**
+
+1. COVID-19 increased discretionary contracting in Mexico's federal procurement by [+17%]{.hi-gold} overall
+2. The effect is driven entirely by [non-healthcare institutions (+23%)]{.hi-gold}, not by healthcare
+3. The increase was [temporary]{.hi}: peaked two months after the stay-at-home order lifted, returned to baseline within six months
+4. Non-healthcare institutions also became [more concentrated]{.hi-gold} in their supplier base and [less transparent]{.hi-gold} in contract disclosure
+:::
+
+::: {.column width="47%"}
+::: {.keybox}
+**Policy implication:**
+
+Audit efforts targeting pandemic-era procurement should focus on [non-healthcare institutions]{.hi-gold}, even though the political debate centered on healthcare.
+
+Public scrutiny may itself be a corruption deterrent: the sectors that receive [less attention]{.negative} are where the risk actually materializes.
+:::
+
+::: {.smallest}
+**Limitation:** DCVB measures [corruption risk]{.hi-gold}, not actual corruption. A rising share of discretionary contracts is consistent with both legitimate emergency procurement and corrupt favoritism. The paper identifies a pattern at the aggregate level, not individual wrongdoing.
+:::
+:::
+:::
