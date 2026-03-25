@@ -72,9 +72,9 @@ The table below (Table 1 in the paper) shows summary statistics at the instituti
 
 The paper distinguishes two groups of institutions:
 
-<span class="badge-health">Health institutions</span> — 14 institutions, including federal hospitals, the social security institute (IMSS), and health secretariats. These institutions were under intense public scrutiny during the pandemic.
+<span class="badge-health">Health institutions</span> — federal hospitals, the social security institute (IMSS), and health secretariats. These institutions were under intense public scrutiny during the pandemic.
 
-<span class="badge-nonhealth">Non-health institutions</span> — 50 institutions spanning defense, education, infrastructure, energy, and other sectors. These received comparatively less media attention during the pandemic.
+<span class="badge-nonhealth">Non-health institutions</span> — institutions spanning defense, education, infrastructure, energy, and other sectors. These received comparatively less media attention during the pandemic.
 
 This distinction is central to the paper's main finding: while the public debate focused on healthcare procurement, the data tells a different story.
 
