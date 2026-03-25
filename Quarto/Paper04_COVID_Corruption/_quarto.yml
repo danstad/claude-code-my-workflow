@@ -20,6 +20,10 @@ website:
         text: Discussion
       - href: citation.qmd
         text: Citation
+    right:
+      - icon: person-circle
+        text: "Daniel Prudencio"
+        href: https://sites.google.com/view/danielprudencio/home
   page-footer:
     left: "Silverio-Murillo, Prudencio & Balmori-de-la-Miyar — [*Public Organization Review* (2024)](https://doi.org/10.1007/s11115-024-00765-1)"
     right: "Built with [Quarto](https://quarto.org)"

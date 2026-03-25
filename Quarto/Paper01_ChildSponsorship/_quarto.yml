@@ -20,6 +20,10 @@ website:
         text: Discussion
       - href: citation.qmd
         text: Citation
+    right:
+      - icon: person-circle
+        text: "Daniel Prudencio"
+        href: https://sites.google.com/view/danielprudencio/home
   page-footer:
     left: "Daniel Prudencio — [*Education Economics* (2025)](https://doi.org/10.1080/09645292.2025.2498639)"
     right: "Built with [Quarto](https://quarto.org)"
