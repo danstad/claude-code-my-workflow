@@ -1,4 +1,7 @@
 /*-- scss:defaults --*/
+$primary:        #012169;
+$link-color:     #012169;
+$font-size-base: 1rem;
 
 /*-- scss:rules --*/
 /*-- Paper04: COVID-19 & Corruption Risk --*/
@@ -13,9 +16,13 @@ $red-bg:   #FEF2F2;
 $green-bg: #F0FDF4;
 
 /* ---------- Layout ---------- */
-.page-columns #quarto-content {
-  max-width: 1100px !important;
-  margin: 0 auto;
+.page-columns .content {
+  max-width: 860px !important;
+}
+
+body {
+  font-size: 1.0rem;
+  line-height: 1.7;
 }
 
 /* ---------- Hero title block ---------- */
