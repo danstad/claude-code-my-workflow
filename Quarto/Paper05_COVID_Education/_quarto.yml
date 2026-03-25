@@ -20,6 +20,10 @@ website:
         text: Discussion
       - href: citation.qmd
         text: Citation
+    right:
+      - icon: person-circle
+        text: "Daniel Prudencio"
+        href: https://sites.google.com/view/danielprudencio/home
   page-footer:
     left: "Prudencio, Balmori-de-la-Miyar, Silverio-Murillo & Sobrino — [*International Journal of Educational Development* (2024)](https://doi.org/10.1016/j.ijedudev.2024.103144)"
     right: "Built with [Quarto](https://quarto.org)"
