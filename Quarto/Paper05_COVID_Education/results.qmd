@@ -1,0 +1,231 @@
+---
+title: "Results"
+---
+
+## Main DiD Estimates
+
+Table 2 in the paper presents the main difference-in-differences estimates for all three outcomes.
+
+| | (1) New Entry | (2) Enrollment | (3) Graduation |
+|:--|:--:|:--:|:--:|
+| Post × Treatment | −13.315\*\*\* | −8.199\*\*\* | −7.542\*\*\* |
+| | (1.806) | (3.171) | (1.290) |
+| Post | 4.586\*\* | 7.416\*\*\* | 2.099\* |
+| | (1.853) | (2.409) | (1.195) |
+| Treatment | 3.320\*\*\* | 3.516 | 0.810 |
+| | (0.980) | (3.645) | (1.087) |
+| Controls | Yes | Yes | Yes |
+| R² | 0.08 | 0.11 | 0.09 |
+| Observations | 50,670 | 50,670 | 50,670 |
+| Pre-COVID mean | 83.195 | 322.339 | 34.922 |
+| Effect as % of pre-COVID mean | **16%** | **2.54%** | **21.55%** |
+
+: {tbl-colwidths="[32,23,23,22]"}
+
+*Source: ANUIES. Standard errors in parentheses, clustered at the municipality level. Controls include a dummy for delivery format, a dummy for whether the university is public, and a dummy for whether the university is top-20. \* p<0.10, \*\* p<0.05, \*\*\* p<0.01.*
+
+<div class="resultbox">
+**The headline result.** The pandemic reduced new entry by 16%, graduation by 21.5%, and enrollment by 2.5% relative to pre-pandemic levels. Graduation was hit hardest. The relatively small enrollment effect is consistent with students remaining formally registered while reducing their course load or delaying completion.
+</div>
+
+---
+
+## Heterogeneous Effects by Institution Type
+
+Table 4 in the paper estimates the DDD specification for three dimensions of institutional heterogeneity.
+
+### Public vs. Private Universities
+
+<div class="outcomes-grid">
+<div class="outcome-cell entry">
+<div class="outcome-cell-label">New entry</div>
+<div class="outcome-cell-coef">+1.04%</div>
+<div class="outcome-cell-desc">Differential effect for public universities. Null — no significant difference in new entry between public and private.</div>
+</div>
+<div class="outcome-cell enrollment">
+<div class="outcome-cell-label">Enrollment</div>
+<div class="outcome-cell-coef">+1.41%</div>
+<div class="outcome-cell-desc">Differential effect for public universities. Null — no significant difference in enrollment.</div>
+</div>
+<div class="outcome-cell graduation">
+<div class="outcome-cell-label">Graduation</div>
+<div class="outcome-cell-coef">−27.2%</div>
+<div class="outcome-cell-desc">Public universities suffered a significantly larger graduation decline, relative to the public pre-COVID mean of 74.3 graduates per program.</div>
+</div>
+</div>
+
+<span class="badge-public">Public institutions</span> performed significantly worse than private ones in graduation outcomes, but not in new entry or enrollment. The pre-pandemic mean for public graduation was 74.3 versus 17.8 for private institutions, making the public sector's higher absolute losses especially consequential.
+
+### Top-20 vs. Non-Top-20 Universities
+
+<div class="outcomes-grid">
+<div class="outcome-cell entry">
+<div class="outcome-cell-label">New entry</div>
+<div class="outcome-cell-coef">+7.99%</div>
+<div class="outcome-cell-desc">Top-20 universities gained new students relative to non-top-20. Significant at p<0.01.</div>
+</div>
+<div class="outcome-cell enrollment">
+<div class="outcome-cell-label">Enrollment</div>
+<div class="outcome-cell-coef">+2.21%</div>
+<div class="outcome-cell-desc">Top-20 universities also gained in enrollment relative to non-top-20. Significant at p<0.05.</div>
+</div>
+<div class="outcome-cell graduation">
+<div class="outcome-cell-label">Graduation</div>
+<div class="outcome-cell-coef">−20.4%</div>
+<div class="outcome-cell-desc">Top-20 universities experienced a larger graduation decline relative to their pre-COVID mean of 128.6 graduates per program. Marginally significant (p<0.10).</div>
+</div>
+</div>
+
+<span class="badge-elite">Elite universities</span> attracted more new students during the pandemic, consistent with a **flight-to-quality** response: students anticipated that well-resourced institutions would handle the disruption better and shifted preferences accordingly. The best schools in Mexico tend to attract students with higher incomes and resources, so this pattern is also consistent with the pandemic disproportionately affecting lower-income students.
+
+### Synchronous vs. Asynchronous Programs
+
+In-person programs showed no significant difference from asynchronous (already online) programs in new entry or enrollment. However, synchronous programs experienced a worse graduation outcome: the differential graduation effect was −11.45% relative to the synchronous pre-COVID mean (41.5 graduates per program). This is consistent with in-person programs facing larger administrative hurdles for degree certification during campus closures.
+
+<div class="keybox">
+**A surprising null result.** One might expect programs already designed for remote delivery to have a natural advantage during the pandemic. The data show that having an online format did not protect institutions from new-entry or enrollment shocks. The disruption appears to be driven by the income and health shock component of the pandemic, rather than by the transition to online delivery per se.
+</div>
+
+---
+
+## Effects by Gender
+
+Table 5 presents the DiD estimates separately for men and women, overall and by STEM vs. non-STEM fields.
+
+| | New Entry | Enrollment | Graduation |
+|:--|:--:|:--:|:--:|
+| **Men (overall)** | −17.18% | −3.52% | −21.03% |
+| **Women (overall)** | −14.88% | −1.58% | −22.08% |
+| **Men — STEM** | −13.94% | −2.68% | −23.02% |
+| **Women — STEM** | −10.55% | −1.04% | −24.02% |
+| **Men — Non-STEM** | −20.20% | −4.39% | −19.01% |
+| **Women — Non-STEM** | −17.00% | −1.85% | −20.92% |
+
+: {tbl-colwidths="[34,22,22,22]"}
+
+*All estimates as % of pre-COVID mean. Source: ANUIES.*
+
+<div class="methodbox">
+**Key gender patterns.** Men were more adversely affected than women in new entry and enrollment. Women were slightly more affected on graduation, consistent with evidence that older female students were less likely to return to complete their degrees after the pandemic. Within STEM fields, graduation declines are larger for both genders (~23-24%) than the overall average, suggesting STEM programs were disproportionately disrupted at the completion stage.
+</div>
+
+---
+
+## Effects by Area of Study
+
+Table 6 presents the DiD estimates for all ten areas of study. Graduation rates and new entry showed the most variation across fields.
+
+::: {.callout-note collapse="true"}
+## New entry by area of study
+
+| Area of Study | New Entry (% change) | Significant? |
+|:--|:--:|:--:|
+| Education | −25.25% | \*\*\* |
+| Services | −24.54% | \*\*\* |
+| Social Sciences | −18.00% | \*\*\* |
+| Business | −17.95% | \*\*\* |
+| Engineering | −13.45% | \*\*\* |
+| Arts & Humanities | −13.35% | \*\*\* |
+| Health | −12.22% | \*\*\* |
+| Information Technology | −12.02% | \*\*\* |
+| Agronomy & Veterinary | −9.33% | \*\* |
+| Sciences | −5.99% | (not significant) |
+
+: {tbl-colwidths="[45,30,25]"}
+
+Education-related majors suffered the highest new-entry decline (25.25%). Sciences showed no significant effect. Social sciences and services were also severely affected (18% and 24.5%).
+:::
+
+::: {.callout-note collapse="true"}
+## Graduation by area of study
+
+| Area of Study | Graduation (% change) | Significant? |
+|:--|:--:|:--:|
+| Sciences | −37.5% | \*\* |
+| Agronomy & Veterinary | −27.35% | \*\* |
+| Health | −24.32% | \*\*\* |
+| Social Sciences | −23.9% | \*\*\* |
+| Engineering | −22.1% | \*\*\* |
+| Services | −22.23% | \*\*\* |
+| Business | −18.9% | \*\*\* |
+| Information Technology | −20.09% | \*\*\* |
+| Education | −13.87% | \*\* |
+| Arts & Humanities | −11.67% | \*\* |
+
+: {tbl-colwidths="[45,30,25]"}
+
+Sciences experienced the most severe graduation collapse (37.5%), followed by agronomy and health. Arts & humanities and education had the smallest — but still significant — graduation declines.
+:::
+
+<div class="resultbox">
+**Two fields of particular policy concern.** Sciences saw a 37.5% collapse in graduation — the single largest effect in the paper — with implications for STEM pipeline development. Education-related majors saw a 25% drop in new entry, raising the prospect of future teacher shortages if this trend persists or is not reversed. As Aucejo et al. (2020) reported, approximately 12% of students considered changing majors due to the pandemic, suggesting some of this new-entry decline may reflect permanent preference shifts.
+</div>
+
+---
+
+## Robustness
+
+::: {.callout-note collapse="true"}
+## 1. Placebo test (pre-parallel trends)
+
+The treatment window is shifted two years earlier: treatment = academic years 2018-2019 and 2019-2020, control = 2016-2017 and 2017-2018. If the parallel trends assumption holds, we should find null effects. Panel A of Table 3 confirms this: all placebo estimates are statistically insignificant.
+
+| | New Entry | Enrollment | Graduation |
+|:--|:--:|:--:|:--:|
+| Post × Treatment (placebo) | 0.439 | 3.108 | −0.991 |
+| | (0.962) | (4.251) | (0.769) |
+| R² | 0.07 | 0.11 | 0.10 |
+| Observations | 48,194 | 48,194 | 48,194 |
+
+: {tbl-colwidths="[32,23,23,22]"}
+:::
+
+::: {.callout-note collapse="true"}
+## 2. False Discovery Rate correction (q-values)
+
+Panel B of Table 3 presents p-values and FDR-corrected q-values. None of the statistically significant results becomes insignificant after the multiple-testing correction.
+
+| | New Entry | Enrollment | Graduation |
+|:--|:--:|:--:|:--:|
+| Post × Treatment | −13.315\*\*\* | −8.199\*\*\* | −7.542\*\*\* |
+| p-value | (4.74e-13) | (0.009) | (7.72e-09) |
+| q-value | [0.001] | [0.005] | [0.001] |
+| Observations | 50,670 | 50,670 | 50,670 |
+
+: {tbl-colwidths="[32,23,23,22]"}
+:::
+
+::: {.callout-note collapse="true"}
+## 3. Oster (2019) bounds for omitted variable bias
+
+Panel C of Table 3 presents Oster bounds based on an expected R² value. Bounds that exclude zero indicate robustness to omitted variable bias. All three bounds exclude zero.
+
+| | New Entry | Enrollment | Graduation |
+|:--|:--:|:--:|:--:|
+| Oster bounds | [−23.062, −11.206] | [−9.028, −4.386] | [−10.024, −7.011] |
+| Observations | 50,670 | 50,670 | 50,670 |
+
+: {tbl-colwidths="[32,23,23,22]"}
+:::
+
+::: {.callout-note collapse="true"}
+## 4. Leave-one-major-out sensitivity
+
+Panel D of Table 3 re-estimates the main DiD ten times, each time omitting one area of study. All estimates remain highly significant and close to the main specification, confirming that results are not driven by any single field.
+
+| Specification | New Entry | Enrollment | Graduation |
+|:--|:--:|:--:|:--:|
+| Overall (baseline) | −13.315\*\*\* | −8.199\*\*\* | −7.542\*\*\* |
+| Leaving out sciences | −13.442\*\*\* | −8.511\*\*\* | −7.342\*\*\* |
+| Leaving out social sciences | −12.824\*\*\* | −7.514\*\* | −7.270\*\*\* |
+| Leaving out education | −13.495\*\*\* | −9.335\*\*\* | −8.081\*\*\* |
+| Leaving out engineering | −12.628\*\*\* | −6.838\*\* | −6.755\*\*\* |
+| Leaving out health | −12.921\*\*\* | −7.701\*\* | −6.887\*\*\* |
+| Leaving out inf. technology | −14.254\*\*\* | −9.423\*\*\* | −8.008\*\*\* |
+| Leaving out business | −12.528\*\*\* | −7.293\*\*\* | −7.734\*\*\* |
+| Leaving out agronomy & vet. | −13.421\*\*\* | −8.030\*\* | −7.500\*\*\* |
+| Leaving out arts & hum. | −13.941\*\*\* | −8.752\*\* | −8.046\*\*\* |
+| Leaving out services | −13.502\*\*\* | −8.369\*\* | −7.805\*\*\* |
+
+: {tbl-colwidths="[40,20,20,20]"}
+:::

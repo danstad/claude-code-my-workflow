@@ -1,0 +1,226 @@
+[
+  {
+    "objectID": "results.html",
+    "href": "results.html",
+    "title": "Results",
+    "section": "",
+    "text": "Table 2 in the paper presents the main difference-in-differences estimates for all three outcomes.\n\n\n\n\n\n\n\n\n\n\n(1) New Entry\n(2) Enrollment\n(3) Graduation\n\n\n\n\nPost × Treatment\n−13.315***\n−8.199***\n−7.542***\n\n\n\n(1.806)\n(3.171)\n(1.290)\n\n\nPost\n4.586**\n7.416***\n2.099*\n\n\n\n(1.853)\n(2.409)\n(1.195)\n\n\nTreatment\n3.320***\n3.516\n0.810\n\n\n\n(0.980)\n(3.645)\n(1.087)\n\n\nControls\nYes\nYes\nYes\n\n\nR²\n0.08\n0.11\n0.09\n\n\nObservations\n50,670\n50,670\n50,670\n\n\nPre-COVID mean\n83.195\n322.339\n34.922\n\n\nEffect as % of pre-COVID mean\n16%\n2.54%\n21.55%\n\n\n\nSource: ANUIES. Standard errors in parentheses, clustered at the municipality level. Controls include a dummy for delivery format, a dummy for whether the university is public, and a dummy for whether the university is top-20. * p&lt;0.10, ** p&lt;0.05, *** p&lt;0.01.\n\nThe headline result. The pandemic reduced new entry by 16%, graduation by 21.5%, and enrollment by 2.5% relative to pre-pandemic levels. Graduation was hit hardest. The relatively small enrollment effect is consistent with students remaining formally registered while reducing their course load or delaying completion."
+  },
+  {
+    "objectID": "results.html#main-did-estimates",
+    "href": "results.html#main-did-estimates",
+    "title": "Results",
+    "section": "",
+    "text": "Table 2 in the paper presents the main difference-in-differences estimates for all three outcomes.\n\n\n\n\n\n\n\n\n\n\n(1) New Entry\n(2) Enrollment\n(3) Graduation\n\n\n\n\nPost × Treatment\n−13.315***\n−8.199***\n−7.542***\n\n\n\n(1.806)\n(3.171)\n(1.290)\n\n\nPost\n4.586**\n7.416***\n2.099*\n\n\n\n(1.853)\n(2.409)\n(1.195)\n\n\nTreatment\n3.320***\n3.516\n0.810\n\n\n\n(0.980)\n(3.645)\n(1.087)\n\n\nControls\nYes\nYes\nYes\n\n\nR²\n0.08\n0.11\n0.09\n\n\nObservations\n50,670\n50,670\n50,670\n\n\nPre-COVID mean\n83.195\n322.339\n34.922\n\n\nEffect as % of pre-COVID mean\n16%\n2.54%\n21.55%\n\n\n\nSource: ANUIES. Standard errors in parentheses, clustered at the municipality level. Controls include a dummy for delivery format, a dummy for whether the university is public, and a dummy for whether the university is top-20. * p&lt;0.10, ** p&lt;0.05, *** p&lt;0.01.\n\nThe headline result. The pandemic reduced new entry by 16%, graduation by 21.5%, and enrollment by 2.5% relative to pre-pandemic levels. Graduation was hit hardest. The relatively small enrollment effect is consistent with students remaining formally registered while reducing their course load or delaying completion."
+  },
+  {
+    "objectID": "results.html#heterogeneous-effects-by-institution-type",
+    "href": "results.html#heterogeneous-effects-by-institution-type",
+    "title": "Results",
+    "section": "Heterogeneous Effects by Institution Type",
+    "text": "Heterogeneous Effects by Institution Type\nTable 4 in the paper estimates the DDD specification for three dimensions of institutional heterogeneity.\n\nPublic vs. Private Universities\n\n\n\nNew entry\n\n\n+1.04%\n\n\nDifferential effect for public universities. Null — no significant difference in new entry between public and private.\n\n\n\n\nEnrollment\n\n\n+1.41%\n\n\nDifferential effect for public universities. Null — no significant difference in enrollment.\n\n\n\n\nGraduation\n\n\n−27.2%\n\n\nPublic universities suffered a significantly larger graduation decline, relative to the public pre-COVID mean of 74.3 graduates per program.\n\n\n\nPublic institutions performed significantly worse than private ones in graduation outcomes, but not in new entry or enrollment. The pre-pandemic mean for public graduation was 74.3 versus 17.8 for private institutions, making the public sector’s higher absolute losses especially consequential.\n\n\nTop-20 vs. Non-Top-20 Universities\n\n\n\nNew entry\n\n\n+7.99%\n\n\nTop-20 universities gained new students relative to non-top-20. Significant at p&lt;0.01.\n\n\n\n\nEnrollment\n\n\n+2.21%\n\n\nTop-20 universities also gained in enrollment relative to non-top-20. Significant at p&lt;0.05.\n\n\n\n\nGraduation\n\n\n−20.4%\n\n\nTop-20 universities experienced a larger graduation decline relative to their pre-COVID mean of 128.6 graduates per program. Marginally significant (p&lt;0.10).\n\n\n\nElite universities attracted more new students during the pandemic, consistent with a flight-to-quality response: students anticipated that well-resourced institutions would handle the disruption better and shifted preferences accordingly. The best schools in Mexico tend to attract students with higher incomes and resources, so this pattern is also consistent with the pandemic disproportionately affecting lower-income students.\n\n\nSynchronous vs. Asynchronous Programs\nIn-person programs showed no significant difference from asynchronous (already online) programs in new entry or enrollment. However, synchronous programs experienced a worse graduation outcome: the differential graduation effect was −11.45% relative to the synchronous pre-COVID mean (41.5 graduates per program). This is consistent with in-person programs facing larger administrative hurdles for degree certification during campus closures.\n\nA surprising null result. One might expect programs already designed for remote delivery to have a natural advantage during the pandemic. The data show that having an online format did not protect institutions from new-entry or enrollment shocks. The disruption appears to be driven by the income and health shock component of the pandemic, rather than by the transition to online delivery per se."
+  },
+  {
+    "objectID": "results.html#effects-by-gender",
+    "href": "results.html#effects-by-gender",
+    "title": "Results",
+    "section": "Effects by Gender",
+    "text": "Effects by Gender\nTable 5 presents the DiD estimates separately for men and women, overall and by STEM vs. non-STEM fields.\n\n\n\n\n\n\n\n\n\n\nNew Entry\nEnrollment\nGraduation\n\n\n\n\nMen (overall)\n−17.18%\n−3.52%\n−21.03%\n\n\nWomen (overall)\n−14.88%\n−1.58%\n−22.08%\n\n\nMen — STEM\n−13.94%\n−2.68%\n−23.02%\n\n\nWomen — STEM\n−10.55%\n−1.04%\n−24.02%\n\n\nMen — Non-STEM\n−20.20%\n−4.39%\n−19.01%\n\n\nWomen — Non-STEM\n−17.00%\n−1.85%\n−20.92%\n\n\n\nAll estimates as % of pre-COVID mean. Source: ANUIES.\n\nKey gender patterns. Men were more adversely affected than women in new entry and enrollment. Women were slightly more affected on graduation, consistent with evidence that older female students were less likely to return to complete their degrees after the pandemic. Within STEM fields, graduation declines are larger for both genders (~23-24%) than the overall average, suggesting STEM programs were disproportionately disrupted at the completion stage."
+  },
+  {
+    "objectID": "results.html#effects-by-area-of-study",
+    "href": "results.html#effects-by-area-of-study",
+    "title": "Results",
+    "section": "Effects by Area of Study",
+    "text": "Effects by Area of Study\nTable 6 presents the DiD estimates for all ten areas of study. Graduation rates and new entry showed the most variation across fields.\n\n\n\n\n\n\nNoteNew entry by area of study\n\n\n\n\n\n\n\n\n\n\n\n\n\nArea of Study\nNew Entry (% change)\nSignificant?\n\n\n\n\nEducation\n−25.25%\n***\n\n\nServices\n−24.54%\n***\n\n\nSocial Sciences\n−18.00%\n***\n\n\nBusiness\n−17.95%\n***\n\n\nEngineering\n−13.45%\n***\n\n\nArts & Humanities\n−13.35%\n***\n\n\nHealth\n−12.22%\n***\n\n\nInformation Technology\n−12.02%\n***\n\n\nAgronomy & Veterinary\n−9.33%\n**\n\n\nSciences\n−5.99%\n(not significant)\n\n\n\nEducation-related majors suffered the highest new-entry decline (25.25%). Sciences showed no significant effect. Social sciences and services were also severely affected (18% and 24.5%).\n\n\n\n\n\n\n\n\n\nNoteGraduation by area of study\n\n\n\n\n\n\n\n\n\n\n\n\n\nArea of Study\nGraduation (% change)\nSignificant?\n\n\n\n\nSciences\n−37.5%\n**\n\n\nAgronomy & Veterinary\n−27.35%\n**\n\n\nHealth\n−24.32%\n***\n\n\nSocial Sciences\n−23.9%\n***\n\n\nEngineering\n−22.1%\n***\n\n\nServices\n−22.23%\n***\n\n\nBusiness\n−18.9%\n***\n\n\nInformation Technology\n−20.09%\n***\n\n\nEducation\n−13.87%\n**\n\n\nArts & Humanities\n−11.67%\n**\n\n\n\nSciences experienced the most severe graduation collapse (37.5%), followed by agronomy and health. Arts & humanities and education had the smallest — but still significant — graduation declines.\n\n\n\n\nTwo fields of particular policy concern. Sciences saw a 37.5% collapse in graduation — the single largest effect in the paper — with implications for STEM pipeline development. Education-related majors saw a 25% drop in new entry, raising the prospect of future teacher shortages if this trend persists or is not reversed. As Aucejo et al. (2020) reported, approximately 12% of students considered changing majors due to the pandemic, suggesting some of this new-entry decline may reflect permanent preference shifts."
+  },
+  {
+    "objectID": "results.html#robustness",
+    "href": "results.html#robustness",
+    "title": "Results",
+    "section": "Robustness",
+    "text": "Robustness\n\n\n\n\n\n\nNote1. Placebo test (pre-parallel trends)\n\n\n\n\n\nThe treatment window is shifted two years earlier: treatment = academic years 2018-2019 and 2019-2020, control = 2016-2017 and 2017-2018. If the parallel trends assumption holds, we should find null effects. Panel A of Table 3 confirms this: all placebo estimates are statistically insignificant.\n\n\n\n\n\n\n\n\n\n\nNew Entry\nEnrollment\nGraduation\n\n\n\n\nPost × Treatment (placebo)\n0.439\n3.108\n−0.991\n\n\n\n(0.962)\n(4.251)\n(0.769)\n\n\nR²\n0.07\n0.11\n0.10\n\n\nObservations\n48,194\n48,194\n48,194\n\n\n\n\n\n\n\n\n\n\n\n\nNote2. False Discovery Rate correction (q-values)\n\n\n\n\n\nPanel B of Table 3 presents p-values and FDR-corrected q-values. None of the statistically significant results becomes insignificant after the multiple-testing correction.\n\n\n\n\n\n\n\n\n\n\nNew Entry\nEnrollment\nGraduation\n\n\n\n\nPost × Treatment\n−13.315***\n−8.199***\n−7.542***\n\n\np-value\n(4.74e-13)\n(0.009)\n(7.72e-09)\n\n\nq-value\n[0.001]\n[0.005]\n[0.001]\n\n\nObservations\n50,670\n50,670\n50,670\n\n\n\n\n\n\n\n\n\n\n\n\nNote3. Oster (2019) bounds for omitted variable bias\n\n\n\n\n\nPanel C of Table 3 presents Oster bounds based on an expected R² value. Bounds that exclude zero indicate robustness to omitted variable bias. All three bounds exclude zero.\n\n\n\n\n\n\n\n\n\n\nNew Entry\nEnrollment\nGraduation\n\n\n\n\nOster bounds\n[−23.062, −11.206]\n[−9.028, −4.386]\n[−10.024, −7.011]\n\n\nObservations\n50,670\n50,670\n50,670\n\n\n\n\n\n\n\n\n\n\n\n\nNote4. Leave-one-major-out sensitivity\n\n\n\n\n\nPanel D of Table 3 re-estimates the main DiD ten times, each time omitting one area of study. All estimates remain highly significant and close to the main specification, confirming that results are not driven by any single field.\n\n\n\n\n\n\n\n\n\nSpecification\nNew Entry\nEnrollment\nGraduation\n\n\n\n\nOverall (baseline)\n−13.315***\n−8.199***\n−7.542***\n\n\nLeaving out sciences\n−13.442***\n−8.511***\n−7.342***\n\n\nLeaving out social sciences\n−12.824***\n−7.514**\n−7.270***\n\n\nLeaving out education\n−13.495***\n−9.335***\n−8.081***\n\n\nLeaving out engineering\n−12.628***\n−6.838**\n−6.755***\n\n\nLeaving out health\n−12.921***\n−7.701**\n−6.887***\n\n\nLeaving out inf. technology\n−14.254***\n−9.423***\n−8.008***\n\n\nLeaving out business\n−12.528***\n−7.293***\n−7.734***\n\n\nLeaving out agronomy & vet.\n−13.421***\n−8.030**\n−7.500***\n\n\nLeaving out arts & hum.\n−13.941***\n−8.752**\n−8.046***\n\n\nLeaving out services\n−13.502***\n−8.369**\n−7.805***"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "\nExamining COVID-19’s Disruptive Effect on Education in Mexican Universities\n",
+    "section": "",
+    "text": "Daniel Prudencio  ·  Jose Roberto Balmori de la Miyar  ·  Adan Silverio-Murillo  ·  Fernanda Sobrino International Journal of Educational Development, 2024  ·  https://doi.org/10.1016/j.ijedudev.2024.103144"
+  },
+  {
+    "objectID": "index.html#motivation",
+    "href": "index.html#motivation",
+    "title": "\nExamining COVID-19’s Disruptive Effect on Education in Mexican Universities\n",
+    "section": "Motivation",
+    "text": "Motivation\nThe COVID-19 pandemic forced universities worldwide to shut down campuses, move to remote instruction, and operate under conditions of profound economic and social disruption. In developing countries, where technological infrastructure is limited and students from lower-income backgrounds face significant barriers, these disruptions were expected to be especially severe.\nThis paper asks a precise question: by how much did the pandemic reduce new entry, enrollment, and graduation at Mexican universities, and did the impact fall equally across all types of institutions, all fields of study, and both genders?\nUsing administrative records from every university in Mexico, covering academic years 2017-2018 through 2020-2021, the paper provides the first causal estimates of the pandemic’s effect on higher education in a developing country at national scale. The results reveal that graduation was hit hardest, new entry declined sharply, and the impact varied substantially by field, institution type, and student gender."
+  },
+  {
+    "objectID": "index.html#key-findings",
+    "href": "index.html#key-findings",
+    "title": "\nExamining COVID-19’s Disruptive Effect on Education in Mexican Universities\n",
+    "section": "Key Findings",
+    "text": "Key Findings\n\n\n\nNew entry\n\n\n−16%\n\n\nFewer students enrolled as first-year students during the pandemic years, relative to the pre-pandemic baseline of 83 students per program.\n\n\n\n\nGraduation\n\n\n−22%\n\n\nThe largest of the three effects. Graduation fell by over one-fifth, driven partly by delayed completion and administrative paperwork backlogs.\n\n\n\n\nEducation majors\n\n\n−25%\n\n\nEducation-related programs suffered the steepest new-entry decline of any field, raising a concern about future shortages in the teaching workforce."
+  },
+  {
+    "objectID": "index.html#the-counterintuitive-result",
+    "href": "index.html#the-counterintuitive-result",
+    "title": "\nExamining COVID-19’s Disruptive Effect on Education in Mexican Universities\n",
+    "section": "The Counterintuitive Result",
+    "text": "The Counterintuitive Result\n\nElite universities (top-20 by QS ranking) gained new students relative to non-elite institutions during the pandemic. Rather than suffering equally, top-20 universities experienced a positive differential effect on new entry and enrollment. This suggests students shifted preferences toward institutions perceived as better equipped to handle the crisis, consistent with the broader finding that lower-income students bore disproportionate costs."
+  },
+  {
+    "objectID": "index.html#study-at-a-glance",
+    "href": "index.html#study-at-a-glance",
+    "title": "\nExamining COVID-19’s Disruptive Effect on Education in Mexican Universities\n",
+    "section": "Study at a Glance",
+    "text": "Study at a Glance\n\n\n\n\n\n\n\nFeature\nDetail\n\n\n\n\nCountry\nMexico\n\n\nPeriod\nAcademic years 2017-2018 to 2020-2021\n\n\nInstitutions\nAll universities in Mexico\n\n\nObservations\n50,670 (university × area of study × year)\n\n\nData source\nANUIES (National Association of Universities and Higher Education Institutions)\n\n\nOutcomes\nNew entry, enrollment, graduation\n\n\nAreas of study\n10 (sciences, engineering, health, IT, social sciences, education, business, arts & humanities, agronomy & veterinary, services)\n\n\nMethods\nDifference-in-differences (DiD) and difference-in-differences-in-differences (DDD)\n\n\nPre-pandemic new entry mean\n83.2 students per program"
+  },
+  {
+    "objectID": "index.html#how-to-navigate-this-site",
+    "href": "index.html#how-to-navigate-this-site",
+    "title": "\nExamining COVID-19’s Disruptive Effect on Education in Mexican Universities\n",
+    "section": "How to Navigate This Site",
+    "text": "How to Navigate This Site\n\n\nContext & DataMexico’s higher education system, the ANUIES dataset, and descriptive statistics on outcomes before and after the pandemic.\n\n\nMethodsThe difference-in-differences design, how treatment and control periods are defined, and the DDD specification for heterogeneous effects.\n\n\nResultsMain DiD estimates, heterogeneous effects by institution type, gender analysis, and results by area of study.\n\n\nDiscussionWhat this paper contributes to the literature, policy implications, limitations, and open questions for future research."
+  },
+  {
+    "objectID": "context.html",
+    "href": "context.html",
+    "title": "Context & Data",
+    "section": "",
+    "text": "Higher education in Mexico encompasses a large and diverse set of institutions, ranging from large public national universities and regional campuses to small private colleges. Institutions differ across several dimensions that the paper uses to study heterogeneous effects:\n\n\n\nFunding source\n\n\nPublic universities receive government subsidies and serve a disproportionately large share of students from lower-income backgrounds. Private universities charge tuition and tend to attract wealthier students.\n\n\n\n\nElite status\n\n\nTop-20 universities by QS Mexico ranking. These institutions have more resources, stronger technological infrastructure, and greater capacity to adapt to unexpected shocks.\n\n\n\n\nDelivery format\n\n\nSynchronous (in-person) programs require physical attendance. Asynchronous programs were already designed for remote delivery before the pandemic."
+  },
+  {
+    "objectID": "context.html#mexicos-higher-education-system",
+    "href": "context.html#mexicos-higher-education-system",
+    "title": "Context & Data",
+    "section": "",
+    "text": "Higher education in Mexico encompasses a large and diverse set of institutions, ranging from large public national universities and regional campuses to small private colleges. Institutions differ across several dimensions that the paper uses to study heterogeneous effects:\n\n\n\nFunding source\n\n\nPublic universities receive government subsidies and serve a disproportionately large share of students from lower-income backgrounds. Private universities charge tuition and tend to attract wealthier students.\n\n\n\n\nElite status\n\n\nTop-20 universities by QS Mexico ranking. These institutions have more resources, stronger technological infrastructure, and greater capacity to adapt to unexpected shocks.\n\n\n\n\nDelivery format\n\n\nSynchronous (in-person) programs require physical attendance. Asynchronous programs were already designed for remote delivery before the pandemic."
+  },
+  {
+    "objectID": "context.html#the-three-outcomes",
+    "href": "context.html#the-three-outcomes",
+    "title": "Context & Data",
+    "section": "The Three Outcomes",
+    "text": "The Three Outcomes\nThe paper tracks three distinct stages of the student pipeline:\n\nNew entry: the number of students newly enrolling in a specific program at a university in a given academic year. This measures the pandemic’s impact on the beginning of students’ university paths.\nEnrollment: the total number of students currently registered in a program at a university. This captures effects on students already in the system.\nGraduation: the number of students completing their degree in a given academic year. This measures the downstream impact on degree completion.\n\n\nWhy these three outcomes matter differently. A small enrollment decline does not mean no disruption, as students may have remained formally enrolled while reducing their course load. Graduation captures whether students actually completed their degrees, not just whether they stayed registered. The paper shows that enrollment effects were relatively modest while graduation was severely affected, suggesting disruption was concentrated at the completion stage."
+  },
+  {
+    "objectID": "context.html#data",
+    "href": "context.html#data",
+    "title": "Context & Data",
+    "section": "Data",
+    "text": "Data\nThe data come from the National Association of Universities and Institutions of Higher Education (ANUIES), which collects administrative records from all higher education institutions in Mexico. The dataset covers academic years 2010 through 2021 and is reported at the program level, meaning each observation corresponds to a specific area of study within a specific institution in a specific year.\nSample used in the analysis: academic years 2017-2018 through 2020-2021, yielding four academic years — two pre-pandemic and two pandemic. ANUIES classifies programs into ten areas of study:\nSciences   Health   Engineering   Information Technology   Social Sciences   Education   Business   Arts & Humanities   Agronomy & Veterinary   Services\nThe paper defines STEM-related areas as sciences, health, engineering, and information technology. Non-STEM areas encompass the remaining six fields."
+  },
+  {
+    "objectID": "context.html#descriptive-statistics",
+    "href": "context.html#descriptive-statistics",
+    "title": "Context & Data",
+    "section": "Descriptive Statistics",
+    "text": "Descriptive Statistics\nTable 1 in the paper shows summary statistics at the university-area-of-study level, comparing pre-pandemic and post-pandemic periods.\n\n\n\n\n\n\n\n\n\n\n\nOutcome\nPre-COVID Mean\nPre-COVID SD\nPost-COVID Mean\nPost-COVID SD\nDifference\n\n\n\n\nNew entry\n83.20\n222.94\n73.54\n219.39\n−9.651***\n\n\nEnrollment\n322.34\n953.28\n312.69\n1,013.33\n−9.644\n\n\nGraduation\n34.92\n106.19\n28.30\n97.65\n−6.621***\n\n\nObservations\n37,145\n\n13,525\n\n\n\n\n\nSource: ANUIES. Unit of observation is university and area of study.\n\nKey descriptive pattern. The raw difference in enrollment is not statistically significant, while new entry and graduation show clear declines. This already signals that the pandemic’s main disruption was at the entry and completion stages, not at the intermediate enrollment stage. The DiD analysis confirms this pattern and provides causal estimates."
+  },
+  {
+    "objectID": "context.html#the-pre-pandemic-baseline",
+    "href": "context.html#the-pre-pandemic-baseline",
+    "title": "Context & Data",
+    "section": "The Pre-Pandemic Baseline",
+    "text": "The Pre-Pandemic Baseline\nPrior to the pandemic, an average of 83.2 students were newly enrolled in each program per academic year. Programs at public universities averaged 161.5 new entrants, compared to 49.1 at private ones, reflecting the larger scale of public institutions. Top-20 universities averaged 256.7 new entrants per program, roughly 3.6 times the non-top-20 average of 70.7.\nThese baseline differences motivate the heterogeneous effects analysis: institutions that start from different positions may also respond differently to a common shock."
+  },
+  {
+    "objectID": "citation.html",
+    "href": "citation.html",
+    "title": "Citation",
+    "section": "",
+    "text": "Prudencio, D., Balmori de la Miyar, J. R., Silverio-Murillo, A., & Sobrino, F. (2024). Examining COVID-19’s disruptive effect on education in Mexican universities. International Journal of Educational Development, 103144. https://doi.org/10.1016/j.ijedudev.2024.103144"
+  },
+  {
+    "objectID": "citation.html#how-to-cite",
+    "href": "citation.html#how-to-cite",
+    "title": "Citation",
+    "section": "",
+    "text": "Prudencio, D., Balmori de la Miyar, J. R., Silverio-Murillo, A., & Sobrino, F. (2024). Examining COVID-19’s disruptive effect on education in Mexican universities. International Journal of Educational Development, 103144. https://doi.org/10.1016/j.ijedudev.2024.103144"
+  },
+  {
+    "objectID": "citation.html#bibtex",
+    "href": "citation.html#bibtex",
+    "title": "Citation",
+    "section": "BibTeX",
+    "text": "BibTeX\n@article{prudencio2024covid,\n  author  = {Prudencio, Daniel and Balmori de la Miyar, Jose Roberto and\n             Silverio-Murillo, Adan and Sobrino, Fernanda},\n  title   = {Examining {COVID-19}'s Disruptive Effect on Education in {Mexican} Universities},\n  journal = {International Journal of Educational Development},\n  year    = {2024},\n  pages   = {103144},\n  doi     = {10.1016/j.ijedudev.2024.103144}\n}"
+  },
+  {
+    "objectID": "citation.html#data-availability",
+    "href": "citation.html#data-availability",
+    "title": "Citation",
+    "section": "Data Availability",
+    "text": "Data Availability\nThe underlying administrative data are collected and reported by the National Association of Universities and Institutions of Higher Education (ANUIES) and are publicly available through the ANUIES statistical portal."
+  },
+  {
+    "objectID": "citation.html#about-this-website",
+    "href": "citation.html#about-this-website",
+    "title": "Citation",
+    "section": "About This Website",
+    "text": "About This Website\nThis summary was built with Quarto and hosted on GitHub Pages. It presents the paper’s methods and findings for a general academic audience."
+  },
+  {
+    "objectID": "discussion.html",
+    "href": "discussion.html",
+    "title": "Discussion",
+    "section": "",
+    "text": "This paper makes three specific contributions to the literature on COVID-19 and higher education.\nFirst, it provides the first causal estimates using data from all universities in a developing country. Most existing work focuses on a small set of schools, often in high-income countries. By using administrative records from every higher education institution in Mexico, the paper offers national-scale estimates free from sample-selection concerns. This allows a more complete picture of both the average effect and its distribution across institution types.\nSecond, it provides heterogeneous estimates by university characteristics correlated with student income. The results show that public universities suffered larger graduation losses, while elite universities attracted more new students during the crisis. These patterns are consistent with the broader finding in the literature that the pandemic disproportionately impacted lower-income students. The paper connects this income gradient to observable institutional characteristics without requiring student-level income data.\nThird, it quantifies the pandemic’s differential effect by area of study and gender. Few studies have examined these dimensions simultaneously. The paper finds that sciences graduation collapsed by 37.5%, education-related new entry fell by 25%, and men and women were similarly affected on graduation despite different patterns in new entry and enrollment."
+  },
+  {
+    "objectID": "discussion.html#what-this-paper-contributes",
+    "href": "discussion.html#what-this-paper-contributes",
+    "title": "Discussion",
+    "section": "",
+    "text": "This paper makes three specific contributions to the literature on COVID-19 and higher education.\nFirst, it provides the first causal estimates using data from all universities in a developing country. Most existing work focuses on a small set of schools, often in high-income countries. By using administrative records from every higher education institution in Mexico, the paper offers national-scale estimates free from sample-selection concerns. This allows a more complete picture of both the average effect and its distribution across institution types.\nSecond, it provides heterogeneous estimates by university characteristics correlated with student income. The results show that public universities suffered larger graduation losses, while elite universities attracted more new students during the crisis. These patterns are consistent with the broader finding in the literature that the pandemic disproportionately impacted lower-income students. The paper connects this income gradient to observable institutional characteristics without requiring student-level income data.\nThird, it quantifies the pandemic’s differential effect by area of study and gender. Few studies have examined these dimensions simultaneously. The paper finds that sciences graduation collapsed by 37.5%, education-related new entry fell by 25%, and men and women were similarly affected on graduation despite different patterns in new entry and enrollment."
+  },
+  {
+    "objectID": "discussion.html#policy-implications",
+    "href": "discussion.html#policy-implications",
+    "title": "Discussion",
+    "section": "Policy Implications",
+    "text": "Policy Implications\n\nA warning signal for the teaching workforce. The 25% decline in new entry for education-related majors is the steepest new-entry effect in the paper. If this trend persists or is not reversed, Mexico may face shortages of qualified teachers in the coming decade, compounding challenges in an educational system that was already under strain before the pandemic.\n\n\nPublic universities need targeted support. The graduation gap between public and private institutions (public graduation down 27.2% relative to its own baseline) suggests that public university students faced greater difficulty completing their degrees during the pandemic. Policy remediation focused on public institutions, including academic support programs and administrative streamlining for degree certification, could help recover lost ground.\n\nThe finding that online delivery format did not protect institutions from new-entry or enrollment shocks suggests that investment in digital infrastructure alone is insufficient. The core disruption came from the income and health shock facing students and their families, which cut across delivery formats."
+  },
+  {
+    "objectID": "discussion.html#limitations-and-caveats",
+    "href": "discussion.html#limitations-and-caveats",
+    "title": "Discussion",
+    "section": "Limitations and Caveats",
+    "text": "Limitations and Caveats\n\nShort-term estimates only. The paper covers academic years 2017-2018 through 2020-2021. The effects documented here are short-term. Whether students who delayed graduation eventually completed their degrees, or whether the new-entry declines reflect a permanent shift in preferences, cannot be answered with this data. The paper explicitly calls for follow-up work using longer panels.\n\nNo student-level demographic data beyond gender. The analysis controls for institutional characteristics (public/private, elite status, delivery format) but cannot directly observe student income, socioeconomic background, or geographic location. The income gradient in the results is inferred from institutional characteristics, not directly measured.\nNo learning outcomes data. The three outcomes studied (new entry, enrollment, graduation) measure quantities, not quality. The pandemic may have additionally reduced learning per student among those who remained enrolled, a channel this paper cannot capture given current data limitations.\nParallel trends in some subsamples. For specific areas of study and outcomes (enrollment in education and agronomy, new entry in arts and humanities and services, new entry in engineering), the parallel trends assumption shows some evidence of pre-existing differences. The paper acknowledges this and notes results for these specific cells should be interpreted with more caution."
+  },
+  {
+    "objectID": "discussion.html#open-questions",
+    "href": "discussion.html#open-questions",
+    "title": "Discussion",
+    "section": "Open Questions",
+    "text": "Open Questions\n\nWill the new-entry declines in education and social sciences reverse, or do they reflect permanent shifts in students’ field preferences induced by the pandemic?\nDid the students who did not graduate during 2019-2021 eventually complete their degrees in subsequent years, or are these permanent dropouts?\nHow did the pandemic affect learning quality among enrolled students, a channel not captured by administrative enrollment and graduation counts?\nDo the results generalize to subnational universities and technical institutes, which the ANUIES dataset does not fully capture?"
+  },
+  {
+    "objectID": "methods.html",
+    "href": "methods.html",
+    "title": "Methods",
+    "section": "",
+    "text": "The paper uses two complementary econometric strategies: a difference-in-differences (DiD) model that estimates the average effect of the pandemic on each outcome, and a difference-in-differences-in-differences (DDD) model that estimates whether the effect differed across institutional and student subgroups."
+  },
+  {
+    "objectID": "methods.html#strategy-1-difference-in-differences",
+    "href": "methods.html#strategy-1-difference-in-differences",
+    "title": "Methods",
+    "section": "Strategy 1: Difference-in-Differences",
+    "text": "Strategy 1: Difference-in-Differences\n\nIntuition\nThe DiD approach exploits the fact that the COVID-19 pandemic hit Mexico in the 2019-2020 academic year (March 2020) and continued through 2020-2021. The identifying idea is to compare how outcomes changed from the first to the second year within the pandemic window (2019-2020 to 2020-2021), relative to how the same outcomes changed from the first to the second year within the pre-pandemic window (2017-2018 to 2018-2019).\nTreatment group: higher education institutions observed during academic years 2019-2020 and 2020-2021 (the pandemic cohort).\nControl group: the same higher education institutions observed during academic years 2017-2018 and 2018-2019 (the pre-pandemic cohort).\nPost indicator: equals 1 for the second year in each two-year window — academic years 2018-2019 and 2020-2021 — and 0 for the first year in each window — 2017-2018 and 2019-2020.\nThe interaction Post × Treatment is the DiD estimator: it captures the pandemic’s effect by comparing the year-over-year change in the pandemic cohort to the year-over-year change in the pre-pandemic cohort.\n\n\nSpecification\n\n\nDifference-in-Differences Equation (1)\n\n\\[Y_{icmy} = \\alpha + \\gamma\\,\\text{Treatment}_{imy} + \\delta\\,\\text{Post}_{imy} + \\beta\\,(\\text{Post} \\times \\text{Treatment})_{imy} + \\delta X_{imy} + e_{icmy}\\]\n\nwhere:\n\n\n\n\n\n\n\nTerm\nDefinition\n\n\n\n\n\\(Y_{icmy}\\)\nOutcome (new entry, enrollment, or graduation) for institution \\(i\\), campus \\(c\\), area of study \\(m\\), year \\(y\\)\n\n\n\\(\\text{Treatment}_{imy}\\)\n= 1 for the pandemic cohort (2019-2020 and 2020-2021), = 0 for pre-pandemic (2017-2018 and 2018-2019)\n\n\n\\(\\text{Post}_{imy}\\)\n= 1 for the second year in each cohort (2018-2019 and 2020-2021), = 0 for the first year (2017-2018 and 2019-2020)\n\n\n\\(\\beta\\)\nThe average treatment effect on the treated (ATT): the pandemic’s causal effect on the outcome\n\n\n\\(X_{imy}\\)\nControls: delivery format dummy, public/private dummy, top-20 dummy\n\n\n\\(e_{icmy}\\)\nResidual; standard errors clustered at the municipality level\n\n\n\n\nWhat \\(\\beta\\) estimates. The DiD estimator \\(\\beta\\) compares the year-over-year change during the pandemic window (2019-20 to 2020-21) with the year-over-year change during the pre-pandemic window (2017-18 to 2018-19). If both cohorts would have followed the same trend absent the pandemic, then any additional change in the pandemic cohort is attributable to COVID-19.\n\n\n\nKey Assumption: Parallel Trends\nThe identifying assumption is that, absent the pandemic, the pandemic-cohort and pre-pandemic-cohort institutions would have experienced the same year-over-year change in outcomes. This cannot be directly tested, but the paper supports it with a placebo test: shifting the treatment window back by two years (using 2018-2019 and 2019-2020 as the “treatment cohort” and 2016-2017 and 2017-2018 as the control cohort) should produce null effects. Panel A of Table 3 confirms this: the placebo estimates are statistically insignificant, consistent with pre-parallel trends."
+  },
+  {
+    "objectID": "methods.html#strategy-2-difference-in-differences-in-differences",
+    "href": "methods.html#strategy-2-difference-in-differences-in-differences",
+    "title": "Methods",
+    "section": "Strategy 2: Difference-in-Differences-in-Differences",
+    "text": "Strategy 2: Difference-in-Differences-in-Differences\n\nIntuition\nThe DDD approach extends the DiD to test whether the pandemic’s effect differed across subgroups. For each heterogeneity dimension (public vs. private funding, top-20 vs. non-top-20 status, synchronous vs. asynchronous delivery), a third interaction term is added: Post × Treatment × Subgroup indicator.\n\n\nSpecification\n\n\nDDD Equation (2)\n\n\\[Y_{icmy} = \\alpha + \\beta_1\\,\\text{Treatment}_{imy} + \\beta_2\\,\\text{Het}_{icy} + \\beta_3\\,\\text{Post}_{my} + \\beta_4\\,(\\text{Post} \\times \\text{Treatment})_{imy}\\] \\[+ \\beta_5\\,(\\text{Treatment} \\times \\text{Het})_{icmy} + \\beta_6\\,(\\text{Het} \\times \\text{Post})_{icmy} + \\beta_7\\,(\\text{Post} \\times \\text{Treatment} \\times \\text{Het})_{icmy} + e_{icmy}\\]\n\nwhere \\(\\text{Het}_{icy}\\) is a dummy equal to 1 if the institution belongs to the heterogeneous subgroup of interest (e.g., public, top-20, synchronous), and 0 otherwise.\nThe parameter \\(\\beta_7\\) captures the differential pandemic effect for the subgroup relative to the complement. A positive \\(\\beta_7\\) means the subgroup fared better than the non-subgroup; a negative \\(\\beta_7\\) means it fared worse."
+  },
+  {
+    "objectID": "methods.html#robustness-suite",
+    "href": "methods.html#robustness-suite",
+    "title": "Methods",
+    "section": "Robustness Suite",
+    "text": "Robustness Suite\nThe paper validates the main DiD estimates with four robustness checks:\n1. Placebo test (pre-parallel trends). Shifts the treatment window two years earlier. Finding null effects supports the parallel trends assumption.\n2. False Discovery Rate correction. Because three outcomes are tested simultaneously, the paper applies the FDR q-value correction of Anderson (2008). No significant result becomes insignificant after this correction.\n3. Oster (2019) bounds for omitted variable bias. Simulates bounds around \\(\\beta\\) based on an expected R². When bounds exclude zero, the estimate is robust to omitted variable bias. All main bounds exclude zero.\n4. Leave-one-major-out sensitivity. Re-estimates the DiD specification ten times, each time excluding one area of study. Estimates remain stable across all exclusions, confirming the results are not driven by any single field."
+  }
+]

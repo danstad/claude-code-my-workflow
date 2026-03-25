@@ -1,0 +1,86 @@
+---
+title: "Context & Data"
+---
+
+## Mexico's Higher Education System
+
+Higher education in Mexico encompasses a large and diverse set of institutions, ranging from large public national universities and regional campuses to small private colleges. Institutions differ across several dimensions that the paper uses to study heterogeneous effects:
+
+<div class="outcomes-grid">
+<div class="outcome-cell entry">
+<div class="outcome-cell-label">Funding source</div>
+<div class="outcome-cell-desc" style="font-size:0.92rem; margin-top:0.5rem;">Public universities receive government subsidies and serve a disproportionately large share of students from lower-income backgrounds. Private universities charge tuition and tend to attract wealthier students.</div>
+</div>
+<div class="outcome-cell enrollment">
+<div class="outcome-cell-label">Elite status</div>
+<div class="outcome-cell-desc" style="font-size:0.92rem; margin-top:0.5rem;">Top-20 universities by QS Mexico ranking. These institutions have more resources, stronger technological infrastructure, and greater capacity to adapt to unexpected shocks.</div>
+</div>
+<div class="outcome-cell graduation">
+<div class="outcome-cell-label">Delivery format</div>
+<div class="outcome-cell-desc" style="font-size:0.92rem; margin-top:0.5rem;">Synchronous (in-person) programs require physical attendance. Asynchronous programs were already designed for remote delivery before the pandemic.</div>
+</div>
+</div>
+
+---
+
+## The Three Outcomes
+
+The paper tracks three distinct stages of the student pipeline:
+
+- **New entry:** the number of students newly enrolling in a specific program at a university in a given academic year. This measures the pandemic's impact on the *beginning* of students' university paths.
+- **Enrollment:** the total number of students currently registered in a program at a university. This captures effects on students already in the system.
+- **Graduation:** the number of students completing their degree in a given academic year. This measures the downstream impact on degree completion.
+
+<div class="keybox">
+**Why these three outcomes matter differently.** A small enrollment decline does not mean no disruption, as students may have remained formally enrolled while reducing their course load. Graduation captures whether students actually completed their degrees, not just whether they stayed registered. The paper shows that enrollment effects were relatively modest while graduation was severely affected, suggesting disruption was concentrated at the completion stage.
+</div>
+
+---
+
+## Data
+
+The data come from the **National Association of Universities and Institutions of Higher Education (ANUIES)**, which collects administrative records from all higher education institutions in Mexico. The dataset covers academic years 2010 through 2021 and is reported at the program level, meaning each observation corresponds to a specific area of study within a specific institution in a specific year.
+
+**Sample used in the analysis:** academic years 2017-2018 through 2020-2021, yielding four academic years — two pre-pandemic and two pandemic. ANUIES classifies programs into ten areas of study:
+
+<span class="badge-stem">Sciences</span> &nbsp;
+<span class="badge-stem">Health</span> &nbsp;
+<span class="badge-stem">Engineering</span> &nbsp;
+<span class="badge-stem">Information Technology</span> &nbsp;
+<span class="badge-nonstem">Social Sciences</span> &nbsp;
+<span class="badge-nonstem">Education</span> &nbsp;
+<span class="badge-nonstem">Business</span> &nbsp;
+<span class="badge-nonstem">Arts & Humanities</span> &nbsp;
+<span class="badge-nonstem">Agronomy & Veterinary</span> &nbsp;
+<span class="badge-nonstem">Services</span>
+
+The paper defines STEM-related areas as sciences, health, engineering, and information technology. Non-STEM areas encompass the remaining six fields.
+
+---
+
+## Descriptive Statistics
+
+Table 1 in the paper shows summary statistics at the university-area-of-study level, comparing pre-pandemic and post-pandemic periods.
+
+| Outcome | Pre-COVID Mean | Pre-COVID SD | Post-COVID Mean | Post-COVID SD | Difference |
+|:--------|:------:|:------:|:------:|:------:|:------:|
+| New entry | 83.20 | 222.94 | 73.54 | 219.39 | −9.651\*\*\* |
+| Enrollment | 322.34 | 953.28 | 312.69 | 1,013.33 | −9.644 |
+| Graduation | 34.92 | 106.19 | 28.30 | 97.65 | −6.621\*\*\* |
+| Observations | 37,145 | | 13,525 | | |
+
+: {tbl-colwidths="[25,14,12,14,12,13]"}
+
+*Source: ANUIES. Unit of observation is university and area of study.*
+
+<div class="keybox">
+**Key descriptive pattern.** The raw difference in enrollment is not statistically significant, while new entry and graduation show clear declines. This already signals that the pandemic's main disruption was at the entry and completion stages, not at the intermediate enrollment stage. The DiD analysis confirms this pattern and provides causal estimates.
+</div>
+
+---
+
+## The Pre-Pandemic Baseline
+
+Prior to the pandemic, an average of 83.2 students were newly enrolled in each program per academic year. Programs at public universities averaged 161.5 new entrants, compared to 49.1 at private ones, reflecting the larger scale of public institutions. Top-20 universities averaged 256.7 new entrants per program, roughly 3.6 times the non-top-20 average of 70.7.
+
+These baseline differences motivate the heterogeneous effects analysis: institutions that start from different positions may also respond differently to a common shock.

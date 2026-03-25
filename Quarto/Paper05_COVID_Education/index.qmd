@@ -1,0 +1,79 @@
+---
+format:
+  html:
+    toc: false
+---
+
+<div class="paper-hero">
+<h1>Examining COVID-19's Disruptive Effect on Education in Mexican Universities</h1>
+<div class="paper-meta">
+Daniel Prudencio &nbsp;·&nbsp; Jose Roberto Balmori de la Miyar &nbsp;·&nbsp; Adan Silverio-Murillo &nbsp;·&nbsp; Fernanda Sobrino<br>
+<em>International Journal of Educational Development</em>, 2024 &nbsp;·&nbsp;
+<a href="https://doi.org/10.1016/j.ijedudev.2024.103144" style="color:rgba(255,255,255,0.8);">https://doi.org/10.1016/j.ijedudev.2024.103144</a>
+</div>
+</div>
+
+## Motivation
+
+The COVID-19 pandemic forced universities worldwide to shut down campuses, move to remote instruction, and operate under conditions of profound economic and social disruption. In developing countries, where technological infrastructure is limited and students from lower-income backgrounds face significant barriers, these disruptions were expected to be especially severe.
+
+This paper asks a precise question: by how much did the pandemic reduce new entry, enrollment, and graduation at Mexican universities, and did the impact fall equally across all types of institutions, all fields of study, and both genders?
+
+Using administrative records from **every university in Mexico**, covering academic years 2017-2018 through 2020-2021, the paper provides the first causal estimates of the pandemic's effect on higher education in a developing country at national scale. The results reveal that graduation was hit hardest, new entry declined sharply, and the impact varied substantially by field, institution type, and student gender.
+
+---
+
+## Key Findings
+
+<div class="cards-grid">
+<div class="finding-card red">
+<div class="finding-label">New entry</div>
+<div class="finding-value">−16%</div>
+<div class="finding-desc">Fewer students enrolled as first-year students during the pandemic years, relative to the pre-pandemic baseline of 83 students per program.</div>
+</div>
+<div class="finding-card red">
+<div class="finding-label">Graduation</div>
+<div class="finding-value">−22%</div>
+<div class="finding-desc">The largest of the three effects. Graduation fell by over one-fifth, driven partly by delayed completion and administrative paperwork backlogs.</div>
+</div>
+<div class="finding-card gold">
+<div class="finding-label">Education majors</div>
+<div class="finding-value">−25%</div>
+<div class="finding-desc">Education-related programs suffered the steepest new-entry decline of any field, raising a concern about future shortages in the teaching workforce.</div>
+</div>
+</div>
+
+---
+
+## The Counterintuitive Result
+
+<div class="resultbox">
+Elite universities (top-20 by QS ranking) <strong>gained</strong> new students relative to non-elite institutions during the pandemic. Rather than suffering equally, top-20 universities experienced a positive differential effect on new entry and enrollment. This suggests students shifted preferences toward institutions perceived as better equipped to handle the crisis, consistent with the broader finding that lower-income students bore disproportionate costs.
+</div>
+
+---
+
+## Study at a Glance
+
+| Feature | Detail |
+|:--------|:-------|
+| Country | Mexico |
+| Period | Academic years 2017-2018 to 2020-2021 |
+| Institutions | All universities in Mexico |
+| Observations | 50,670 (university × area of study × year) |
+| Data source | ANUIES (National Association of Universities and Higher Education Institutions) |
+| Outcomes | New entry, enrollment, graduation |
+| Areas of study | 10 (sciences, engineering, health, IT, social sciences, education, business, arts & humanities, agronomy & veterinary, services) |
+| Methods | Difference-in-differences (DiD) and difference-in-differences-in-differences (DDD) |
+| Pre-pandemic new entry mean | 83.2 students per program |
+
+---
+
+## How to Navigate This Site
+
+<div class="nav-guide">
+<div class="nav-card"><strong>Context & Data</strong><br>Mexico's higher education system, the ANUIES dataset, and descriptive statistics on outcomes before and after the pandemic.</div>
+<div class="nav-card"><strong>Methods</strong><br>The difference-in-differences design, how treatment and control periods are defined, and the DDD specification for heterogeneous effects.</div>
+<div class="nav-card"><strong>Results</strong><br>Main DiD estimates, heterogeneous effects by institution type, gender analysis, and results by area of study.</div>
+<div class="nav-card"><strong>Discussion</strong><br>What this paper contributes to the literature, policy implications, limitations, and open questions for future research.</div>
+</div>

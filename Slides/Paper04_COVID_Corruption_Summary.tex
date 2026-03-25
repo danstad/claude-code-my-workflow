@@ -1,0 +1,205 @@
+%% ============================================================
+%% Paper04_COVID_Corruption_Summary.tex
+%% One-page public summary
+%% The Effect of the COVID-19 Pandemic on Risk of Corruption
+%% Silverio-Murillo, Prudencio & Balmori-de-la-Miyar
+%% Public Organization Review (2024)
+%%
+%% Compile: cd Slides
+%%   TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode Paper04_COVID_Corruption_Summary.tex
+%% ============================================================
+\documentclass[9pt]{article}
+
+\usepackage{geometry}
+\geometry{a4paper, left=1.8cm, right=1.8cm, top=1.3cm, bottom=1.3cm}
+
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Heros}
+\setsansfont{TeX Gyre Heros}
+
+\usepackage{xcolor}
+\definecolor{navyblue}{HTML}{012169}
+\definecolor{steelblue}{HTML}{2E75B6}
+\definecolor{gold}{HTML}{F2A900}
+\definecolor{medgray}{HTML}{555555}
+\definecolor{lightbg}{HTML}{E8EDF5}
+\definecolor{positivegreen}{HTML}{15803d}
+\definecolor{negativered}{HTML}{B91C1C}
+
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{multicol}
+\setlength{\columnsep}{1.4em}
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=1.2em, itemsep=2pt, topsep=3pt, parsep=0pt}
+\usepackage{parskip}
+\setlength{\parskip}{3.5pt}
+\setlength{\parindent}{0pt}
+\usepackage{titlesec}
+\titleformat{\section}[block]
+  {\small\bfseries\color{navyblue}}
+  {}{0em}{}
+  [\vspace{1pt}{\color{steelblue}\hrule height 0.5pt}\vspace{2pt}]
+\titlespacing*{\section}{0pt}{7pt}{1pt}
+
+\pagestyle{empty}
+
+%% ============================================================
+\begin{document}
+
+%% ---- Title block -------------------------------------------
+{\centering
+  {\large\bfseries\color{navyblue}
+    The Effect of the COVID-19 Pandemic on Risk of Corruption}\\[0.4em]
+  {\small\color{steelblue}\itshape
+    Evidence from Mexico's Federal Procurement System}\\[0.3em]
+  {\small\color{medgray}
+    Adan Silverio-Murillo \enspace Daniel Prudencio \enspace
+    Jose Roberto Balmori-de-la-Miyar\\
+    \textit{Public Organization Review} 24 (2024) 1293--1313}\par
+}
+
+\vspace{0.4em}
+{\color{navyblue}\hrule height 0.8pt}
+\vspace{0.5em}
+
+%% ---- Two-column body ---------------------------------------
+\begin{multicols}{2}
+
+\section{The Question}
+
+Governments worldwide responded to COVID-19 by rapidly expanding
+procurement budgets and relaxing accountability rules to speed up
+purchasing. High-profile cases of overpriced medical supplies quickly
+drew public attention to healthcare contracts.
+
+We asked: did the pandemic actually increase \textbf{corruption risk}
+in Mexico's federal procurement, and if so, \textbf{where did it
+materialize?}
+
+\section{Why It Matters}
+
+Procurement corruption diverts public resources toward suppliers
+chosen for political connections rather than cost and quality. During
+a health emergency, when oversight is relaxed and budgets expand,
+the window of opportunity widens.
+
+Mexico's federal government allocates contracts through three
+mechanisms: open public auctions, invitation-only auctions, and direct
+allocation. The latter two are legally permitted but discretionary,
+opening the door to favoritism. Before the pandemic, \textbf{70\% of
+contract value} was already assigned through discretionary channels.
+
+\section{The Data}
+
+We use \textbf{CompraNet}, Mexico's official public procurement
+platform, as systematized by the Instituto Mexicano para la
+Competitividad (IMCO). The sample covers 64 federal institutions over
+36 months, yielding 2,304 institution-month observations.
+
+\vspace{0.4em}
+{\small\centering
+\begin{tabular}{lc}
+  \toprule
+  \textbf{Feature} & \textbf{Value} \\
+  \midrule
+  Federal institutions     & 64 \\
+  Public acquisitions      & 378,000 \\
+  Institution-month obs.   & 2,304 \\
+  Period                   & Jan 2018 to Dec 2020 \\
+  \midrule
+  Pre-COVID DCVB (Overall) & 0.705 \\
+  Pre-COVID DCVB (Health)  & 0.667 \\
+  Pre-COVID DCVB (Non-Health) & 0.715 \\
+  \bottomrule
+\end{tabular}\par}
+
+\vspace{0.4em}
+The outcome variable is the \textbf{DCVB ratio}: the share of total
+contract value assigned through discretionary mechanisms. A higher
+DCVB signals greater corruption risk.
+
+\section{How We Know}
+
+The pandemic was a universal shock that affected all institutions at
+the same time. We exploit the \textbf{time dimension} using a
+difference-in-differences design: the COVID-19 indicator is one for
+March through December 2020 and zero otherwise. Institution, month,
+and year fixed effects absorb all time-invariant differences and common
+seasonal patterns. An event study traces the effect month by month and
+validates the parallel trends assumption.
+
+\columnbreak
+
+\section{What We Found}
+
+The pandemic increased discretionary contracting by
+\textbf{\textcolor{positivegreen}{+17\%}} on average. But the effect
+is driven \textbf{entirely} by non-healthcare institutions.
+
+\vspace{0.3em}
+{\small\centering
+\begin{tabular}{lcc}
+  \toprule
+  \textbf{Group} & \textbf{Effect} & \textbf{\% change} \\
+  \midrule
+  All institutions & \textcolor{positivegreen}{$+0.120^{***}$} & \textcolor{positivegreen}{$+17\%$} \\
+  Healthcare       & $-0.060$ & $-9\%$ \\
+  Non-healthcare   & \textcolor{positivegreen}{$+0.166^{***}$} & \textcolor{positivegreen}{$+23\%$} \\
+  \bottomrule
+\end{tabular}\par}
+
+\vspace{0.4em}
+Healthcare institutions, despite being at the center of the political
+debate, show \textbf{no significant change} in corruption risk.
+Non-healthcare institutions, such as defense, education, and
+infrastructure, show a \textbf{23\% increase}.
+
+The effect was also \textbf{temporary}: it peaked in May 2020
+(two months after the stay-at-home order), and returned to pre-pandemic
+levels within six months.
+
+\section{How Did It Happen?}
+
+Two mechanisms help explain the non-healthcare increase.
+
+\textbf{Supplier concentration.} Non-healthcare institutions awarded
+contracts to a smaller set of providers during the pandemic, as
+measured by the Herfindahl-Hirschman Index. Fewer competing suppliers
+means more room for favoritism.
+
+\textbf{Reduced transparency.} The share of contracts whose procedural
+information was published \textit{after} the contract start date rose
+for non-healthcare institutions, a signal of reduced oversight.
+
+Both mechanisms are consistent with a window of opportunity created
+by weaker accountability, not a permanent shift in behavior.
+
+\section{The Bigger Picture}
+
+\begin{itemize}
+  \item COVID-19 increased discretionary contracting by 17\%, but only
+        in non-healthcare institutions, not in healthcare.
+  \item Public scrutiny may itself be a corruption deterrent:
+        sectors that received \textit{less} media attention are where
+        risk actually materialized.
+  \item Audit efforts targeting pandemic-era procurement should focus
+        on non-healthcare institutions, even though the political
+        debate centered on healthcare.
+  \item DCVB measures corruption \textit{risk}, not actual corruption.
+        The paper identifies a pattern at the aggregate level, not
+        individual wrongdoing.
+\end{itemize}
+
+\end{multicols}
+
+\vspace{0.2em}
+{\color{navyblue}\hrule height 0.4pt}
+\vspace{0.2em}
+{\small\color{medgray}\centering
+  Silverio-Murillo, Prudencio \& Balmori-de-la-Miyar (2024).
+  ``The Effect of the COVID-19 Pandemic on Risk of Corruption in Public Procurement: Evidence from Mexico.''
+  \textit{Public Organization Review} 24, 1293--1313.\par
+}
+
+\end{document}

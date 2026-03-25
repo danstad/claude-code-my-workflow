@@ -1,0 +1,29 @@
+---
+title: "Citation"
+---
+
+## How to Cite
+
+Prudencio, D., Balmori de la Miyar, J. R., Silverio-Murillo, A., & Sobrino, F. (2024). Examining COVID-19's disruptive effect on education in Mexican universities. *International Journal of Educational Development*, 103144. https://doi.org/10.1016/j.ijedudev.2024.103144
+
+## BibTeX
+
+```bibtex
+@article{prudencio2024covid,
+  author  = {Prudencio, Daniel and Balmori de la Miyar, Jose Roberto and
+             Silverio-Murillo, Adan and Sobrino, Fernanda},
+  title   = {Examining {COVID-19}'s Disruptive Effect on Education in {Mexican} Universities},
+  journal = {International Journal of Educational Development},
+  year    = {2024},
+  pages   = {103144},
+  doi     = {10.1016/j.ijedudev.2024.103144}
+}
+```
+
+## Data Availability
+
+The underlying administrative data are collected and reported by the **National Association of Universities and Institutions of Higher Education (ANUIES)** and are publicly available through the ANUIES statistical portal.
+
+## About This Website
+
+This summary was built with [Quarto](https://quarto.org) and hosted on GitHub Pages. It presents the paper's methods and findings for a general academic audience.

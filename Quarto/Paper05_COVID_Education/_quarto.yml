@@ -1,0 +1,41 @@
+project:
+  type: website
+  output-dir: ../../docs/paper05
+
+website:
+  title: "COVID-19 & Higher Education in Mexico"
+  navbar:
+    background: "#012169"
+    foreground: "white"
+    left:
+      - href: index.qmd
+        text: Home
+      - href: context.qmd
+        text: Context & Data
+      - href: methods.qmd
+        text: Methods
+      - href: results.qmd
+        text: Results
+      - href: discussion.qmd
+        text: Discussion
+      - href: citation.qmd
+        text: Citation
+  page-footer:
+    left: "Prudencio, Balmori-de-la-Miyar, Silverio-Murillo & Sobrino — [*International Journal of Educational Development* (2024)](https://doi.org/10.1016/j.ijedudev.2024.103144)"
+    right: "Built with [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme: [cosmo, paper05-style.scss]
+    toc: true
+    toc-location: left
+    toc-depth: 3
+    smooth-scroll: true
+    highlight-style: github
+    fig-align: center
+    html-math-method: mathjax
+
+execute:
+  echo: false
+  warning: false
+  message: false

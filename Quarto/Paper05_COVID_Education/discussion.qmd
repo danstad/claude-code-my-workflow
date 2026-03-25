@@ -1,0 +1,50 @@
+---
+title: "Discussion"
+---
+
+## What This Paper Contributes
+
+This paper makes three specific contributions to the literature on COVID-19 and higher education.
+
+**First, it provides the first causal estimates using data from all universities in a developing country.** Most existing work focuses on a small set of schools, often in high-income countries. By using administrative records from every higher education institution in Mexico, the paper offers national-scale estimates free from sample-selection concerns. This allows a more complete picture of both the average effect and its distribution across institution types.
+
+**Second, it provides heterogeneous estimates by university characteristics correlated with student income.** The results show that public universities suffered larger graduation losses, while elite universities attracted more new students during the crisis. These patterns are consistent with the broader finding in the literature that the pandemic disproportionately impacted lower-income students. The paper connects this income gradient to observable institutional characteristics without requiring student-level income data.
+
+**Third, it quantifies the pandemic's differential effect by area of study and gender.** Few studies have examined these dimensions simultaneously. The paper finds that sciences graduation collapsed by 37.5%, education-related new entry fell by 25%, and men and women were similarly affected on graduation despite different patterns in new entry and enrollment.
+
+---
+
+## Policy Implications
+
+<div class="resultbox">
+**A warning signal for the teaching workforce.** The 25% decline in new entry for education-related majors is the steepest new-entry effect in the paper. If this trend persists or is not reversed, Mexico may face shortages of qualified teachers in the coming decade, compounding challenges in an educational system that was already under strain before the pandemic.
+</div>
+
+<div class="resultbox">
+**Public universities need targeted support.** The graduation gap between public and private institutions (public graduation down 27.2% relative to its own baseline) suggests that public university students faced greater difficulty completing their degrees during the pandemic. Policy remediation focused on public institutions, including academic support programs and administrative streamlining for degree certification, could help recover lost ground.
+</div>
+
+The finding that online delivery format did not protect institutions from new-entry or enrollment shocks suggests that investment in digital infrastructure alone is insufficient. The core disruption came from the income and health shock facing students and their families, which cut across delivery formats.
+
+---
+
+## Limitations and Caveats
+
+<div class="warningbox">
+**Short-term estimates only.** The paper covers academic years 2017-2018 through 2020-2021. The effects documented here are short-term. Whether students who delayed graduation eventually completed their degrees, or whether the new-entry declines reflect a permanent shift in preferences, cannot be answered with this data. The paper explicitly calls for follow-up work using longer panels.
+</div>
+
+**No student-level demographic data beyond gender.** The analysis controls for institutional characteristics (public/private, elite status, delivery format) but cannot directly observe student income, socioeconomic background, or geographic location. The income gradient in the results is inferred from institutional characteristics, not directly measured.
+
+**No learning outcomes data.** The three outcomes studied (new entry, enrollment, graduation) measure quantities, not quality. The pandemic may have additionally reduced learning per student among those who remained enrolled, a channel this paper cannot capture given current data limitations.
+
+**Parallel trends in some subsamples.** For specific areas of study and outcomes (enrollment in education and agronomy, new entry in arts and humanities and services, new entry in engineering), the parallel trends assumption shows some evidence of pre-existing differences. The paper acknowledges this and notes results for these specific cells should be interpreted with more caution.
+
+---
+
+## Open Questions
+
+- Will the new-entry declines in education and social sciences reverse, or do they reflect permanent shifts in students' field preferences induced by the pandemic?
+- Did the students who did not graduate during 2019-2021 eventually complete their degrees in subsequent years, or are these permanent dropouts?
+- How did the pandemic affect learning quality among enrolled students, a channel not captured by administrative enrollment and graduation counts?
+- Do the results generalize to subnational universities and technical institutes, which the ANUIES dataset does not fully capture?

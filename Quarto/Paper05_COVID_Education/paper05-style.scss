@@ -1,0 +1,238 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+/*-- Paper05: COVID-19 & Higher Education in Mexico --*/
+
+$navy:     #012169;
+$gold:     #F2A900;
+$red:      #B91C1C;
+$green:    #15803d;
+$light-bg: #E8EDF5;
+$gold-bg:  #FFF9E6;
+$red-bg:   #FEF2F2;
+$green-bg: #F0FDF4;
+
+/* ---------- Layout ---------- */
+.page-columns #quarto-content {
+  max-width: 1100px !important;
+  margin: 0 auto;
+}
+
+/* ---------- Hero title block ---------- */
+.paper-hero {
+  background: $navy;
+  border-radius: 6px;
+  padding: 2.2rem 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.paper-hero h1 {
+  color: white !important;
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.8rem;
+}
+
+.paper-hero .paper-meta {
+  color: rgba(255,255,255,0.88);
+  font-size: 1.0rem;
+  line-height: 1.5;
+}
+
+/* ---------- Finding cards ---------- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+}
+
+.finding-card {
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  padding: 1.3rem;
+  border-top: 4px solid $navy;
+}
+
+.finding-card.red   { border-top-color: $red; }
+.finding-card.green { border-top-color: $green; }
+.finding-card.gold  { border-top-color: $gold; }
+
+.finding-label {
+  font-size: 0.70rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #666;
+  margin-bottom: 0.4rem;
+}
+
+.finding-value {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: $navy;
+  margin-bottom: 0.3rem;
+}
+
+.finding-desc {
+  font-size: 0.88rem;
+  color: #444;
+  line-height: 1.45;
+}
+
+/* ---------- Callout boxes ---------- */
+.keybox {
+  background: $gold-bg;
+  border-left: 4px solid $gold;
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+  margin: 1.2rem 0;
+}
+
+.methodbox {
+  background: $light-bg;
+  border-left: 4px solid $navy;
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+  margin: 1.2rem 0;
+}
+
+.resultbox {
+  background: white;
+  border: 2px solid $gold;
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+  margin: 1.2rem 0;
+}
+
+.warningbox {
+  background: $red-bg;
+  border-left: 4px solid $red;
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+  margin: 1.2rem 0;
+}
+
+/* ---------- Equation blocks ---------- */
+.eq-block {
+  background: $light-bg;
+  border-left: 4px solid $navy;
+  border-radius: 4px;
+  padding: 1rem 1.5rem;
+  margin: 1.2rem 0;
+  overflow-x: auto;
+}
+
+.eq-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $navy;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- Outcomes grid (3-column display) ---------- */
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.outcome-cell {
+  border-radius: 6px;
+  padding: 1.1rem;
+  text-align: center;
+}
+
+.outcome-cell.entry      { background: $light-bg; border: 2px solid $navy; }
+.outcome-cell.enrollment { background: $gold-bg;  border: 2px solid $gold; }
+.outcome-cell.graduation { background: $red-bg;   border: 2px solid $red; }
+
+.outcome-cell-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.4rem;
+}
+
+.outcome-cell-coef {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: $navy;
+}
+
+.outcome-cell-desc {
+  font-size: 0.82rem;
+  color: #555;
+  margin-top: 0.25rem;
+}
+
+/* ---------- Badges ---------- */
+.badge-stem {
+  display: inline-block;
+  background: #DBEAFE;
+  color: #1E40AF;
+  border-radius: 12px;
+  padding: 0.15rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.badge-nonstem {
+  display: inline-block;
+  background: #FEF3C7;
+  color: #92400E;
+  border-radius: 12px;
+  padding: 0.15rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.badge-public {
+  display: inline-block;
+  background: #E0E7FF;
+  color: #3730A3;
+  border-radius: 12px;
+  padding: 0.15rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.badge-elite {
+  display: inline-block;
+  background: #FFF9E6;
+  color: #92400E;
+  border-radius: 12px;
+  padding: 0.15rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* ---------- Navigation guide ---------- */
+.nav-guide {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.nav-card {
+  background: $light-bg;
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  border-left: 3px solid $navy;
+}
+
+.nav-card strong { color: $navy; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .cards-grid    { grid-template-columns: 1fr; }
+  .outcomes-grid { grid-template-columns: 1fr; }
+  .nav-guide     { grid-template-columns: 1fr; }
+}

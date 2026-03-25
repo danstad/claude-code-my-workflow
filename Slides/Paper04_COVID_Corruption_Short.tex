@@ -1,0 +1,316 @@
+%% ============================================================
+%% Paper04_COVID_Corruption_Short.tex
+%% Public summary presentation (7 slides)
+%% The Effect of the COVID-19 Pandemic on Risk of Corruption
+%% Silverio-Murillo, Prudencio & Balmori-de-la-Miyar
+%% Public Organization Review (2024)
+%%
+%% Compile: cd Slides
+%%   TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode Paper04_COVID_Corruption_Short.tex
+%%   BIBINPUTS=..:$BIBINPUTS bibtex Paper04_COVID_Corruption_Short
+%%   TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode Paper04_COVID_Corruption_Short.tex
+%%   TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode Paper04_COVID_Corruption_Short.tex
+%% ============================================================
+\documentclass[aspectratio=169, 10pt]{beamer}
+\input{header}
+
+%% ---- Bibliography -------------------------------------------
+\bibliographystyle{aer}
+\setcitestyle{authoryear, open={(}, close={)}}
+
+%% ============================================================
+\begin{document}
+
+%% ---- 1. Title Slide -----------------------------------------
+\begin{frame}[plain]
+  \vspace{1.5em}
+  \begin{center}
+    {\color{navyblue}\Large\bfseries
+      Did COVID-19 Increase Corruption Risk in Public Procurement?}\\[1em]
+    {\color{institutgold}\large\itshape
+      Evidence from Mexico's Federal Procurement System}\\[1.5em]
+    {\color{navyblue}\normalsize\bfseries
+      Adan Silverio-Murillo \quad Daniel Prudencio \quad
+      Jose Roberto Balmori-de-la-Miyar}\\[0.3em]
+    {\color{medgray}\small \textit{Public Organization Review} 24 (2024) 1293--1313}\\[1.5em]
+    {\color{medgray}\small Public Summary}
+  \end{center}
+\end{frame}
+
+%% ---- 2. The Puzzle ------------------------------------------
+\begin{frame}{The Question}
+  \begin{columns}
+    \begin{column}{0.55\textwidth}
+      Governments worldwide responded to COVID-19 by \gold{rapidly increasing
+      procurement budgets} while simultaneously \bad{relaxing accountability
+      standards} to speed up purchasing.
+
+      \vspace{0.7em}
+      The natural expectation: \bad{healthcare institutions} would be the
+      corruption hotspot, most money, most relaxed rules, most pressure.
+
+      \vspace{0.7em}
+      \textbf{The research question:} Did the pandemic measurably increase
+      \navy{corruption risk} in Mexico's federal procurement, and if so,
+      \gold{where?}
+
+      \vspace{0.7em}
+      \textbf{The answer:} The increase was driven almost entirely by
+      \gold{non-healthcare institutions}, not by healthcare.
+    \end{column}
+    \begin{column}{0.41\textwidth}
+      \begin{keybox}
+        \textbf{The outcome variable: DCVB}\\[0.5em]
+        Mexico allocates public contracts through three mechanisms:
+        open auctions, invitation auctions, and direct allocation.\\[0.5em]
+        The \gold{DCVB ratio} measures the share of total contract value
+        assigned through discretionary mechanisms (invitation or direct):
+        {\small $\text{DCVB}_{im} =
+          \dfrac{\text{Discr.\,value}_{im}}{\text{Total value}_{im}}$}\\[0.3em]
+        A higher DCVB signals \bad{greater corruption risk}.
+      \end{keybox}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%% ---- 3. The Data --------------------------------------------
+\begin{frame}{The Data: Mexico's Federal Procurement System}
+  \begin{columns}
+    \begin{column}{0.54\textwidth}
+      Data from \navy{CompraNet}, Mexico's public procurement system,
+      systematized by the Instituto Mexicano para la Competitividad (IMCO).
+
+      \vspace{0.6em}
+      \begin{center}
+      \small
+      \begin{tabular}{lc}
+        \toprule
+        \textbf{Feature} & \textbf{Value} \\
+        \midrule
+        Federal institutions     & 64 \\
+        Public acquisitions      & 378,000 \\
+        Institution-month obs.   & 2,304 \\
+        Period                   & Jan 2018 -- Dec 2020 \\
+        \midrule
+        DCVB (Overall)           & 0.705 \\
+        DCVB (Health)            & 0.667 \\
+        DCVB (Non-Health)        & 0.715 \\
+        \bottomrule
+      \end{tabular}
+      \end{center}
+
+      \vspace{0.4em}
+      {\small \color{medgray} Source: IMCO. Pre-pandemic means.}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \begin{methodbox}
+        \textbf{Two groups of institutions:}\\[0.5em]
+        \gold{Healthcare:} federal hospitals, IMSS, and health
+        secretariats. Under intense public scrutiny during the pandemic.\\[0.5em]
+        \gold{Non-healthcare:} defense, education, infrastructure,
+        energy, and other sectors. Comparatively less media attention.
+      \end{methodbox}
+
+      \vspace{0.4em}
+      {\small \color{medgray}
+        Before the pandemic, \textbf{70\% of contract value} was already
+        allocated through discretionary mechanisms. This is the baseline
+        the pandemic disrupted.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%% ---- 4. Identification: DiD ---------------------------------
+\begin{frame}{Identification: Difference-in-Differences}
+  \begin{columns}
+    \begin{column}{0.54\textwidth}
+      The pandemic is a \navy{universal shock}: all 64 institutions were
+      affected simultaneously. Variation comes from the \gold{time dimension}:
+
+      \begin{itemize}
+        \item \gold{Treatment indicator:} 1 if year = 2020, 0 for 2018--2019
+        \item \gold{Time indicator:} 1 for March--December, 0 for January--February
+        \item \gold{COVID-19 variable:} interaction of the two above
+      \end{itemize}
+
+      \vspace{0.4em}
+      \begin{methodbox}
+        \small
+        {\scriptsize $\text{DCVB}_{imy} = \alpha + \beta^{DD}\,\text{COVID19}_{imy}
+        + a_i + \gamma_m + \nu_y + e_{imy}$}\\[0.3em]
+        FE at institution ($a_i$), month ($\gamma_m$), year ($\nu_y$).
+        SE clustered at institution level.
+      \end{methodbox}
+
+      \vspace{0.2em}
+      An \navy{event study} traces the effect month by month and
+      validates the parallel trends assumption.
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \begin{center}
+      \scalebox{0.82}{%
+      \begin{tikzpicture}[
+          box/.style={rectangle, rounded corners=4pt, draw=navyblue,
+                      fill=lightbg, font=\small\bfseries,
+                      text width=2.5cm, align=center, minimum height=0.85cm},
+          hibox/.style={rectangle, rounded corners=4pt,
+                        draw=institutgold, fill=institutgold!18,
+                        font=\small\bfseries, text width=2.5cm,
+                        align=center, minimum height=0.85cm},
+          arr/.style={->, thick, navyblue}
+        ]
+        %% Timeline axis
+        \draw[->, thick, medgray] (-0.3, 0) -- (5.8, 0)
+              node[right, font=\small] {time};
+        %% Year labels
+        \node[font=\small, color=medgray] at (1.0, -0.5) {2018--19};
+        \node[font=\small, color=navyblue] at (3.5, -0.5) {2020};
+        %% Vertical divider (lockdown)
+        \draw[thick, dashed, red!60] (2.6, -0.8) -- (2.6, 2.6)
+              node[above, font=\tiny, color=red!70] {Lockdown};
+        %% Pre box
+        \node[box] at (1.0, 1.4) {Jan--Feb\\All years\\$=0$};
+        %% Post box
+        \node[hibox] at (3.5, 1.4)
+              {\gold{Mar--Dec}\\2020\\$\Rightarrow$ COVID=1};
+        %% Control months (Jan-Feb 2020)
+        \node[box] at (3.5, 2.6) {Jan--Feb\\2020\\$=0$};
+        %% Beta arrow
+        \draw[arr] (2.6, 1.4) -- (3.1, 1.4);
+        \node[font=\small\bfseries, color=red!70] at (4.85, 0.7)
+              {$\hat{\beta}^{DD}$};
+      \end{tikzpicture}}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%% ---- 5. Main Result -----------------------------------------
+\begin{frame}{Main Result: Non-Healthcare Institutions Drove the Increase}
+  \begin{columns}
+    \begin{column}{0.52\textwidth}
+      \textbf{Difference-in-Differences results} (Table 2):
+
+      \vspace{0.1em}
+      \begin{center}
+      \scriptsize
+      \begin{tabular}{lccc}
+        \toprule
+         & \textbf{Overall} & \textbf{Health} & \textbf{Non-Health} \\
+        \midrule
+        1(COVID-19) & \pos{0.120***} & $-$0.060 & \pos{0.166***} \\
+                    & (0.034)         & (0.043)   & (0.039) \\
+        $N$         & 2,304           & 468       & 1,836 \\
+        $R^2$       & 0.32            & 0.19      & 0.35 \\
+        Pre-COVID mean & 0.705        & 0.667     & 0.715 \\
+        \% change   & \pos{$+$17.02\%} & $-$9.09\% & \pos{$+$23.21\%} \\
+        \bottomrule
+      \end{tabular}
+      \end{center}
+
+      \vspace{0.2em}
+      {\small \color{medgray}
+        *** $p<0.01$. Baseline FE at institution, month, and year level.
+        Source: IMCO.}
+    \end{column}
+    \begin{column}{0.44\textwidth}
+      \begin{resultbox}
+        \textbf{The counterintuitive result:}\\[0.2em]
+        The pandemic increased discretionary contracting by
+        \gold{$+$17\%} overall.\\[0.15em]
+        This is driven entirely by
+        \gold{non-healthcare institutions ($+$23\%).}\\[0.15em]
+        Healthcare institutions show \bad{no significant change},
+        despite being at the center of the public debate.
+      \end{resultbox}
+
+      \begin{keybox}
+        A possible explanation: intense media scrutiny of healthcare
+        procurement may have \navy{constrained discretionary behavior}
+        precisely where it was most expected.
+      \end{keybox}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%% ---- 6. Event Study & Mechanisms ----------------------------
+\begin{frame}{Dynamic Effects and Mechanisms}
+  \begin{columns}
+    \begin{column}{0.50\textwidth}
+      \textbf{Event study (Figure 1):}
+
+      \begin{center}
+        \includegraphics[width=0.70\linewidth]{../Figures/figure1_event_study_p04.png}
+      \end{center}
+
+      {\small \color{medgray}
+        Pre-pandemic coefficients near zero (parallel trends).
+        Non-health DCVB peaks at $q=2$ (May 2020), fades within 6 months.
+        Healthcare DCVB flat throughout.}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \textbf{Two mechanisms investigated:}
+
+      \vspace{0.35em}
+      \textbf{\small Market concentration (HHI):}\\[0.15em]
+      {\small Each institution's supplier market is measured with a
+      Herfindahl-Hirschman Index. Non-healthcare institutions saw their
+      supplier market become significantly more concentrated.}
+
+      \vspace{0.35em}
+      \textbf{\small Late disclosure of contract information:}\\[0.15em]
+      {\small The proportion of contracts with procedural information
+      published after the contract start date increased for non-healthcare
+      institutions, consistent with reduced transparency.}
+
+      \vspace{0.3em}
+      {\small \color{medgray}
+        Leave-one-out analysis and exclusion of SEDENA confirm robustness.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%% ---- 7. Conclusions -----------------------------------------
+\begin{frame}{Conclusions and Policy Implications}
+  \begin{columns}
+    \begin{column}{0.54\textwidth}
+      \textbf{What we found:}
+      \begin{itemize}
+        \item COVID-19 increased discretionary contracting in Mexico's
+              federal procurement by \gold{$+$17\%} on average
+        \item The effect is driven entirely by
+              \gold{non-healthcare institutions ($+$23\%),}
+              not by healthcare
+        \item The increase was \gold{temporary:} peaked two months after
+              the stay-at-home order was lifted, returned to baseline
+              within six months
+        \item Non-healthcare institutions simultaneously became more
+              \gold{concentrated} in their supplier base and less
+              \gold{transparent} in contract disclosure
+      \end{itemize}
+
+      \vspace{0.2em}
+      {\small \textbf{Limitation:} DCVB measures \emph{corruption risk},
+      not actual corruption. The paper identifies a pattern at the
+      aggregate level, not individual wrongdoing.}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \begin{resultbox}
+        \textbf{Policy implication:}\\[0.5em]
+        Audit efforts targeting pandemic-era procurement should focus on
+        \gold{non-healthcare institutions,} even though the political
+        debate centered on healthcare.\\[0.5em]
+        Public scrutiny may itself be a \navy{corruption deterrent:}
+        sectors that receive less attention are where the risk
+        actually materializes.
+      \end{resultbox}
+
+      \vspace{0.2em}
+      {\small \color{medgray}
+        Silverio-Murillo, Prudencio \& Balmori-de-la-Miyar (2024),
+        \textit{Public Organization Review} 24, 1293--1313.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\end{document}

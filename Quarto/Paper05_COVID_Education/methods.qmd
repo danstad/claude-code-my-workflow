@@ -1,0 +1,87 @@
+---
+title: "Methods"
+---
+
+The paper uses two complementary econometric strategies: a **difference-in-differences (DiD)** model that estimates the average effect of the pandemic on each outcome, and a **difference-in-differences-in-differences (DDD)** model that estimates whether the effect differed across institutional and student subgroups.
+
+---
+
+## Strategy 1: Difference-in-Differences
+
+### Intuition
+
+The DiD approach exploits the fact that the COVID-19 pandemic hit Mexico in the 2019-2020 academic year (March 2020) and continued through 2020-2021. The identifying idea is to compare how outcomes changed from the first to the second year within the pandemic window (2019-2020 to 2020-2021), relative to how the same outcomes changed from the first to the second year within the pre-pandemic window (2017-2018 to 2018-2019).
+
+**Treatment group:** higher education institutions observed during academic years 2019-2020 and 2020-2021 (the pandemic cohort).
+
+**Control group:** the same higher education institutions observed during academic years 2017-2018 and 2018-2019 (the pre-pandemic cohort).
+
+**Post indicator:** equals 1 for the second year in each two-year window — academic years 2018-2019 and 2020-2021 — and 0 for the first year in each window — 2017-2018 and 2019-2020.
+
+The interaction **Post × Treatment** is the DiD estimator: it captures the pandemic's effect by comparing the year-over-year change in the pandemic cohort to the year-over-year change in the pre-pandemic cohort.
+
+### Specification
+
+::: {.eq-block}
+::: {.eq-label}
+Difference-in-Differences Equation (1)
+:::
+$$Y_{icmy} = \alpha + \gamma\,\text{Treatment}_{imy} + \delta\,\text{Post}_{imy} + \beta\,(\text{Post} \times \text{Treatment})_{imy} + \delta X_{imy} + e_{icmy}$$
+:::
+
+where:
+
+| Term | Definition |
+|:-----|:-----------|
+| $Y_{icmy}$ | Outcome (new entry, enrollment, or graduation) for institution $i$, campus $c$, area of study $m$, year $y$ |
+| $\text{Treatment}_{imy}$ | = 1 for the pandemic cohort (2019-2020 and 2020-2021), = 0 for pre-pandemic (2017-2018 and 2018-2019) |
+| $\text{Post}_{imy}$ | = 1 for the second year in each cohort (2018-2019 and 2020-2021), = 0 for the first year (2017-2018 and 2019-2020) |
+| $\beta$ | The average treatment effect on the treated (ATT): the pandemic's causal effect on the outcome |
+| $X_{imy}$ | Controls: delivery format dummy, public/private dummy, top-20 dummy |
+| $e_{icmy}$ | Residual; standard errors clustered at the municipality level |
+
+: {tbl-colwidths="[18,82]"}
+
+<div class="methodbox">
+**What $\beta$ estimates.** The DiD estimator $\beta$ compares the year-over-year change during the pandemic window (2019-20 to 2020-21) with the year-over-year change during the pre-pandemic window (2017-18 to 2018-19). If both cohorts would have followed the same trend absent the pandemic, then any additional change in the pandemic cohort is attributable to COVID-19.
+</div>
+
+### Key Assumption: Parallel Trends
+
+The identifying assumption is that, absent the pandemic, the pandemic-cohort and pre-pandemic-cohort institutions would have experienced the same year-over-year change in outcomes. This cannot be directly tested, but the paper supports it with a **placebo test**: shifting the treatment window back by two years (using 2018-2019 and 2019-2020 as the "treatment cohort" and 2016-2017 and 2017-2018 as the control cohort) should produce null effects. Panel A of Table 3 confirms this: the placebo estimates are statistically insignificant, consistent with pre-parallel trends.
+
+---
+
+## Strategy 2: Difference-in-Differences-in-Differences
+
+### Intuition
+
+The DDD approach extends the DiD to test whether the pandemic's effect differed across subgroups. For each heterogeneity dimension (public vs. private funding, top-20 vs. non-top-20 status, synchronous vs. asynchronous delivery), a third interaction term is added: **Post × Treatment × Subgroup indicator**.
+
+### Specification
+
+::: {.eq-block}
+::: {.eq-label}
+DDD Equation (2)
+:::
+$$Y_{icmy} = \alpha + \beta_1\,\text{Treatment}_{imy} + \beta_2\,\text{Het}_{icy} + \beta_3\,\text{Post}_{my} + \beta_4\,(\text{Post} \times \text{Treatment})_{imy}$$
+$$+ \beta_5\,(\text{Treatment} \times \text{Het})_{icmy} + \beta_6\,(\text{Het} \times \text{Post})_{icmy} + \beta_7\,(\text{Post} \times \text{Treatment} \times \text{Het})_{icmy} + e_{icmy}$$
+:::
+
+where $\text{Het}_{icy}$ is a dummy equal to 1 if the institution belongs to the heterogeneous subgroup of interest (e.g., public, top-20, synchronous), and 0 otherwise.
+
+The parameter $\beta_7$ captures the **differential** pandemic effect for the subgroup relative to the complement. A positive $\beta_7$ means the subgroup fared better than the non-subgroup; a negative $\beta_7$ means it fared worse.
+
+---
+
+## Robustness Suite
+
+The paper validates the main DiD estimates with four robustness checks:
+
+**1. Placebo test (pre-parallel trends).** Shifts the treatment window two years earlier. Finding null effects supports the parallel trends assumption.
+
+**2. False Discovery Rate correction.** Because three outcomes are tested simultaneously, the paper applies the FDR q-value correction of Anderson (2008). No significant result becomes insignificant after this correction.
+
+**3. Oster (2019) bounds for omitted variable bias.** Simulates bounds around $\beta$ based on an expected R². When bounds exclude zero, the estimate is robust to omitted variable bias. All main bounds exclude zero.
+
+**4. Leave-one-major-out sensitivity.** Re-estimates the DiD specification ten times, each time excluding one area of study. Estimates remain stable across all exclusions, confirming the results are not driven by any single field.
