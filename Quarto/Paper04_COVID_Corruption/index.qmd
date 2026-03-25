@@ -5,7 +5,7 @@ format:
 ---
 
 <div class="paper-hero">
-<h1>The Effect of the COVID-19 Pandemic on Risk of Corruption</h1>
+<h1><a href="https://doi.org/10.1007/s11115-024-00765-1" target="_blank" style="color:inherit; text-decoration:none;">The Effect of the COVID-19 Pandemic on Risk of Corruption</a></h1>
 <div class="paper-meta">
 Adan Silverio-Murillo &nbsp;·&nbsp; Daniel Prudencio &nbsp;·&nbsp; Jose Roberto Balmori-de-la-Miyar<br>
 <em>Public Organization Review</em>, 2024 &nbsp;·&nbsp;
