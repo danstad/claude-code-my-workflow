@@ -51,7 +51,7 @@ Using monthly administrative data on 378,000 public contracts from 64 federal in
 
 The outcome variable is the **Discrete-Contracts-Value-to-Budget (DCVB) ratio**, defined for each institution in each month as:
 
-$$\text{DCVB}_{im} = \frac{\text{Value of contracts assigned by discretion}}{\text{Total contract value}}$$
+$$\text{DCVB}_{im} = \frac{\text{Value of contracts assigned by discretion}_{im}}{\text{Total contract value}_{im}}$$
 
 A higher DCVB means a greater share of public money bypassed competitive bidding. The paper uses DCVB as a *proxy* for corruption risk, not as direct evidence of fraud.
 
