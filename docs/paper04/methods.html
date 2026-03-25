@@ -209,6 +209,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="intuition">Intuition</h3>
 <p>The DiD approach compares how much the DCVB ratio changed after the pandemic began for institutions affected by the treatment (2020) relative to a counterfactual trend estimated from pre-pandemic data (2018 and 2019). The key assumption is that, absent the pandemic, all institutions would have followed the same trend.</p>
 <p>The treatment variable is not a subset of institutions: <strong>all institutions are treated</strong> by the pandemic. Instead, the variation comes from the time dimension: months after March 2020 are “treated” months, while all months in 2018 and 2019 (and January to February 2020) are “control” months.</p>
+<p>In this study, the <strong>treatment indicator</strong> takes the value of 1 for year 2020 and 0 for years 2018 and 2019. The <strong>time indicator</strong> takes the value of 1 for the months of March through December and 0 for January and February. The <strong>COVID-19 variable</strong> is their interaction: it equals 1 from March to December 2020, and 0 otherwise. It is this interaction that <span class="math inline">\(\beta^{DD}\)</span> captures.</p>
 </section>
 <section id="specification" class="level3">
 <h3 class="anchored" data-anchor-id="specification">Specification</h3>

@@ -14,6 +14,8 @@ The DiD approach compares how much the DCVB ratio changed after the pandemic beg
 
 The treatment variable is not a subset of institutions: **all institutions are treated** by the pandemic. Instead, the variation comes from the time dimension: months after March 2020 are "treated" months, while all months in 2018 and 2019 (and January to February 2020) are "control" months.
 
+In this study, the **treatment indicator** takes the value of 1 for year 2020 and 0 for years 2018 and 2019. The **time indicator** takes the value of 1 for the months of March through December and 0 for January and February. The **COVID-19 variable** is their interaction: it equals 1 from March to December 2020, and 0 otherwise. It is this interaction that $\beta^{DD}$ captures.
+
 ### Specification
 
 ::: {.eq-block}
